@@ -6,6 +6,8 @@ import { invalidateUserFeedCache } from '../services/redis.js';
 
 const router = Router();
 
+const ALLOWED_LANGS = ['te', 'hi', 'ta', 'kn', 'ml', 'en'];
+
 // GET /v1/cards/search?q=&lang=&category=&page=
 router.get('/search', async (req, res, next) => {
   try {
@@ -14,7 +16,8 @@ router.get('/search', async (req, res, next) => {
       return res.status(400).json({ error: { code: 'INVALID_QUERY', message: 'Query must be at least 2 characters' } });
     }
 
-    const lang = req.lang;
+    const rawLang = req.lang || 'te';
+    const lang = ALLOWED_LANGS.includes(rawLang) ? rawLang : 'te';
     const category = req.query.category ? String(req.query.category) : null;
     const page = Math.max(1, parseInt(req.query.page, 10) || 1);
     const limit = 20;
@@ -66,19 +69,19 @@ router.get('/search', async (req, res, next) => {
     const result = await query(searchQuery, params);
 
     const countQuery = `
-      SELECT COUNT(*) FROM cards
+      SELECT COUNT(*)::int FROM cards
       WHERE is_active = true
-        ${category ? 'AND category = $2' : ''}
+        ${category ? 'AND category = $3' : ''}
         AND (
           quote->>'${lang}' ILIKE $1
           OR quote->>'en' ILIKE $1
           OR quote->>'te' ILIKE $1
           OR quote->>'hi' ILIKE $1
-          OR similarity(unaccent(quote->>'${lang}'), unaccent($1)) > 0.1
-          OR similarity(unaccent(quote->>'en'), unaccent($1)) > 0.1
+          OR similarity(unaccent(quote->>'${lang}'), unaccent($2)) > 0.1
+          OR similarity(unaccent(quote->>'en'), unaccent($2)) > 0.1
         )
     `;
-    const countParams = category ? [like, category] : [like];
+    const countParams = category ? [like, q, category] : [like, q];
     const countResult = await query(countQuery, countParams);
     const total = parseInt(countResult.rows[0].count, 10);
 
@@ -110,6 +113,8 @@ router.post('/:id/interact', async (req, res, next) => {
   try {
     const action = req.body?.action;
     if (!allowed.has(action)) throw new HttpError(400, 'INVALID_ACTION', 'Invalid action');
+    const { rows: c0 } = await query(`SELECT id FROM cards WHERE id = $1 AND is_active = TRUE`, [req.params.id]);
+    if (!c0.length) throw new HttpError(404, 'NOT_FOUND', 'Card not found');
     await query(`INSERT INTO interactions (user_id, card_id, action) VALUES ($1, $2, $3)`, [
       req.user.id,
       req.params.id,

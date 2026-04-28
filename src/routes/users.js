@@ -8,22 +8,47 @@ import { feedRefreshLimiter } from '../middleware/rateLimit.js';
 
 const router = Router();
 
+const VALID_INTEREST_IDS = new Set([
+  'goodmorning',
+  'goodnight',
+  'love',
+  'bhakti',
+  'motivation',
+  'festival',
+  'family',
+  'cinema',
+  'heroes',
+  'poetry',
+  'friendship',
+  'birthday',
+]);
+
+async function buildMeResponse(userId) {
+  const { rows: urows } = await query('SELECT * FROM users WHERE id = $1', [userId]);
+  if (!urows.length) return null;
+  const u = urows[0];
+  const { rows: interests } = await query(
+    `SELECT interest_id, rank FROM user_interests WHERE user_id = $1 ORDER BY rank`,
+    [userId],
+  );
+  return {
+    id: u.id,
+    phone: u.phone,
+    name: u.name,
+    content_language: u.content_language || 'te',
+    religion_id: u.religion_id,
+    region: u.region || 'IN',
+    timezone: u.timezone,
+    interests: interests.map((r) => ({ interest_id: r.interest_id, rank: r.rank })),
+    created_at: u.created_at,
+  };
+}
+
 router.get('/me', async (req, res, next) => {
   try {
-    const u = req.user;
-    const { rows: interests } = await query(`SELECT interest_id, rank FROM user_interests WHERE user_id = $1 ORDER BY rank`, [
-      u.id,
-    ]);
-    res.json({
-      id: u.id,
-      phone: u.phone,
-      name: u.name,
-      contentLanguage: u.content_language,
-      religionId: u.religion_id,
-      region: u.region,
-      timezone: u.timezone,
-      interests: interests.map((r) => ({ interestId: r.interest_id, rank: r.rank })),
-    });
+    const body = await buildMeResponse(req.user.id);
+    if (!body) throw new HttpError(404, 'USER_NOT_FOUND', 'User not found');
+    res.json(body);
   } catch (e) {
     next(e);
   }
@@ -32,7 +57,7 @@ router.get('/me', async (req, res, next) => {
 router.put('/me', async (req, res, next) => {
   try {
     const { name, contentLanguage, religionId, region, timezone } = req.body || {};
-    const { rows } = await query(
+    await query(
       `UPDATE users SET
          name = COALESCE($1, name),
          content_language = COALESCE($2, content_language),
@@ -40,12 +65,12 @@ router.put('/me', async (req, res, next) => {
          region = COALESCE($4, region),
          timezone = COALESCE($5, timezone),
          updated_at = NOW()
-       WHERE id = $6
-       RETURNING *`,
+       WHERE id = $6`,
       [name ?? null, contentLanguage ?? null, religionId ?? null, region ?? null, timezone ?? null, req.user.id],
     );
     await invalidateUserFeedCache(req.user.id);
-    res.json({ user: rows[0] });
+    const body = await buildMeResponse(req.user.id);
+    res.json(body);
   } catch (e) {
     next(e);
   }
@@ -61,12 +86,18 @@ router.put('/me/interests', async (req, res, next) => {
     for (const item of list) {
       const id = typeof item === 'string' ? item : item?.interest_id || item?.interestId;
       if (!id) throw new HttpError(400, 'INVALID_INTERESTS', 'Each interest needs interest_id');
-      ids.push(String(id));
+      const sid = String(id);
+      if (!VALID_INTEREST_IDS.has(sid)) {
+        throw new HttpError(400, 'INVALID_INTEREST_ID', `Unknown interest: ${sid}`);
+      }
+      ids.push(sid);
     }
     await setUserInterests(req.user.id, ids);
     await invalidateUserFeedCache(req.user.id);
     const ordered = await getUserInterests(req.user.id);
-    res.json({ interests: ordered });
+    res.json({
+      interests: ordered.map((interestId, rank) => ({ interest_id: interestId, rank })),
+    });
   } catch (e) {
     next(e);
   }
@@ -92,10 +123,10 @@ async function paginatedCards(req, action) {
      LIMIT $2 OFFSET $3`,
     [req.user.id, limit, offset, action],
   );
-  const { rows: c2 } = await query(
-    `SELECT COUNT(*)::int AS n FROM interactions WHERE user_id = $1 AND action = $2`,
-    [req.user.id, action],
-  );
+  const { rows: c2 } = await query(`SELECT COUNT(*)::int AS n FROM interactions WHERE user_id = $1 AND action = $2`, [
+    req.user.id,
+    action,
+  ]);
   const lang = req.lang;
   return { cards: rows.map((r) => mapCardRow(r, lang)), nextPage: rows.length === limit ? page + 1 : null, total: c2[0].n };
 }

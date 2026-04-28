@@ -1,12 +1,33 @@
-import morgan from 'morgan';
+import { randomUUID } from 'crypto';
 
-morgan.token('lang', (req) => req.lang || '-');
-morgan.token('user-id', (req) => (req.user?.id ? String(req.user.id).slice(0, 8) : 'anon'));
+/**
+ * Structured JSON request logging (Render-friendly).
+ */
+export function httpLogger(req, res, next) {
+  if (req.path === '/health') return next();
 
-export const httpLogger = morgan(':method :url :status :res[content-length] - :response-time ms | lang=:lang user=:user-id', {
-  skip: (req) => req.url === '/health',
-  stream: {
-    write: (message) => console.log(message.trim()),
-  },
-});
+  const requestId = randomUUID().slice(0, 8);
+  req.requestId = requestId;
+  const start = Date.now();
 
+  res.on('finish', () => {
+    const log = {
+      timestamp: new Date().toISOString(),
+      requestId,
+      method: req.method,
+      path: req.path,
+      status: res.statusCode,
+      durationMs: Date.now() - start,
+      lang: req.lang || '-',
+      userId: req.user?.id ? String(req.user.id).slice(0, 8) : 'anon',
+      ip: req.ip,
+      ua: (req.get('user-agent') || '').slice(0, 120),
+    };
+    const line = JSON.stringify(log);
+    if (res.statusCode >= 500) console.error(line);
+    else if (res.statusCode >= 400) console.warn(line);
+    else console.log(line);
+  });
+
+  next();
+}

@@ -19,7 +19,7 @@ router.post('/send-otp', async (req, res, next) => {
     const phone = normalizePhone(req.body?.phone);
     if (!phone) throw new HttpError(400, 'INVALID_PHONE', 'Provide a valid 10-digit Indian mobile');
     const code = await storeOtp(phone);
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production' || process.env.OTP_LOG_IN_PROD === 'true') {
       console.info(`[mock-otp] ${phone} -> ${code}`);
     }
     res.json({ ok: true, requestId: phone, message: 'OTP sent (mock in dev: check server logs if Redis unavailable)' });
@@ -31,11 +31,10 @@ router.post('/send-otp', async (req, res, next) => {
 router.post('/verify-otp', async (req, res, next) => {
   try {
     const phone = normalizePhone(req.body?.phone || req.body?.requestId);
-    const code = String(req.body?.code || '').replace(/\D/g, '');
+    const code = String(req.body?.code ?? req.body?.otp ?? '').replace(/\D/g, '');
     if (!phone || code.length !== 6) throw new HttpError(400, 'INVALID_INPUT', 'phone and 6-digit code required');
 
-    let ok = await verifyOtp(phone, code);
-    if (!ok && process.env.NODE_ENV !== 'production' && code === '000000') ok = true;
+    const ok = await verifyOtp(phone, code);
     if (!ok) throw new HttpError(400, 'INVALID_OTP', 'Incorrect or expired OTP');
 
     const { rows } = await query(
@@ -46,7 +45,19 @@ router.post('/verify-otp', async (req, res, next) => {
     );
     const user = rows[0];
     const token = signUserToken(user.id);
-    res.json({ token, user: { id: user.id, phone: user.phone, name: user.name, contentLanguage: user.content_language } });
+    res.json({
+      token,
+      user: {
+        id: user.id,
+        phone: user.phone,
+        name: user.name,
+        content_language: user.content_language || 'te',
+        religion_id: user.religion_id,
+        region: user.region || 'IN',
+        interests: [],
+        created_at: user.created_at,
+      },
+    });
   } catch (e) {
     next(e);
   }

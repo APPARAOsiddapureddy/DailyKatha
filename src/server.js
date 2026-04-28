@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
+import helmet from 'helmet';
 import cors from 'cors';
 
 import { errorHandler, getMetrics } from './middleware/errorHandler.js';
@@ -22,7 +23,22 @@ if (!process.env.JWT_SECRET) {
 }
 
 const app = express();
-app.use(cors());
+app.set('trust proxy', 1);
+
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  }),
+);
+
+app.use(
+  cors({
+    origin: false,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept-Language', 'X-Internal-Key'],
+  }),
+);
+
 app.use(express.json({ limit: '2mb' }));
 app.use(httpLogger);
 
@@ -37,12 +53,16 @@ app.get('/health', async (_req, res) => {
       uptime: process.uptime(),
       timestamp: new Date().toISOString(),
     });
-  } catch (err) {
-    res.status(503).json({ status: 'error', error: err.message });
+  } catch {
+    res.status(503).json({ status: 'error', message: 'Service unavailable' });
   }
 });
 
 app.get('/metrics', (req, res) => {
+  const key = req.headers['x-internal-key'];
+  if (!key || key !== process.env.INTERNAL_API_KEY) {
+    return res.status(403).json({ error: { code: 'FORBIDDEN', message: 'Internal access only' } });
+  }
   res.json({
     errors: getMetrics(),
     uptime: process.uptime(),
@@ -53,7 +73,7 @@ app.get('/metrics', (req, res) => {
 
 app.use('/v1/auth', authLimiter, authPublic);
 
-app.use('/v1/internal', internalLimiter, internalKeyAuth, internalRoutes); // POST /v1/internal/generation-jobs
+app.use('/v1/internal', internalLimiter, internalKeyAuth, internalRoutes);
 
 const authed = express.Router();
 authed.use(generalLimiter);
@@ -68,6 +88,26 @@ app.use('/v1', authed);
 app.use(errorHandler);
 
 const port = parseInt(process.env.PORT || '3000', 10);
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Daily Katha API listening on :${port}`);
 });
+
+function shutdown(signal) {
+  console.log(`${signal} received — shutting down gracefully`);
+  server.close(async () => {
+    try {
+      await pool.end();
+    } catch (e) {
+      console.warn('pool.end', e.message);
+    }
+    try {
+      await redis.quit();
+    } catch (e) {
+      console.warn('redis.quit', e.message);
+    }
+    process.exit(0);
+  });
+}
+
+process.on('SIGTERM', () => shutdown('SIGTERM'));
+process.on('SIGINT', () => shutdown('SIGINT'));
