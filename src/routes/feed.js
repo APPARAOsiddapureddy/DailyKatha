@@ -3,6 +3,7 @@ import { pool } from '../db/pool.js';
 import { getUserInterests } from '../db/queries/userInterests.js';
 import { runRecommendationEngine } from '../recommendations/engine.js';
 import { getCachedFeed, setCachedFeed } from '../recommendations/cache.js';
+import { getUserTodaysPicks } from '../services/todaysPicks.js';
 
 const router = Router();
 
@@ -143,6 +144,18 @@ router.get('/explore', async (req, res, next) => {
 
     await setCachedFeed(cacheKey, response, 300);
     res.json(response);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// GET /v1/feed/today-picks — get today's personalized 5 picks for user
+router.get('/today-picks', async (req, res, next) => {
+  try {
+    const userId = req.user.id;
+    const lang = req.lang;
+    const picks = await getUserTodaysPicks({ userId, lang });
+    res.json({ ...picks, lang, refreshesAt: 'midnight IST' });
   } catch (err) {
     next(err);
   }

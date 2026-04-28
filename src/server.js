@@ -16,6 +16,9 @@ import feedRoutes from './routes/feed.js';
 import cardsRoutes from './routes/cards.js';
 import usersRoutes from './routes/users.js';
 import internalRoutes from './routes/internal.js';
+import adminRoutes from './routes/admin.js';
+import { adminAuth } from './middleware/adminAuth.js';
+import { startCronJobs } from './services/cronJobs.js';
 
 if (!process.env.JWT_SECRET) {
   console.error('FATAL: JWT_SECRET is required');
@@ -82,6 +85,7 @@ authed.use(languageMiddleware);
 authed.use('/feed', feedRoutes);
 authed.use('/cards', cardsRoutes);
 authed.use('/users', usersRoutes);
+authed.use('/admin', adminAuth, adminRoutes);
 
 app.use('/v1', authed);
 
@@ -90,6 +94,7 @@ app.use(errorHandler);
 const port = parseInt(process.env.PORT || '3000', 10);
 const server = app.listen(port, () => {
   console.log(`Daily Katha API listening on :${port}`);
+  startCronJobs();
 });
 
 function shutdown(signal) {
