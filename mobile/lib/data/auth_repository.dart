@@ -1,0 +1,229 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+import '../config/flavor_config.dart';
+import '../core/app_config.dart';
+import '../models/auth_api_models.dart';
+import '../models/user_profile.dart';
+import '../services/auth_service.dart';
+
+/// Persists tokens and coordinates mock vs live API.
+class AuthRepository {
+  AuthRepository({
+    required FlutterSecureStorage storage,
+    required AuthService authService,
+  })  : _storage = storage,
+        _authService = authService;
+
+  static const _kAccess = 'dk_access_token';
+  static const _kRefresh = 'dk_refresh_token';
+  static const _kProfile = 'dk_profile_json';
+
+  final FlutterSecureStorage _storage;
+  final AuthService _authService;
+
+  Future<UserSession?> restoreSession() async {
+    final access = await _storage.read(key: _kAccess);
+    if (access == null || access.isEmpty) return null;
+    final refresh = await _storage.read(key: _kRefresh);
+    final effectiveRefresh = (refresh == null || refresh.isEmpty) ? access : refresh;
+    final profileJson = await _storage.read(key: _kProfile);
+    final profile = profileJson != null
+        ? UserProfile.fromJson(jsonDecode(profileJson) as Map<String, dynamic>)
+        : UserProfile(
+            id: 'local',
+            phoneE164: '',
+            onboardingComplete: false,
+          );
+
+    // Demo session (created by "Continue (demo)") should never be validated against the backend.
+    if (access == 'mock_access' || profile.id == 'demo-user') {
+      return UserSession(accessToken: access, refreshToken: effectiveRefresh, profile: profile);
+    }
+
+    if (!AppConfig.useMockApi) {
+      try {
+        final fresh = await _authService.getMeWithAccessToken(access).timeout(const Duration(seconds: 8));
+        await _storage.write(key: _kProfile, value: jsonEncode(_profileToJson(fresh)));
+        return UserSession(accessToken: access, refreshToken: effectiveRefresh, profile: fresh);
+      } on DioException {
+        await _storage.deleteAll();
+        return null;
+      } on TimeoutException {
+        // Backend is slow/unreachable: keep local session so the app can still boot
+        // (and let the user proceed via demo/offline flows).
+        return UserSession(accessToken: access, refreshToken: effectiveRefresh, profile: profile);
+      }
+    }
+
+    return UserSession(accessToken: access, refreshToken: effectiveRefresh, profile: profile);
+  }
+
+  Future<OtpSendResponse> sendOtp(String phoneDigits) async {
+    // Demo/testing builds should not call backend for OTP.
+    if (AppConfig.useMockApi || !FlavorConfig.isProduction) {
+      return OtpSendResponse(requestId: phoneDigits);
+    }
+    return _authService.sendOtp(phoneE164: '+91$phoneDigits');
+  }
+
+  Future<UserSession> verifyOtp({
+    required String phoneDigits,
+    required String requestId,
+    required String code,
+  }) async {
+    // TESTING MODE (mock API OR non-production flavor): accept any 6 digits and skip backend validation.
+    if (AppConfig.useMockApi || !FlavorConfig.isProduction) {
+      if (code.replaceAll(RegExp(r'\D'), '').length != 6) {
+        throw ArgumentError('OTP must be 6 digits');
+      }
+      return _createDemoSession(phoneDigits: phoneDigits);
+    }
+
+    final result = await _authService.verifyOtp(
+      phoneDigits: phoneDigits,
+      requestId: requestId,
+      code: code,
+    );
+
+    final access = result.accessToken;
+    final refresh = result.refreshToken;
+    final profile = UserProfile.fromJson(result.profile);
+    await _persistTokens(access: access, refresh: refresh, profile: profile);
+    return UserSession(accessToken: access, refreshToken: refresh, profile: profile);
+  }
+
+  Future<UserSession> createDemoSessionForTesting({required String phoneDigits}) async {
+    return _createDemoSession(phoneDigits: phoneDigits);
+  }
+
+  Future<UserSession> _createDemoSession({required String phoneDigits}) async {
+    final profile = UserProfile(
+      id: 'demo-user',
+      phoneE164: '+91$phoneDigits',
+      displayName: 'Demo User',
+      displayNameNative: null,
+      contentLanguage: 'te',
+      isAdmin: phoneDigits == '6301567773',
+      onboardingComplete: false,
+      joinedAt: DateTime.now(),
+    );
+    const access = 'mock_access';
+    await _persistTokens(access: access, refresh: access, profile: profile);
+    return UserSession(
+      accessToken: access,
+      refreshToken: access,
+      profile: profile,
+    );
+  }
+
+  Future<UserProfile> refreshProfileFromServer() async {
+    final existing = await restoreSession();
+    if (existing?.accessToken == 'mock_access' || AppConfig.useMockApi) {
+      return existing?.profile ?? const UserProfile(id: 'demo', phoneE164: '', onboardingComplete: true);
+    }
+    final profile = await _authService.getMe();
+    await _storage.write(key: _kProfile, value: jsonEncode(_profileToJson(profile)));
+    return profile;
+  }
+
+  Future<UserSession> applyProfile(UserProfile profile) async {
+    final existing = await restoreSession();
+    if (existing?.accessToken == 'mock_access' || AppConfig.useMockApi) {
+      final access = existing?.accessToken ?? 'mock_access';
+      final refresh = existing?.refreshToken ?? access;
+      await _persistTokens(access: access, refresh: refresh, profile: profile);
+      return UserSession(accessToken: access, refreshToken: refresh, profile: profile);
+    }
+
+    if (existing == null) {
+      throw StateError('No session');
+    }
+    final access = existing.accessToken;
+    final refresh = existing.refreshToken.isEmpty ? access : existing.refreshToken;
+    final server = await _authService.updateMe(profile);
+    await _persistTokens(access: access, refresh: refresh, profile: server);
+    return UserSession(accessToken: access, refreshToken: refresh, profile: server);
+  }
+
+  Future<UserSession> completeOnboardingOnServer({
+    required String contentLanguage,
+    String? religionId,
+    required List<String> interestIds,
+  }) async {
+    final existing = await restoreSession();
+    if (existing == null) {
+      throw StateError('No session');
+    }
+
+    // TESTING / demo session: do not call backend. Persist locally and continue.
+    if (existing.accessToken == 'mock_access' || AppConfig.useMockApi) {
+      final updated = existing.profile.copyWith(
+        contentLanguage: contentLanguage,
+        religionId: religionId,
+        interestIds: interestIds,
+        onboardingComplete: true,
+      );
+      await _persistTokens(
+        access: existing.accessToken,
+        refresh: existing.refreshToken,
+        profile: updated,
+      );
+      return UserSession(
+        accessToken: existing.accessToken,
+        refreshToken: existing.refreshToken,
+        profile: updated,
+      );
+    }
+
+    final partial = existing.profile.copyWith(
+      contentLanguage: contentLanguage,
+      religionId: religionId,
+      onboardingComplete: true,
+    );
+    await _authService.updateMe(partial);
+    await _authService.updateInterests(interestIds);
+    final fresh = await _authService.getMe();
+    await _persistTokens(
+      access: existing.accessToken,
+      refresh: existing.refreshToken,
+      profile: fresh,
+    );
+    return UserSession(
+      accessToken: existing.accessToken,
+      refreshToken: existing.refreshToken,
+      profile: fresh,
+    );
+  }
+
+  Future<void> signOut() async {
+    await _storage.deleteAll();
+  }
+
+  /// Alias for sign-out flows (e.g. global 401 handler).
+  Future<void> logout() => signOut();
+
+  Future<void> _persistTokens({
+    required String access,
+    required String refresh,
+    required UserProfile profile,
+  }) async {
+    await _storage.write(key: _kAccess, value: access);
+    await _storage.write(key: _kRefresh, value: refresh.isEmpty ? access : refresh);
+    await _storage.write(key: _kProfile, value: jsonEncode(_profileToJson(profile)));
+  }
+
+  Map<String, dynamic> _profileToJson(UserProfile p) => {
+        'id': p.id,
+        'phone': p.phoneE164,
+        'displayName': p.displayName,
+        'displayNameNative': p.displayNameNative,
+        'contentLanguage': p.contentLanguage,
+        'religionId': p.religionId,
+        'interestIds': p.interestIds,
+        'onboardingComplete': p.onboardingComplete,
+      };
+}

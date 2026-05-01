@@ -1,0 +1,158 @@
+{
+  "@@locale": "en",
+  "appTitle": "Daily Katha",
+  "@appTitle": {
+    "description": "Application title"
+  },
+  "navHome": "Home",
+  "navExplore": "Explore",
+  "navProfile": "Profile",
+  "brandTagline": "Share the Blessing",
+  "scrollHint": "Swipe for more",
+  "sectionForYou": "For You",
+  "sectionMorning": "Morning",
+  "sectionTrending": "Trending",
+  "sectionFestival": "Festival Special",
+  "sectionEvening": "Evening",
+  "sectionEntertainment": "Entertainment",
+  "onboardingSelectLanguage": "Select Language",
+  "onboardingSelectInterests": "Your Interests",
+  "onboardingSelectReligion": "Religion (Optional)",
+  "onboardingNext": "Next",
+  "onboardingSkip": "Skip",
+  "onboardingDone": "Get Started",
+  "onboardingStep1": "Step 1 of 3",
+  "onboardingStep2": "Step 2 of 3",
+  "onboardingStep3": "Step 3 of 3",
+  "onboardingLanguageQuestion": "What's your language?",
+  "onboardingLanguageSubtitle": "We'll show content in the language you speak every day.",
+  "onboardingContinue": "Continue →",
+  "onboardingReligionTitle": "Your spiritual path?",
+  "onboardingReligionSubtitle": "We'll tune content to honour your faith. This is optional.",
+  "onboardingInterestsTitle": "What do you love to share?",
+  "onboardingInterestsSubtitle": "Pick up to 3 — we'll fill your home with these.",
+  "onboardingInterestCount": "{count} of 3 selected",
+  "@onboardingInterestCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "onboardingFinishCta": "Finish · Start reading ✦",
+  "homeGreetingNightEarly": "Good night, {name}.",
+  "@homeGreetingNightEarly": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "homeGreetingMorning": "Good morning, {name}.",
+  "@homeGreetingMorning": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "homeGreetingAfternoon": "Good afternoon, {name}.",
+  "@homeGreetingAfternoon": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "homeGreetingEvening": "Good evening, {name}.",
+  "@homeGreetingEvening": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "homeGreetingNight": "Good night, {name}.",
+  "@homeGreetingNight": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "homeGreetingSubline": "Start the day with blessings",
+  "homeBrowseGenre": "Browse by Genre",
+  "homeQuotesCount": "{count} Quotes",
+  "@homeQuotesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeSectionStartTitle": "Start with morning blessings",
+  "homeSectionFestivalTitle": "Today's Ugadi specials",
+  "homeSectionInterestsTitle": "Based on what you love",
+  "homeSectionTrendingTitle": "What everyone is sharing",
+  "homeSectionCinemaTitle": "From Telugu cinema",
+  "festivalBannerKicker": "TODAY'S FESTIVAL",
+  "festivalBannerTitle": "Happy Ugadi",
+  "festivalBannerSubtitle": "12 new greetings ready to share",
+  "festivalBannerCta": "Open pack →",
+  "homeViewAll": "View all →",
+  "notificationsTitle": "Notifications",
+  "exploreTabDiscover": "Discover",
+  "exploreTabBrowse": "Browse",
+  "exploreHeadline": "Search",
+  "exploreSubtitle": "Explore what to share today",
+  "exploreSearchHint": "Search quotes…",
+  "exploreJumpIn": "JUMP IN",
+  "exploreWhatToShare": "What are you sharing?",
+  "exploreTrendingLine": "TRENDING",
+  "exploreWeekHit": "This week's hits",
+  "exploreSeeAll": "See all →",
+  "explorePopularSearches": "POPULAR SEARCHES",
+  "exploreYouMightLike": "You might like these",
+  "exploreUpcomingLine": "UPCOMING",
+  "exploreFestivalCalendar": "Festival calendar",
+  "exploreCategoriesLine": "CATEGORIES",
+  "exploreBrowseAll": "Browse everything",
+  "exploreAll": "All",
+  "exploreEmpty": "Nothing found",
+  "profileLiked": "Liked",
+  "profileSaved": "Saved",
+  "profileShared": "Shared",
+  "profileSettings": "Settings",
+  "profileLanguage": "Language",
+  "profileInterests": "Interests",
+  "profileDownloads": "Downloads",
+  "profileNotificationsOn": "Notifications on",
+  "profileHelp": "Help & About",
+  "profileSignOut": "Sign out",
+  "profileFooter": "Daily Katha · crafted with care",
+  "profileEmptySharedTitle": "Items you share will appear here",
+  "profileEmptySharedSubtitle": "Share a card from the feed to see it in this tab.",
+  "profileInterestCountTrailing": "{count} selected",
+  "@profileInterestCountTrailing": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "profileLogout": "Logout",
+  "languageUpdated": "Language updated",
+  "errorFeedLoad": "Couldn't load feed",
+  "errorGeneric": "Something went wrong",
+  "noCards": "No cards",
+  "preparingCard": "Preparing your card…",
+  "snackSaveTodo": "Save to gallery coming soon.",
+  "snackEditTodo": "Edit card coming soon.",
+  "loginWelcome": "Welcome home.",
+  "loginSubtitle": "Enter your number. We'll send daily greetings, festival wishes, and words worth sharing — right to your phone.",
+  "loginMobileLabel": "MOBILE NUMBER",
+  "loginSendOtp": "Send OTP",
+  "loginTerms": "By continuing you agree to receive WhatsApp-style updates. Carrier rates may apply.",
+  "otpEnterCode": "Enter code",
+  "otpSentTo": "+91 {phone}",
+  "@otpSentTo": {
+    "placeholders": {
+      "phone": {}
+    }
+  },
+  "otpVerify": "Verify",
+  "otpResend": "Resend",
+  "splashTagline": "Blessings worth sharing",
+  "dateToday": "Today",
+  "footerDailyKatha": "DAILY KATHA"
+}

@@ -1,0 +1,337 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for Hindi (`hi`).
+class AppLocalizationsHi extends AppLocalizations {
+  AppLocalizationsHi([String locale = 'hi']) : super(locale);
+
+  @override
+  String get appTitle => 'डेली कथा';
+
+  @override
+  String get navHome => 'होम';
+
+  @override
+  String get navExplore => 'खोजें';
+
+  @override
+  String get navProfile => 'प्रोफ़ाइल';
+
+  @override
+  String get brandTagline => 'आशीर्वाद बाँटिए';
+
+  @override
+  String get scrollHint => 'स्क्रॉल करें';
+
+  @override
+  String get sectionForYou => 'आपके लिए';
+
+  @override
+  String get sectionMorning => 'सुबह की शुरुआत';
+
+  @override
+  String get sectionTrending => 'ट्रेंडिंग';
+
+  @override
+  String get sectionFestival => 'त्योहार विशेष';
+
+  @override
+  String get sectionEvening => 'शाम';
+
+  @override
+  String get sectionEntertainment => 'मनोरंजन';
+
+  @override
+  String get onboardingSelectLanguage => 'भाषा चुनें';
+
+  @override
+  String get onboardingSelectInterests => 'अपनी रुचियाँ';
+
+  @override
+  String get onboardingSelectReligion => 'धर्म (वैकल्पिक)';
+
+  @override
+  String get onboardingNext => 'Next';
+
+  @override
+  String get onboardingSkip => 'Skip';
+
+  @override
+  String get onboardingDone => 'Get Started';
+
+  @override
+  String get onboardingStep1 => 'Step 1 of 3';
+
+  @override
+  String get onboardingStep2 => 'Step 2 of 3';
+
+  @override
+  String get onboardingStep3 => 'Step 3 of 3';
+
+  @override
+  String get onboardingLanguageQuestion => 'आपकी भाषा क्या है?';
+
+  @override
+  String get onboardingLanguageSubtitle =>
+      'हम सामग्री उसी भाषा में दिखाएँगे जिसमें आप रोज़ बात करते हैं।';
+
+  @override
+  String get onboardingContinue => 'Continue →';
+
+  @override
+  String get onboardingReligionTitle => 'आपका आध्यात्मिक मार्ग?';
+
+  @override
+  String get onboardingReligionSubtitle =>
+      'हम सामग्री को आपके विश्वास के अनुरूप ढालेंगे। यह वैकल्पिक है।';
+
+  @override
+  String get onboardingInterestsTitle => 'आप क्या शेयर करना पसंद करते हैं?';
+
+  @override
+  String get onboardingInterestsSubtitle =>
+      'अधिकतम 3 चुनें — हम आपके होम को इन्हीं से भर देंगे।';
+
+  @override
+  String onboardingInterestCount(int count) {
+    return '$count/3 चुने';
+  }
+
+  @override
+  String get onboardingFinishCta => 'Finish · Start reading ✦';
+
+  @override
+  String homeGreetingNightEarly(Object name) {
+    return 'शुभ रात्रि, $name.';
+  }
+
+  @override
+  String homeGreetingMorning(Object name) {
+    return 'सुप्रभात, $name.';
+  }
+
+  @override
+  String homeGreetingAfternoon(Object name) {
+    return 'शुभ दोपहर, $name.';
+  }
+
+  @override
+  String homeGreetingEvening(Object name) {
+    return 'शुभ संध्या, $name.';
+  }
+
+  @override
+  String homeGreetingNight(Object name) {
+    return 'शुभ रात्रि, $name.';
+  }
+
+  @override
+  String get homeGreetingSubline => 'आशीर्वाद के साथ दिन शुरू करें';
+
+  @override
+  String get homeBrowseGenre => 'शैली से देखें';
+
+  @override
+  String homeQuotesCount(int count) {
+    return '$count उद्धरण';
+  }
+
+  @override
+  String get homeSectionStartTitle => 'सुबह की शुरुआत आशीर्वाद से';
+
+  @override
+  String get homeSectionFestivalTitle => 'आज के उगादि विशेष';
+
+  @override
+  String get homeSectionInterestsTitle => 'जो आप पसंद करते हैं';
+
+  @override
+  String get homeSectionTrendingTitle => 'सब क्या शेयर कर रहे हैं';
+
+  @override
+  String get homeSectionCinemaTitle => 'तेलुगु सिनेमा से';
+
+  @override
+  String get festivalBannerKicker => 'आज का त्योहार';
+
+  @override
+  String get festivalBannerTitle => 'उगादि की हार्दिक शुभकामनाएँ';
+
+  @override
+  String get festivalBannerSubtitle => 'शेयर करने के लिए 12 नए संदेश';
+
+  @override
+  String get festivalBannerCta => 'पैक खोलें →';
+
+  @override
+  String get homeViewAll => 'सभी देखें →';
+
+  @override
+  String get notificationsTitle => 'सूचनाएँ';
+
+  @override
+  String get exploreTabDiscover => 'डिस्कवर';
+
+  @override
+  String get exploreTabBrowse => 'ब्राउज़';
+
+  @override
+  String get exploreHeadline => 'खोजें';
+
+  @override
+  String get exploreSubtitle => 'आज क्या शेयर करें, खोजें';
+
+  @override
+  String get exploreSearchHint => 'उद्धरण खोजें…';
+
+  @override
+  String get exploreJumpIn => 'शुरू करें';
+
+  @override
+  String get exploreWhatToShare => 'क्या शेयर करेंगे?';
+
+  @override
+  String get exploreTrendingLine => 'ट्रेंडिंग';
+
+  @override
+  String get exploreWeekHit => 'इस हफ़्ते की हिट';
+
+  @override
+  String get exploreSeeAll => 'See all →';
+
+  @override
+  String get explorePopularSearches => 'लोकप्रिय खोजें';
+
+  @override
+  String get exploreYouMightLike => 'आपको ये पसंद आ सकते हैं';
+
+  @override
+  String get exploreUpcomingLine => 'आगामी';
+
+  @override
+  String get exploreFestivalCalendar => 'त्योहार कैलेंडर';
+
+  @override
+  String get exploreCategoriesLine => 'श्रेणियाँ';
+
+  @override
+  String get exploreBrowseAll => 'सभी ब्राउज़ करें';
+
+  @override
+  String get exploreAll => 'सभी';
+
+  @override
+  String get exploreEmpty => 'कुछ नहीं मिला';
+
+  @override
+  String get profileLiked => 'पसंद की गई';
+
+  @override
+  String get profileSaved => 'सहेजी गई';
+
+  @override
+  String get profileShared => 'शेयर की गई';
+
+  @override
+  String get profileSettings => 'सेटिंग्स';
+
+  @override
+  String get profileLanguage => 'भाषा';
+
+  @override
+  String get profileInterests => 'रुचियाँ';
+
+  @override
+  String get profileDownloads => 'डाउनलोड';
+
+  @override
+  String get profileNotificationsOn => 'सूचनाएँ चालू';
+
+  @override
+  String get profileHelp => 'सहायता';
+
+  @override
+  String get profileSignOut => 'साइन आउट';
+
+  @override
+  String get profileFooter => 'डेली कथा · प्यार से बनाया गया';
+
+  @override
+  String get profileEmptySharedTitle => 'आपके शेयर यहाँ दिखेंगे';
+
+  @override
+  String get profileEmptySharedSubtitle =>
+      'फ़ीड से कार्ड शेयर करें तो यहाँ दिखेगा।';
+
+  @override
+  String profileInterestCountTrailing(int count) {
+    return '$count चुने';
+  }
+
+  @override
+  String get profileLogout => 'लॉगआउट';
+
+  @override
+  String get languageUpdated => 'भाषा बदल गई';
+
+  @override
+  String get errorFeedLoad => 'फ़ीड लोड नहीं हो सकी';
+
+  @override
+  String get errorGeneric => 'कुछ गलत हो गया';
+
+  @override
+  String get noCards => 'कोई कार्ड नहीं';
+
+  @override
+  String get preparingCard => 'आपका कार्ड तैयार हो रहा है…';
+
+  @override
+  String get snackSaveTodo => 'गैलरी में सेव जल्द आ रहा है।';
+
+  @override
+  String get snackEditTodo => 'कार्ड संपादन जल्द आ रहा है।';
+
+  @override
+  String get loginWelcome => 'आपका स्वागत है।';
+
+  @override
+  String get loginSubtitle =>
+      'अपना नंबर दें। रोज़ाना शुभकामनाएँ, त्योहार के संदेश — सीधे आपके फ़ोन पर।';
+
+  @override
+  String get loginMobileLabel => 'मोबाइल नंबर';
+
+  @override
+  String get loginSendOtp => 'OTP भेजें';
+
+  @override
+  String get loginTerms =>
+      'जारी रखने पर अपडेट मिलेंगे। कैरियर शुल्क लागू हो सकते हैं।';
+
+  @override
+  String get otpEnterCode => 'कोड दर्ज करें';
+
+  @override
+  String otpSentTo(Object phone) {
+    return '+91 $phone';
+  }
+
+  @override
+  String get otpVerify => 'Verify';
+
+  @override
+  String get otpResend => 'Resend';
+
+  @override
+  String get splashTagline => 'आशीर्वाद बाँटिए';
+
+  @override
+  String get dateToday => 'आज';
+
+  @override
+  String get footerDailyKatha => 'डेली कथा';
+}

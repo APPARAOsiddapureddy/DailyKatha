@@ -1,0 +1,4802 @@
+[
+  {
+    "id": 1304218378,
+    "sourceId": "goodmorning_te_1",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ఈ ఉదయం మీ జీవితంలో కొత్త ఆశలను తీసుకురావాలి.",
+      "en": "May this morning bring new hopes to your life."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1287440759,
+    "sourceId": "goodmorning_te_2",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రతి ఉదయం ఒక కొత్త అవకాశం, దానిని సంతోషంగా స్వీకరించండి.",
+      "en": "Every morning is a new opportunity; accept it with joy."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1270663140,
+    "sourceId": "goodmorning_te_3",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "చిరునవ్వుతో రోజును ప్రారంభించండి.",
+      "en": "Start your day with a smile."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1253885521,
+    "sourceId": "goodmorning_te_4",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "మీ ఈ రోజు నిన్నటి కంటే మెరుగ్గా ఉండాలి.",
+      "en": "May your today be even better than yesterday."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1237107902,
+    "sourceId": "goodmorning_te_5",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "కొత్త ఉదయం, కొత్త ఉత్సాహం, కొత్త ఆరంభం.",
+      "en": "New morning, new energy, new beginning."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1220330283,
+    "sourceId": "goodmorning_te_6",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "సూర్యుడి కంటే ముందే నిద్రలేచే వారికే విజయం దక్కుతుంది.",
+      "en": "Success comes to those who wake up before the sun."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1203552664,
+    "sourceId": "goodmorning_te_7",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "అందమైన ఉదయానికి అందమైన ఆరంభం.",
+      "en": "A beautiful start to a beautiful morning."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1186775045,
+    "sourceId": "goodmorning_te_8",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ఈ రోజు మీపై దేవుడి కృప ఉండాలి.",
+      "en": "May God's grace stay with you today."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1169997426,
+    "sourceId": "goodmorning_te_9",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "సంతోషం మీ వెంటే ఉండాలి, శుభోదయం.",
+      "en": "May happiness stay with you, Good Morning."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 439610446,
+    "sourceId": "goodmorning_te_10",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ఈ రోజు ఏదో మంచి జరగబోతోంది.",
+      "en": "Something good is going to happen today."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 456388065,
+    "sourceId": "goodmorning_te_11",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "మనసు బాగుంటే ప్రపంచం బాగుంటుంది.",
+      "en": "If the mind is happy, the world is happy."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 406055208,
+    "sourceId": "goodmorning_te_12",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "తాజాదనంతో నిండిన రోజు మీ కోసం వేచి ఉంది.",
+      "en": "A day full of freshness is waiting for you."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 422832827,
+    "sourceId": "goodmorning_te_13",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రతి రోజు ఒక వరం.",
+      "en": "Every day is a blessing."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 506720922,
+    "sourceId": "goodmorning_te_14",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "సానుకూల ఆలోచనలతో నిద్రలేవండి.",
+      "en": "Wake up with positive thoughts."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 523498541,
+    "sourceId": "goodmorning_te_15",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "సూర్యరశ్మి మీ జీవితాన్ని వెలిగించాలి.",
+      "en": "May the sunlight brighten your life."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 473165684,
+    "sourceId": "goodmorning_te_16",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ఉదయం ప్రశాంతత, రోజంతా సంతోషం.",
+      "en": "Morning peace and all-day happiness."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 489943303,
+    "sourceId": "goodmorning_te_17",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ఈ రోజు మీ కలల వైపు ఒక అడుగు.",
+      "en": "Today is a step toward your dreams."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 305389494,
+    "sourceId": "goodmorning_te_18",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "మంచి ఆలోచన, మంచి రోజు.",
+      "en": "Good thoughts, good day."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 322167113,
+    "sourceId": "goodmorning_te_19",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "పదండి, ఈ రోజు కొత్తగా ఏదైనా నేర్చుకుందాం.",
+      "en": "Let's learn something new today."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 338746053,
+    "sourceId": "goodmorning_te_20",
+    "section": "telugu",
+    "category": "goodmorning",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "మీ చిరునవ్వు అందరికీ ధైర్యాన్ని ఇవ్వాలి.",
+      "en": "May your smile increase everyone's courage."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1386224788,
+    "sourceId": "goodnight_te_1",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "రోజంతా పడ్డ అలసటను మరచి ప్రశాంతంగా నిద్రపోండి.",
+      "en": "Forget the day's fatigue and sleep peacefully."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1436557645,
+    "sourceId": "goodnight_te_2",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "నక్షత్రాలు మీ నిద్రకు కాపలా కాయాలి.",
+      "en": "May the stars guard your sleep."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1419780026,
+    "sourceId": "goodnight_te_3",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "రేపు కొత్త ఉదయం మీ కోసం వేచి ఉంటుంది.",
+      "en": "A new morning will be waiting for you tomorrow."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1335891931,
+    "sourceId": "goodnight_te_4",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "తీపి కలలతో నిద్రపోండి.",
+      "en": "Fall asleep with sweet dreams."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1319114312,
+    "sourceId": "goodnight_te_5",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "చంద్రుని చల్లదనం మీ మనస్సుకు శాంతిని ఇవ్వాలి.",
+      "en": "May the coolness of the moon bring peace to your mind."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1369447169,
+    "sourceId": "goodnight_te_6",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "ఈ రోజు తప్పులను మరచి ప్రశాంతంగా నిద్రపోండి.",
+      "en": "Forget today's mistakes and sleep well."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1352669550,
+    "sourceId": "goodnight_te_7",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "రాత్రి నిశ్శబ్దంలో ప్రశాంతతను వెతకండి.",
+      "en": "Find solace in the silence of the night."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1268781455,
+    "sourceId": "goodnight_te_8",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "దేవుడు మీకు రక్షణ, శాంతిని ప్రసాదించాలి.",
+      "en": "May God give you protection and peace."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1252003836,
+    "sourceId": "goodnight_te_9",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "కలల ప్రపంచంలో విహరించే సమయం.",
+      "en": "Time to get lost in the world of dreams."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 906827308,
+    "sourceId": "goodnight_te_10",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "శుభరాత్రి, రేపు మళ్ళీ కొత్త ఉత్సాహంతో కలుద్దాం.",
+      "en": "Good night, let's meet again tomorrow with new energy."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 923604927,
+    "sourceId": "goodnight_te_11",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "నిద్ర వస్తే అన్ని బాధలు నిద్రపోతాయి.",
+      "en": "When sleep comes, let all sorrows rest."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 940382546,
+    "sourceId": "goodnight_te_12",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "చీకటి గడిచిపోతుంది, వెలుగు కచ్చితంగా వస్తుంది.",
+      "en": "The darkness will pass, the morning will surely come."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 957160165,
+    "sourceId": "goodnight_te_13",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "నిద్రపోయే ముందు అందరినీ క్షమించండి.",
+      "en": "Forgive everyone before you sleep."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 839716832,
+    "sourceId": "goodnight_te_14",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "విశ్రాంతి తీసుకోండి, రేపు మళ్ళీ పోరాడాలి.",
+      "en": "Take rest, for you must fight again tomorrow."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 856494451,
+    "sourceId": "goodnight_te_15",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "మీ దిండు మేఘంలా మెత్తగా ఉండాలి.",
+      "en": "May your pillow be as soft as clouds."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 873272070,
+    "sourceId": "goodnight_te_16",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "రాత్రి గాఢంగా ఉన్నా, ఆశ ఇంకా ఉంది.",
+      "en": "The night is deep, but hope still remains."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 890049689,
+    "sourceId": "goodnight_te_17",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రశాంతమైన నిద్రే నిజమైన సంపద.",
+      "en": "Peaceful sleep is the greatest wealth."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1041048260,
+    "sourceId": "goodnight_te_18",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "నక్షత్రాల రాత్రి మీ మనస్సుకు ప్రశాంతతని ఇవ్వాలి.",
+      "en": "May the starry night bring peace to your soul."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1057825879,
+    "sourceId": "goodnight_te_19",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "నిద్ర కౌగిలిలో అంతా సురక్షితం.",
+      "en": "Everything is safe in the embrace of sleep."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1209317319,
+    "sourceId": "goodnight_te_20",
+    "section": "telugu",
+    "category": "goodnight",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "రేపటి సూర్యుడు కొత్త సంతోషాలను తెస్తాడు.",
+      "en": "Tomorrow's sun will bring new joys."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 114189125,
+    "sourceId": "love_te_1",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నీవు నా జీవితంలో అత్యంత అందమైన భాగం.",
+      "en": "You are the most beautiful part of my life."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 63856268,
+    "sourceId": "love_te_2",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రేమలో మునిగిన హృదయం నిన్నే తలచుకుంటుంది.",
+      "en": "A heart drowned in love remembers only you."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 80633887,
+    "sourceId": "love_te_3",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నీ కళ్లలో నా ప్రపంచం అంతా ఉంది.",
+      "en": "My whole world is in your eyes."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 30301030,
+    "sourceId": "love_te_4",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రేమ అంటే చూపించేది కాదు, నిలబెట్టుకునేది.",
+      "en": "Love isn't what is shown, but what is kept."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 47078649,
+    "sourceId": "love_te_5",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నా ప్రతి రోజు నీ జ్ఞాపకాలతోనే మొదలవుతుంది.",
+      "en": "My every day begins with your memories."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 2144229440,
+    "sourceId": "love_te_6",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నీవు తోడుంటే ఏ లక్ష్యమైనా సులభమే.",
+      "en": "If you are with me, every destination is easy."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 13523411,
+    "sourceId": "love_te_7",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రేమ ఒక ఆరాధన.",
+      "en": "Love is a form of worship."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 231632458,
+    "sourceId": "love_te_8",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నీ ఒక్క చిరునవ్వు నా రోజును మారుస్తుంది.",
+      "en": "Your one smile makes my day."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 248410077,
+    "sourceId": "love_te_9",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ఆత్మల కలయికే నిజమైన ప్రేమ.",
+      "en": "The meeting of souls is true love."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 736530735,
+    "sourceId": "love_te_10",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నీవు నిజానివా లేక అందమైన కలవా?",
+      "en": "Are you reality or a beautiful dream?"
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 719753116,
+    "sourceId": "love_te_11",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నా హృదయం నీ కోసమే కొట్టుకుంటుంది.",
+      "en": "My heart beats only for you."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 770085973,
+    "sourceId": "love_te_12",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నిజమైన ప్రేమ ఎప్పటికీ అంతం కాదు.",
+      "en": "True love never ends."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 753308354,
+    "sourceId": "love_te_13",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నీవే నా మొదటి, చివరి కోరిక.",
+      "en": "You are my first and last desire."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 669420259,
+    "sourceId": "love_te_14",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రేమలో తగ్గడం తప్పు కాదు.",
+      "en": "Bowing in love is not a bad thing."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 652642640,
+    "sourceId": "love_te_15",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నీవు లేని ఈ జీవితం అసంపూర్ణం.",
+      "en": "This life is incomplete without you."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 702975497,
+    "sourceId": "love_te_16",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రేమే అతి పెద్ద శక్తి.",
+      "en": "Love is the greatest strength."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 686197878,
+    "sourceId": "love_te_17",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "గుండె నాది, జ్ఞాపకాలు నీవి.",
+      "en": "My heartbeat and your memories."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 870751687,
+    "sourceId": "love_te_18",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నీతో మొదలై నీతోనే ముగింపు.",
+      "en": "Starts with you and ends with you."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 853974068,
+    "sourceId": "love_te_19",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రేమకు మతం లేదు.",
+      "en": "Love has no religion."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 970924532,
+    "sourceId": "love_te_20",
+    "section": "telugu",
+    "category": "love",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నీవు తోడుంటే చాలు, ప్రపంచాన్ని గెలుస్తాను.",
+      "en": "Just stay with me, and we will win the world."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 230518686,
+    "sourceId": "bhakti_te_1",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "భగవంతుని పాదాల చెంతే నిజమైన శాంతి ఉంది.",
+      "en": "Real peace is only at the feet of the Lord."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 213741067,
+    "sourceId": "bhakti_te_2",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "ఏది జరిగినా అంతా దైవేచ్ఛే.",
+      "en": "Whatever happens is God's will."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 196963448,
+    "sourceId": "bhakti_te_3",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "భక్తిలోనే శక్తి ఉంది.",
+      "en": "There is strength in devotion."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 314406781,
+    "sourceId": "bhakti_te_4",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "భగవంతుని నామాన్ని స్మరించు, కష్టాలు తీరుతాయి.",
+      "en": "Chant the Lord's name; your troubles will end."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 297629162,
+    "sourceId": "bhakti_te_5",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "శ్రద్ధ, సబూరి జీవితానికి ఆధారం.",
+      "en": "Faith and patience are the basis of life."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 280851543,
+    "sourceId": "bhakti_te_6",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "దేవుడు అణువణువునా ఉన్నాడు.",
+      "en": "God resides in every atom."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 264073924,
+    "sourceId": "bhakti_te_7",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "నీవే కర్తవు, నీవే విధాతవు.",
+      "en": "You are the doer, You are the creator."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 113075353,
+    "sourceId": "bhakti_te_8",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "కష్టాల్లో కూడా భగవంతుని తోడును వదలకండి.",
+      "en": "Do not leave the Lord's side even in adversity."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 96297734,
+    "sourceId": "bhakti_te_9",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "కాయకమే కైలాసం.",
+      "en": "Work is worship."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1328991978,
+    "sourceId": "bhakti_te_10",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "శివమే సత్యం.",
+      "en": "Shiva alone is the truth."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1345769597,
+    "sourceId": "bhakti_te_11",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "గోవింద నామ స్మరణ మనస్సుకు ప్రశాంతతనిస్తుంది.",
+      "en": "Chanting Govinda's name calms the mind."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1295436740,
+    "sourceId": "bhakti_te_12",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "అచంచలమైన నమ్మకమే నిజమైన విశ్వాసం.",
+      "en": "True faith is that which is unbreakable."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1312214359,
+    "sourceId": "bhakti_te_13",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "భగవంతుని శరణు కోరితే భయాలన్నీ తొలగిపోతాయి.",
+      "en": "All fears vanish in the shelter of the Lord."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1261881502,
+    "sourceId": "bhakti_te_14",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "ఉదయం హారతి, మనస్సు శుద్ధి.",
+      "en": "Morning prayer, purification of the soul."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1278659121,
+    "sourceId": "bhakti_te_15",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "దేవుడు ఏం చేసినా మన మంచికే చేస్తాడు.",
+      "en": "Whatever God does, He does for our best."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1228326264,
+    "sourceId": "bhakti_te_16",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "నీ అంతరాత్మలో వెతుకు, అక్కడే దేవుడు కనిపిస్తాడు.",
+      "en": "Look within your heart; you will find God there."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1245103883,
+    "sourceId": "bhakti_te_17",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "జై శ్రీరామ్, జీవితానికి ఆధారం.",
+      "en": "Jai Shri Ram, the foundation of life."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1194771026,
+    "sourceId": "bhakti_te_18",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "భగవంతుడు లేనిదే అంతా శూన్యం.",
+      "en": "Everything is empty without the Lord."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1211548645,
+    "sourceId": "bhakti_te_19",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "భక్తి భగవంతుడికి మనల్ని జోడించే దారం.",
+      "en": "Devotion is the thread that connects us to God."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1228179169,
+    "sourceId": "bhakti_te_20",
+    "section": "telugu",
+    "category": "bhakti",
+    "mood": "devotional",
+    "isFestival": false,
+    "quote": {
+      "te": "భగవంతుని కృప అపారమైనది.",
+      "en": "God's grace is boundless."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 172419313,
+    "sourceId": "motivation_te_1",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రయత్నం ఆపే వరకు నీవు ఓడిపోవు.",
+      "en": "You haven't lost until you stop trying."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 122086456,
+    "sourceId": "motivation_te_2",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "కలలు కనే వారికే విజయాలు దక్కుతాయి.",
+      "en": "Destinations are reached by those with life in their dreams."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 138864075,
+    "sourceId": "motivation_te_3",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "కష్టాలు కష్టపడే వారికే వస్తాయి.",
+      "en": "Difficulties come only to hardworking people."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 222752170,
+    "sourceId": "motivation_te_4",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "నేటి శ్రమ రేపటి సుఖం.",
+      "en": "Today's hard work is tomorrow's peace."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 239529789,
+    "sourceId": "motivation_te_5",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "నిన్ను నీవు నమ్ముకో, ప్రపంచం నీ పాదాల చెంత ఉంటుంది.",
+      "en": "Believe in yourself, and the world will be yours."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 189196932,
+    "sourceId": "motivation_te_6",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "విజయానికి అడ్డదారులు లేవు.",
+      "en": "There is no shortcut to success."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 205974551,
+    "sourceId": "motivation_te_7",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రయత్నించే వారు ఎప్పటికీ ఓడిపోరు.",
+      "en": "Those who try never fail."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 21420742,
+    "sourceId": "motivation_te_8",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "కాలం మారుతుంది, శ్రమను కొనసాగించు.",
+      "en": "Time changes; just keep working hard."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 38198361,
+    "sourceId": "motivation_te_9",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "పెద్దగా ఆలోచించు, గొప్పగా ఎదుగు.",
+      "en": "Think big, be big."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1856006099,
+    "sourceId": "motivation_te_10",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "నీ పోరాటమే నీ కథ.",
+      "en": "Your struggle is your story."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1839228480,
+    "sourceId": "motivation_te_11",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "సవాళ్లను స్వీకరించు.",
+      "en": "Accept the challenges."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1889561337,
+    "sourceId": "motivation_te_12",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "లక్ష్యాన్ని చేరుకోవడానికి పిచ్చి ఉండాలి.",
+      "en": "Madness is necessary to achieve the goal."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1872783718,
+    "sourceId": "motivation_te_13",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "చీకటిని చూసి భయపడకు, నక్షత్రాలు అక్కడే మెరుస్తాయి.",
+      "en": "Don't fear the dark; that's where the stars shine."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1923116575,
+    "sourceId": "motivation_te_14",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రతి చిన్న మార్పు పెద్ద విజయానికి పునాది.",
+      "en": "Every small change is a part of big success."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1906338956,
+    "sourceId": "motivation_te_15",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "ఆగకు, ఇంకా చాలా దూరం వెళ్ళాలి.",
+      "en": "Don't stop; there is a long way to go."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1956671813,
+    "sourceId": "motivation_te_16",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "నీ పనిని చూసి విజయమే మాట్లాడుతుంది.",
+      "en": "Success will speak for itself; just work."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1939894194,
+    "sourceId": "motivation_te_17",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "నీ తలరాతను నీవే రాసుకో.",
+      "en": "Write your own destiny."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1990227051,
+    "sourceId": "motivation_te_18",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "ధైర్యమే అతి పెద్ద ఆయుధం.",
+      "en": "Courage is the greatest weapon."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1973449432,
+    "sourceId": "motivation_te_19",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "రేపటి చింతలో నేటిని కోల్పోకు.",
+      "en": "Don't lose today in worry for tomorrow."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 2090399896,
+    "sourceId": "motivation_te_20",
+    "section": "telugu",
+    "category": "motivation",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "సంకల్పం బలంగా ఉంటే విజయం నిశ్చయం.",
+      "en": "Victory is certain if the resolve is firm."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1752866545,
+    "sourceId": "festival_te_1",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "పండుగ వెలుగులు, ఆత్మీయుల అనురాగాలు.",
+      "en": "The glow of festivals, the love of loved ones."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1702533688,
+    "sourceId": "festival_te_2",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "ఈ పండుగ మీ జీవితంలో సంతోషాన్ని నింపాలి.",
+      "en": "May this festival bring joy to your life."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1719311307,
+    "sourceId": "festival_te_3",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "తీపి మరియు వెలుగుల పండుగ.",
+      "en": "The festival of sweetness and light."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1803199402,
+    "sourceId": "festival_te_4",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "సంతోషాల కానుకను మోసుకొచ్చిన రోజు.",
+      "en": "This day has brought a gift of happiness."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1819977021,
+    "sourceId": "festival_te_5",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "చెడుపై మంచి సాధించిన విజయానికి శుభాకాంక్షలు.",
+      "en": "Happy victory of good over evil."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1769644164,
+    "sourceId": "festival_te_6",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "రంగుల మరియు ఉత్సాహాల సంగమం.",
+      "en": "A confluence of colors and excitement."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1786421783,
+    "sourceId": "festival_te_7",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "పండుగలు మనల్ని కలుపుతాయి.",
+      "en": "Festivals bring us together."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1601867974,
+    "sourceId": "festival_te_8",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రతి ఇంట్లో దీపం వెలగాలి, ప్రతి మనసు సంతోషించాలి.",
+      "en": "May every home light a lamp, every heart be happy."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1618645593,
+    "sourceId": "festival_te_9",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "సంప్రదాయాల గౌరవం, సంతోషాల పండుగ.",
+      "en": "Respect for traditions, a festival of joy."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 973597139,
+    "sourceId": "festival_te_10",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "బంధాల్లో తీపిని నింపే పండుగ.",
+      "en": "May this festival bring sweetness to relationships."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 956819520,
+    "sourceId": "festival_te_11",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "కొత్త సంవత్సరం, కొత్త ఆశలు.",
+      "en": "New year, new hopes."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1007152377,
+    "sourceId": "festival_te_12",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రతి పండుగను ఉత్సాహంతో జరుపుకోండి.",
+      "en": "Celebrate every festival with great enthusiasm."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 990374758,
+    "sourceId": "festival_te_13",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "సంతోషాల జల్లులకు శుభాకాంక్షలు.",
+      "en": "Congratulations on the shower of happiness."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1040707615,
+    "sourceId": "festival_te_14",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రేమ, శాంతి సందేశాన్ని ఇచ్చే పండుగ.",
+      "en": "A festival that conveys a message of love and peace."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1023929996,
+    "sourceId": "festival_te_15",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "ఈ పండుగనాడు మీ కోరికలన్నీ నెరవేరాలి.",
+      "en": "May all your wishes come true this festival."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1074262853,
+    "sourceId": "festival_te_16",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "ఇంటిని అలంకరించండి, పండుగ వచ్చేసింది.",
+      "en": "Decorate the house; the festival is here."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1057485234,
+    "sourceId": "festival_te_17",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "ఐక్యతకు చిహ్నం మన ప్రతి పండుగ.",
+      "en": "Our every festival is a symbol of unity."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1107818091,
+    "sourceId": "festival_te_18",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "సంతోషాలను పంచుకోండి, పండుగ జరుపుకోండి.",
+      "en": "Share happiness, celebrate the festival."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1091040472,
+    "sourceId": "festival_te_19",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "పండుగ హృదయపూర్వక శుభాకాంక్షలు.",
+      "en": "Hearty greetings for the festival."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1207990936,
+    "sourceId": "festival_te_20",
+    "section": "telugu",
+    "category": "festival",
+    "mood": "festive",
+    "isFestival": false,
+    "quote": {
+      "te": "ఈ పండుగ వేళ సుఖసంతోషాలు కలగాలి.",
+      "en": "May prosperity come in the holy time of the festival."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 605411757,
+    "sourceId": "family_te_1",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "కుటుంబమే ప్రపంచంలో అతి పెద్ద శక్తి.",
+      "en": "Family is the greatest strength in the world."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 555078900,
+    "sourceId": "family_te_2",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "మనసున్న చోటే ఇల్లు ఉంటుంది.",
+      "en": "Home is where the heart is."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 571856519,
+    "sourceId": "family_te_3",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "అమ్మనాన్నల దీవెనలే అసలైన సంపద.",
+      "en": "Parents' blessings are the true wealth."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 521523662,
+    "sourceId": "family_te_4",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "కలిసి ఉండటమే కుటుంబం యొక్క గుర్తింపు.",
+      "en": "Staying together is the identity of a family."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 538301281,
+    "sourceId": "family_te_5",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "కుటుంబం లేని జీవితం అసంపూర్ణం.",
+      "en": "Life is incomplete without family."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 487968424,
+    "sourceId": "family_te_6",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "సంతోషకరమైన కుటుంబం, సంతోషకరమైన జీవితం.",
+      "en": "Happy family, happy life."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 504746043,
+    "sourceId": "family_te_7",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "పెద్దల పట్ల గౌరవం, చిన్నల పట్ల ప్రేమ.",
+      "en": "Respect for elders, love for youngsters."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 454413186,
+    "sourceId": "family_te_8",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "కష్టకాలంలో కుటుంబమే అండగా ఉంటుంది.",
+      "en": "Only family helps in times of crisis."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 471190805,
+    "sourceId": "family_te_9",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "బంధాల విలువ తెలుసుకోండి.",
+      "en": "Learn to value relationships."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1801818663,
+    "sourceId": "family_te_10",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "సంస్కారాల పునాది కుటుంబం నుంచే మొదలవుతుంది.",
+      "en": "The foundation of values begins with family."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1785041044,
+    "sourceId": "family_te_11",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నా కుటుంబం, నా ప్రాణం.",
+      "en": "My family, my life."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1835373901,
+    "sourceId": "family_te_12",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ఒకరికొకరు తోడుగా ఉండటమే కుటుంబం యొక్క బలం.",
+      "en": "Supporting each other is the soul of a family."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1818596282,
+    "sourceId": "family_te_13",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రపంచానికి నీవు ఒక వ్యక్తివి, కుటుంబానికి నీవే ఒక ప్రపంచం.",
+      "en": "To the world you are one person, to your family you are the world."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1734708187,
+    "sourceId": "family_te_14",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ఇంటి ప్రశాంతత తల్లి చిరునవ్వులో ఉంది.",
+      "en": "The peace of the house is in the mother's smile."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1717930568,
+    "sourceId": "family_te_15",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "తండ్రి వేలు పట్టుకుని నడవడమే భద్రత.",
+      "en": "Walking while holding a father's finger is security."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1768263425,
+    "sourceId": "family_te_16",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "అన్నదమ్ముల, అక్కచెల్లెళ్ల ప్రేమ అచంచలం.",
+      "en": "The love between siblings is unbreakable."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1751485806,
+    "sourceId": "family_te_17",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "కుటుంబంతో గడపడం స్వర్గం లాంటిది.",
+      "en": "Family's company is like heaven."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1667597711,
+    "sourceId": "family_te_18",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "గొడవలు చిన్నవిగా, ప్రేమ పెద్దదిగా ఉండాలి.",
+      "en": "Arguments should be small; love should be big."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1650820092,
+    "sourceId": "family_te_19",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "కుటుంబంతో గడిపిన సమయం అమూల్యమైనది.",
+      "en": "Time spent with family is priceless."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1499328652,
+    "sourceId": "family_te_20",
+    "section": "telugu",
+    "category": "family",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నిజమైన సుఖం కుటుంబంతోనే ఉంది.",
+      "en": "True happiness is with the family."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 775666168,
+    "sourceId": "cinema_te_1",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "పిక్చర్ ఇంకా బాకీ ఉంది మిత్రమా!",
+      "en": "The movie isn't over yet, my friend!"
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 825999025,
+    "sourceId": "cinema_te_2",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "జీవితం ఒక సినిమా, నీ పాత్రను బాగా పోషించు.",
+      "en": "Life is a movie; just play your role well."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 809221406,
+    "sourceId": "cinema_te_3",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "గెలిచేవాడు కాదు, మనసు గెలిచేవాడే హీరో.",
+      "en": "A hero isn't the one who wins, but the one who wins hearts."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 859554263,
+    "sourceId": "cinema_te_4",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "డైలాగులు కేవలం మాటలు, ప్రాణం అంతా నటనలోనే ఉంది.",
+      "en": "Dialogues are just words; the real life is in acting."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 842776644,
+    "sourceId": "cinema_te_5",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "తెరపై కనిపించేది కష్టం యొక్క ఫలితం.",
+      "en": "What appears on screen is the result of hard work."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 893109501,
+    "sourceId": "cinema_te_6",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "సినిమా కలల ప్రపంచం.",
+      "en": "Cinema is a world of dreams."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 876331882,
+    "sourceId": "cinema_te_7",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రతి సామాన్యుడు తన కథలో ఒక హీరోనే.",
+      "en": "Every common man is the hero of his own story."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 658222835,
+    "sourceId": "cinema_te_8",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "కథలో ట్విస్ట్ ఉంటేనే మజా ఉంటుంది.",
+      "en": "It's the twist in the story that makes it interesting."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 641445216,
+    "sourceId": "cinema_te_9",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "యాక్షన్ కంటే ఎమోషన్ ముఖ్యం.",
+      "en": "Emotions matter more than action."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 268793304,
+    "sourceId": "cinema_te_10",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "చప్పట్ల శబ్దమే అతి పెద్ద అవార్డు.",
+      "en": "The echo of applause is the biggest award."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 285570923,
+    "sourceId": "cinema_te_11",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "సినిమా సమాజానికి అద్దం వంటిది.",
+      "en": "Cinema is the mirror of society."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 302348542,
+    "sourceId": "cinema_te_12",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "ఒక మంచి సినిమా జీవితాన్ని మార్చగలదు.",
+      "en": "A good film can change a life."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 319126161,
+    "sourceId": "cinema_te_13",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "నేల మీద నడిచేవాడే అసలైన సూపర్ స్టార్.",
+      "en": "A superstar is one who stays grounded."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 335903780,
+    "sourceId": "cinema_te_14",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "సినిమా ఒక మాయా ప్రపంచం.",
+      "en": "The magical world of cinema."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 352681399,
+    "sourceId": "cinema_te_15",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "కళకు అంతం లేదు.",
+      "en": "Art has no end."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 369459018,
+    "sourceId": "cinema_te_16",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "సినిమా మనకు బ్రతకడం నేర్పిస్తుంది.",
+      "en": "Cinema teaches us how to live."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 386236637,
+    "sourceId": "cinema_te_17",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రతి షాట్ వెనుక ఒక కథ ఉంటుంది.",
+      "en": "Every shot has a new story."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 134572352,
+    "sourceId": "cinema_te_18",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "బ్యాక్ గ్రౌండ్ మ్యూజిక్ ఆ క్షణాన్ని ప్రత్యేకంగా మారుస్తుంది.",
+      "en": "Background music is what makes the moment special."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 151349971,
+    "sourceId": "cinema_te_19",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "తెర వెనుక కష్టానికి సెల్యూట్.",
+      "en": "Salute to the hard work behind the scenes."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 34399507,
+    "sourceId": "cinema_te_20",
+    "section": "telugu",
+    "category": "cinema",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "సినిమా మెరుపులు, కఠిన శ్రమ ఫలితాలు.",
+      "en": "The shine of the film world, the salt of hard work."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 76143649,
+    "sourceId": "heroes_te_1",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "వీరుల త్యాగం వృధా పోదు.",
+      "en": "The sacrifice of heroes will not go in vain."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 25810792,
+    "sourceId": "heroes_te_2",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "దేశమే నా ధర్మం.",
+      "en": "My country is my religion."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 42588411,
+    "sourceId": "heroes_te_3",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "వీరులు ఎప్పటికీ మరణించరు, వారు అమరులవుతారు.",
+      "en": "Heroes never die; they become immortal."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 126476506,
+    "sourceId": "heroes_te_4",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "మువ్వన్నెల జెండా నా గర్వం.",
+      "en": "The tricolor is my pride."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 143254125,
+    "sourceId": "heroes_te_5",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "స్వాతంత్ర్యం వీరుల రక్తంతో సంపాదించబడింది.",
+      "en": "The price of freedom was paid with the blood of heroes."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 92921268,
+    "sourceId": "heroes_te_6",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "మాతృభూమి కోసం ప్రాణత్యాగం చేయడం గర్వకారణం.",
+      "en": "Dying for the motherland is the ultimate glory."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 109698887,
+    "sourceId": "heroes_te_7",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "ధైర్యమే వీరుల గుర్తింపు.",
+      "en": "Indomitable courage is the identity of heroes."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 2072628726,
+    "sourceId": "heroes_te_8",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "జై జవాన్, జై కిసాన్.",
+      "en": "Hail the soldier, hail the farmer."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 2089406345,
+    "sourceId": "heroes_te_9",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "వీరత్వం ఎప్పుడూ లొంగదు, చరిత్రే సాక్షి.",
+      "en": "History is witness: bravery never bows down."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 906325699,
+    "sourceId": "heroes_te_10",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "దేశ రక్షకులే అసలైన హీరోలు.",
+      "en": "The protectors of the nation are the real heroes."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 889548080,
+    "sourceId": "heroes_te_11",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "బలిదానం వ్యర్థం కాదు.",
+      "en": "Sacrifice never goes in vain."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 939880937,
+    "sourceId": "heroes_te_12",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "భారత్ మాతా కీ జై!",
+      "en": "Victory to Mother India!"
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 923103318,
+    "sourceId": "heroes_te_13",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "క్రమశిక్షణ, వీరత్వం జీవిత మంత్రాలు.",
+      "en": "Discipline and bravery are the mantras of life."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 973436175,
+    "sourceId": "heroes_te_14",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "శత్రువు వణికిపోయేలా నీ గర్జన ఉండాలి.",
+      "en": "A roar so fierce that even the enemy trembles."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 956658556,
+    "sourceId": "heroes_te_15",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "స్వతంత్రం నా జన్మహక్కు.",
+      "en": "Freedom is my birthright."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1006991413,
+    "sourceId": "heroes_te_16",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "దేశమే ప్రథమం.",
+      "en": "The nation comes first."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 990213794,
+    "sourceId": "heroes_te_17",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "ఐక్యతలోనే శక్తి ఉంది.",
+      "en": "In unity lies strength."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1040546651,
+    "sourceId": "heroes_te_18",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "దేశభక్తి కంటే గొప్ప ప్రేమ లేదు.",
+      "en": "There is no love greater than love for the country."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1023769032,
+    "sourceId": "heroes_te_19",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "వీరుల గడ్డ, వీరుల దేశం.",
+      "en": "Land of heroes, nation of heroes."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1140719496,
+    "sourceId": "heroes_te_20",
+    "section": "telugu",
+    "category": "heroes",
+    "mood": "bold",
+    "isFestival": false,
+    "quote": {
+      "te": "దేశం కోసం ప్రాణాలు అర్పించిన వీరులకు వందనం.",
+      "en": "Salute to those heroes who gave their lives for the country."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1997962474,
+    "sourceId": "poetry_te_1",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "మాటల్లో దాగి ఉన్న బాధే కవిత్వం.",
+      "en": "Pain hidden in words is called poetry."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1981184855,
+    "sourceId": "poetry_te_2",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "మనసు మౌనంగా ఉన్నప్పుడు కలం మాట్లాడుతుంది.",
+      "en": "The pen speaks when the heart is silent."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1964407236,
+    "sourceId": "poetry_te_3",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "కవిత్వం భావాల స్వరం.",
+      "en": "Poetry is the voice of emotions."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1947629617,
+    "sourceId": "poetry_te_4",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "కవిత్వం హృదయానికి అద్దం.",
+      "en": "Poetry is the mirror of the heart."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1930851998,
+    "sourceId": "poetry_te_5",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "మాటల ఆట, భావాల మూట.",
+      "en": "Play of words, confluence of feelings."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1914074379,
+    "sourceId": "poetry_te_6",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "ప్రతి కవిత వెనుక ఒక కథ ఉంటుంది.",
+      "en": "A story is hidden in every poem."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1897296760,
+    "sourceId": "poetry_te_7",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "గజల్ తీయదనం, ఆత్మ దాహం.",
+      "en": "Sweetness of Ghazal, thirst of the soul."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1880519141,
+    "sourceId": "poetry_te_8",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "చెప్పకుండానే అన్నీ చెప్పేవాడే కవి.",
+      "en": "A poet is one who says everything without saying it."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1863741522,
+    "sourceId": "poetry_te_9",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "కాగితంపై కురిసిన ఒంటరితనం.",
+      "en": "Loneliness poured onto paper."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1382452014,
+    "sourceId": "poetry_te_10",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "కలలను మాటల్లో మలచడమే కవిత్వం.",
+      "en": "Weaving dreams into words is poetry."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1399229633,
+    "sourceId": "poetry_te_11",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "సరళతే అసలైన అందం.",
+      "en": "Simplicity is the greatest beauty."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1348896776,
+    "sourceId": "poetry_te_12",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "అసంపూర్ణ కథలే కవిత్వంగా మారతాయి.",
+      "en": "Incomplete stories often become poetry."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1365674395,
+    "sourceId": "poetry_te_13",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "మాటలు గాయం చేస్తాయి, మందుగానూ మారుతాయి.",
+      "en": "Words are both ointment and wounds."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1449562490,
+    "sourceId": "poetry_te_14",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "కలం బలం కత్తి కంటే గొప్పది.",
+      "en": "The power of the pen is greater than the sword."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1466340109,
+    "sourceId": "poetry_te_15",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "కవిత్వం కేవలం అలవాటు కాదు, అది ఒక ప్రశాంతత.",
+      "en": "Poetry is not just a hobby; it is peace."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1416007252,
+    "sourceId": "poetry_te_16",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "మనసు భావాలు, కాగితం సాక్షిగా.",
+      "en": "Heart's feelings, on paper."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1432784871,
+    "sourceId": "poetry_te_17",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "చీకట్లో కవిత్వం ఒక వెలుగు కిరణం.",
+      "en": "Poetry is a ray of light in the darkness."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1248231062,
+    "sourceId": "poetry_te_18",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "రెండు లైన్లు, వేల అర్థాలు.",
+      "en": "Two lines, a thousand meanings."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1265008681,
+    "sourceId": "poetry_te_19",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "కవితాత్మక శైలి, జీవిత రహస్యం.",
+      "en": "Poetic style, the secret of life."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1281639205,
+    "sourceId": "poetry_te_20",
+    "section": "telugu",
+    "category": "poetry",
+    "mood": "cool",
+    "isFestival": false,
+    "quote": {
+      "te": "రాయడమే జీవితం.",
+      "en": "To write is to live."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1737940799,
+    "sourceId": "friendship_te_1",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "మాటలకు అందనిది స్నేహం.",
+      "en": "Friendship is that which is beyond words."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1754718418,
+    "sourceId": "friendship_te_2",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ఒక మంచి స్నేహితుడు వెయ్యి బంధువులతో సమానం.",
+      "en": "A true friend is better than a thousand relatives."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1771496037,
+    "sourceId": "friendship_te_3",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "స్నేహంలో హెచ్చుతగ్గులు ఉండవు.",
+      "en": "In friendship, no one is big or small."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1654052704,
+    "sourceId": "friendship_te_4",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "కలిసి నడవడమే స్నేహం.",
+      "en": "Walking together is friendship."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1670830323,
+    "sourceId": "friendship_te_5",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "స్నేహ బంధం అత్యంత పవిత్రమైనది.",
+      "en": "The bond of friendship is the holiest."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1687607942,
+    "sourceId": "friendship_te_6",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "స్నేహమే నా ప్రాణం.",
+      "en": "Friendship is my faith."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1704385561,
+    "sourceId": "friendship_te_7",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "కష్టాల్లో తోడుండేవాడే నిజమైన స్నేహితుడు.",
+      "en": "A friend is one who helps in times of trouble."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1855384132,
+    "sourceId": "friendship_te_8",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "చెప్పకుండానే మనసులోని మాటను గ్రహించేవాడే స్నేహితుడు.",
+      "en": "Understanding heart's feelings without words is friendship."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1872161751,
+    "sourceId": "friendship_te_9",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "వేల మంది స్నేహితులు ఉండటం గొప్ప కాదు, కష్టాల్లో నిలబడే ఒక్కడున్నా చాలు.",
+      "en": "Having thousands of friends is not big; having one who stands by in trouble is big."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 562111645,
+    "sourceId": "friendship_te_10",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "స్నేహానికి హోదాలు ఉండవు.",
+      "en": "Status is not looked at in friendship."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 545334026,
+    "sourceId": "friendship_te_11",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "పాత జ్ఞాపకాలు, నిజమైన స్నేహితులు ఎప్పటికీ మనతోనే ఉంటారు.",
+      "en": "Old memories and true friends always stay together."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 528556407,
+    "sourceId": "friendship_te_12",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "స్నేహితుడు కాదు, నా తమ్ముడు.",
+      "en": "Not a friend, he is my brother."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 511778788,
+    "sourceId": "friendship_te_13",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "స్నేహానికి అంతం లేదు.",
+      "en": "Friendship has no expiry date."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 495001169,
+    "sourceId": "friendship_te_14",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నవ్వులు, సరదాలు, మాటల మూటలు.",
+      "en": "Laughter, fun, and lots of talks."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 478223550,
+    "sourceId": "friendship_te_15",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "స్నేహం జీవితాన్ని అందంగా మారుస్తుంది.",
+      "en": "Friendship makes life beautiful."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 461445931,
+    "sourceId": "friendship_te_16",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "బంధం రక్తం తోనే కాదు, మనసుతో ఉండాలి.",
+      "en": "Relationships should be of heart, not blood."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 444668312,
+    "sourceId": "friendship_te_17",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నిజమైన స్నేహం ఎప్పటికీ విడిపోదు.",
+      "en": "True friendship never ends."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 427890693,
+    "sourceId": "friendship_te_18",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "స్నేహితుడితో ప్రతి ప్రయాణం ఒక జ్ఞాపకం.",
+      "en": "Every journey is fun with a friend."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 411113074,
+    "sourceId": "friendship_te_19",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "మంచి స్నేహితులు ఉన్నవారు చాలా అదృష్టవంతులు.",
+      "en": "Lucky are those who have true friends."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 126092230,
+    "sourceId": "friendship_te_20",
+    "section": "telugu",
+    "category": "friendship",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "స్నేహం అందరికీ దొరకని వరం.",
+      "en": "Friendship is a gift that not everyone gets."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 400768030,
+    "sourceId": "birthday_te_1",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "పుట్టినరోజు శుభాకాంక్షలు!",
+      "en": "Many many happy returns of the day!"
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 383990411,
+    "sourceId": "birthday_te_2",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ఈ సంవత్సరం మీకు సంతోషాన్ని ఇవ్వాలి.",
+      "en": "May this year be full of happiness for you."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 367212792,
+    "sourceId": "birthday_te_3",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "విజయం మీ వెంటే ఉండాలి.",
+      "en": "May success kiss your feet."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 484656125,
+    "sourceId": "birthday_te_4",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నూరేళ్లు వర్ధిల్లాలి.",
+      "en": "May you live thousands of years."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 467878506,
+    "sourceId": "birthday_te_5",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "పుట్టినరోజున సంతోషాల కానుకలు అందాలి.",
+      "en": "Get the gift of happiness on your birthday."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 451100887,
+    "sourceId": "birthday_te_6",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ఎల్లప్పుడూ నవ్వుతూ ఉండాలని కోరుకుంటున్నాను.",
+      "en": "Keep smiling always; that's our prayer."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 434323268,
+    "sourceId": "birthday_te_7",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "పార్టీ చేసుకోవాల్సిందే!",
+      "en": "A party is a must!"
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 283324697,
+    "sourceId": "birthday_te_8",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "కొత్త సంవత్సరం, కొత్త ఆరంభం.",
+      "en": "Happy new year and new beginning."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 266547078,
+    "sourceId": "birthday_te_9",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "మీ కోరికలన్నీ నెరవేరాలి.",
+      "en": "May every wish of yours come true."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1220000874,
+    "sourceId": "birthday_te_10",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "గొప్పగా ఎదగాలి, సంతోషంగా ఉండాలి.",
+      "en": "Progress a lot and be happy."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1236778493,
+    "sourceId": "birthday_te_11",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "పుట్టినరోజు కేక్ మరియు ఎంతో ప్రేమ.",
+      "en": "Birthday cake and lots of love."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1186445636,
+    "sourceId": "birthday_te_12",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ఈ రోజు సంతోషాల జల్లు కురవాలి.",
+      "en": "May there be a shower of happiness today."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1203223255,
+    "sourceId": "birthday_te_13",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "మరో ఏడాది అనుభవం పెరిగినందుకు శుభాకాంక్షలు.",
+      "en": "Happy one more year of wisdom."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1152890398,
+    "sourceId": "birthday_te_14",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నవ్వులు, సంతోషాలు మరియు ఎన్నో బహుమతులు.",
+      "en": "Laughter, joy, and lots of gifts."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1169668017,
+    "sourceId": "birthday_te_15",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "పుట్టినరోజు శుభాకాంక్షలు మిత్రమా.",
+      "en": "Happy Birthday, my friend."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1119335160,
+    "sourceId": "birthday_te_16",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "వయస్సు కేవలం ఒక సంఖ్య మాత్రమే, ఉత్సాహం మాత్రం తగ్గకూడదు.",
+      "en": "Age is just a number; the passion should be the same."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1136112779,
+    "sourceId": "birthday_te_17",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ఈ రోజు కేవలం నీ కోసమే.",
+      "en": "Today is only your day."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1085779922,
+    "sourceId": "birthday_te_18",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "ఆరోగ్యం, సుఖ సంతోషాలు కలగాలి.",
+      "en": "May you get health, happiness, and prosperity."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1102557541,
+    "sourceId": "birthday_te_19",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "నీలాంటి వారు ఇంకెవరూ లేరు.",
+      "en": "There is no one like you."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "id": 1119188065,
+    "sourceId": "birthday_te_20",
+    "section": "telugu",
+    "category": "birthday",
+    "mood": "warm",
+    "isFestival": false,
+    "quote": {
+      "te": "హృదయపూర్వక పుట్టినరోజు శుభాకాంక్షలు.",
+      "en": "Hearty congratulations on your birthday."
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കഥ",
+      "en": "— Daily Katha"
+    }
+  }
+]
