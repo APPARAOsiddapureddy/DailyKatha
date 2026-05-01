@@ -1,0 +1,22 @@
+name: Mobile release
+
+# Tag a release as v1.2.3 to build Android. iOS requires macOS + signing secrets (add later).
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - name: Dependencies
+        working-directory: mobile
+        run: flutter pub get
+      - name: Build Android App Bundle
+        working-directory: mobile
+        run: flutter build appbundle --release --dart-define=FLAVOR=production

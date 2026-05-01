@@ -1,0 +1,27 @@
+name: Backend CD (Render staging)
+
+# Manual deploy to staging. Set secrets: STAGING_DATABASE_URL, STAGING_RENDER_DEPLOY_HOOK_URL.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  migrate-and-deploy:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install
+        working-directory: backend
+        run: npm ci
+      - name: Run migrations (staging)
+        working-directory: backend
+        run: npm run migrate:prod
+        env:
+          DATABASE_URL: ${{ secrets.STAGING_DATABASE_URL }}
+      - name: Trigger Render deploy (staging)
+        if: ${{ secrets.STAGING_RENDER_DEPLOY_HOOK_URL }}
+        run: curl -fsSL -X POST "${{ secrets.STAGING_RENDER_DEPLOY_HOOK_URL }}"

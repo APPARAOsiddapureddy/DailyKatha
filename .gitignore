@@ -22,6 +22,7 @@ backend/.env.*
 node_modules/
 .env
 .env.*
+!backend/.env.example
 secrets/
 
 # General build artifacts

@@ -1,0 +1,32 @@
+name: Backend CD (Render production)
+
+# Runs migrations against the production database, then triggers a Render deploy hook.
+# Configure GitHub Environment "production" with required reviewers before enabling.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-cd-render.yml'
+
+jobs:
+  migrate-and-deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install
+        working-directory: backend
+        run: npm ci
+      - name: Run migrations
+        working-directory: backend
+        run: npm run migrate:prod
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - name: Trigger Render deploy
+        if: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: curl -fsSL -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
