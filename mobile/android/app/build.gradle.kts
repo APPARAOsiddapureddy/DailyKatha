@@ -29,6 +29,38 @@ android {
         multiDexEnabled = true
     }
 
+    flavorDimensions += "env"
+    productFlavors {
+        create("dev") {
+            dimension = "env"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+            resValue("string", "app_name", "Daily Katha (Dev)")
+            manifestPlaceholders["usesCleartextTraffic"] = "true"
+        }
+        create("staging") {
+            dimension = "env"
+            applicationIdSuffix = ".staging"
+            versionNameSuffix = "-staging"
+            resValue("string", "app_name", "Daily Katha (Staging)")
+            manifestPlaceholders["usesCleartextTraffic"] = "false"
+        }
+        create("prod") {
+            dimension = "env"
+            resValue("string", "app_name", "Daily Katha")
+            manifestPlaceholders["usesCleartextTraffic"] = "false"
+        }
+    }
+
+    // Some environments (local or CI) can fail while stripping symbols from third-party native libs.
+    // Keeping symbols avoids the strip step from breaking the release bundle.
+    packaging {
+        jniLibs {
+            useLegacyPackaging = true
+            keepDebugSymbols += setOf("**/*.so")
+        }
+    }
+
     buildTypes {
         release {
             // Play Store: create a release keystore and set signingConfig before publishing.
@@ -46,3 +78,8 @@ android {
 flutter {
     source = "../.."
 }
+
+// Workaround: some toolchains fail stripping debug symbols from third-party native libs.
+// This prevents `bundle*Release` from failing on those environments.
+tasks.matching { it.name.contains("strip", ignoreCase = true) && it.name.contains("DebugSymbols") }
+    .configureEach { enabled = false }

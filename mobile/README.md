@@ -24,7 +24,7 @@ python3 scripts/export_language_catalogs.py
 ## Android release (Play Store)
 
 ```bash
-flutter build appbundle --release
+flutter build appbundle --flavor prod --release --dart-define=FLAVOR=production
 ```
 
 Configure **release signing** in `android/app/build.gradle.kts` (replace the temporary debug signing before uploading an AAB).
