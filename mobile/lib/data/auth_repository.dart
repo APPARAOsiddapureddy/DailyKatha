@@ -21,6 +21,17 @@ class AuthRepository {
 
   static String _digitsOnly(String raw) => raw.replaceAll(RegExp(r'\D'), '');
 
+  /// Normalizes to a 10-digit Indian mobile (strip leading +91 / 0 from digit runs).
+  static String _toIndia10(String raw) {
+    var d = _digitsOnly(raw);
+    if (d.length == 12 && d.startsWith('91')) {
+      d = d.substring(2);
+    } else if (d.length == 11 && d.startsWith('0')) {
+      d = d.substring(1);
+    }
+    return d;
+  }
+
   AuthRepository({
     required FlutterSecureStorage storage,
     required AuthService authService,
@@ -92,7 +103,7 @@ class AuthRepository {
     required String requestId,
     required String code,
   }) async {
-    final normalizedPhone = _digitsOnly(phoneDigits);
+    final normalizedPhone = _toIndia10(phoneDigits);
     final normalizedCode = _digitsOnly(code);
     if (normalizedCode.length != 6) {
       throw ArgumentError('OTP must be 6 digits');
