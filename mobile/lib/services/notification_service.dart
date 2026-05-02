@@ -8,13 +8,11 @@ import 'package:permission_handler/permission_handler.dart';
 class NotificationService {
   const NotificationService();
 
-  /// Android 13+ requires `POST_NOTIFICATIONS` runtime permission.
-  /// iOS uses a different flow (user prompt via UNUserNotificationCenter when
-  /// registering for remote notifications) — call before FCM setup.
+  /// Does **not** call [Permission.notification.request] so Android 13+ never shows the system
+  /// permission sheet during QA; users can enable alerts from system Settings when push is wired.
   Future<bool> requestNotificationPermission() async {
     if (Platform.isAndroid) {
-      final status = await Permission.notification.request();
-      return status.isGranted;
+      return Permission.notification.isGranted;
     }
     if (Platform.isIOS) {
       // iOS: permission is tied to UNUserNotificationCenter / push registration.

@@ -21,7 +21,9 @@ import 'local/user_created_cards_store.dart';
 import 'session_holder.dart';
 
 final secureStorageProvider = Provider<FlutterSecureStorage>((ref) {
-  return const FlutterSecureStorage();
+  return const FlutterSecureStorage(
+    aOptions: AndroidOptions(encryptedSharedPreferences: true),
+  );
 });
 
 final sessionHolderProvider = NotifierProvider<SessionHolder, UserSession?>(SessionHolder.new);
@@ -44,6 +46,9 @@ final apiClientProvider = Provider<ApiClient>((ref) {
     tokenResolver: () => ref.read(sessionHolderProvider)?.accessToken,
     langResolver: () => effectiveContentLanguage(ref.watch(sessionHolderProvider)),
     onUnauthorized: () async {
+      // IndexedStack builds all tabs; catalog can briefly see null session → 401 → do not wipe testing sessions.
+      final s = ref.read(sessionHolderProvider);
+      if (s?.accessToken == 'mock_access' || s?.profile.id == 'demo-user') return;
       await ref.read(secureStorageProvider).deleteAll();
       ref.read(sessionHolderProvider.notifier).clear();
     },
@@ -93,8 +98,12 @@ final catalogProvider = FutureProvider<List<KathaCard>>((ref) async {
   final session = ref.watch(sessionHolderProvider);
   final lang = effectiveContentLanguage(session);
   final created = await ref.watch(userCreatedCardsProvider.future);
-  // Demo/testing session should not call backend.
-  if (session?.accessToken == 'mock_access') {
+  /// Never hit the HTTP feed unless we clearly have a real token. Otherwise the Explore tab on
+  /// [StatefulNavigationShell]'s IndexedStack fires during auth transitions → 401 → global logout → "stuck" on OTP/Home.
+  final useLocalCards = session == null ||
+      session.accessToken == 'mock_access' ||
+      session.profile.id == 'demo-user';
+  if (useLocalCards) {
     final bundled = await BundledCatalogLoader.loadForContentLanguage(lang);
     final base = bundled.isNotEmpty ? bundled : MockCatalog.cards;
     return [...created, ...base];

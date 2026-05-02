@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../core/content_language.dart';
 import '../../data/local/mock_catalog.dart';
@@ -21,7 +22,7 @@ class ProfileScreen extends ConsumerStatefulWidget {
 
 class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   String _segment = 'liked';
-  bool _notificationsOn = true;
+  bool _notificationsOn = false;
 
   Future<void> _signOut() async {
     await ref.read(authRepositoryProvider).signOut();
@@ -32,11 +33,22 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
 
   Future<void> _notificationsTap() async {
     final svc = ref.read(notificationServiceProvider);
-    await svc.requestNotificationPermission();
+    final granted = await svc.requestNotificationPermission();
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Notification permission handled for this platform.')),
-    );
+    if (!granted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text(
+            'Notifications are off in system settings. Enable there when you want alerts.',
+          ),
+          action: SnackBarAction(label: 'Settings', onPressed: openAppSettings),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Notifications are allowed for this app.')),
+      );
+    }
   }
 
   Future<void> _pickLanguage() async {

@@ -23,6 +23,7 @@ class ApiClient {
           BaseOptions(
             baseUrl: baseUri?.toString() ?? 'http://localhost:3000/v1',
             connectTimeout: const Duration(seconds: 15),
+            sendTimeout: const Duration(seconds: 30),
             receiveTimeout: const Duration(seconds: 30),
             headers: const {
               'Accept': 'application/json',

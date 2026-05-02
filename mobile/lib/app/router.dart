@@ -51,7 +51,8 @@ String? _redirectLogic(Ref ref, GoRouterState state) {
   final session = ref.read(sessionHolderProvider);
 
   if (bootstrap.isLoading) {
-    if (path != '/splash' && path != '/login' && path != '/otp') {
+    const loadingAllowed = {'/splash', '/login', '/otp'};
+    if (!loadingAllowed.contains(path)) {
       return '/splash';
     }
     return null;
@@ -144,7 +145,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/otp',
         builder: (context, state) {
-          final args = state.extra as OtpRouteArgs? ?? const OtpRouteArgs(phoneDigits: '', requestId: 'mock');
+          final args = state.extra as OtpRouteArgs? ??
+              const OtpRouteArgs(phoneDigits: '', requestId: 'mock');
           return OtpScreen(args: args);
         },
       ),

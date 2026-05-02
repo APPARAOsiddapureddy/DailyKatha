@@ -32,12 +32,15 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       await Future<void>.delayed(remaining);
     }
     if (!mounted || _navigated) return;
-    _navigated = true;
     final session = ref.read(sessionHolderProvider);
     if (session == null) {
+      if (!mounted || _navigated) return;
+      _navigated = true;
       context.go('/login');
       return;
     }
+    if (!mounted || _navigated) return;
+    _navigated = true;
     if (session.profile.onboardingComplete) {
       context.go('/home');
     } else {

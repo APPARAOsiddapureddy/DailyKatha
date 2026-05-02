@@ -1,6 +1,3 @@
-import 'package:flutter/foundation.dart';
-
-@immutable
 class OtpRouteArgs {
   const OtpRouteArgs({
     required this.phoneDigits,
