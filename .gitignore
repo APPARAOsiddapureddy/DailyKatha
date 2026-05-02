@@ -17,12 +17,14 @@ backend/node_modules/
 backend/.env
 backend/.env.*
 !backend/.env.example
+!backend/.env.production.template
 
 # Root-level Node / env / secrets
 node_modules/
 .env
 .env.*
 !backend/.env.example
+!backend/.env.production.template
 secrets/
 
 # General build artifacts
