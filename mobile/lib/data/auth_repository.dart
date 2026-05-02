@@ -86,7 +86,7 @@ class AuthRepository {
     final d = _digitsOnly(phoneDigits);
     // Internal testing or non-live-OTP builds should not hit send-OTP on the backend.
     if (!AppConfig.useLiveOtp) {
-      return OtpSendResponse(requestId: d);
+      return OtpSendResponse(requestId: d, message: 'Dev mode — enter any 6 digits');
     }
     return _authService
         .sendOtp(phoneE164: '+91$d')

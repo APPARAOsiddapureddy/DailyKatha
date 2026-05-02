@@ -43,7 +43,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     try {
       final res = await ref.read(authRepositoryProvider).sendOtp(d);
       if (!mounted) return;
-      final args = OtpRouteArgs(phoneDigits: d, requestId: res.requestId);
+      final args = OtpRouteArgs(
+        phoneDigits: d,
+        requestId: res.requestId,
+        serverMessage: res.message,
+        channel: res.channel,
+      );
       context.push('/otp', extra: args);
     } catch (e) {
       if (!mounted) return;

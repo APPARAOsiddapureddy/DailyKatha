@@ -2,13 +2,22 @@ import 'package:flutter/foundation.dart';
 
 @immutable
 class OtpSendResponse {
-  const OtpSendResponse({required this.requestId});
+  const OtpSendResponse({
+    required this.requestId,
+    this.message,
+    this.channel,
+  });
 
   final String requestId;
+  /// Server copy: e.g. "Test number — use OTP 560102" or "OTP sent to your WhatsApp".
+  final String? message;
+  final String? channel;
 
   factory OtpSendResponse.fromJson(Map<String, dynamic> json) {
     return OtpSendResponse(
       requestId: json['requestId']?.toString() ?? json['request_id']?.toString() ?? 'default',
+      message: json['message']?.toString(),
+      channel: json['channel']?.toString(),
     );
   }
 }

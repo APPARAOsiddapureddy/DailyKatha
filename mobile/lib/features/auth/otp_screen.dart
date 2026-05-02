@@ -26,6 +26,31 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
   String? _error;
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _prefillTestOtpIfNeeded());
+  }
+
+  /// Backend test channel includes the code in [serverMessage]. Real WhatsApp OTPs are never in JSON.
+  void _prefillTestOtpIfNeeded() {
+    if (!mounted) return;
+    final ch = widget.args.channel?.toLowerCase();
+    if (ch != 'test' && !(_isTestPrefix)) return;
+    final msg = widget.args.serverMessage ?? '';
+    final m = RegExp(r'(\d{6})').firstMatch(msg);
+    if (m == null) return;
+    final digits = m.group(1)!;
+    for (var i = 0; i < 6; i++) {
+      _controllers[i].text = digits[i];
+    }
+    setState(() {});
+    // Auto-verify for QA numbers so the code from the server is actually "populated" end-to-end.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _verify();
+    });
+  }
+
+  @override
   void dispose() {
     for (final c in _controllers) {
       c.dispose();
@@ -126,6 +151,27 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                     color: AppColors.accentGold.withValues(alpha: 0.95),
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            if (widget.args.serverMessage != null && widget.args.serverMessage!.trim().isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 12),
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: AppColors.surfaceElevatedDark,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: AppColors.accentGold.withValues(alpha: 0.35)),
+                  ),
+                  child: Text(
+                    widget.args.serverMessage!.trim(),
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: AppColors.textPrimaryDark,
+                      height: 1.35,
+                    ),
                   ),
                 ),
               ),
