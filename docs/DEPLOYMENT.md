@@ -11,7 +11,7 @@
 
 1. Web service → **Root** = repo root for `dailykatha-backend` subtree, or set **start** to `node src/server.js`.
 2. Set env from `backend/.env.production.template` (real values, never commit).
-3. **Secrets:** `DATABASE_URL`, `JWT_SECRET`, WhatsApp vars for production OTP, optional `REDIS_URL`, `SENTRY_DSN`, `CORS_WHITELIST`.
+3. **Secrets:** `DATABASE_URL`, `JWT_SECRET`, **SMS OTP** vars (`TWILIO_*` or `MSG91_*`, plus optional `SMS_OTP_MESSAGE`; see `docs/SMS_OTP.md`), optional `REDIS_URL`, `SENTRY_DSN`, `CORS_WHITELIST`.
 4. Health: `GET https://<service>.onrender.com/health` → `database: connected`.
 
 ## 3. GitHub

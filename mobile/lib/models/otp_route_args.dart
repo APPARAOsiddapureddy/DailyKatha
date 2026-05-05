@@ -9,6 +9,6 @@ class OtpRouteArgs {
   final String phoneDigits;
   final String requestId;
   final String? serverMessage;
-  /// Backend `channel`: `test` | `whatsapp` | … — used for QA-only autofill.
+  /// Backend `channel`: `test` | `sms` | … — used for QA-only autofill.
   final String? channel;
 }

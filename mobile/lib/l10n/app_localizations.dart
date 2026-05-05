@@ -667,7 +667,7 @@ abstract class AppLocalizations {
   /// No description provided for @loginTerms.
   ///
   /// In en, this message translates to:
-  /// **'By continuing you agree to receive WhatsApp-style updates. Carrier rates may apply.'**
+  /// **'By continuing you agree to receive SMS OTPs and service updates. Carrier rates may apply.'**
   String get loginTerms;
 
   /// No description provided for @otpEnterCode.
@@ -693,6 +693,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Resend'**
   String get otpResend;
+
+  /// No description provided for @otpSmsHintLive.
+  ///
+  /// In en, this message translates to:
+  /// **'We sent a 6-digit code by SMS to this number. Test lines 123456xxxx may use a fixed code.'**
+  String get otpSmsHintLive;
+
+  /// No description provided for @otpDevModeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Dev mode: enter any 6 digits to continue.'**
+  String get otpDevModeHint;
 
   /// No description provided for @splashTagline.
   ///

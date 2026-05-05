@@ -5,7 +5,7 @@
 
 ## What we collect
 
-- **Phone number** — used only to send a one-time OTP (via WhatsApp or similar) and to create your account.
+- **Phone number** — used only to send a one-time OTP via **SMS** (or similar carrier channel your provider uses) and to create your account.
 - **Profile preferences** you choose in the app (e.g. language, interests).
 - **Technical data** — device/app version, crash logs if you enable error reporting (e.g. Sentry).
 
@@ -18,7 +18,7 @@ We do **not** sell your personal information.
 
 ## Retention
 
-- OTP verification codes are **short-lived** (typically minutes) and stored only as needed to complete login.
+- OTP verification codes may be delivered by SMS and are **short-lived** (typically minutes), stored only as needed to complete login.
 - Account data is kept until you delete your account or ask us to delete it.
 
 ## Your rights

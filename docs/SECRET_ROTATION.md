@@ -12,11 +12,17 @@
 2. Update **`DATABASE_URL`** everywhere (Render, GitHub `DATABASE_URL`, local `.env`).
 3. Redeploy / rerun migrations if needed.
 
-## WhatsApp (`WHATSAPP_ACCESS_TOKEN`)
+## SMS (Twilio or MSG91)
 
-1. Meta Business → WhatsApp → regenerate token as required.
-2. Update Render env vars.
-3. Redeploy.
+### Twilio
+
+1. Twilio Console → Auth token / API keys → rotate if needed.
+2. Update **`TWILIO_AUTH_TOKEN`** (and `TWILIO_ACCOUNT_SID` if you recreated the subaccount).
+
+### MSG91
+
+1. MSG91 dashboard → regenerate **auth key** per their flow.
+2. Update **`MSG91_AUTHKEY`** on Render and redeploy.
 
 ## Redis
 

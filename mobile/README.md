@@ -43,28 +43,19 @@ python3 scripts/export_language_catalogs.py
 
 ## Auth / OTP / Render
 
-**Testing APK (default compile flags):**
+OTP is **`POST /v1/auth/send-otp`** and **`/verify-otp`** on the deployed API (**`backend/src/app.js`**). The backend sends **`SMS`** via **Twilio or MSG91** (`docs/SMS_OTP.md`).
 
-- **`ALLOW_LIVE_BACKEND_OTP`**: defaults to **`false`** → the app never calls Render for `send-otp` / `verify-otp`.
-- **`REQUIRE_BACKEND_OTP`**: ignored for HTTP until `ALLOW_LIVE_BACKEND_OTP=true`.
-- **`TESTING_SKIP_TO_HOME_AFTER_LOCAL_OTP`**: defaults to **`false`** → enter any **6 digits** → **Verify** → **Language → Religion → Interests → Home** (no SMS).
+**Dart behavior (`lib/core/app_config.dart`):**
 
-To skip straight to **Home** after verify on a testing build:
+- **Production / staging flavor** (`FLAVOR=production` or `staging`): **`useLiveOtp`** defaults **on** (both **`ALLOW_LIVE_BACKEND_OTP`** and **`REQUIRE_BACKEND_OTP`** default **`true`**). Users receive a carrier **SMS** and must verify with the backend.
+- **Development flavor**: **`useLiveOtp`** is **off** → enter **any 6 digits** for local/demo flow (see `AuthRepository`).
+- **`API_BASE=mock`** (or `offline`): no HTTP OTP — bundled catalog flows only.
 
-```bash
-flutter build apk --flavor prod --release \
-  --dart-define=FLAVOR=production \
-  --dart-define=TESTING_SKIP_TO_HOME_AFTER_LOCAL_OTP=true
-```
+Optional: **`TESTING_SKIP_TO_HOME_AFTER_LOCAL_OTP`** (`false` by default) — after verify, skip onboarding and jump to Home when paired with demo/local OTP paths.
 
-**Do you need to change Render for testing APKs?**
+**Production build (AAB / APK)**
 
-- **No** — bypass is entirely on the device. Quotes/feed calls still use `API_BASE` / `FlavorConfig.apiBase`; only OTP is skipped.
-- When you eventually enable **real SMS OTP**, you must deploy the **legacy** Node service that exposes **`POST /v1/auth/send-otp`** and **`POST /v1/auth/verify-otp`** (`backend/src/server.js` style). The newer **`src/app.js`** REST API **does not** implement those routes, so **`useLiveOtp`** would otherwise get **404** and appear “stuck” on OTP.
-
-**Production SMS OTP (Play Store bundle):**
-
-Pass **both** flags (plus your signing setup):
+Defaults are usually enough for real SMS OTP; override only if needed:
 
 ```bash
 flutter build appbundle --flavor prod --release \
@@ -73,6 +64,8 @@ flutter build appbundle --flavor prod --release \
   --dart-define=REQUIRE_BACKEND_OTP=true
 ```
 
-Optional: `--dart-define=TESTING_SKIP_TO_HOME_AFTER_LOCAL_OTP=true` so verify skips onboarding and opens Home directly.
+Optional: **`--dart-define=TESTING_SKIP_TO_HOME_AFTER_LOCAL_OTP=true`** for testing shortcuts alongside demo flows.
+
+On Render, configure **`TWILIO_*`** or **`MSG91_*`** (and India **DLT** template text matching **`SMS_OTP_MESSAGE`**) — see **`docs/SMS_OTP.md`**.
 
 Configure **release signing** in `android/app/build.gradle.kts` (replace the temporary debug signing before uploading an AAB).

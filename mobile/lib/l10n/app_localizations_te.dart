@@ -310,7 +310,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String get loginTerms =>
-      'కొనసాగితే అప్‌డేట్‌లు అందుకుంటారు. క్యారియర్ ఛార్జీలు వర్తించవచ్చు.';
+      'కొనసాగితే SMS OTP మరియు సేవా అప్‌డేట్‌లు అందవచ్చు. క్యారియర్ ఛార్జీలు వర్తించవచ్చు.';
 
   @override
   String get otpEnterCode => 'కోడ్ ఇవ్వండి';
@@ -325,6 +325,13 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String get otpResend => 'Resend';
+
+  @override
+  String get otpSmsHintLive =>
+      'We sent a 6-digit code by SMS to this number. Test lines 123456xxxx may use a fixed code.';
+
+  @override
+  String get otpDevModeHint => 'Dev mode: enter any 6 digits to continue.';
 
   @override
   String get splashTagline => 'శుభాలు పంచుకోండి';

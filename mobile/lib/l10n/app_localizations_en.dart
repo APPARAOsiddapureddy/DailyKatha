@@ -310,7 +310,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loginTerms =>
-      'By continuing you agree to receive WhatsApp-style updates. Carrier rates may apply.';
+      'By continuing you agree to receive SMS OTPs and service updates. Carrier rates may apply.';
 
   @override
   String get otpEnterCode => 'Enter code';
@@ -325,6 +325,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get otpResend => 'Resend';
+
+  @override
+  String get otpSmsHintLive =>
+      'We sent a 6-digit code by SMS to this number. Test lines 123456xxxx may use a fixed code.';
+
+  @override
+  String get otpDevModeHint => 'Dev mode: enter any 6 digits to continue.';
 
   @override
   String get splashTagline => 'Blessings worth sharing';

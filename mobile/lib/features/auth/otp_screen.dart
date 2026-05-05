@@ -31,7 +31,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) => _prefillTestOtpIfNeeded());
   }
 
-  /// Backend test channel includes the code in [serverMessage]. Real WhatsApp OTPs are never in JSON.
+  /// Backend test channel includes the code in [serverMessage]. Real SMS OTPs are not returned in JSON.
   void _prefillTestOtpIfNeeded() {
     if (!mounted) return;
     final ch = widget.args.channel?.toLowerCase();
@@ -218,9 +218,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                 border: Border.all(color: AppColors.borderOnDarkStrong),
               ),
               child: Text(
-                AppConfig.useLiveOtp
-                    ? 'We sent a 6-digit code to WhatsApp on this number (test numbers 123456xxxx use a fixed code).'
-                    : 'Dev mode: enter any 6 digits to continue.',
+                AppConfig.useLiveOtp ? l10n.otpSmsHintLive : l10n.otpDevModeHint,
                 style: const TextStyle(fontSize: 13, color: AppColors.textSecondaryDark),
               ),
             ),

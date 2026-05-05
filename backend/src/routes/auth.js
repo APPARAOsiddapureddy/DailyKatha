@@ -5,7 +5,7 @@ import { HttpError } from '../utils/errorHandler.js';
 import { query } from '../db/pool.js';
 import { signUserToken } from '../services/jwt.js';
 import { isTestBypassPhone, storeOtp, verifyOtp } from '../services/otp.js';
-import { sendOtpViaWhatsApp } from '../services/whatsappOtp.js';
+import { sendOtpViaSms } from '../services/smsOtp.js';
 import { getUserInterests } from '../db/queries/userInterests.js';
 import { maskIndiaPhone } from '../utils/phoneMask.js';
 
@@ -57,11 +57,11 @@ router.post('/send-otp', async (req, res, next) => {
       });
       return;
     }
-    await sendOtpViaWhatsApp(phone, code);
+    await sendOtpViaSms(phone, code);
     res.json({
       ...payloadBase,
-      channel: 'whatsapp',
-      message: `OTP sent to your WhatsApp ${maskIndiaPhone(phone)}`,
+      channel: 'sms',
+      message: `OTP sent by SMS to ${maskIndiaPhone(phone)}`,
     });
   } catch (e) {
     next(e);

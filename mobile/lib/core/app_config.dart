@@ -2,7 +2,7 @@ import '../config/flavor_config.dart';
 
 /// [API_BASE] dart-define: production URL including `/v1`, or `mock` / `offline` for bundled catalog only.
 ///
-/// OTP / auth — `/v1/auth/send-otp` and `/verify-otp` on the deployed API (WhatsApp delivery requires Meta credentials).
+/// OTP / auth — `/v1/auth/send-otp` and `/verify-otp` on the deployed API (SMS via Twilio or MSG91 on the server).
 /// Dev flavor (`FLAVOR=development`): unless you override dart-defines, OTP stays **local** (no HTTP).
 ///
 /// [TESTING_SKIP_TO_HOME_AFTER_LOCAL_OTP] — default `false`: after local OTP, go **Language → … → Home**;

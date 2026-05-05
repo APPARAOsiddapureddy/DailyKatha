@@ -311,7 +311,7 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String get loginTerms =>
-      'തുടരുന്നതിലൂടെ അപ്‌ഡേറ്റുകൾ ലഭിക്കും. കാരിയർ നിരക്കുകൾ ബാധകമാകാം.';
+      'തുടർന്നാൽ SMS OTP ഉം സേവന അപ്‌ഡേറ്റുകളും ലഭിച്ചേക്കാം. കാരിയർ നിരക്കുകൾ ബാധകമായേക്കാം.';
 
   @override
   String get otpEnterCode => 'കോഡ് നൽകുക';
@@ -326,6 +326,13 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String get otpResend => 'Resend';
+
+  @override
+  String get otpSmsHintLive =>
+      'We sent a 6-digit code by SMS to this number. Test lines 123456xxxx may use a fixed code.';
+
+  @override
+  String get otpDevModeHint => 'Dev mode: enter any 6 digits to continue.';
 
   @override
   String get splashTagline => 'അനുഗ്രഹം പകരുക';

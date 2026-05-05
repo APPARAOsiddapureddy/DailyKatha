@@ -1,6 +1,6 @@
 # Daily Katha — production API (`src/app.js`)
 
-Express service for `/health`, `/status`, **`/v1/auth` (phone OTP — WhatsApp delivery via Meta Cloud API; test numbers `123456xxxx` use fixed OTP `560102`)**, **`/v1/users/*` (JWT)**, and `/api/v1` (quotes, categories, moods, search, JWT favorites). Legacy card/feed API remains in `src/server.js` (`npm run legacy:start`).
+Express service for `/health`, `/status`, **`/v1/auth` (phone OTP — SMS via Twilio or MSG91; test numbers `123456xxxx` use fixed OTP `560102` when QA shortcuts are enabled)**, **`/v1/users/*` (JWT)**, and `/api/v1` (quotes, categories, moods, search, JWT favorites). Legacy card/feed API remains in `src/server.js` (`npm run legacy:start`). See `docs/SMS_OTP.md`.
 
 ## Environments (dev / staging / production)
 

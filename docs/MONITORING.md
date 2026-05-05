@@ -22,6 +22,6 @@
 
 ## Escalation
 
-1. Check Render env (`DATABASE_URL`, WhatsApp vars).  
+1. Check Render env (`DATABASE_URL`, SMS OTP vars: Twilio or MSG91).  
 2. `curl /health` and recent deploy logs.  
 3. Neon status / credentials.

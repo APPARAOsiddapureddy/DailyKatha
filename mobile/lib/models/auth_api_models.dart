@@ -12,7 +12,7 @@ class OtpSendResponse {
   });
 
   final String requestId;
-  /// Server copy: e.g. "Test number — use OTP 560102" or "OTP sent to your WhatsApp".
+  /// Server copy: e.g. "Test number — use OTP 560102" or "OTP sent by SMS to …".
   final String? message;
   final String? channel;
   final bool? success;
