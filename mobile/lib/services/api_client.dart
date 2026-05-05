@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:flutter/foundation.dart';
 
+import '../config/flavor_config.dart';
 import '../core/app_config.dart';
 
 typedef TokenResolver = String? Function();
@@ -21,7 +22,8 @@ class ApiClient {
         _onUnauthorized = onUnauthorized,
         _dio = Dio(
           BaseOptions(
-            baseUrl: baseUri?.toString() ?? 'http://localhost:3000/v1',
+            // Never default to localhost — prod/staging builds must hit Render if Uri wiring slips.
+            baseUrl: baseUri?.toString() ?? FlavorConfig.apiBase,
             connectTimeout: const Duration(seconds: 15),
             sendTimeout: const Duration(seconds: 30),
             receiveTimeout: const Duration(seconds: 30),
