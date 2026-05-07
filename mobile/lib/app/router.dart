@@ -5,8 +5,6 @@ import 'package:go_router/go_router.dart';
 import '../data/providers.dart';
 import '../features/admin/admin_dashboard_screen.dart';
 import '../features/admin/admin_generate_screen.dart';
-import '../features/auth/login_screen.dart';
-import '../features/auth/otp_screen.dart';
 import '../features/create/create_card_screen.dart';
 import '../features/editor/card_editor_screen.dart';
 import '../features/explore/explore_screen.dart';
@@ -20,7 +18,6 @@ import '../features/splash/splash_screen.dart';
 import '../features/today_picks/today_picks_screen.dart';
 import '../models/card_editor_args.dart';
 import '../models/onboarding_args.dart';
-import '../models/otp_route_args.dart';
 import '../models/user_profile.dart';
 import '../widgets/app_shell.dart';
 
@@ -51,7 +48,12 @@ String? _redirectLogic(Ref ref, GoRouterState state) {
   final session = ref.read(sessionHolderProvider);
 
   if (bootstrap.isLoading) {
-    const loadingAllowed = {'/splash', '/login', '/otp'};
+    const loadingAllowed = {
+      '/splash',
+      '/onboarding/language',
+      '/onboarding/religion',
+      '/onboarding/interests',
+    };
     if (!loadingAllowed.contains(path)) {
       return '/splash';
     }
@@ -68,8 +70,9 @@ String? _redirectLogic(Ref ref, GoRouterState state) {
     '/onboarding/interests',
   };
 
-  if (!isAuth && onboardingPaths.contains(path)) {
-    return '/login';
+  // Login/OTP screens removed. If any stale deep link tries to hit them, reroute.
+  if (path == '/login' || path == '/otp') {
+    return done ? '/home' : '/onboarding/language';
   }
 
   if (isAuth && done && onboardingPaths.contains(path)) {
@@ -84,16 +87,12 @@ String? _redirectLogic(Ref ref, GoRouterState state) {
   }
 
   if (path.startsWith('/admin')) {
-    if (!isAuth) return '/login';
+    if (!isAuth) return '/onboarding/language';
     if (!isAdmin) return '/home';
   }
 
-  if (isAuth && (path == '/login' || path == '/otp')) {
-    return done ? '/home' : '/onboarding/language';
-  }
-
   if (!isAuth && {'/home', '/explore', '/profile', '/feed'}.contains(path)) {
-    return '/login';
+    return '/onboarding/language';
   }
 
   return null;
@@ -137,18 +136,6 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/splash',
         builder: (context, state) => const SplashScreen(),
-      ),
-      GoRoute(
-        path: '/login',
-        builder: (context, state) => const LoginScreen(),
-      ),
-      GoRoute(
-        path: '/otp',
-        builder: (context, state) {
-          final args = state.extra as OtpRouteArgs? ??
-              const OtpRouteArgs(phoneDigits: '', requestId: 'mock');
-          return OtpScreen(args: args);
-        },
       ),
       GoRoute(
         parentNavigatorKey: _rootNavigatorKey,

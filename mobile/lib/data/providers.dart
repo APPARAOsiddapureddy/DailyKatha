@@ -31,13 +31,17 @@ final sessionHolderProvider = NotifierProvider<SessionHolder, UserSession?>(Sess
 /// Restores persisted session once per app start.
 final bootstrapProvider = FutureProvider<UserSession?>((ref) async {
   final repo = ref.watch(authRepositoryProvider);
-  final session = await repo.restoreSession();
-  if (session != null) {
-    ref.read(sessionHolderProvider.notifier).setSession(session);
-  } else {
-    ref.read(sessionHolderProvider.notifier).clear();
+  final restored = await repo.restoreSession();
+  if (restored != null) {
+    ref.read(sessionHolderProvider.notifier).setSession(restored);
+    return restored;
   }
-  return session;
+
+  // Login-less app flow: ensure a local session exists so onboarding and profile persistence works
+  // without requiring OTP or server JWT.
+  final local = await repo.createDemoSessionForTesting(phoneDigits: '0000000000');
+  ref.read(sessionHolderProvider.notifier).setSession(local);
+  return local;
 });
 
 final apiClientProvider = Provider<ApiClient>((ref) {
