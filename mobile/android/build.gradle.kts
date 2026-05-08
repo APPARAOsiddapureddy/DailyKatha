@@ -16,10 +16,8 @@ subprojects {
 }
 
 // AGP 8+ requires every Android module to declare a `namespace`.
-// Some pub packages still omit it; patch them here without touching pub-cache.
-subprojects {
-    // Intentionally left empty: keep subproject hooks available if needed.
-}
+// Keep this hook available if future pub packages need patching.
+subprojects {}
 
 tasks.register<Delete>("clean") {
     delete(rootProject.buildDir)
