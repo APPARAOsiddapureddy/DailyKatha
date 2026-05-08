@@ -79,7 +79,3 @@ flutter {
     source = "../.."
 }
 
-// Workaround: some toolchains fail stripping debug symbols from third-party native libs.
-// This prevents `bundle*Release` from failing on those environments.
-tasks.matching { it.name.contains("strip", ignoreCase = true) && it.name.contains("DebugSymbols") }
-    .configureEach { enabled = false }

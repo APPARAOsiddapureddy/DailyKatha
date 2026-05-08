@@ -5,15 +5,11 @@ allprojects {
     }
 }
 
-val newBuildDir: Directory =
-    rootProject.layout.buildDirectory
-        .dir("../../build")
-        .get()
-rootProject.layout.buildDirectory.value(newBuildDir)
+// Keep Android build outputs under `mobile/build/` (Flutter tooling expects this default layout).
+rootProject.buildDir = file("../build")
 
 subprojects {
-    val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
-    project.layout.buildDirectory.value(newSubprojectBuildDir)
+    project.buildDir = File(rootProject.buildDir, project.name)
 }
 subprojects {
     project.evaluationDependsOn(":app")
@@ -26,5 +22,5 @@ subprojects {
 }
 
 tasks.register<Delete>("clean") {
-    delete(rootProject.layout.buildDirectory)
+    delete(rootProject.buildDir)
 }
