@@ -9,6 +9,7 @@ import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
 import '../../l10n/genre_localizer.dart';
 import '../../models/card_editor_args.dart';
+import '../../models/feed_route_args.dart';
 import '../../models/katha_card.dart';
 import '../../services/card_share_export.dart';
 import '../../theme/app_colors.dart';
@@ -18,29 +19,56 @@ import '../../widgets/action_rail.dart';
 import '../../widgets/status_card.dart';
 
 class FeedScreen extends ConsumerStatefulWidget {
-  const FeedScreen({super.key, required this.initialIndex});
+  const FeedScreen({super.key, required this.args});
 
-  final int initialIndex;
+  final FeedRouteArgs args;
 
   @override
   ConsumerState<FeedScreen> createState() => _FeedScreenState();
 }
 
 class _FeedScreenState extends ConsumerState<FeedScreen> {
-  late final PageController _controller;
+  PageController? _controller;
   int _index = 0;
   bool _sharing = false;
 
-  @override
-  void initState() {
-    super.initState();
-    _index = widget.initialIndex;
-    _controller = PageController(initialPage: widget.initialIndex);
+  List<KathaCard> _visible(List<KathaCard> full) {
+    final f = widget.args.categoryFilter;
+    if (f == null || f.isEmpty) return full;
+    return full.where((c) => f.contains(c.category)).toList();
+  }
+
+  int _startPage(List<KathaCard> full, List<KathaCard> visible) {
+    if (visible.isEmpty) return 0;
+    final filter = widget.args.categoryFilter;
+    if (filter == null || filter.isEmpty) {
+      return widget.args.initialIndex.clamp(0, visible.length - 1);
+    }
+    final fi = widget.args.initialIndex.clamp(0, full.length - 1);
+    final targetId = full[fi].id;
+    final j = visible.indexWhere((c) => c.id == targetId);
+    return j >= 0 ? j : 0;
+  }
+
+  void _scheduleControllerIfNeeded(List<KathaCard> full, List<KathaCard> visible) {
+    if (_controller != null || visible.isEmpty) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || _controller != null) return;
+      final freshFull = ref.read(catalogProvider).valueOrNull;
+      if (freshFull == null || freshFull.isEmpty) return;
+      final vis = _visible(freshFull);
+      if (vis.isEmpty) return;
+      final start = _startPage(freshFull, vis);
+      setState(() {
+        _index = start;
+        _controller = PageController(initialPage: start);
+      });
+    });
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller?.dispose();
     super.dispose();
   }
 
@@ -113,12 +141,11 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     );
   }
 
-  void _seekTo(int page) {
-    final catalog = ref.read(catalogProvider).valueOrNull;
-    if (catalog == null || catalog.isEmpty) return;
-    final n = catalog.length;
-    final i = page.clamp(0, n - 1);
-    _controller.animateToPage(
+  void _seekTo(List<KathaCard> visible, int page) {
+    final c = _controller;
+    if (c == null || visible.isEmpty) return;
+    final i = page.clamp(0, visible.length - 1);
+    c.animateToPage(
       i,
       duration: const Duration(milliseconds: 320),
       curve: Curves.easeOutCubic,
@@ -148,7 +175,18 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
           if (cards.isEmpty) {
             return Center(child: Text(l10n.noCards, style: const TextStyle(color: AppColors.white)));
           }
-          final card = cards[_index.clamp(0, cards.length - 1)];
+          final visible = _visible(cards);
+          if (visible.isEmpty) {
+            return Center(child: Text(l10n.noCards, style: const TextStyle(color: AppColors.white)));
+          }
+
+          final ctrl = _controller;
+          if (ctrl == null) {
+            _scheduleControllerIfNeeded(cards, visible);
+            return const Center(child: CircularProgressIndicator(color: AppColors.white));
+          }
+
+          final card = visible[_index.clamp(0, visible.length - 1)];
           final luxe = StatusLuxePalette.forCategory(card.category);
           final genreLabel = GenreLocalizer.getName(card.category, lang);
 
@@ -164,11 +202,11 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                       children: [
                         PageView.builder(
                           scrollDirection: Axis.vertical,
-                          controller: _controller,
-                          itemCount: cards.length,
+                          controller: ctrl,
+                          itemCount: visible.length,
                           onPageChanged: (i) => setState(() => _index = i),
                           itemBuilder: (context, i) {
-                            final c = cards[i];
+                            final c = visible[i];
                             return Padding(
                               padding: const EdgeInsets.fromLTRB(16, 18, 16, 10),
                               child: Center(
@@ -204,8 +242,8 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                 children: [
                                   _FeedProgressStrip(
                                     index: _index,
-                                    total: cards.length,
-                                    onSeek: _seekTo,
+                                    total: visible.length,
+                                    onSeek: (p) => _seekTo(visible, p),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.fromLTRB(16, 10, 16, 12),

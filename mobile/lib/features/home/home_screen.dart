@@ -6,6 +6,7 @@ import '../../core/content_language.dart';
 import '../../data/local/mock_catalog.dart';
 import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
+import '../../models/feed_route_args.dart';
 import '../../models/katha_card.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/app_background.dart';
@@ -28,9 +29,24 @@ class HomeScreen extends ConsumerWidget {
     return i < 0 ? 0 : i;
   }
 
-  void _openFeed(BuildContext context, List<KathaCard> cards, int index) {
+  bool _matchesUserInterestRow(KathaCard c, List<String> userInterestIds) {
+    if (userInterestIds.isEmpty) {
+      return c.section == 'interests' || {'bhakti', 'motivation', 'love'}.contains(c.category);
+    }
+    return userInterestIds.contains(c.category);
+  }
+
+  void _openFeed(
+    BuildContext context,
+    List<KathaCard> cards,
+    int index, {
+    Set<String>? categoryFilter,
+  }) {
     final clamped = index.clamp(0, cards.length - 1);
-    context.push('/feed', extra: clamped);
+    context.push(
+      '/feed',
+      extra: FeedRouteArgs(initialIndex: clamped, categoryFilter: categoryFilter),
+    );
   }
 
   void _showNotifications(BuildContext context, String lang, AppLocalizations l10n) {
@@ -57,11 +73,9 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  List<_SectionData> _sectionConfigs(AppLocalizations l10n, List<KathaCard> cards) {
+  List<_SectionData> _sectionConfigs(AppLocalizations l10n, List<KathaCard> cards, List<String> userInterestIds) {
     bool morning(KathaCard c) => c.section == 'morning' || c.category == 'goodmorning';
     bool festival(KathaCard c) => c.isFestival || c.section == 'festival';
-    bool interests(KathaCard c) =>
-        c.section == 'interests' || {'bhakti', 'motivation', 'love'}.contains(c.category);
     bool trending(KathaCard c) => c.section == 'trending';
     bool entertainment(KathaCard c) => {'cinema', 'heroes', 'friendship'}.contains(c.category);
 
@@ -79,7 +93,8 @@ class HomeScreen extends ConsumerWidget {
       _SectionData(
         title: l10n.homeSectionInterestsTitle,
         tag: l10n.sectionForYou,
-        cards: cards.where(interests).toList(),
+        useInterestScopedFeed: true,
+        cards: cards.where((c) => _matchesUserInterestRow(c, userInterestIds)).toList(),
       ),
       _SectionData(
         title: l10n.homeSectionTrendingTitle,
@@ -98,6 +113,7 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final session = ref.watch(sessionHolderProvider);
     final lang = effectiveContentLanguage(session);
+    final userInterestIds = session?.profile.interestIds ?? const <String>[];
     final catalog = ref.watch(catalogProvider);
 
     return Scaffold(
@@ -121,7 +137,7 @@ class HomeScreen extends ConsumerWidget {
           ),
           data: (cards) {
             final l10n = AppLocalizations.of(context);
-            final sections = _sectionConfigs(l10n, cards);
+            final sections = _sectionConfigs(l10n, cards, userInterestIds);
             return CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(
@@ -188,8 +204,22 @@ class HomeScreen extends ConsumerWidget {
                         tag: s.tag,
                         lang: lang,
                         cards: s.cards,
-                        onViewAll: () => _openFeed(context, cards, cards.indexOf(s.cards.first)),
-                        onCard: (c) => _openFeed(context, cards, cards.indexOf(c)),
+                        onViewAll: () => _openFeed(
+                          context,
+                          cards,
+                          cards.indexOf(s.cards.first),
+                          categoryFilter: s.useInterestScopedFeed && userInterestIds.isNotEmpty
+                              ? userInterestIds.toSet()
+                              : null,
+                        ),
+                        onCard: (c) => _openFeed(
+                          context,
+                          cards,
+                          cards.indexOf(c),
+                          categoryFilter: s.useInterestScopedFeed && userInterestIds.isNotEmpty
+                              ? userInterestIds.toSet()
+                              : null,
+                        ),
                       ),
                     ),
                 const SliverToBoxAdapter(child: SizedBox(height: 36)),
@@ -272,11 +302,14 @@ class _SectionData {
     required this.title,
     required this.tag,
     required this.cards,
+    this.useInterestScopedFeed = false,
   });
 
   final String title;
   final String tag;
   final List<KathaCard> cards;
+  /// When true, tapping into this row opens [/feed] restricted to onboarding interest categories.
+  final bool useInterestScopedFeed;
 }
 
 class _GreetingHero extends ConsumerWidget {

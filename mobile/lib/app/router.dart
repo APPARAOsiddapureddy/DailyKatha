@@ -17,6 +17,7 @@ import '../features/profile/profile_screen.dart';
 import '../features/splash/splash_screen.dart';
 import '../features/today_picks/today_picks_screen.dart';
 import '../models/card_editor_args.dart';
+import '../models/feed_route_args.dart';
 import '../models/onboarding_args.dart';
 import '../models/user_profile.dart';
 import '../widgets/app_shell.dart';
@@ -210,8 +211,9 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         parentNavigatorKey: _rootNavigatorKey,
         path: '/feed',
         builder: (context, state) {
-          final idx = state.extra is int ? state.extra! as int : 0;
-          return FeedScreen(initialIndex: idx);
+          final ex = state.extra;
+          final args = ex is FeedRouteArgs ? ex : FeedRouteArgs(initialIndex: ex is int ? ex : 0);
+          return FeedScreen(args: args);
         },
       ),
       GoRoute(
