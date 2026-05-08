@@ -161,7 +161,14 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
         caption: _caption,
         captionColor: _captionColor,
       );
-      await CardShareExport.sharePngBytes(bytes: bytes, nameStem: 'daily_katha_saved_${widget.args.card.id}');
+      final ok = await CardShareExport.savePngBytesToGallery(
+        bytes: bytes,
+        nameStem: 'daily_katha_${widget.args.card.id}',
+      );
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(ok ? 'Saved to gallery' : 'Could not save to gallery')),
+      );
     } finally {
       if (mounted) setState(() => _busy = false);
     }
@@ -236,12 +243,6 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
                     if (_photo != null) ...[
                       Row(
                         children: [
-                          const Expanded(
-                            child: Text(
-                              'Tip: pinch to zoom and drag to position',
-                              style: TextStyle(color: AppColors.textSecondaryDark, fontWeight: FontWeight.w600),
-                            ),
-                          ),
                           IconButton(
                             onPressed: _busy
                                 ? null
@@ -251,7 +252,14 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
                                       _rotation = 0.0;
                                     }),
                             icon: const Icon(Icons.refresh, color: AppColors.textPrimaryDark),
-                            tooltip: 'Reset',
+                            tooltip: 'Reset photo placement',
+                          ),
+                          const SizedBox(width: 6),
+                          const Expanded(
+                            child: Text(
+                              'Adjust your photo',
+                              style: TextStyle(color: AppColors.textSecondaryDark, fontWeight: FontWeight.w600),
+                            ),
                           ),
                         ],
                       ),

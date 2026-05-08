@@ -10,6 +10,7 @@ import '../features/editor/card_editor_screen.dart';
 import '../features/explore/explore_screen.dart';
 import '../features/feed/feed_screen.dart';
 import '../features/home/home_screen.dart';
+import '../features/home/section_preview_screen.dart';
 import '../features/onboarding/interests_screen.dart';
 import '../features/onboarding/language_screen.dart';
 import '../features/onboarding/religion_screen.dart';
@@ -19,6 +20,7 @@ import '../features/today_picks/today_picks_screen.dart';
 import '../models/card_editor_args.dart';
 import '../models/feed_route_args.dart';
 import '../models/onboarding_args.dart';
+import '../models/section_preview_args.dart';
 import '../models/user_profile.dart';
 import '../widgets/app_shell.dart';
 
@@ -214,6 +216,14 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           final ex = state.extra;
           final args = ex is FeedRouteArgs ? ex : FeedRouteArgs(initialIndex: ex is int ? ex : 0);
           return FeedScreen(args: args);
+        },
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: '/section',
+        builder: (context, state) {
+          final args = state.extra as SectionPreviewArgs;
+          return SectionPreviewScreen(args: args);
         },
       ),
       GoRoute(

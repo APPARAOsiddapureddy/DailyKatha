@@ -43,7 +43,7 @@ class FeedActionBar extends StatelessWidget {
         ),
         SizedBox(width: _gap),
         _ActBtn(
-          label: 'Status',
+          label: 'Edit',
           icon: Icon(Icons.schedule, size: 20, color: icon),
           base: base,
           border: border,
@@ -61,8 +61,8 @@ class FeedActionBar extends StatelessWidget {
         ),
         SizedBox(width: _gap),
         _ActBtn(
-          label: 'Edit',
-          icon: Icon(Icons.edit_outlined, size: 20, color: icon),
+          label: 'Share',
+          icon: Icon(Icons.ios_share, size: 20, color: icon),
           base: base,
           border: border,
           labelColor: label,

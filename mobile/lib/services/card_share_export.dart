@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -111,6 +112,24 @@ class CardShareExport {
   }) async {
     final path = await _writeTempPng(bytes, nameStem: nameStem);
     await Share.shareXFiles([XFile(path, mimeType: 'image/png', name: 'Daily_Katha.png')], text: text);
+  }
+
+  /// Saves PNG bytes to the user's gallery/photos. Returns whether the save succeeded.
+  static Future<bool> savePngBytesToGallery({
+    required Uint8List bytes,
+    String nameStem = 'daily_katha',
+  }) async {
+    if (kIsWeb) return false;
+    final result = await ImageGallerySaver.saveImage(
+      bytes,
+      quality: 100,
+      name: nameStem,
+    );
+    if (result is Map) {
+      final ok = result['isSuccess'] == true || result['success'] == true;
+      return ok;
+    }
+    return false;
   }
 
   static Future<void> shareKathaCardAsImage({

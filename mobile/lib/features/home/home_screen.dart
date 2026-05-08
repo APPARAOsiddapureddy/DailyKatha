@@ -8,6 +8,7 @@ import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/feed_route_args.dart';
 import '../../models/katha_card.dart';
+import '../../models/section_preview_args.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/app_background.dart';
 import '../../widgets/mini_card.dart';
@@ -46,6 +47,26 @@ class HomeScreen extends ConsumerWidget {
     context.push(
       '/feed',
       extra: FeedRouteArgs(initialIndex: clamped, categoryFilter: categoryFilter),
+    );
+  }
+
+  void _openSectionPreview(
+    BuildContext context,
+    List<KathaCard> cards,
+    int index, {
+    required String title,
+    required String tag,
+    Set<String>? categoryFilter,
+  }) {
+    final clamped = index.clamp(0, cards.length - 1);
+    context.push(
+      '/section',
+      extra: SectionPreviewArgs(
+        title: title,
+        tag: tag,
+        initialIndex: clamped,
+        categoryFilter: categoryFilter,
+      ),
     );
   }
 
@@ -204,18 +225,22 @@ class HomeScreen extends ConsumerWidget {
                         tag: s.tag,
                         lang: lang,
                         cards: s.cards,
-                        onViewAll: () => _openFeed(
+                        onViewAll: () => _openSectionPreview(
                           context,
                           cards,
                           cards.indexOf(s.cards.first),
+                          title: s.title,
+                          tag: s.tag,
                           categoryFilter: s.useInterestScopedFeed && userInterestIds.isNotEmpty
                               ? userInterestIds.toSet()
                               : null,
                         ),
-                        onCard: (c) => _openFeed(
+                        onCard: (c) => _openSectionPreview(
                           context,
                           cards,
                           cards.indexOf(c),
+                          title: s.title,
+                          tag: s.tag,
                           categoryFilter: s.useInterestScopedFeed && userInterestIds.isNotEmpty
                               ? userInterestIds.toSet()
                               : null,
@@ -526,6 +551,7 @@ class _Section extends StatelessWidget {
                 return MiniCard(
                   card: c,
                   contentLanguage: lang,
+                  blurred: i != 0,
                   onTap: () => onCard(c),
                 );
               },

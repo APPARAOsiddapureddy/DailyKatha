@@ -131,7 +131,16 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
       card: card,
       contentLanguage: lang,
     );
-    await CardShareExport.sharePngBytes(bytes: bytes, nameStem: 'daily_katha_saved_${card.id}');
+    final ok = await CardShareExport.savePngBytesToGallery(
+      bytes: bytes,
+      nameStem: 'daily_katha_${card.id}',
+    );
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(ok ? 'Saved to gallery' : 'Could not save to gallery'),
+      ),
+    );
   }
 
   void _editCurrent(String lang, KathaCard card) {
@@ -196,7 +205,8 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
               Expanded(
                 child: LayoutBuilder(
                   builder: (context, constraints) {
-                    final cardHeight = (constraints.maxHeight - 64).clamp(420.0, constraints.maxHeight);
+                    // Leave breathing room so the top header never overlaps the card.
+                    final cardHeight = (constraints.maxHeight - 140).clamp(420.0, constraints.maxHeight);
                     return Stack(
                       fit: StackFit.expand,
                       children: [
@@ -208,7 +218,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                           itemBuilder: (context, i) {
                             final c = visible[i];
                             return Padding(
-                              padding: const EdgeInsets.fromLTRB(16, 18, 16, 10),
+                              padding: const EdgeInsets.fromLTRB(18, 36, 18, 14),
                               child: Center(
                                 child: StatusCard(
                                   card: c,
@@ -327,22 +337,13 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                       FeedActionBar(
                         liked: liked.contains(card.id),
                         onLike: () => _toggleLike(card.id),
-                        onShare: _sharing
-                            ? () {}
-                            : () => _shareCurrent(lang, card),
+                        // UX: "Edit" first, then share as Status from inside editor.
+                        onShare: () => _editCurrent(lang, card),
                         onDownload: () => _saveCurrent(lang, card),
-                        onEdit: () => _editCurrent(lang, card),
+                        onEdit: _sharing ? () {} : () => _shareCurrent(lang, card),
                       ),
                       const SizedBox(height: 10),
-                      Text(
-                        '← ${AppLocalizations.of(context).scrollHint} →',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.dmSans(
-                          fontSize: 10,
-                          letterSpacing: 1.0,
-                          color: Colors.white.withValues(alpha: 0.18),
-                        ),
-                      ),
+                      // Intentionally minimal: avoid instructional chrome while viewing the card.
                     ],
                   ),
                 ),
