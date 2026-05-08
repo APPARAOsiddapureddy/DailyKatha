@@ -73,7 +73,8 @@ Future<void> _initializeApp() async {
     debugPrint('>>> SecureStorage OK');
   } catch (e) {
     debugPrint('>>> SecureStorage error: $e');
-    rethrow;
+    // Some devices / OEM ROMs can throw from Android Keystore on first boot or after updates.
+    // The app can still run without secure storage; session persistence may not survive restarts.
   }
 
   debugPrint('>>> Step 4: Providers...');
