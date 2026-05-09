@@ -538,29 +538,31 @@ class _PhotoSlot extends StatelessWidget {
 
     final clickable = onTap != null;
 
+    // UX: in normal viewing mode (home/feed) we don't want a visible empty photo box.
+    // Only show the framed slot when (a) a photo exists, or (b) the slot is tappable (editor).
     final child = bytes == null
-        ? Container(
-            alignment: Alignment.center,
-            decoration: box.copyWith(color: Colors.black.withValues(alpha: 0.18)),
-            child: clickable
-                ? Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.add_photo_alternate_outlined, color: accent.withValues(alpha: 0.8), size: 28),
-                      const SizedBox(height: 8),
-                      Text(
-                        'Add photo',
-                        style: GoogleFonts.dmSans(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: accent.withValues(alpha: 0.9),
-                          decoration: TextDecoration.none,
-                        ),
+        ? (clickable
+            ? Container(
+                alignment: Alignment.center,
+                decoration: box.copyWith(color: Colors.black.withValues(alpha: 0.18)),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.add_photo_alternate_outlined, color: accent.withValues(alpha: 0.8), size: 28),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Add photo',
+                      style: GoogleFonts.dmSans(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        color: accent.withValues(alpha: 0.9),
+                        decoration: TextDecoration.none,
                       ),
-                    ],
-                  )
-                : const SizedBox.shrink(),
-          )
+                    ),
+                  ],
+                ),
+              )
+            : const SizedBox.shrink())
         : Container(
             decoration: box,
             clipBehavior: Clip.antiAlias,
@@ -632,7 +634,7 @@ class _PhotoSlot extends StatelessWidget {
                 child: child,
               ),
             )
-          : child,
+          : (bytes == null ? const SizedBox.shrink() : child),
     );
   }
 }
