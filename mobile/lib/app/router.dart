@@ -14,7 +14,10 @@ import '../features/home/section_preview_screen.dart';
 import '../features/onboarding/interests_screen.dart';
 import '../features/onboarding/language_screen.dart';
 import '../features/onboarding/religion_screen.dart';
+import '../features/profile/edit_interests_screen.dart';
 import '../features/profile/profile_screen.dart';
+import '../features/settings/daily_reminder_screen.dart';
+import '../features/settings/settings_screen.dart';
 import '../features/splash/splash_screen.dart';
 import '../features/today_picks/today_picks_screen.dart';
 import '../models/card_editor_args.dart';
@@ -233,6 +236,21 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           final args = state.extra as CardEditorArgs;
           return CardEditorScreen(args: args, shareService: ref.read(shareServiceProvider));
         },
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: '/profile/interests',
+        builder: (context, state) => const EditInterestsScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: '/settings',
+        builder: (context, state) => const SettingsScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: '/settings/reminder',
+        builder: (context, state) => const DailyReminderScreen(),
       ),
     ],
   );

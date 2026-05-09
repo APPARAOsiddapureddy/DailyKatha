@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 import '../../data/local/mock_catalog.dart';
 import '../../data/providers.dart';
@@ -26,26 +25,6 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     ref.read(sessionHolderProvider.notifier).clear();
     if (!mounted) return;
     context.go('/onboarding/language');
-  }
-
-  Future<void> _notificationsTap() async {
-    final svc = ref.read(notificationServiceProvider);
-    final granted = await svc.requestNotificationPermission();
-    if (!mounted) return;
-    if (!granted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text(
-            'Notifications are off in system settings. Enable there when you want alerts.',
-          ),
-          action: SnackBarAction(label: 'Settings', onPressed: openAppSettings),
-        ),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Notifications are allowed for this app.')),
-      );
-    }
   }
 
   Future<void> _pickLanguage() async {
@@ -293,11 +272,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   iconColor: AppColors.protoInk2,
                   title: l10n.profileInterests,
                   sub: l10n.profileInterestCountTrailing(session?.profile.interestIds.length ?? 0),
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Interest editing from profile is coming soon.')),
-                    );
-                  },
+                  onTap: () => context.push('/profile/interests'),
                 ),
               ),
               SliverPadding(
@@ -311,7 +286,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   iconColor: AppColors.protoInk2,
                   title: l10n.profileRowDailyReminder,
                   sub: l10n.profileRowReminderSub,
-                  onTap: _notificationsTap,
+                  onTap: () => context.push('/settings/reminder'),
                 ),
               ),
               SliverToBoxAdapter(
@@ -321,11 +296,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   iconColor: AppColors.protoInk2,
                   title: l10n.profileRowSettingsOnly,
                   sub: null,
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Settings screen coming soon.')),
-                    );
-                  },
+                  onTap: () => context.push('/settings'),
                 ),
               ),
               SliverPadding(

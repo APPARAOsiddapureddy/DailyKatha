@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app/app.dart';
 import 'config/flavor_config.dart';
+import 'services/notification_service.dart';
 
 Future<void> main() async {
   FlutterError.onError = (FlutterErrorDetails details) {
@@ -79,6 +80,14 @@ Future<void> _initializeApp() async {
 
   debugPrint('>>> Step 4: Providers...');
   debugPrint('>>> Providers OK (initialized in ProviderScope)');
+
+  debugPrint('>>> Step 5: Notifications...');
+  try {
+    await const NotificationService().initialize();
+    debugPrint('>>> Notifications OK');
+  } catch (e) {
+    debugPrint('>>> Notifications init error: $e');
+  }
 
   debugPrint('>>> Initialization complete.');
 }
