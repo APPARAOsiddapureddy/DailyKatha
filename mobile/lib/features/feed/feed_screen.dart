@@ -11,6 +11,8 @@ import '../../l10n/app_localizations.dart';
 import '../../models/card_editor_args.dart';
 import '../../models/feed_route_args.dart';
 import '../../models/katha_card.dart';
+import '../../observability/analytics/analytics.dart';
+import '../../observability/analytics/analytics_provider.dart';
 import '../../services/card_share_export.dart';
 import '../../theme/app_colors.dart';
 import '../../utils/error_handler.dart';
@@ -29,6 +31,24 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
   PageController? _controller;
   int _index = 0;
   final Set<String> _savedIds = {};
+  bool _loggedOpen = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_loggedOpen) return;
+    _loggedOpen = true;
+    final filter = widget.args.categoryFilter;
+    ref.read(analyticsProvider).log(
+      AEvents.feedOpened,
+      props: {
+        'source': widget.args.categoryFilter == null ? 'unknown' : 'filtered',
+        'has_filter': filter != null && filter.isNotEmpty,
+        'filter': filter?.toList(),
+        'initial_index': widget.args.initialIndex,
+      },
+    );
+  }
 
   List<KathaCard> _visible(List<KathaCard> full) {
     final f = widget.args.categoryFilter;

@@ -10,6 +10,8 @@ import 'permission_service.dart';
 
 class SafeImagePicker {
   static final ImagePicker _picker = ImagePicker();
+  static const int maxPickWidth = 1600;
+  static const int maxPickHeight = 1600;
 
   static Future<XFile?> pickFromGallery(BuildContext context) async {
     try {
@@ -24,8 +26,8 @@ class SafeImagePicker {
       final XFile? image = await _picker.pickImage(
         source: ImageSource.gallery,
         imageQuality: 85,
-        maxWidth: 1920,
-        maxHeight: 1920,
+        maxWidth: maxPickWidth.toDouble(),
+        maxHeight: maxPickHeight.toDouble(),
       );
       if (image == null) return null;
       final ok = await _validateXFile(image);
@@ -58,8 +60,8 @@ class SafeImagePicker {
       final XFile? image = await _picker.pickImage(
         source: ImageSource.camera,
         imageQuality: 85,
-        maxWidth: 1920,
-        maxHeight: 1920,
+        maxWidth: maxPickWidth.toDouble(),
+        maxHeight: maxPickHeight.toDouble(),
         preferredCameraDevice: CameraDevice.rear,
       );
       if (image == null) return null;

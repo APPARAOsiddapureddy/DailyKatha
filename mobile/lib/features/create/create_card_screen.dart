@@ -9,6 +9,8 @@ import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/card_editor_args.dart';
 import '../../models/katha_card.dart';
+import '../../observability/analytics/analytics.dart';
+import '../../observability/analytics/analytics_provider.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/status_card.dart';
 
@@ -66,6 +68,14 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
     try {
       final card = _draft(lang);
       await UserCreatedCardsStore.add(card);
+      await ref.read(analyticsProvider).log(
+        AEvents.cardCreated,
+        props: {
+          'source': 'home_create',
+          'category': _genre,
+          'text_len': input.length,
+        },
+      );
       ref.invalidate(userCreatedCardsProvider);
       ref.invalidate(catalogProvider);
       if (!mounted) return;

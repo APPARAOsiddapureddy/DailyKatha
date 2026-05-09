@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 import '../../data/local/mock_catalog.dart';
 import '../../data/providers.dart';
 import '../../l10n/genre_localizer.dart';
+import '../../observability/analytics/analytics.dart';
+import '../../observability/analytics/analytics_provider.dart';
 import '../../theme/app_colors.dart';
 
 Color _interestAccentBg(String id) {
@@ -61,11 +63,21 @@ class _EditInterestsScreenState extends ConsumerState<EditInterestsScreen> {
     if (_saving) return;
     final session = ref.read(sessionHolderProvider);
     if (session == null) return;
+    final before = List<String>.from(session.profile.interestIds);
     setState(() => _saving = true);
     try {
       final nextProfile = session.profile.copyWith(interestIds: _selected.toList());
       final next = await ref.read(authRepositoryProvider).applyProfile(nextProfile);
       ref.read(sessionHolderProvider.notifier).setSession(next);
+      await ref.read(analyticsProvider).log(
+        AEvents.interestChanged,
+        props: {
+          'old_interest_ids': before,
+          'new_interest_ids': _selected.toList(),
+          'count': _selected.length,
+          'source': 'profile',
+        },
+      );
       if (!mounted) return;
       context.pop();
     } catch (e) {

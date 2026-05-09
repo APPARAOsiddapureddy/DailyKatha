@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
+import '../../observability/analytics/analytics.dart';
+import '../../observability/analytics/analytics_provider.dart';
 import '../../theme/app_colors.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
@@ -33,10 +35,26 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     }
     if (!mounted || _navigated) return;
     _navigated = true;
+
+    // Notification deep-link: if user opened the app from a reminder, route there first.
+    final pending = await ref.read(notificationServiceProvider).consumePendingRoute();
+    if (!mounted) return;
+    if (pending != null) {
+      await ref.read(analyticsProvider).log(
+        AEvents.notificationOpened,
+        props: {'route': pending},
+      );
+      // ignore: use_build_context_synchronously
+      context.go(pending);
+      return;
+    }
+
     final session = ref.read(sessionHolderProvider);
     if (session?.profile.onboardingComplete == true) {
+      // ignore: use_build_context_synchronously
       context.go('/home');
     } else {
+      // ignore: use_build_context_synchronously
       context.go('/onboarding/language');
     }
   }

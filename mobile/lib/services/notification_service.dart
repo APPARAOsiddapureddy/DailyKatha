@@ -17,6 +17,7 @@ class NotificationService {
   static const _prefHour = 'dk_daily_reminder_hour';
   static const _prefMinute = 'dk_daily_reminder_minute';
   static const _reminderId = 42001;
+  static const _pendingRouteKey = 'dk_pending_route_v1';
 
   static final FlutterLocalNotificationsPlugin _plugin = FlutterLocalNotificationsPlugin();
   static bool _didInit = false;
@@ -29,7 +30,15 @@ class NotificationService {
     const android = AndroidInitializationSettings('@mipmap/ic_launcher');
     const ios = DarwinInitializationSettings();
     const init = InitializationSettings(android: android, iOS: ios);
-    await _plugin.initialize(settings: init);
+    await _plugin.initialize(
+      settings: init,
+      onDidReceiveNotificationResponse: (resp) async {
+        final route = resp.payload;
+        if (route == null || route.trim().isEmpty) return;
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString(_pendingRouteKey, route);
+      },
+    );
   }
 
   /// Explicitly request permission for daily reminders (Android 13+ / iOS).
@@ -107,7 +116,17 @@ class NotificationService {
       notificationDetails: details,
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       matchDateTimeComponents: DateTimeComponents.time,
+      payload: '/home?source=reminder',
     );
+  }
+
+  /// Returns and clears any route set by notification tap.
+  Future<String?> consumePendingRoute() async {
+    final prefs = await SharedPreferences.getInstance();
+    final route = prefs.getString(_pendingRouteKey);
+    if (route == null || route.trim().isEmpty) return null;
+    await prefs.remove(_pendingRouteKey);
+    return route;
   }
 }
 

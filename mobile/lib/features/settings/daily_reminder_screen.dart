@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../data/providers.dart';
+import '../../observability/analytics/analytics.dart';
+import '../../observability/analytics/analytics_provider.dart';
 import '../../theme/app_colors.dart';
 
 class DailyReminderScreen extends ConsumerStatefulWidget {
@@ -67,6 +69,14 @@ class _DailyReminderScreenState extends ConsumerState<DailyReminderScreen> {
       }
 
       await svc.setDailyReminder(enabled: _enabled, time: _time);
+      await ref.read(analyticsProvider).log(
+        AEvents.reminderEnabled,
+        props: {
+          'enabled': _enabled,
+          'time_h': _time.hour,
+          'time_m': _time.minute,
+        },
+      );
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(_enabled ? 'Daily reminder set for ${_time.format(context)}' : 'Daily reminder off')),

@@ -1,8 +1,13 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../models/card_editor_args.dart';
+import '../../observability/analytics/analytics.dart';
+import '../../observability/analytics/analytics_provider.dart';
 import '../../services/card_share_export.dart';
 import '../../services/safe_image_picker.dart';
 import '../../services/share_service.dart';
@@ -45,6 +50,7 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
   }
 
   Future<void> _pickPhoto() async {
+    final analytics = ProviderScope.containerOf(context).read(analyticsProvider);
     final x = await SafeImagePicker.pickFromGallery(context);
     if (!mounted) return;
     if (x == null) return;
@@ -73,6 +79,14 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
         _scale = 1.0;
         _rotation = 0.0;
       });
+      await analytics.log(
+        AEvents.imageSelected,
+        props: {
+          'source': 'gallery',
+          'cropped': cropped != null,
+          'bytes_kb': (bytes.length / 1024).round(),
+        },
+      );
     } catch (e) {
       if (!mounted) return;
       debugPrint('Failed to load picked/cropped bytes: $e');
@@ -148,7 +162,6 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
     setState(() => _busy = true);
     try {
       final bytes = await CardShareExport.renderKathaCardPngBytes(
-        // ignore: use_build_context_synchronously
         context: context,
         card: widget.args.card,
         contentLanguage: widget.args.contentLanguage,
@@ -176,7 +189,17 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
   Future<void> _status() async {
     if (_busy) return;
     setState(() => _busy = true);
+    final analytics = ProviderScope.containerOf(context).read(analyticsProvider);
     try {
+      await analytics.log(
+        AEvents.shareClicked,
+        props: {
+          'channel': 'whatsapp_status',
+          'has_photo': _photo != null,
+          'has_caption': _caption.trim().isNotEmpty,
+          'source': widget.args.preferStatusPrimaryCta ? 'feed' : 'editor',
+        },
+      );
       await CardShareExport.shareKathaCardAsImage(
         context: context,
         card: widget.args.card,
@@ -189,6 +212,13 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
         caption: _caption,
         captionColor: _captionColor,
         shareService: widget.shareService,
+      );
+      await analytics.log(
+        AEvents.shareSheetOpened,
+        props: {
+          'channel': 'whatsapp_status',
+          'source': widget.args.preferStatusPrimaryCta ? 'feed' : 'editor',
+        },
       );
     } finally {
       if (mounted) setState(() => _busy = false);
