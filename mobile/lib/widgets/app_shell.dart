@@ -13,31 +13,32 @@ class AppShell extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return Scaffold(
-      backgroundColor: AppColors.scaffoldDark,
+      backgroundColor: AppColors.protoCream,
       body: navigationShell,
       bottomNavigationBar: NavigationBar(
         selectedIndex: navigationShell.currentIndex,
         onDestinationSelected: navigationShell.goBranch,
-        backgroundColor: AppColors.bottomNavDark,
-        indicatorColor: AppColors.accentGoldSubtleBg,
+        backgroundColor: AppColors.protoSurface,
+        indicatorColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
-        shadowColor: Colors.transparent,
+        shadowColor: Colors.black12,
         elevation: 0,
+        height: 72,
         labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         destinations: [
           NavigationDestination(
-            icon: const Icon(Icons.home_outlined),
-            selectedIcon: const Icon(Icons.home),
+            icon: Icon(Icons.home_outlined, color: AppColors.protoTabIdle),
+            selectedIcon: Icon(Icons.home, color: AppColors.protoBrand),
             label: l10n.navHome,
           ),
           NavigationDestination(
-            icon: const Icon(Icons.search),
-            selectedIcon: const Icon(Icons.search),
+            icon: Icon(Icons.explore_outlined, color: AppColors.protoTabIdle),
+            selectedIcon: Icon(Icons.explore, color: AppColors.protoBrand),
             label: l10n.navExplore,
           ),
           NavigationDestination(
-            icon: const Icon(Icons.person_outline),
-            selectedIcon: const Icon(Icons.person),
+            icon: Icon(Icons.person_outline, color: AppColors.protoTabIdle),
+            selectedIcon: Icon(Icons.person, color: AppColors.protoBrand),
             label: l10n.navProfile,
           ),
         ],

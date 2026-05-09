@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 import 'app_typography.dart';
@@ -144,4 +145,95 @@ abstract final class AppTheme {
 
   /// Kept for reference; app uses [dark] only.
   static ThemeData light() => dark();
+
+  /// Light cream shell matching `prototype.html` (onboarding, tabs, home chrome).
+  static ThemeData chrome() {
+    const brand = AppColors.protoBrand;
+    final scheme = ColorScheme.light(
+      primary: brand,
+      onPrimary: Colors.white,
+      secondary: AppColors.protoSaffron,
+      onSecondary: AppColors.protoInk,
+      surface: AppColors.protoSurface,
+      onSurface: AppColors.protoInk,
+      surfaceContainerHighest: AppColors.protoSurfaceAlt,
+      outline: AppColors.protoBorder,
+      outlineVariant: AppColors.protoDivider,
+      error: AppColors.kumkum,
+      onError: Colors.white,
+    );
+
+    return ThemeData(
+      useMaterial3: true,
+      brightness: Brightness.light,
+      primaryColor: brand,
+      scaffoldBackgroundColor: AppColors.protoCream,
+      cardColor: AppColors.protoSurface,
+      colorScheme: scheme,
+      textTheme: AppTypography.chromeTextTheme(scheme),
+      appBarTheme: AppBarTheme(
+        backgroundColor: AppColors.protoCream,
+        foregroundColor: AppColors.protoInk,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        titleTextStyle: GoogleFonts.dmSans(
+          fontWeight: FontWeight.w600,
+          fontSize: 19,
+          letterSpacing: -0.2,
+          color: AppColors.protoInk,
+        ),
+        iconTheme: const IconThemeData(color: AppColors.protoInk),
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: AppColors.protoSurface,
+        indicatorColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        elevation: 0,
+        shadowColor: Colors.black12,
+        height: 72,
+        labelTextStyle: WidgetStateProperty.resolveWith((s) {
+          final selected = s.contains(WidgetState.selected);
+          return GoogleFonts.dmSans(
+            fontSize: 11,
+            fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+            letterSpacing: 0.1,
+            color: selected ? brand : AppColors.protoTabIdle,
+          );
+        }),
+        iconTheme: WidgetStateProperty.resolveWith((s) {
+          final selected = s.contains(WidgetState.selected);
+          return IconThemeData(
+            color: selected ? brand : AppColors.protoTabIdle,
+            size: 24,
+          );
+        }),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          shadowColor: brand.withValues(alpha: 0.28),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          backgroundColor: brand,
+          foregroundColor: Colors.white,
+          disabledBackgroundColor: const Color(0xFFD7C9B6),
+          textStyle: GoogleFonts.dmSans(fontWeight: FontWeight.w600, fontSize: 16, letterSpacing: -0.1),
+        ),
+      ),
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          elevation: 0,
+          backgroundColor: AppColors.protoSurface,
+          foregroundColor: AppColors.protoInk,
+        ),
+      ),
+      dividerTheme: const DividerThemeData(color: AppColors.protoDivider, thickness: 1),
+      snackBarTheme: SnackBarThemeData(
+        backgroundColor: AppColors.protoInk,
+        contentTextStyle: GoogleFonts.dmSans(color: Colors.white, fontWeight: FontWeight.w500),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      ),
+    );
+  }
 }

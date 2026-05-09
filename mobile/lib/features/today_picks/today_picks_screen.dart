@@ -64,19 +64,19 @@ class _TodayPicksScreenState extends ConsumerState<TodayPicksScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.scaffoldDark,
+      backgroundColor: AppColors.protoCream,
       appBar: AppBar(
-        backgroundColor: AppColors.surfaceDark,
-        title: const Text("Today's 5", style: TextStyle(color: AppColors.accentGold)),
+        backgroundColor: AppColors.protoSurface,
+        title: const Text("Today's 5", style: TextStyle(color: AppColors.protoBrand)),
         actions: [
           IconButton(
             onPressed: _load,
-            icon: const Icon(Icons.refresh, color: AppColors.accentGold),
+            icon: const Icon(Icons.refresh, color: AppColors.protoBrand),
           ),
         ],
       ),
       body: _loading
-          ? const Center(child: CircularProgressIndicator(color: AppColors.accentGold))
+          ? const Center(child: CircularProgressIndicator(color: AppColors.protoBrand))
           : _error != null
               ? _ErrorState(message: _error!, onRetry: _load)
               : _picks.isEmpty
@@ -87,9 +87,9 @@ class _TodayPicksScreenState extends ConsumerState<TodayPicksScreen> {
                           padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
                           child: Row(
                             children: [
-                              Text('${_idx + 1} / ${_picks.length}', style: const TextStyle(color: AppColors.textSecondaryDark)),
+                              Text('${_idx + 1} / ${_picks.length}', style: const TextStyle(color: AppColors.protoInk3)),
                               const Spacer(),
-                              const Text('Refreshes at midnight IST', style: TextStyle(color: AppColors.textTertiaryDark, fontSize: 12)),
+                              const Text('Refreshes at midnight IST', style: TextStyle(color: AppColors.protoInk4, fontSize: 12)),
                             ],
                           ),
                         ),
@@ -124,9 +124,9 @@ class _PickCard extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 18),
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.surfaceElevatedDark,
+          color: AppColors.protoSurfaceAlt,
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: AppColors.borderOnDark),
+          border: Border.all(color: AppColors.protoBorder),
         ),
         child: Padding(
           padding: const EdgeInsets.all(18),
@@ -148,7 +148,7 @@ class _PickCard extends StatelessWidget {
                     quote,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
-                      color: AppColors.textPrimaryDark,
+                      color: AppColors.protoInk,
                       fontSize: 22,
                       fontWeight: FontWeight.w900,
                       height: 1.4,
@@ -161,7 +161,7 @@ class _PickCard extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: Text(
                     author,
-                    style: const TextStyle(color: AppColors.textSecondaryDark, fontWeight: FontWeight.w700),
+                    style: const TextStyle(color: AppColors.protoInk3, fontWeight: FontWeight.w700),
                   ),
                 ),
               const SizedBox(height: 12),
@@ -191,11 +191,11 @@ class _Pill extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
-        color: AppColors.accentGold.withAlpha((0.12 * 255).round()),
+        color: AppColors.protoBrand.withAlpha((0.12 * 255).round()),
         borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: AppColors.accentGold.withAlpha((0.28 * 255).round())),
+        border: Border.all(color: AppColors.protoBrand.withAlpha((0.28 * 255).round())),
       ),
-      child: Text(text, style: const TextStyle(color: AppColors.accentGold, fontSize: 11, fontWeight: FontWeight.w700)),
+      child: Text(text, style: const TextStyle(color: AppColors.protoBrand, fontSize: 11, fontWeight: FontWeight.w700)),
     );
   }
 }
@@ -211,16 +211,16 @@ class _IconAction extends StatelessWidget {
       child: Container(
         height: 46,
         decoration: BoxDecoration(
-          color: AppColors.surfaceDark,
+          color: AppColors.protoSurface,
           borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: AppColors.borderOnDark),
+          border: Border.all(color: AppColors.protoBorder),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 18, color: AppColors.textSecondaryDark),
+            Icon(icon, size: 18, color: AppColors.protoInk3),
             const SizedBox(width: 8),
-            Text(label, style: const TextStyle(color: AppColors.textSecondaryDark, fontWeight: FontWeight.w700)),
+            Text(label, style: const TextStyle(color: AppColors.protoInk3, fontWeight: FontWeight.w700)),
           ],
         ),
       ),
@@ -238,7 +238,7 @@ class _EmptyState extends StatelessWidget {
         padding: EdgeInsets.all(24),
         child: Text(
           "Today's picks are being prepared.\nPlease try again in a few minutes.",
-          style: TextStyle(color: AppColors.textSecondaryDark),
+          style: TextStyle(color: AppColors.protoInk3),
           textAlign: TextAlign.center,
         ),
       ),
@@ -259,9 +259,9 @@ class _ErrorState extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.error_outline, color: AppColors.accentGold, size: 44),
+            const Icon(Icons.error_outline, color: AppColors.protoBrand, size: 44),
             const SizedBox(height: 12),
-            Text(message, style: const TextStyle(color: AppColors.textSecondaryDark), textAlign: TextAlign.center),
+            Text(message, style: const TextStyle(color: AppColors.protoInk3), textAlign: TextAlign.center),
             const SizedBox(height: 16),
             FilledButton(onPressed: onRetry, child: const Text('Try again')),
           ],

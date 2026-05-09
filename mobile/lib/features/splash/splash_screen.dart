@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
 import '../../theme/app_colors.dart';
-import '../../widgets/brand_mark.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -26,7 +26,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   Future<void> _run() async {
     final sw = Stopwatch()..start();
     await ref.read(bootstrapProvider.future);
-    const minSplash = Duration(milliseconds: 2400);
+    const minSplash = Duration(milliseconds: 1650);
     final remaining = minSplash - sw.elapsed;
     if (remaining > Duration.zero) {
       await Future<void>.delayed(remaining);
@@ -45,38 +45,89 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return Scaffold(
-      backgroundColor: AppColors.scaffoldDark,
-      body: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              AppColors.accentGold.withValues(alpha: 0.06),
-              AppColors.scaffoldDark,
-              AppColors.accentGold.withValues(alpha: 0.04),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text('🪔', style: TextStyle(fontSize: 64)),
-              const SizedBox(height: 16),
-              const BrandMark(compact: false),
-              const SizedBox(height: 12),
-              Text(
-                l10n.splashTagline,
-                style: TextStyle(
-                  fontStyle: FontStyle.italic,
-                  color: AppColors.textSecondaryDark,
-                  fontSize: 15,
-                ),
+      backgroundColor: AppColors.protoBrandDeep,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: RadialGradient(
+                center: const Alignment(0, -0.35),
+                radius: 1.15,
+                colors: [
+                  Color.lerp(AppColors.protoSaffron, Colors.white, 0.12)!.withValues(alpha: 0.22),
+                  Colors.transparent,
+                ],
+                stops: const [0.0, 0.55],
               ),
-            ],
+            ),
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    width: 12,
+                    height: 12,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.protoSaffron,
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.protoSaffron.withValues(alpha: 0.65),
+                          blurRadius: 24,
+                          spreadRadius: 2,
+                        ),
+                        BoxShadow(
+                          color: AppColors.protoSaffron.withValues(alpha: 0.35),
+                          blurRadius: 48,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Daily ',
+                          style: GoogleFonts.spectral(
+                            fontSize: 52,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                            letterSpacing: -0.6,
+                            height: 1.0,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'Katha',
+                          style: GoogleFonts.spectral(
+                            fontSize: 52,
+                            fontWeight: FontWeight.w500,
+                            fontStyle: FontStyle.italic,
+                            color: AppColors.protoSaffron,
+                            letterSpacing: -0.6,
+                            height: 1.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 18),
+                  Text(
+                    l10n.splashTagline.toUpperCase(),
+                    style: GoogleFonts.dmSans(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 3,
+                      color: Colors.white.withValues(alpha: 0.58),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

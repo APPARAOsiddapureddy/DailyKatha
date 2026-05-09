@@ -18,7 +18,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navExplore => 'Explore';
 
   @override
-  String get navProfile => 'Profile';
+  String get navProfile => 'You';
 
   @override
   String get brandTagline => 'Share the Blessing';
@@ -72,28 +72,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboardingStep3 => 'Step 3 of 3';
 
   @override
-  String get onboardingLanguageQuestion => 'What\'s your language?';
+  String get onboardingLanguageQuestion => 'Choose your reading language';
 
   @override
   String get onboardingLanguageSubtitle =>
-      'We\'ll show content in the language you speak every day.';
+      'Cards will appear in this language first.';
 
   @override
   String get onboardingContinue => 'Continue →';
 
   @override
-  String get onboardingReligionTitle => 'Your spiritual path?';
+  String get onboardingReligionTitle => 'Any path you follow?';
 
   @override
   String get onboardingReligionSubtitle =>
-      'We\'ll tune content to honour your faith. This is optional.';
+      'So we keep devotional cards respectful to your tradition.';
 
   @override
-  String get onboardingInterestsTitle => 'What do you love to share?';
+  String get onboardingInterestsTitle => 'What do you love sharing?';
 
   @override
   String get onboardingInterestsSubtitle =>
-      'Pick up to 3 — we\'ll fill your home with these.';
+      'Pick up to 3 to shape your home feed.';
 
   @override
   String onboardingInterestCount(int count) {
@@ -179,13 +179,52 @@ class AppLocalizationsEn extends AppLocalizations {
   String get exploreTabBrowse => 'Browse';
 
   @override
-  String get exploreHeadline => 'Search';
+  String get exploreHeadline => 'Explore';
 
   @override
-  String get exploreSubtitle => 'Explore what to share today';
+  String get exploreSubtitle => 'Festival packs, themes, and what\'s trending.';
 
   @override
-  String get exploreSearchHint => 'Search quotes…';
+  String get exploreByInterest => 'By interest';
+
+  @override
+  String get exploreByInterestSub => 'Tap to browse';
+
+  @override
+  String get exploreCuratedPacks => 'Curated packs';
+
+  @override
+  String get exploreCuratedPacksSub => 'Hand-picked sets you can save';
+
+  @override
+  String get exploreFestivalLive => 'Festival Pack · Live';
+
+  @override
+  String get exploreFestivalTitle => 'Ugadi greetings';
+
+  @override
+  String get exploreFestivalBody => '12 cards · refreshed daily until 14 May';
+
+  @override
+  String get explorePack1Title => 'Monday strength';
+
+  @override
+  String get explorePack1Sub => '8 motivation cards · for the week ahead';
+
+  @override
+  String get explorePack2Title => 'Mother\'s Day';
+
+  @override
+  String get explorePack2Sub => '10 cards · for the woman who started it all';
+
+  @override
+  String get explorePack3Title => 'Quiet evenings';
+
+  @override
+  String get explorePack3Sub => '6 cards · slow down with these';
+
+  @override
+  String get exploreSearchHint => 'Search greetings, festivals, names…';
 
   @override
   String get exploreJumpIn => 'JUMP IN';
@@ -233,6 +272,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileSaved => 'Saved';
 
   @override
+  String get profileStatEdits => 'Edits';
+
+  @override
   String get profileShared => 'Shared';
 
   @override
@@ -258,6 +300,57 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileFooter => 'Daily Katha · crafted with care';
+
+  @override
+  String get profileStreakSub => 'You\'ve sent a card every day this week.';
+
+  @override
+  String get profileSectionLibrary => 'Library';
+
+  @override
+  String get profileSectionPreferences => 'Preferences';
+
+  @override
+  String get profileSectionAbout => 'About';
+
+  @override
+  String get profilePathTradition => 'Path / tradition';
+
+  @override
+  String get profileRowSavedCards => 'Saved cards';
+
+  @override
+  String profileRowSavedSub(int count) {
+    return '$count cards';
+  }
+
+  @override
+  String get profileRowMyEdits => 'My edits';
+
+  @override
+  String profileRowMyEditsSub(int count) {
+    return '$count cards with your photos';
+  }
+
+  @override
+  String get profileRowDailyReminder => 'Daily reminder';
+
+  @override
+  String get profileRowReminderSub => '7:00 AM';
+
+  @override
+  String get profileRowSettingsOnly => 'Settings';
+
+  @override
+  String get feedScreenLabel => 'Feed';
+
+  @override
+  String feedIndexOf(int n, int total) {
+    return '$n of $total';
+  }
+
+  @override
+  String get shareToWhatsAppStatus => 'Share to WhatsApp Status';
 
   @override
   String get profileEmptySharedTitle => 'Items you share will appear here';
@@ -334,7 +427,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get otpDevModeHint => 'Dev mode: enter any 6 digits to continue.';
 
   @override
-  String get splashTagline => 'Blessings worth sharing';
+  String get splashTagline => 'A line for the day';
+
+  @override
+  String get homeHeroKicker => 'Your card today';
+
+  @override
+  String get homeShareToStatus => 'Share to Status';
+
+  @override
+  String homeRailNewToday(int count) {
+    return '$count new today';
+  }
+
+  @override
+  String get sectionPreviewSubline =>
+      'A clean line for today, then more behind a tap.';
+
+  @override
+  String sectionOpenAll(int count) {
+    return 'Open all $count cards';
+  }
+
+  @override
+  String get sectionAlsoToday => 'Also today';
 
   @override
   String get dateToday => 'Today';

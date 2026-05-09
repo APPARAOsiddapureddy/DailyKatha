@@ -186,6 +186,45 @@ class AppLocalizationsMl extends AppLocalizations {
   String get exploreSubtitle => 'ഇന്ന് എന്ത് പങ്കിടണമെന്ന് അന്വേഷിക്കുക';
 
   @override
+  String get exploreByInterest => 'By interest';
+
+  @override
+  String get exploreByInterestSub => 'Tap to browse';
+
+  @override
+  String get exploreCuratedPacks => 'Curated packs';
+
+  @override
+  String get exploreCuratedPacksSub => 'Hand-picked sets you can save';
+
+  @override
+  String get exploreFestivalLive => 'Festival Pack · Live';
+
+  @override
+  String get exploreFestivalTitle => 'Ugadi greetings';
+
+  @override
+  String get exploreFestivalBody => '12 cards · refreshed daily until 14 May';
+
+  @override
+  String get explorePack1Title => 'Monday strength';
+
+  @override
+  String get explorePack1Sub => '8 motivation cards · for the week ahead';
+
+  @override
+  String get explorePack2Title => 'Mother\'s Day';
+
+  @override
+  String get explorePack2Sub => '10 cards · for the woman who started it all';
+
+  @override
+  String get explorePack3Title => 'Quiet evenings';
+
+  @override
+  String get explorePack3Sub => '6 cards · slow down with these';
+
+  @override
   String get exploreSearchHint => 'ഉദ്ധരണി തിരയുക…';
 
   @override
@@ -234,6 +273,9 @@ class AppLocalizationsMl extends AppLocalizations {
   String get profileSaved => 'സേവ് ചെയ്തവ';
 
   @override
+  String get profileStatEdits => 'Edits';
+
+  @override
   String get profileShared => 'പങ്കിട്ടവ';
 
   @override
@@ -259,6 +301,57 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String get profileFooter => 'ഡെയ്‌ലി കഥ · ശ്രദ്ധയോടെ';
+
+  @override
+  String get profileStreakSub => 'You\'ve sent a card every day this week.';
+
+  @override
+  String get profileSectionLibrary => 'Library';
+
+  @override
+  String get profileSectionPreferences => 'Preferences';
+
+  @override
+  String get profileSectionAbout => 'About';
+
+  @override
+  String get profilePathTradition => 'Path / tradition';
+
+  @override
+  String get profileRowSavedCards => 'Saved cards';
+
+  @override
+  String profileRowSavedSub(int count) {
+    return '$count cards';
+  }
+
+  @override
+  String get profileRowMyEdits => 'My edits';
+
+  @override
+  String profileRowMyEditsSub(int count) {
+    return '$count cards with your photos';
+  }
+
+  @override
+  String get profileRowDailyReminder => 'Daily reminder';
+
+  @override
+  String get profileRowReminderSub => '7:00 AM';
+
+  @override
+  String get profileRowSettingsOnly => 'Settings';
+
+  @override
+  String get feedScreenLabel => 'Feed';
+
+  @override
+  String feedIndexOf(int n, int total) {
+    return '$n of $total';
+  }
+
+  @override
+  String get shareToWhatsAppStatus => 'Share to WhatsApp Status';
 
   @override
   String get profileEmptySharedTitle => 'നിങ്ങൾ പങ്കിട്ടവ ഇവിടെ കാണും';
@@ -336,6 +429,29 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String get splashTagline => 'അനുഗ്രഹം പകരുക';
+
+  @override
+  String get homeHeroKicker => 'Your card today';
+
+  @override
+  String get homeShareToStatus => 'Share to Status';
+
+  @override
+  String homeRailNewToday(int count) {
+    return '$count new today';
+  }
+
+  @override
+  String get sectionPreviewSubline =>
+      'A clean line for today, then more behind a tap.';
+
+  @override
+  String sectionOpenAll(int count) {
+    return 'Open all $count cards';
+  }
+
+  @override
+  String get sectionAlsoToday => 'Also today';
 
   @override
   String get dateToday => 'ഇന്ന്';

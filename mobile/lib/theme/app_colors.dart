@@ -52,5 +52,25 @@ abstract final class AppColors {
   static Color line(BuildContext context) => ink.withValues(alpha: 0.12);
   static Color lineStrong(BuildContext context) => ink.withValues(alpha: 0.22);
 
-  static const Color feedScaffold = scaffoldDark;
+  /// Feed / editor dark canvas — matches `screens-feed.jsx` (`#0A0807`).
+  static const Color feedScaffold = Color(0xFF0A0807);
+
+  // —— Prototype.html “chrome” (light cream app shell) ——
+  static const Color protoCream = Color(0xFFFBF6EC);
+  static const Color protoSurface = Color(0xFFFFFFFF);
+  static const Color protoSurfaceAlt = Color(0xFFF4ECDD);
+  static const Color protoBorder = Color(0xFFE8DFD0);
+  static const Color protoDivider = Color(0xFFEDE3D2);
+  static const Color protoInk = Color(0xFF1A1410);
+  static const Color protoInk2 = Color(0xFF4A3F36);
+  static const Color protoInk3 = Color(0xFF8A7C6E);
+  static const Color protoInk4 = Color(0xFFB4A696);
+  static const Color protoBrand = Color(0xFFB33A20);
+  /// ~12% alpha brand (chips / selections on cream).
+  static const Color protoBrand12 = Color(0x1FB33A20);
+  static const Color protoBrandOutline25 = Color(0x40B33A20);
+  /// Matches `tokens.js` brandDeep (splash / deep brand).
+  static const Color protoBrandDeep = Color(0xFF7E1F0E);
+  static const Color protoSaffron = Color(0xFFE89B2C);
+  static const Color protoTabIdle = Color(0xFF8A7C6E);
 }

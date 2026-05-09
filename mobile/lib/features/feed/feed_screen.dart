@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,15 +8,12 @@ import '../../core/app_config.dart';
 import '../../core/content_language.dart';
 import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
-import '../../l10n/genre_localizer.dart';
 import '../../models/card_editor_args.dart';
 import '../../models/feed_route_args.dart';
 import '../../models/katha_card.dart';
 import '../../services/card_share_export.dart';
 import '../../theme/app_colors.dart';
-import '../../theme/status_luxe_palette.dart';
 import '../../utils/error_handler.dart';
-import '../../widgets/action_rail.dart';
 import '../../widgets/status_card.dart';
 
 class FeedScreen extends ConsumerStatefulWidget {
@@ -31,6 +29,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
   PageController? _controller;
   int _index = 0;
   bool _sharing = false;
+  final Set<String> _savedIds = {};
 
   List<KathaCard> _visible(List<KathaCard> full) {
     final f = widget.args.categoryFilter;
@@ -136,6 +135,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
       nameStem: 'daily_katha_${card.id}',
     );
     if (!mounted) return;
+    if (ok) setState(() => _savedIds.add(card.id));
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(ok ? 'Saved to gallery' : 'Could not save to gallery'),
@@ -167,50 +167,63 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     final lang = effectiveContentLanguage(session);
     final catalog = ref.watch(catalogProvider);
     final liked = ref.watch(likedIdsProvider);
-    final bottomPad = MediaQuery.paddingOf(context).bottom;
+    final bottomInset = MediaQuery.paddingOf(context).bottom;
+    final topInset = MediaQuery.paddingOf(context).top;
+    final l10n = AppLocalizations.of(context);
 
-    return Scaffold(
-      backgroundColor: AppColors.feedScaffold,
-      body: catalog.when(
-        loading: () => const Center(child: CircularProgressIndicator(color: AppColors.white)),
-        error: (e, _) => Center(
-          child: Text(
-            '${AppLocalizations.of(context).errorGeneric}: $e',
-            style: const TextStyle(color: AppColors.white),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
+        systemNavigationBarColor: AppColors.feedScaffold,
+        systemNavigationBarIconBrightness: Brightness.light,
+      ),
+      child: Scaffold(
+        backgroundColor: AppColors.feedScaffold,
+        body: catalog.when(
+          loading: () => const Center(child: CircularProgressIndicator(color: AppColors.white)),
+          error: (e, _) => Center(
+            child: Text(
+              '${l10n.errorGeneric}: $e',
+              style: const TextStyle(color: AppColors.white),
+            ),
           ),
-        ),
-        data: (cards) {
-          final l10n = AppLocalizations.of(context);
-          if (cards.isEmpty) {
-            return Center(child: Text(l10n.noCards, style: const TextStyle(color: AppColors.white)));
-          }
-          final visible = _visible(cards);
-          if (visible.isEmpty) {
-            return Center(child: Text(l10n.noCards, style: const TextStyle(color: AppColors.white)));
-          }
+          data: (cards) {
+            if (cards.isEmpty) {
+              return Center(child: Text(l10n.noCards, style: const TextStyle(color: AppColors.white)));
+            }
+            final visible = _visible(cards);
+            if (visible.isEmpty) {
+              return Center(child: Text(l10n.noCards, style: const TextStyle(color: AppColors.white)));
+            }
 
-          final ctrl = _controller;
-          if (ctrl == null) {
-            _scheduleControllerIfNeeded(cards, visible);
-            return const Center(child: CircularProgressIndicator(color: AppColors.white));
-          }
+            final ctrl = _controller;
+            if (ctrl == null) {
+              _scheduleControllerIfNeeded(cards, visible);
+              return const Center(child: CircularProgressIndicator(color: AppColors.white));
+            }
 
-          final card = visible[_index.clamp(0, visible.length - 1)];
-          final luxe = StatusLuxePalette.forCategory(card.category);
-          final genreLabel = GenreLocalizer.getName(card.category, lang);
+            final card = visible[_index.clamp(0, visible.length - 1)];
+            final headerBottom = topInset + 52;
+            final bottomBarH = 72.0 + bottomInset;
 
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    // Leave breathing room so the top header never overlaps the card.
-                    final cardHeight = (constraints.maxHeight - 140).clamp(420.0, constraints.maxHeight);
-                    return Stack(
-                      fit: StackFit.expand,
-                      children: [
-                        PageView.builder(
+            return LayoutBuilder(
+              builder: (context, constraints) {
+                final h = constraints.maxHeight - headerBottom - bottomBarH;
+                final cardHeight = h.clamp(320.0, constraints.maxHeight);
+
+                return Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    /// Card — inset for left dots + right rail (`screens-feed.jsx`).
+                    Positioned(
+                      left: 28,
+                      right: 72,
+                      top: headerBottom,
+                      bottom: bottomBarH,
+                      child: Center(
+                        child: PageView.builder(
                           scrollDirection: Axis.vertical,
                           controller: ctrl,
                           itemCount: visible.length,
@@ -218,206 +231,359 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                           itemBuilder: (context, i) {
                             final c = visible[i];
                             return Padding(
-                              padding: const EdgeInsets.fromLTRB(18, 36, 18, 14),
-                              child: Center(
-                                child: StatusCard(
-                                  card: c,
-                                  contentLanguage: lang,
-                                  height: cardHeight,
-                                ),
+                              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+                              child: StatusCard(
+                                card: c,
+                                contentLanguage: lang,
+                                height: cardHeight,
                               ),
                             );
                           },
                         ),
-                        Positioned(
-                          top: 0,
-                          left: 0,
-                          right: 0,
-                          child: SafeArea(
-                            bottom: false,
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    AppColors.feedScaffold.withValues(alpha: 0.94),
-                                    AppColors.feedScaffold.withValues(alpha: 0),
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                ),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  _FeedProgressStrip(
-                                    index: _index,
-                                    total: visible.length,
-                                    onSeek: (p) => _seekTo(visible, p),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(16, 10, 16, 12),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Material(
-                                          color: Colors.white.withValues(alpha: 0.08),
-                                          shape: const CircleBorder(),
-                                          clipBehavior: Clip.antiAlias,
-                                          child: InkWell(
-                                            onTap: () => context.pop(),
-                                            customBorder: const CircleBorder(),
-                                            child: const SizedBox(
-                                              width: 34,
-                                              height: 34,
-                                              child: Icon(Icons.arrow_back, size: 18, color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(width: 12),
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'DAILY KATHA',
-                                                style: GoogleFonts.dmSans(
-                                                  fontSize: 11,
-                                                  fontWeight: FontWeight.w500,
-                                                  letterSpacing: 2.2,
-                                                  color: Colors.white.withValues(alpha: 0.5),
-                                                ),
-                                              ),
-                                              const SizedBox(height: 2),
-                                              Text.rich(
-                                                TextSpan(
-                                                  style: GoogleFonts.dmSans(
-                                                    fontSize: 11,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: Colors.white.withValues(alpha: 0.28),
-                                                    height: 1.35,
-                                                  ),
-                                                  children: [
-                                                    TextSpan(text: '${AppLocalizations.of(context).scrollHint} · '),
-                                                    TextSpan(
-                                                      text: genreLabel,
-                                                      style: GoogleFonts.dmSans(
-                                                        fontWeight: FontWeight.w500,
-                                                        color: luxe.accent,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                      ),
+                    ),
+
+                    /// Top chrome: back · Feed / n of m · search
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      child: SafeArea(
+                        bottom: false,
+                        child: Container(
+                          padding: const EdgeInsets.fromLTRB(16, 6, 16, 14),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Colors.black.withValues(alpha: 0.55),
+                                Colors.black.withValues(alpha: 0),
+                              ],
                             ),
                           ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              ),
-              SafeArea(
-                top: false,
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(12, 4, 12, 8 + bottomPad),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      FeedActionBar(
-                        liked: liked.contains(card.id),
-                        onLike: () => _toggleLike(card.id),
-                        // UX: "Edit" first, then share as Status from inside editor.
-                        onShare: () => _editCurrent(lang, card),
-                        onDownload: () => _saveCurrent(lang, card),
-                        onEdit: _sharing ? () {} : () => _shareCurrent(lang, card),
-                      ),
-                      const SizedBox(height: 10),
-                      // Intentionally minimal: avoid instructional chrome while viewing the card.
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          );
-        },
-      ),
-    );
-  }
-}
-
-/// Story-style progress: one segment per card when [total] ≤ 48, else a single filled track.
-class _FeedProgressStrip extends StatelessWidget {
-  const _FeedProgressStrip({
-    required this.index,
-    required this.total,
-    required this.onSeek,
-  });
-
-  final int index;
-  final int total;
-  final ValueChanged<int> onSeek;
-
-  static const int _maxSeg = 48;
-
-  @override
-  Widget build(BuildContext context) {
-    if (total <= 0) return const SizedBox.shrink();
-
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 6, 16, 4),
-      child: SizedBox(
-        height: 2,
-        child: total <= _maxSeg
-            ? Row(
-                children: List.generate(total, (i) {
-                  final done = i < index;
-                  final here = i == index;
-                  return Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 1.5),
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () => onSeek(i),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(2),
-                          child: Stack(
-                            fit: StackFit.expand,
+                          child: Row(
                             children: [
-                              ColoredBox(color: Colors.white.withValues(alpha: 0.18)),
-                              if (done || here) const ColoredBox(color: Colors.white),
+                              Material(
+                                color: Colors.white.withValues(alpha: 0.14),
+                                shape: const CircleBorder(),
+                                clipBehavior: Clip.antiAlias,
+                                child: InkWell(
+                                  onTap: () => context.pop(),
+                                  customBorder: const CircleBorder(),
+                                  child: const SizedBox(
+                                    width: 40,
+                                    height: 40,
+                                    child: Icon(Icons.chevron_left, size: 22, color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      l10n.feedScreenLabel.toUpperCase(),
+                                      style: GoogleFonts.dmSans(
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w700,
+                                        letterSpacing: 2,
+                                        color: Colors.white.withValues(alpha: 0.6),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 2),
+                                    Text(
+                                      l10n.feedIndexOf(_index + 1, visible.length),
+                                      style: GoogleFonts.dmSans(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Material(
+                                color: Colors.white.withValues(alpha: 0.14),
+                                shape: const CircleBorder(),
+                                clipBehavior: Clip.antiAlias,
+                                child: InkWell(
+                                  onTap: () {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(content: Text('Search coming soon')),
+                                    );
+                                  },
+                                  customBorder: const CircleBorder(),
+                                  child: const SizedBox(
+                                    width: 40,
+                                    height: 40,
+                                    child: Icon(Icons.search, size: 20, color: Colors.white),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
                       ),
                     ),
-                  );
-                }),
-              )
-            : ClipRRect(
-                borderRadius: BorderRadius.circular(2),
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    ColoredBox(color: Colors.white.withValues(alpha: 0.18)),
-                    FractionallySizedBox(
-                      widthFactor: (index + 1) / total,
-                      alignment: Alignment.centerLeft,
-                      child: const ColoredBox(color: Colors.white),
+
+                    /// Left vertical dots
+                    Positioned(
+                      left: 12,
+                      top: headerBottom + 8,
+                      bottom: bottomBarH + 8,
+                      width: 12,
+                      child: Center(
+                        child: _FeedPageDots(
+                          count: visible.length,
+                          index: _index,
+                          onTap: (i) => _seekTo(visible, i),
+                        ),
+                      ),
+                    ),
+
+                    /// Right side action rail
+                    Positioned(
+                      right: 10,
+                      top: headerBottom,
+                      bottom: bottomBarH,
+                      width: 56,
+                      child: Center(
+                        child: _FeedSideRail(
+                          liked: liked.contains(card.id),
+                          saved: _savedIds.contains(card.id),
+                          onLike: () => _toggleLike(card.id),
+                          onSave: () => _saveCurrent(lang, card),
+                          onEdit: () => _editCurrent(lang, card),
+                          onShare: _sharing ? () {} : () => _shareCurrent(lang, card),
+                        ),
+                      ),
+                    ),
+
+                    /// Bottom: Share to WhatsApp Status + photo (editor)
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      child: SafeArea(
+                        top: false,
+                        child: Container(
+                          padding: const EdgeInsets.fromLTRB(16, 10, 16, 12),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter,
+                              colors: [
+                                Colors.black.withValues(alpha: 0.72),
+                                Colors.transparent,
+                              ],
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: FilledButton.icon(
+                                  onPressed: _sharing ? null : () => _shareCurrent(lang, card),
+                                  style: FilledButton.styleFrom(
+                                    backgroundColor: AppColors.protoBrandDeep,
+                                    foregroundColor: Colors.white,
+                                    padding: const EdgeInsets.symmetric(vertical: 14),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(14),
+                                    ),
+                                  ),
+                                  icon: const Icon(Icons.share, size: 20),
+                                  label: Text(
+                                    l10n.shareToWhatsAppStatus,
+                                    style: GoogleFonts.dmSans(fontWeight: FontWeight.w600, fontSize: 15),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Material(
+                                color: Colors.white.withValues(alpha: 0.14),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(14),
+                                  side: BorderSide(color: Colors.white.withValues(alpha: 0.18)),
+                                ),
+                                clipBehavior: Clip.antiAlias,
+                                child: InkWell(
+                                  onTap: () => _editCurrent(lang, card),
+                                  child: const SizedBox(
+                                    width: 56,
+                                    height: 48,
+                                    child: Icon(Icons.photo_outlined, color: Colors.white, size: 22),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ],
+                );
+              },
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class _FeedPageDots extends StatelessWidget {
+  const _FeedPageDots({
+    required this.count,
+    required this.index,
+    required this.onTap,
+  });
+
+  final int count;
+  final int index;
+  final ValueChanged<int> onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    if (count <= 0) return const SizedBox.shrink();
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: List.generate(count, (i) {
+          final active = i == index;
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 3),
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () => onTap(i),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                width: 4,
+                height: active ? 22 : 4,
+                decoration: BoxDecoration(
+                  color: active ? Colors.white : Colors.white.withValues(alpha: 0.32),
+                  borderRadius: BorderRadius.circular(4),
                 ),
               ),
+            ),
+          );
+        }),
+      ),
+    );
+  }
+}
+
+class _FeedSideRail extends StatelessWidget {
+  const _FeedSideRail({
+    required this.liked,
+    required this.saved,
+    required this.onLike,
+    required this.onSave,
+    required this.onEdit,
+    required this.onShare,
+  });
+
+  final bool liked;
+  final bool saved;
+  final VoidCallback onLike;
+  final VoidCallback onSave;
+  final VoidCallback onEdit;
+  final VoidCallback onShare;
+
+  @override
+  Widget build(BuildContext context) {
+    const gap = 12.0;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _RailAction(
+          label: liked ? 'Liked' : 'Like',
+          active: liked,
+          accent: const Color(0xFFFF5A6E),
+          icon: liked ? Icons.favorite : Icons.favorite_border,
+          onTap: onLike,
+        ),
+        const SizedBox(height: gap),
+        _RailAction(
+          label: saved ? 'Saved' : 'Save',
+          active: saved,
+          accent: AppColors.protoSaffron,
+          icon: saved ? Icons.bookmark : Icons.bookmark_border,
+          onTap: onSave,
+        ),
+        const SizedBox(height: gap),
+        _RailAction(
+          label: 'Edit',
+          active: false,
+          accent: Colors.white,
+          icon: Icons.edit_outlined,
+          onTap: onEdit,
+        ),
+        const SizedBox(height: gap),
+        _RailAction(
+          label: 'Share',
+          active: false,
+          accent: Colors.white,
+          icon: Icons.ios_share,
+          onTap: onShare,
+        ),
+      ],
+    );
+  }
+}
+
+class _RailAction extends StatelessWidget {
+  const _RailAction({
+    required this.label,
+    required this.active,
+    required this.accent,
+    required this.icon,
+    required this.onTap,
+  });
+
+  final String label;
+  final bool active;
+  final Color accent;
+  final IconData icon;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      behavior: HitTestBehavior.opaque,
+      child: SizedBox(
+        width: 56,
+        child: Column(
+          children: [
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: active ? Colors.white.withValues(alpha: 0.95) : Colors.white.withValues(alpha: 0.14),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.2),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+                border: Border.all(color: Colors.white.withValues(alpha: 0.16)),
+              ),
+              child: Icon(icon, size: 20, color: active ? accent : Colors.white),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              label,
+              style: GoogleFonts.dmSans(
+                fontSize: 10,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+                letterSpacing: 0.2,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

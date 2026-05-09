@@ -6,7 +6,7 @@
   },
   "navHome": "Home",
   "navExplore": "Explore",
-  "navProfile": "Profile",
+  "navProfile": "You",
   "brandTagline": "Share the Blessing",
   "scrollHint": "Swipe for more",
   "sectionForYou": "For You",
@@ -24,13 +24,13 @@
   "onboardingStep1": "Step 1 of 3",
   "onboardingStep2": "Step 2 of 3",
   "onboardingStep3": "Step 3 of 3",
-  "onboardingLanguageQuestion": "What's your language?",
-  "onboardingLanguageSubtitle": "We'll show content in the language you speak every day.",
+  "onboardingLanguageQuestion": "Choose your reading language",
+  "onboardingLanguageSubtitle": "Cards will appear in this language first.",
   "onboardingContinue": "Continue →",
-  "onboardingReligionTitle": "Your spiritual path?",
-  "onboardingReligionSubtitle": "We'll tune content to honour your faith. This is optional.",
-  "onboardingInterestsTitle": "What do you love to share?",
-  "onboardingInterestsSubtitle": "Pick up to 3 — we'll fill your home with these.",
+  "onboardingReligionTitle": "Any path you follow?",
+  "onboardingReligionSubtitle": "So we keep devotional cards respectful to your tradition.",
+  "onboardingInterestsTitle": "What do you love sharing?",
+  "onboardingInterestsSubtitle": "Pick up to 3 to shape your home feed.",
   "onboardingInterestCount": "{count} of 3 selected",
   "@onboardingInterestCount": {
     "placeholders": {
@@ -93,9 +93,22 @@
   "notificationsTitle": "Notifications",
   "exploreTabDiscover": "Discover",
   "exploreTabBrowse": "Browse",
-  "exploreHeadline": "Search",
-  "exploreSubtitle": "Explore what to share today",
-  "exploreSearchHint": "Search quotes…",
+  "exploreHeadline": "Explore",
+  "exploreSubtitle": "Festival packs, themes, and what's trending.",
+  "exploreByInterest": "By interest",
+  "exploreByInterestSub": "Tap to browse",
+  "exploreCuratedPacks": "Curated packs",
+  "exploreCuratedPacksSub": "Hand-picked sets you can save",
+  "exploreFestivalLive": "Festival Pack · Live",
+  "exploreFestivalTitle": "Ugadi greetings",
+  "exploreFestivalBody": "12 cards · refreshed daily until 14 May",
+  "explorePack1Title": "Monday strength",
+  "explorePack1Sub": "8 motivation cards · for the week ahead",
+  "explorePack2Title": "Mother's Day",
+  "explorePack2Sub": "10 cards · for the woman who started it all",
+  "explorePack3Title": "Quiet evenings",
+  "explorePack3Sub": "6 cards · slow down with these",
+  "exploreSearchHint": "Search greetings, festivals, names…",
   "exploreJumpIn": "JUMP IN",
   "exploreWhatToShare": "What are you sharing?",
   "exploreTrendingLine": "TRENDING",
@@ -111,6 +124,7 @@
   "exploreEmpty": "Nothing found",
   "profileLiked": "Liked",
   "profileSaved": "Saved",
+  "profileStatEdits": "Edits",
   "profileShared": "Shared",
   "profileSettings": "Settings",
   "profileLanguage": "Language",
@@ -120,6 +134,45 @@
   "profileHelp": "Help & About",
   "profileSignOut": "Sign out",
   "profileFooter": "Daily Katha · crafted with care",
+  "profileStreakSub": "You've sent a card every day this week.",
+  "profileSectionLibrary": "Library",
+  "profileSectionPreferences": "Preferences",
+  "profileSectionAbout": "About",
+  "profilePathTradition": "Path / tradition",
+  "profileRowSavedCards": "Saved cards",
+  "profileRowSavedSub": "{count} cards",
+  "@profileRowSavedSub": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "profileRowMyEdits": "My edits",
+  "profileRowMyEditsSub": "{count} cards with your photos",
+  "@profileRowMyEditsSub": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "profileRowDailyReminder": "Daily reminder",
+  "profileRowReminderSub": "7:00 AM",
+  "profileRowSettingsOnly": "Settings",
+  "feedScreenLabel": "Feed",
+  "feedIndexOf": "{n} of {total}",
+  "@feedIndexOf": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "shareToWhatsAppStatus": "Share to WhatsApp Status",
   "profileEmptySharedTitle": "Items you share will appear here",
   "profileEmptySharedSubtitle": "Share a card from the feed to see it in this tab.",
   "profileInterestCountTrailing": "{count} selected",
@@ -154,7 +207,27 @@
   "otpResend": "Resend",
   "otpSmsHintLive": "We sent a 6-digit code by SMS to this number. Test lines 123456xxxx may use a fixed code.",
   "otpDevModeHint": "Dev mode: enter any 6 digits to continue.",
-  "splashTagline": "Blessings worth sharing",
+  "splashTagline": "A line for the day",
+  "homeHeroKicker": "Your card today",
+  "homeShareToStatus": "Share to Status",
+  "homeRailNewToday": "{count} new today",
+  "@homeRailNewToday": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sectionPreviewSubline": "A clean line for today, then more behind a tap.",
+  "sectionOpenAll": "Open all {count} cards",
+  "@sectionOpenAll": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sectionAlsoToday": "Also today",
   "dateToday": "Today",
   "footerDailyKatha": "DAILY KATHA"
 }

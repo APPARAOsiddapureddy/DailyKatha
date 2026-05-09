@@ -8,7 +8,7 @@ import '../models/katha_card.dart';
 import '../theme/app_colors.dart';
 import '../theme/card_gradients.dart';
 
-/// Horizontal rail preview — dark editorial surface in dark mode, gradient in light.
+/// Rail preview — blurred cards stay tappable (no lock icon).
 class MiniCard extends StatelessWidget {
   const MiniCard({
     super.key,
@@ -31,24 +31,48 @@ class MiniCard extends StatelessWidget {
       children: [
         Positioned.fill(
           child: ImageFiltered(
-            imageFilter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            imageFilter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
             child: child,
           ),
         ),
         Positioned.fill(
           child: DecoratedBox(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black.withValues(alpha: 0.08),
-                  Colors.black.withValues(alpha: 0.18),
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
+              borderRadius: BorderRadius.circular(22),
+              color: const Color(0x2E1A1410),
             ),
-            child: const Center(
-              child: Icon(Icons.lock_outline, color: Colors.white70, size: 22),
+          ),
+        ),
+        Center(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+            decoration: BoxDecoration(
+              color: const Color(0xEBFFFFFF),
+              borderRadius: BorderRadius.circular(999),
+              boxShadow: const [
+                BoxShadow(
+                  color: Color(0x2E000000),
+                  blurRadius: 12,
+                  offset: Offset(0, 4),
+                ),
+              ],
+            ),
+            child: const Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.touch_app_outlined, size: 16, color: AppColors.protoBrand),
+                SizedBox(width: 6),
+                Text(
+                  'Tap to open',
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w800,
+                    color: AppColors.protoInk,
+                    letterSpacing: 0.2,
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -60,106 +84,10 @@ class MiniCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final hero = card.quoteFor(contentLanguage);
     final echo = card.secondaryQuoteFor(contentLanguage);
-    final dark = Theme.of(context).brightness == Brightness.dark;
     final genreLabel = GenreLocalizer.getName(card.category, contentLanguage);
     final footer = AppLocalizations.of(context).footerDailyKatha;
-
-    if (dark) {
-      return GestureDetector(
-        onTap: onTap,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(22),
-            border: Border.all(color: AppColors.accentGoldBorder, width: 1),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.45),
-                blurRadius: 18,
-                offset: const Offset(0, 8),
-              ),
-            ],
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(21),
-            child: SizedBox(
-              width: width,
-              height: width * 1.5,
-              child: _maybeBlur(
-                child: Container(
-                  color: AppColors.surfaceDark,
-                  padding: const EdgeInsets.fromLTRB(12, 14, 12, 10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '✦ $genreLabel ✦',
-                        style: const TextStyle(
-                          decoration: TextDecoration.none,
-                          fontSize: 9,
-                          letterSpacing: 2.2,
-                          color: AppColors.accentGold,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        hero,
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          decoration: TextDecoration.none,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w700,
-                          height: 1.32,
-                          color: AppColors.textPrimaryDark,
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Container(
-                        width: 36,
-                        height: 2,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(1),
-                          color: AppColors.accentGold.withValues(alpha: 0.45),
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        echo,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          decoration: TextDecoration.none,
-                          fontSize: 10,
-                          fontStyle: FontStyle.italic,
-                          height: 1.38,
-                          color: AppColors.textSecondaryDark,
-                        ),
-                      ),
-                      const Spacer(),
-                      Text(
-                        footer.toUpperCase(),
-                        style: TextStyle(
-                          decoration: TextDecoration.none,
-                          fontSize: 7,
-                          letterSpacing: 1.8,
-                          fontWeight: FontWeight.w800,
-                          color: AppColors.accentGold.withValues(alpha: 0.85),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
-    }
-
     final pal = CardGradients.paletteFor(card.mood);
+
     return GestureDetector(
       onTap: onTap,
       child: DecoratedBox(
@@ -167,7 +95,7 @@ class MiniCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(22),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.18),
+              color: Colors.black.withValues(alpha: 0.14),
               blurRadius: 14,
               offset: const Offset(0, 6),
             ),

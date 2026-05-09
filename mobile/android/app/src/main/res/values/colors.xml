@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Match prototype / Flutter chrome -->
+    <color name="proto_cream">#FBF6EC</color>
+    <color name="splash_native">#7E1F0E</color>
+</resources>

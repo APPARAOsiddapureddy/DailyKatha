@@ -1,6 +1,5 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 import '../../models/card_editor_args.dart';
@@ -198,7 +197,15 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
+        systemNavigationBarColor: AppColors.feedScaffold,
+        systemNavigationBarIconBrightness: Brightness.light,
+      ),
+      child: Scaffold(
       backgroundColor: AppColors.feedScaffold,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -216,6 +223,7 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
                     onScaleStart: _photo == null ? null : _onScaleStart,
                     onScaleUpdate: _photo == null ? null : _onScaleUpdate,
                     child: StatusCard(
+                      key: ValueKey('${widget.args.card.id}_${_photo?.hashCode ?? 0}'),
                       card: widget.args.card,
                       contentLanguage: widget.args.contentLanguage,
                       insertedPhotoBytes: _photo,
@@ -317,6 +325,7 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
             ),
           ],
         ),
+      ),
       ),
     );
   }

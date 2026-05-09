@@ -10,35 +10,20 @@ class AppBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(
-        color: AppColors.scaffoldDark,
+      decoration: const BoxDecoration(
+        color: AppColors.protoCream,
         gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
           colors: [
-            AppColors.accentGold.withValues(alpha: 0.06),
-            AppColors.scaffoldDark,
-            AppColors.scaffoldDark,
-            const Color(0xFF0A121A),
+            AppColors.protoCream,
+            Color(0xFFF8F1E4),
+            AppColors.protoCream,
           ],
-          stops: const [0.0, 0.35, 0.75, 1.0],
+          stops: [0.0, 0.45, 1.0],
         ),
       ),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: RadialGradient(
-            center: const Alignment(-0.7, -0.85),
-            radius: 1.1,
-            colors: [
-              Colors.white.withValues(alpha: 0.05),
-              Colors.transparent,
-            ],
-            stops: const [0.0, 1.0],
-          ),
-        ),
-        child: child,
-      ),
+      child: child,
     );
   }
 }
-

@@ -127,7 +127,7 @@ abstract class AppLocalizations {
   /// No description provided for @navProfile.
   ///
   /// In en, this message translates to:
-  /// **'Profile'**
+  /// **'You'**
   String get navProfile;
 
   /// No description provided for @brandTagline.
@@ -235,13 +235,13 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingLanguageQuestion.
   ///
   /// In en, this message translates to:
-  /// **'What\'s your language?'**
+  /// **'Choose your reading language'**
   String get onboardingLanguageQuestion;
 
   /// No description provided for @onboardingLanguageSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'We\'ll show content in the language you speak every day.'**
+  /// **'Cards will appear in this language first.'**
   String get onboardingLanguageSubtitle;
 
   /// No description provided for @onboardingContinue.
@@ -253,25 +253,25 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingReligionTitle.
   ///
   /// In en, this message translates to:
-  /// **'Your spiritual path?'**
+  /// **'Any path you follow?'**
   String get onboardingReligionTitle;
 
   /// No description provided for @onboardingReligionSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'We\'ll tune content to honour your faith. This is optional.'**
+  /// **'So we keep devotional cards respectful to your tradition.'**
   String get onboardingReligionSubtitle;
 
   /// No description provided for @onboardingInterestsTitle.
   ///
   /// In en, this message translates to:
-  /// **'What do you love to share?'**
+  /// **'What do you love sharing?'**
   String get onboardingInterestsTitle;
 
   /// No description provided for @onboardingInterestsSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Pick up to 3 — we\'ll fill your home with these.'**
+  /// **'Pick up to 3 to shape your home feed.'**
   String get onboardingInterestsSubtitle;
 
   /// No description provided for @onboardingInterestCount.
@@ -415,19 +415,97 @@ abstract class AppLocalizations {
   /// No description provided for @exploreHeadline.
   ///
   /// In en, this message translates to:
-  /// **'Search'**
+  /// **'Explore'**
   String get exploreHeadline;
 
   /// No description provided for @exploreSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Explore what to share today'**
+  /// **'Festival packs, themes, and what\'s trending.'**
   String get exploreSubtitle;
+
+  /// No description provided for @exploreByInterest.
+  ///
+  /// In en, this message translates to:
+  /// **'By interest'**
+  String get exploreByInterest;
+
+  /// No description provided for @exploreByInterestSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to browse'**
+  String get exploreByInterestSub;
+
+  /// No description provided for @exploreCuratedPacks.
+  ///
+  /// In en, this message translates to:
+  /// **'Curated packs'**
+  String get exploreCuratedPacks;
+
+  /// No description provided for @exploreCuratedPacksSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Hand-picked sets you can save'**
+  String get exploreCuratedPacksSub;
+
+  /// No description provided for @exploreFestivalLive.
+  ///
+  /// In en, this message translates to:
+  /// **'Festival Pack · Live'**
+  String get exploreFestivalLive;
+
+  /// No description provided for @exploreFestivalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ugadi greetings'**
+  String get exploreFestivalTitle;
+
+  /// No description provided for @exploreFestivalBody.
+  ///
+  /// In en, this message translates to:
+  /// **'12 cards · refreshed daily until 14 May'**
+  String get exploreFestivalBody;
+
+  /// No description provided for @explorePack1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Monday strength'**
+  String get explorePack1Title;
+
+  /// No description provided for @explorePack1Sub.
+  ///
+  /// In en, this message translates to:
+  /// **'8 motivation cards · for the week ahead'**
+  String get explorePack1Sub;
+
+  /// No description provided for @explorePack2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Mother\'s Day'**
+  String get explorePack2Title;
+
+  /// No description provided for @explorePack2Sub.
+  ///
+  /// In en, this message translates to:
+  /// **'10 cards · for the woman who started it all'**
+  String get explorePack2Sub;
+
+  /// No description provided for @explorePack3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiet evenings'**
+  String get explorePack3Title;
+
+  /// No description provided for @explorePack3Sub.
+  ///
+  /// In en, this message translates to:
+  /// **'6 cards · slow down with these'**
+  String get explorePack3Sub;
 
   /// No description provided for @exploreSearchHint.
   ///
   /// In en, this message translates to:
-  /// **'Search quotes…'**
+  /// **'Search greetings, festivals, names…'**
   String get exploreSearchHint;
 
   /// No description provided for @exploreJumpIn.
@@ -520,6 +598,12 @@ abstract class AppLocalizations {
   /// **'Saved'**
   String get profileSaved;
 
+  /// No description provided for @profileStatEdits.
+  ///
+  /// In en, this message translates to:
+  /// **'Edits'**
+  String get profileStatEdits;
+
   /// No description provided for @profileShared.
   ///
   /// In en, this message translates to:
@@ -573,6 +657,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Daily Katha · crafted with care'**
   String get profileFooter;
+
+  /// No description provided for @profileStreakSub.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve sent a card every day this week.'**
+  String get profileStreakSub;
+
+  /// No description provided for @profileSectionLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'Library'**
+  String get profileSectionLibrary;
+
+  /// No description provided for @profileSectionPreferences.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferences'**
+  String get profileSectionPreferences;
+
+  /// No description provided for @profileSectionAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get profileSectionAbout;
+
+  /// No description provided for @profilePathTradition.
+  ///
+  /// In en, this message translates to:
+  /// **'Path / tradition'**
+  String get profilePathTradition;
+
+  /// No description provided for @profileRowSavedCards.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved cards'**
+  String get profileRowSavedCards;
+
+  /// No description provided for @profileRowSavedSub.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} cards'**
+  String profileRowSavedSub(int count);
+
+  /// No description provided for @profileRowMyEdits.
+  ///
+  /// In en, this message translates to:
+  /// **'My edits'**
+  String get profileRowMyEdits;
+
+  /// No description provided for @profileRowMyEditsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} cards with your photos'**
+  String profileRowMyEditsSub(int count);
+
+  /// No description provided for @profileRowDailyReminder.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily reminder'**
+  String get profileRowDailyReminder;
+
+  /// No description provided for @profileRowReminderSub.
+  ///
+  /// In en, this message translates to:
+  /// **'7:00 AM'**
+  String get profileRowReminderSub;
+
+  /// No description provided for @profileRowSettingsOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get profileRowSettingsOnly;
+
+  /// No description provided for @feedScreenLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Feed'**
+  String get feedScreenLabel;
+
+  /// No description provided for @feedIndexOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} of {total}'**
+  String feedIndexOf(int n, int total);
+
+  /// No description provided for @shareToWhatsAppStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Share to WhatsApp Status'**
+  String get shareToWhatsAppStatus;
 
   /// No description provided for @profileEmptySharedTitle.
   ///
@@ -709,8 +883,44 @@ abstract class AppLocalizations {
   /// No description provided for @splashTagline.
   ///
   /// In en, this message translates to:
-  /// **'Blessings worth sharing'**
+  /// **'A line for the day'**
   String get splashTagline;
+
+  /// No description provided for @homeHeroKicker.
+  ///
+  /// In en, this message translates to:
+  /// **'Your card today'**
+  String get homeHeroKicker;
+
+  /// No description provided for @homeShareToStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Share to Status'**
+  String get homeShareToStatus;
+
+  /// No description provided for @homeRailNewToday.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} new today'**
+  String homeRailNewToday(int count);
+
+  /// No description provided for @sectionPreviewSubline.
+  ///
+  /// In en, this message translates to:
+  /// **'A clean line for today, then more behind a tap.'**
+  String get sectionPreviewSubline;
+
+  /// No description provided for @sectionOpenAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Open all {count} cards'**
+  String sectionOpenAll(int count);
+
+  /// No description provided for @sectionAlsoToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Also today'**
+  String get sectionAlsoToday;
 
   /// No description provided for @dateToday.
   ///

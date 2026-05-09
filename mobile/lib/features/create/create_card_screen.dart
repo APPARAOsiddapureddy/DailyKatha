@@ -85,7 +85,7 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
     final card = _draft(lang);
 
     return Scaffold(
-      backgroundColor: AppColors.scaffoldDark,
+      backgroundColor: AppColors.protoCream,
       appBar: AppBar(
         title: const Text('Create Card'),
       ),
@@ -93,7 +93,7 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            Text(l10n.onboardingInterestsTitle, style: Theme.of(context).textTheme.titleLarge?.copyWith(color: AppColors.textPrimaryDark)),
+            Text(l10n.onboardingInterestsTitle, style: Theme.of(context).textTheme.titleLarge?.copyWith(color: AppColors.protoInk)),
             const SizedBox(height: 10),
             DropdownButtonFormField<String>(
               initialValue: _genre,
@@ -114,7 +114,7 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
               enabled: !_saving,
               minLines: 3,
               maxLines: 6,
-              style: const TextStyle(color: AppColors.textPrimaryDark),
+              style: const TextStyle(color: AppColors.protoInk),
               decoration: const InputDecoration(
                 labelText: 'Your text',
                 hintText: 'Write anything…',

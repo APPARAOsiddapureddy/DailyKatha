@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../../core/content_language.dart';
 import '../../data/local/mock_catalog.dart';
 import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
-import '../../l10n/genre_localizer.dart';
 import '../../models/user_profile.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/app_background.dart';
-import '../../widgets/mini_card.dart';
 
+/// Mirrors `screens-main.jsx` `ProfileScreen` — cream shell, streak hero, stats, grouped rows.
+/// Not driven by backend layout APIs; profile fields come from session / catalog like the prototype’s static copy.
 class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
 
@@ -21,9 +21,6 @@ class ProfileScreen extends ConsumerStatefulWidget {
 }
 
 class _ProfileScreenState extends ConsumerState<ProfileScreen> {
-  String _segment = 'liked';
-  bool _notificationsOn = false;
-
   Future<void> _signOut() async {
     await ref.read(authRepositoryProvider).signOut();
     ref.read(sessionHolderProvider.notifier).clear();
@@ -57,16 +54,16 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     final picked = await showModalBottomSheet<String>(
       context: context,
       showDragHandle: true,
-      backgroundColor: AppColors.surfaceElevatedDark,
+      backgroundColor: AppColors.protoSurface,
       builder: (ctx) {
         return ListView(
           shrinkWrap: true,
           children: [
             for (final opt in MockCatalog.languages)
               ListTile(
-                title: Text(opt.nativeName, style: const TextStyle(color: AppColors.textPrimaryDark, fontWeight: FontWeight.w700)),
-                subtitle: Text('${opt.englishName} · ${opt.speakersLabel}', style: const TextStyle(color: AppColors.textSecondaryDark)),
-                trailing: session.profile.contentLanguage == opt.id ? const Icon(Icons.check, color: AppColors.accentGold) : null,
+                title: Text(opt.nativeName, style: const TextStyle(color: AppColors.protoInk, fontWeight: FontWeight.w700)),
+                subtitle: Text('${opt.englishName} · ${opt.speakersLabel}', style: const TextStyle(color: AppColors.protoInk3)),
+                trailing: session.profile.contentLanguage == opt.id ? const Icon(Icons.check, color: AppColors.protoBrand) : null,
                 onTap: () => Navigator.pop(ctx, opt.id),
               ),
           ],
@@ -80,15 +77,40 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     ref.read(sessionHolderProvider.notifier).setSession(newSession);
     ref.invalidate(catalogProvider);
     if (!mounted) return;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(AppLocalizations.of(context).languageUpdated)),
-      );
-    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(AppLocalizations.of(context).languageUpdated)),
+    );
   }
 
-  String _languageTrailing(UserSession? session) {
+  Future<void> _pickReligion() async {
+    final session = ref.read(sessionHolderProvider);
+    if (session == null) return;
+    final picked = await showModalBottomSheet<String>(
+      context: context,
+      showDragHandle: true,
+      backgroundColor: AppColors.protoSurface,
+      builder: (ctx) {
+        return ListView(
+          shrinkWrap: true,
+          children: [
+            for (final r in MockCatalog.religions)
+              ListTile(
+                title: Text(r.englishLabel, style: const TextStyle(color: AppColors.protoInk, fontWeight: FontWeight.w700)),
+                subtitle: Text(r.note, style: const TextStyle(color: AppColors.protoInk3, fontSize: 12)),
+                trailing: session.profile.religionId == r.id ? const Icon(Icons.check, color: AppColors.protoBrand) : null,
+                onTap: () => Navigator.pop(ctx, r.id),
+              ),
+          ],
+        );
+      },
+    );
+    if (picked == null || !mounted) return;
+    final updated = session.profile.copyWith(religionId: picked);
+    final newSession = await ref.read(authRepositoryProvider).applyProfile(updated);
+    ref.read(sessionHolderProvider.notifier).setSession(newSession);
+  }
+
+  String _nativeLanguage(UserSession? session) {
     final id = session?.profile.contentLanguage ?? 'en';
     try {
       return MockCatalog.languages.firstWhere((e) => e.id == id).nativeName;
@@ -97,10 +119,11 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     }
   }
 
-  String _languageEnglish(UserSession? session) {
-    final id = session?.profile.contentLanguage ?? 'en';
+  String _religionLabel(UserSession? session) {
+    final id = session?.profile.religionId;
+    if (id == null) return '—';
     try {
-      return MockCatalog.languages.firstWhere((e) => e.id == id).englishName;
+      return MockCatalog.religions.firstWhere((e) => e.id == id).englishLabel;
     } catch (_) {
       return id;
     }
@@ -109,149 +132,222 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final session = ref.watch(sessionHolderProvider);
-    final lang = effectiveContentLanguage(session);
     final l10n = AppLocalizations.of(context);
-    final catalog = ref.watch(catalogProvider);
+
+    final saved = session?.profile.savedCount ?? 12;
+    final edits = session?.profile.likedCount ?? 4;
+    final shared = session?.profile.sharedCount ?? 23;
 
     return Scaffold(
-      backgroundColor: AppColors.scaffoldDark,
+      backgroundColor: AppColors.protoCream,
       body: AppBackground(
         child: SafeArea(
-          child: catalog.when(
-          loading: () => const Center(child: CircularProgressIndicator(color: AppColors.accentGold)),
-          error: (e, _) => Center(child: Text('${l10n.errorGeneric}: $e', style: const TextStyle(color: AppColors.textPrimaryDark))),
-          data: (cards) {
-            final samples = cards.take(6).toList();
-            return CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(child: _ProfileHeader(session: session, lang: lang, l10n: l10n)),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(22, 18, 22, 0),
-                    child: Column(
+          bottom: false,
+          child: CustomScrollView(
+            slivers: [
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(20, 14, 20, 8),
+                sliver: SliverToBoxAdapter(
+                  child: Text(
+                    l10n.navProfile,
+                    style: GoogleFonts.spectral(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: -0.4,
+                      color: AppColors.protoInk,
+                    ),
+                  ),
+                ),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 18),
+                sliver: SliverToBoxAdapter(
+                  child: Container(
+                    padding: const EdgeInsets.all(18),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      gradient: const LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Color(0xFF1A1410), Color(0xFF3A2A1F)],
+                      ),
+                    ),
+                    child: Row(
                       children: [
-                        Row(
-                          children: [
-                            _Segment(icon: '❤️', label: 'Liked', selected: _segment == 'liked', onTap: () => setState(() => _segment = 'liked')),
-                            _Segment(icon: '📥', label: 'Saved', selected: _segment == 'saved', onTap: () => setState(() => _segment = 'saved')),
-                            _Segment(icon: '📤', label: 'Shared', selected: _segment == 'shared', onTap: () => setState(() => _segment = 'shared')),
-                          ],
-                        ),
-                        const SizedBox(height: 16),
-                        if (_segment == 'shared')
-                          Container(
-                            padding: const EdgeInsets.all(24),
-                            decoration: BoxDecoration(
-                              color: AppColors.surfaceDark,
-                              borderRadius: BorderRadius.circular(18),
-                              border: Border.all(color: AppColors.borderOnDark),
+                        Container(
+                          width: 64,
+                          height: 64,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFFE89B2C), Color(0xFFB33A20)],
                             ),
-                            child: Column(
-                              children: [
-                                const Text('📤', style: TextStyle(fontSize: 32)),
-                                const SizedBox(height: 8),
-                                Text(
-                                  l10n.profileEmptySharedTitle,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(fontWeight: FontWeight.w700, color: AppColors.textPrimaryDark),
-                                ),
-                                const SizedBox(height: 6),
-                                Text(
-                                  l10n.profileEmptySharedSubtitle,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(fontStyle: FontStyle.italic, color: AppColors.textSecondaryDark),
-                                ),
-                              ],
-                            ),
-                          )
-                        else
-                          GridView.count(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                            children: [
-                              for (final c in samples)
-                                MiniCard(
-                                  card: c,
-                                  contentLanguage: lang,
-                                  onTap: () => context.push('/feed', extra: cards.indexOf(c)),
-                                ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color(0xFFE89B2C).withValues(alpha: 0.45),
+                                blurRadius: 18,
+                                offset: const Offset(0, 6),
+                              ),
                             ],
                           ),
-                        const SizedBox(height: 24),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            l10n.profileSettings.toUpperCase(),
-                            style: const TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w800,
-                              letterSpacing: 1.5,
-                              color: AppColors.textTertiaryDark,
-                            ),
+                          child: const Icon(Icons.local_fire_department, color: Colors.white, size: 30),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '5 days',
+                                style: GoogleFonts.spectral(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: -0.3,
+                                  height: 1,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                l10n.profileStreakSub,
+                                style: GoogleFonts.dmSans(
+                                  fontSize: 13,
+                                  height: 1.3,
+                                  color: Colors.white.withValues(alpha: 0.7),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        const SizedBox(height: 12),
-                        _SettingsTile(
-                          icon: Icons.language,
-                          title: l10n.profileLanguage,
-                          subtitle: _languageEnglish(session),
-                          trailing: _languageTrailing(session),
-                          onTap: _pickLanguage,
-                        ),
-                        _SettingsTile(
-                          icon: Icons.auto_awesome,
-                          title: l10n.profileInterests,
-                          subtitle: l10n.onboardingSelectInterests,
-                          trailing: l10n.profileInterestCountTrailing(session?.profile.interestIds.length ?? 0),
-                        ),
-                        _SettingsTile(
-                          icon: Icons.download,
-                          title: l10n.profileDownloads,
-                          subtitle: l10n.profileDownloads,
-                          trailing: '${session?.profile.savedCount ?? 32}',
-                        ),
-                        _SettingsTile(
-                          icon: Icons.notifications,
-                          title: l10n.profileNotificationsOn,
-                          subtitle: l10n.profileNotificationsOn,
-                          trailingWidget: Switch(
-                            value: _notificationsOn,
-                            onChanged: (v) {
-                              setState(() => _notificationsOn = v);
-                              if (v) _notificationsTap();
-                            },
-                          ),
-                        ),
-                        _SettingsTile(
-                          icon: Icons.help,
-                          title: l10n.profileHelp,
-                          subtitle: l10n.profileHelp,
-                        ),
-                        const SizedBox(height: 8),
-                        SizedBox(
-                          width: double.infinity,
-                          child: OutlinedButton(
-                            onPressed: _signOut,
-                            child: Text(l10n.profileSignOut),
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          l10n.profileFooter,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(fontSize: 12, color: AppColors.textTertiaryDark),
-                        ),
-                        const SizedBox(height: 18),
                       ],
                     ),
                   ),
                 ),
-              ],
-            );
-          },
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 22),
+                sliver: SliverToBoxAdapter(
+                  child: Row(
+                    children: [
+                      Expanded(child: _StatTile(n: saved, label: l10n.profileSaved)),
+                      const SizedBox(width: 8),
+                      Expanded(child: _StatTile(n: edits, label: l10n.profileStatEdits)),
+                      const SizedBox(width: 8),
+                      Expanded(child: _StatTile(n: shared, label: l10n.profileShared)),
+                    ],
+                  ),
+                ),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+                sliver: SliverToBoxAdapter(child: _SectionLabel(text: l10n.profileSectionLibrary)),
+              ),
+              SliverToBoxAdapter(
+                child: _ProfileRow(
+                  icon: Icons.favorite,
+                  iconBg: const Color(0xFFFFE4DC),
+                  iconColor: AppColors.protoBrand,
+                  title: l10n.profileRowSavedCards,
+                  sub: l10n.profileRowSavedSub(saved),
+                  onTap: () => context.push('/feed', extra: 0),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: _ProfileRow(
+                  icon: Icons.edit_outlined,
+                  iconBg: const Color(0xFFFFF1D9),
+                  iconColor: AppColors.protoSaffron,
+                  title: l10n.profileRowMyEdits,
+                  sub: l10n.profileRowMyEditsSub(edits),
+                  onTap: () => context.push('/feed', extra: 0),
+                ),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.only(top: 18),
+                sliver: SliverToBoxAdapter(child: _SectionLabel(text: l10n.profileSectionPreferences)),
+              ),
+              SliverToBoxAdapter(
+                child: _ProfileRow(
+                  icon: Icons.translate,
+                  iconBg: const Color(0xFFEAE3D2),
+                  iconColor: AppColors.protoInk2,
+                  title: l10n.profileLanguage,
+                  sub: _nativeLanguage(session),
+                  onTap: _pickLanguage,
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: _ProfileRow(
+                  icon: Icons.auto_awesome,
+                  iconBg: const Color(0xFFEAE3D2),
+                  iconColor: AppColors.protoInk2,
+                  title: l10n.profilePathTradition,
+                  sub: _religionLabel(session),
+                  onTap: _pickReligion,
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: _ProfileRow(
+                  icon: Icons.tune,
+                  iconBg: const Color(0xFFEAE3D2),
+                  iconColor: AppColors.protoInk2,
+                  title: l10n.profileInterests,
+                  sub: l10n.profileInterestCountTrailing(session?.profile.interestIds.length ?? 0),
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Interest editing from profile is coming soon.')),
+                    );
+                  },
+                ),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.only(top: 18),
+                sliver: SliverToBoxAdapter(child: _SectionLabel(text: l10n.profileSectionAbout)),
+              ),
+              SliverToBoxAdapter(
+                child: _ProfileRow(
+                  icon: Icons.notifications_none,
+                  iconBg: const Color(0xFFEAE3D2),
+                  iconColor: AppColors.protoInk2,
+                  title: l10n.profileRowDailyReminder,
+                  sub: l10n.profileRowReminderSub,
+                  onTap: _notificationsTap,
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: _ProfileRow(
+                  icon: Icons.settings_outlined,
+                  iconBg: const Color(0xFFEAE3D2),
+                  iconColor: AppColors.protoInk2,
+                  title: l10n.profileRowSettingsOnly,
+                  sub: null,
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Settings screen coming soon.')),
+                    );
+                  },
+                ),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 8),
+                sliver: SliverToBoxAdapter(
+                  child: OutlinedButton(
+                    onPressed: _signOut,
+                    child: Text(l10n.profileSignOut),
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 4, 20, 100),
+                  child: Text(
+                    l10n.profileFooter,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.dmSans(fontSize: 11, color: AppColors.protoInk4, letterSpacing: 1),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -259,225 +355,139 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   }
 }
 
-class _ProfileHeader extends StatelessWidget {
-  const _ProfileHeader({required this.session, required this.lang, required this.l10n});
+class _SectionLabel extends StatelessWidget {
+  const _SectionLabel({required this.text});
 
-  final UserSession? session;
-  final String lang;
-  final AppLocalizations l10n;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    final name = session?.profile.displayName ?? 'Friend';
-    final native = session?.profile.displayNameNative;
-    final phone = session?.profile.phoneE164 ?? '';
-    final interestChips = session?.profile.interestIds ?? const <String>[];
-    final langLabel = _languageTrailingStatic(session);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Text(
+        text.toUpperCase(),
+        style: GoogleFonts.dmSans(
+          fontSize: 11,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 2,
+          color: AppColors.protoInk3,
+        ),
+      ),
+    );
+  }
+}
+
+class _StatTile extends StatelessWidget {
+  const _StatTile({required this.n, required this.label});
+
+  final int n;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(20, 24, 20, 20),
-      decoration: const BoxDecoration(
-        color: AppColors.surfaceDark,
-        border: Border(bottom: BorderSide(color: AppColors.borderOnDark)),
+      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
+      decoration: BoxDecoration(
+        color: AppColors.protoSurface,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: AppColors.protoBorder),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(3),
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                    colors: [AppColors.accentGold, Color(0xFF8A6A2F)],
-                  ),
-                ),
-                child: CircleAvatar(
-                  radius: 34,
-                  backgroundColor: AppColors.surfaceElevatedDark,
-                  child: Text(
-                    name.isNotEmpty ? name[0] : 'U',
-                    style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w800, color: AppColors.accentGold),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(name, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: AppColors.textPrimaryDark)),
-                    if (native != null && native.trim().isNotEmpty)
-                      Text(native, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.textSecondaryDark)),
-                    Text(
-                      phone.isNotEmpty ? '$phone · Joined Apr 2026' : 'Joined Apr 2026',
-                      style: const TextStyle(color: AppColors.textTertiaryDark, fontSize: 12),
-                    ),
-                    const SizedBox(height: 8),
-                    Wrap(
-                      spacing: 6,
-                      runSpacing: 6,
-                      children: [
-                        Chip(
-                          label: Text(langLabel, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: AppColors.textPrimaryDark)),
-                          backgroundColor: AppColors.surfaceElevatedDark,
-                          side: const BorderSide(color: AppColors.accentGoldBorder),
-                        ),
-                        for (final id in interestChips)
-                          Chip(
-                            label: Text(
-                              GenreLocalizer.getName(id, lang),
-                              style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: AppColors.textPrimaryDark),
-                            ),
-                            backgroundColor: AppColors.surfaceElevatedDark,
-                            side: const BorderSide(color: AppColors.accentGoldBorder),
-                          ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
+          Text(
+            '$n',
+            style: GoogleFonts.spectral(
+              fontSize: 24,
+              fontWeight: FontWeight.w500,
+              color: AppColors.protoInk,
+              height: 1,
+            ),
           ),
-          const SizedBox(height: 18),
-          Row(
-            children: [
-              _Stat(value: '${session?.profile.likedCount ?? 84}', label: l10n.profileLiked),
-              const SizedBox(width: 10),
-              _Stat(value: '${session?.profile.savedCount ?? 32}', label: l10n.profileSaved),
-              const SizedBox(width: 10),
-              _Stat(value: '${session?.profile.sharedCount ?? 127}', label: l10n.profileShared),
-            ],
+          const SizedBox(height: 4),
+          Text(
+            label.toUpperCase(),
+            style: GoogleFonts.dmSans(
+              fontSize: 11,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0.3,
+              color: AppColors.protoInk3,
+            ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
     );
   }
-
-  static String _languageTrailingStatic(UserSession? session) {
-    final id = session?.profile.contentLanguage ?? 'en';
-    try {
-      return MockCatalog.languages.firstWhere((e) => e.id == id).nativeName;
-    } catch (_) {
-      return id;
-    }
-  }
 }
 
-class _Stat extends StatelessWidget {
-  const _Stat({required this.value, required this.label});
-
-  final String value;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        decoration: BoxDecoration(
-          color: AppColors.surfaceElevatedDark,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: AppColors.borderOnDark),
-        ),
-        child: Column(
-          children: [
-            Text(value, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: AppColors.accentGold)),
-            Text(label, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: AppColors.textPrimaryDark)),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _Segment extends StatelessWidget {
-  const _Segment({
+class _ProfileRow extends StatelessWidget {
+  const _ProfileRow({
     required this.icon,
-    required this.label,
-    required this.selected,
+    required this.iconBg,
+    required this.iconColor,
+    required this.title,
+    required this.sub,
     required this.onTap,
   });
 
-  final String icon;
-  final String label;
-  final bool selected;
+  final IconData icon;
+  final Color iconBg;
+  final Color iconColor;
+  final String title;
+  final String? sub;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 3),
-        child: Material(
-          color: selected ? AppColors.accentGoldSubtleBg : AppColors.surfaceDark,
-          borderRadius: BorderRadius.circular(10),
-          child: InkWell(
-            onTap: onTap,
-            borderRadius: BorderRadius.circular(10),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: selected ? AppColors.accentGold : AppColors.borderOnDark),
-              ),
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Column(
-                children: [
-                  Text(icon),
-                  Text(
-                    label,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      color: selected ? AppColors.textPrimaryDark : AppColors.textSecondaryDark,
-                    ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+      child: Material(
+        color: AppColors.protoSurface,
+        borderRadius: BorderRadius.circular(16),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: onTap,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: AppColors.protoBorder),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: iconBg,
                   ),
-                ],
-              ),
+                  child: Icon(icon, size: 20, color: iconColor),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: GoogleFonts.dmSans(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: -0.1,
+                          color: AppColors.protoInk,
+                        ),
+                      ),
+                      if (sub != null && sub!.isNotEmpty)
+                        Text(sub!, style: GoogleFonts.dmSans(fontSize: 12, color: AppColors.protoInk3)),
+                    ],
+                  ),
+                ),
+                Icon(Icons.chevron_right, size: 18, color: AppColors.protoInk4),
+              ],
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _SettingsTile extends StatelessWidget {
-  const _SettingsTile({
-    required this.icon,
-    required this.title,
-    required this.subtitle,
-    this.trailing,
-    this.trailingWidget,
-    this.onTap,
-  });
-
-  final IconData icon;
-  final String title;
-  final String subtitle;
-  final String? trailing;
-  final Widget? trailingWidget;
-  final VoidCallback? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    const color = AppColors.accentGold;
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: ListTile(
-        onTap: onTap,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14),
-          side: const BorderSide(color: AppColors.borderOnDark),
-        ),
-        tileColor: AppColors.surfaceDark,
-        leading: Icon(icon, color: color),
-        title: Text(title, style: const TextStyle(fontWeight: FontWeight.w700, color: AppColors.textPrimaryDark)),
-        subtitle: Text(subtitle, style: const TextStyle(color: AppColors.textSecondaryDark)),
-        trailing: trailingWidget ??
-            (trailing != null
-                ? Text(trailing!, style: const TextStyle(fontWeight: FontWeight.w600, color: AppColors.textPrimaryDark))
-                : (onTap != null ? const Icon(Icons.chevron_right, color: AppColors.textTertiaryDark) : null)),
       ),
     );
   }

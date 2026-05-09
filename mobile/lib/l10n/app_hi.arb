@@ -101,6 +101,26 @@
   "otpSmsHintLive": "We sent a 6-digit code by SMS to this number. Test lines 123456xxxx may use a fixed code.",
   "otpDevModeHint": "Dev mode: enter any 6 digits to continue.",
   "splashTagline": "आशीर्वाद बाँटिए",
+  "homeHeroKicker": "Your card today",
+  "homeShareToStatus": "Share to Status",
+  "homeRailNewToday": "{count} new today",
+  "@homeRailNewToday": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sectionPreviewSubline": "A clean line for today, then more behind a tap.",
+  "sectionOpenAll": "Open all {count} cards",
+  "@sectionOpenAll": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sectionAlsoToday": "Also today",
   "dateToday": "आज",
   "footerDailyKatha": "डेली कथा"
 }
