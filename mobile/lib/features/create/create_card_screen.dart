@@ -7,6 +7,7 @@ import '../../data/local/mock_catalog.dart';
 import '../../data/local/user_created_cards_store.dart';
 import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
+import '../../models/card_editor_args.dart';
 import '../../models/katha_card.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/status_card.dart';
@@ -68,10 +69,8 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
       ref.invalidate(userCreatedCardsProvider);
       ref.invalidate(catalogProvider);
       if (!mounted) return;
-      router.go('/home');
-      messenger.showSnackBar(
-        const SnackBar(content: Text('Card created')),
-      );
+      // Open editor so user can add photo/caption and share as Status.
+      router.push('/edit', extra: CardEditorArgs(card: card, contentLanguage: lang, preferStatusPrimaryCta: true));
     } finally {
       if (mounted) setState(() => _saving = false);
     }
@@ -117,7 +116,7 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
               style: const TextStyle(color: AppColors.protoInk),
               decoration: const InputDecoration(
                 labelText: 'Your text',
-                hintText: 'Write anything…',
+                hintText: 'Write your quote / wish…',
               ),
               onChanged: (_) => setState(() {}),
             ),
@@ -136,7 +135,7 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
             const SizedBox(height: 16),
             FilledButton(
               onPressed: _saving ? null : _save,
-              child: Text(_saving ? 'Saving…' : 'Create'),
+              child: Text(_saving ? 'Creating…' : 'Create & Edit'),
             ),
           ],
         ),

@@ -18,6 +18,7 @@ import '../../theme/app_colors.dart';
 import '../../utils/error_handler.dart';
 import '../../widgets/app_background.dart';
 import '../../widgets/mini_card.dart';
+import '../../widgets/proto_action_pill.dart';
 import '../../widgets/status_card.dart';
 
 String _firstName(UserSession? session) {
@@ -248,6 +249,20 @@ class HomeScreen extends ConsumerWidget {
                                 ),
                               ),
                             ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+                      child: Row(
+                        children: [
+                          ProtoActionPill(
+                            icon: Icons.add,
+                            label: 'Create Card',
+                            onTap: () => context.push('/create'),
                           ),
                         ],
                       ),
