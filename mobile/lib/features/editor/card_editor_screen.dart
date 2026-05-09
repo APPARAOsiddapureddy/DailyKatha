@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../data/user_stats_controller.dart';
 import '../../models/card_editor_args.dart';
 import '../../observability/analytics/analytics.dart';
 import '../../observability/analytics/analytics_provider.dart';
@@ -177,6 +178,9 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
         bytes: bytes,
         nameStem: 'daily_katha_${widget.args.card.id}',
       );
+      if (ok) {
+        await ProviderScope.containerOf(context).read(userStatsProvider.notifier).incrementSaved();
+      }
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(ok ? 'Saved to gallery' : 'Could not save to gallery')),
@@ -213,6 +217,7 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
         captionColor: _captionColor,
         shareService: widget.shareService,
       );
+      await ProviderScope.containerOf(context).read(userStatsProvider.notifier).incrementShared();
       await analytics.log(
         AEvents.shareSheetOpened,
         props: {

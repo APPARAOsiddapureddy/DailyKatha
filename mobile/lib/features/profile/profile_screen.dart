@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../data/local/mock_catalog.dart';
 import '../../data/providers.dart';
+import '../../data/user_stats_controller.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/user_profile.dart';
 import '../../theme/app_colors.dart';
@@ -112,10 +113,11 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   Widget build(BuildContext context) {
     final session = ref.watch(sessionHolderProvider);
     final l10n = AppLocalizations.of(context);
+    final stats = ref.watch(userStatsProvider).valueOrNull;
 
-    final saved = session?.profile.savedCount ?? 12;
-    final edits = session?.profile.likedCount ?? 4;
-    final shared = session?.profile.sharedCount ?? 23;
+    final saved = stats?.savedCount ?? (session?.profile.savedCount ?? 0);
+    final edits = session?.profile.likedCount ?? 0;
+    final shared = stats?.sharedCount ?? (session?.profile.sharedCount ?? 0);
 
     return Scaffold(
       backgroundColor: AppColors.protoCream,

@@ -1,17 +1,19 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
-import '../../core/app_config.dart';
 import '../../core/content_language.dart';
 import '../../data/local/mock_catalog.dart';
 import '../../data/providers.dart';
+import '../../data/user_stats_controller.dart';
 import '../../l10n/app_localizations.dart';
 import '../../l10n/genre_localizer.dart';
+import '../../models/card_editor_args.dart';
 import '../../models/feed_route_args.dart';
 import '../../models/katha_card.dart';
-import '../../models/section_preview_args.dart';
 import '../../models/user_profile.dart';
 import '../../services/card_share_export.dart';
 import '../../theme/app_colors.dart';
@@ -69,44 +71,11 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  void _openSectionPreview(
-    BuildContext context,
-    List<KathaCard> cards,
-    int index, {
-    required String title,
-    required String tag,
-    Set<String>? categoryFilter,
-  }) {
-    final clamped = index.clamp(0, cards.length - 1);
+  void _editHero(BuildContext context, String lang, KathaCard card) {
     context.push(
-      '/section',
-      extra: SectionPreviewArgs(
-        title: title,
-        tag: tag,
-        initialIndex: clamped,
-        categoryFilter: categoryFilter,
-      ),
+      '/edit',
+      extra: CardEditorArgs(card: card, contentLanguage: lang, preferStatusPrimaryCta: true),
     );
-  }
-
-  Future<void> _shareHero(BuildContext context, WidgetRef ref, String lang, KathaCard card) async {
-    if (!context.mounted) return;
-    final messenger = ScaffoldMessenger.of(context);
-    messenger.showSnackBar(
-      SnackBar(content: Text(AppLocalizations.of(context).preparingCard)),
-    );
-    await CardShareExport.shareKathaCardAsImage(
-      context: context,
-      card: card,
-      contentLanguage: lang,
-      shareService: ref.read(shareServiceProvider),
-    );
-    final demo = ref.read(sessionHolderProvider)?.accessToken == 'mock_access';
-    if (!AppConfig.useMockApi && !demo && context.mounted) {
-      try {
-        await ref.read(userActionsServiceProvider).share(cardId: card.id, channel: 'whatsapp_status');
-      } catch (_) {}
-    }
   }
 
   Future<void> _saveHero(BuildContext context, WidgetRef ref, String lang, KathaCard card) async {
@@ -117,6 +86,7 @@ class HomeScreen extends ConsumerWidget {
     );
     final ok = await CardShareExport.savePngBytesToGallery(bytes: bytes, nameStem: 'daily_katha_${card.id}');
     if (!context.mounted) return;
+    if (ok) await ref.read(userStatsProvider.notifier).incrementSaved();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(ok ? 'Saved to gallery' : 'Could not save to gallery')),
     );
@@ -309,7 +279,12 @@ class HomeScreen extends ConsumerWidget {
                                   borderRadius: BorderRadius.circular(20),
                                   clipBehavior: Clip.antiAlias,
                                   child: InkWell(
-                                    onTap: () => _openFeed(context, cards, cards.indexOf(hero)),
+                                    onTap: () => _openFeed(
+                                      context,
+                                      cards,
+                                      cards.indexOf(hero),
+                                      categoryFilter: {hero.category},
+                                    ),
                                     child: StatusCard(
                                       card: hero,
                                       contentLanguage: lang,
@@ -331,7 +306,7 @@ class HomeScreen extends ConsumerWidget {
                         children: [
                           Expanded(
                             child: FilledButton.icon(
-                              onPressed: () => _shareHero(context, ref, lang, hero),
+                              onPressed: () => _editHero(context, lang, hero),
                               icon: const Icon(Icons.ios_share, size: 20),
                               label: Text(l10n.homeShareToStatus),
                               style: FilledButton.styleFrom(
@@ -373,20 +348,16 @@ class HomeScreen extends ConsumerWidget {
                             count: byInterest(interest).length,
                             lang: lang,
                             cards: byInterest(interest),
-                            onViewAll: () => _openSectionPreview(
+                            onViewAll: () => _openFeed(
                               context,
                               cards,
                               cards.indexOf(byInterest(interest).first),
-                              title: GenreLocalizer.getName(interest, lang),
-                              tag: l10n.sectionForYou,
                               categoryFilter: {interest},
                             ),
-                            onCard: (c) => _openSectionPreview(
+                            onCard: (c) => _openFeed(
                               context,
                               cards,
                               cards.indexOf(c),
-                              title: GenreLocalizer.getName(interest, lang),
-                              tag: l10n.sectionForYou,
                               categoryFilter: {interest},
                             ),
                           ),
@@ -402,20 +373,8 @@ class HomeScreen extends ConsumerWidget {
                           lang: lang,
                           cards: trending,
                           subtitle: l10n.exploreWeekHit,
-                          onViewAll: () => _openSectionPreview(
-                            context,
-                            cards,
-                            cards.indexOf(trending.first),
-                            title: l10n.homeSectionTrendingTitle,
-                            tag: l10n.sectionTrending,
-                          ),
-                          onCard: (c) => _openSectionPreview(
-                            context,
-                            cards,
-                            cards.indexOf(c),
-                            title: l10n.homeSectionTrendingTitle,
-                            tag: l10n.sectionTrending,
-                          ),
+                          onViewAll: () => _openFeed(context, cards, cards.indexOf(trending.first)),
+                          onCard: (c) => _openFeed(context, cards, cards.indexOf(c)),
                         ),
                       ),
                     ),

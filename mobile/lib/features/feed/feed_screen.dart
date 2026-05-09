@@ -1,12 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../core/app_config.dart';
 import '../../core/content_language.dart';
 import '../../data/providers.dart';
+import '../../data/user_stats_controller.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/card_editor_args.dart';
 import '../../models/feed_route_args.dart';
@@ -15,7 +17,6 @@ import '../../observability/analytics/analytics.dart';
 import '../../observability/analytics/analytics_provider.dart';
 import '../../services/card_share_export.dart';
 import '../../theme/app_colors.dart';
-import '../../utils/error_handler.dart';
 import '../../widgets/status_card.dart';
 
 class FeedScreen extends ConsumerStatefulWidget {
@@ -32,6 +33,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
   int _index = 0;
   final Set<String> _savedIds = {};
   bool _loggedOpen = false;
+  bool _sharing = false;
 
   @override
   void didChangeDependencies() {
@@ -90,28 +92,6 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     super.dispose();
   }
 
-  Future<void> _toggleLike(String id) async {
-    final wasLiked = ref.read(likedIdsProvider).contains(id);
-    ref.read(likedIdsProvider.notifier).toggle(id);
-    final demo = ref.read(sessionHolderProvider)?.accessToken == 'mock_access';
-    if (!AppConfig.useMockApi && !demo) {
-      final actions = ref.read(userActionsServiceProvider);
-      try {
-        if (wasLiked) {
-          await actions.unlike(id);
-        } else {
-          await actions.like(id);
-        }
-      } catch (e) {
-        if (!mounted) return;
-        ref.read(likedIdsProvider.notifier).toggle(id); // rollback
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(ErrorHandler.userMessage(context, e))),
-        );
-      }
-    }
-  }
-
   Future<void> _saveCurrent(String lang, KathaCard card) async {
     final bytes = await CardShareExport.renderKathaCardPngBytes(
       context: context,
@@ -124,11 +104,46 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     );
     if (!mounted) return;
     if (ok) setState(() => _savedIds.add(card.id));
+    if (ok) {
+      await ref.read(userStatsProvider.notifier).incrementSaved();
+    }
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(ok ? 'Saved to gallery' : 'Could not save to gallery'),
       ),
     );
+  }
+
+  Future<void> _shareCurrentDirect(String lang, KathaCard card) async {
+    if (_sharing || !mounted) return;
+    setState(() => _sharing = true);
+    try {
+      await ref.read(analyticsProvider).log(
+        AEvents.shareClicked,
+        props: {
+          'channel': 'whatsapp_status',
+          'source': 'feed_quick',
+          'card_id': card.id,
+          'category': card.category,
+        },
+      );
+      await CardShareExport.shareKathaCardAsImage(
+        context: context,
+        card: card,
+        contentLanguage: lang,
+        shareService: ref.read(shareServiceProvider),
+      );
+      await ref.read(userStatsProvider.notifier).incrementShared();
+      await ref.read(analyticsProvider).log(
+        AEvents.shareSheetOpened,
+        props: {
+          'channel': 'whatsapp_status',
+          'source': 'feed_quick',
+        },
+      );
+    } finally {
+      if (mounted) setState(() => _sharing = false);
+    }
   }
 
   void _editCurrent(String lang, KathaCard card) {
@@ -154,7 +169,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     final session = ref.watch(sessionHolderProvider);
     final lang = effectiveContentLanguage(session);
     final catalog = ref.watch(catalogProvider);
-    final liked = ref.watch(likedIdsProvider);
+    // Likes are currently not shown in this chrome; keep provider wiring minimal.
     final bottomInset = MediaQuery.paddingOf(context).bottom;
     final topInset = MediaQuery.paddingOf(context).top;
     final l10n = AppLocalizations.of(context);
@@ -194,7 +209,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
 
             final card = visible[_index.clamp(0, visible.length - 1)];
             final headerBottom = topInset + 52;
-            final bottomBarH = 72.0 + bottomInset;
+            final bottomBarH = 86.0 + bottomInset;
 
             return LayoutBuilder(
               builder: (context, constraints) {
@@ -204,10 +219,10 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                 return Stack(
                   fit: StackFit.expand,
                   children: [
-                    /// Card — inset for left dots + right rail (`screens-feed.jsx`).
+                    /// Card — centered, with optional quick-share on-card button.
                     Positioned(
                       left: 28,
-                      right: 72,
+                      right: 28,
                       top: headerBottom,
                       bottom: bottomBarH,
                       child: Center(
@@ -220,10 +235,49 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                             final c = visible[i];
                             return Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
-                              child: StatusCard(
-                                card: c,
-                                contentLanguage: lang,
-                                height: cardHeight,
+                              child: Stack(
+                                children: [
+                                  Center(
+                                    child: StatusCard(
+                                      card: c,
+                                      contentLanguage: lang,
+                                      height: cardHeight,
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 0,
+                                    right: 0,
+                                    bottom: 10,
+                                    child: Center(
+                                      child: Material(
+                                        color: Colors.white.withValues(alpha: 0.14),
+                                        borderRadius: BorderRadius.circular(999),
+                                        child: InkWell(
+                                          borderRadius: BorderRadius.circular(999),
+                                          onTap: _sharing ? null : () => _shareCurrentDirect(lang, c),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                const Icon(Icons.share, size: 18, color: Colors.white),
+                                                const SizedBox(width: 8),
+                                                Text(
+                                                  'Share to Status',
+                                                  style: GoogleFonts.dmSans(
+                                                    fontWeight: FontWeight.w700,
+                                                    color: Colors.white,
+                                                    letterSpacing: -0.1,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             );
                           },
@@ -329,25 +383,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                       ),
                     ),
 
-                    /// Right side action rail
-                    Positioned(
-                      right: 10,
-                      top: headerBottom,
-                      bottom: bottomBarH,
-                      width: 56,
-                      child: Center(
-                        child: _FeedSideRail(
-                          liked: liked.contains(card.id),
-                          saved: _savedIds.contains(card.id),
-                          onLike: () => _toggleLike(card.id),
-                          onSave: () => _saveCurrent(lang, card),
-                          onEdit: () => _editCurrent(lang, card),
-                          onShare: () => _editCurrent(lang, card),
-                        ),
-                      ),
-                    ),
-
-                    /// Bottom: Share to WhatsApp Status + photo (editor)
+                    /// Bottom: professional action bar (Edit / Save / Share to Status)
                     Positioned(
                       left: 0,
                       right: 0,
@@ -369,38 +405,44 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                           child: Row(
                             children: [
                               Expanded(
-                                child: FilledButton.icon(
+                                child: OutlinedButton.icon(
                                   onPressed: () => _editCurrent(lang, card),
-                                  style: FilledButton.styleFrom(
-                                    backgroundColor: AppColors.protoBrandDeep,
+                                  style: OutlinedButton.styleFrom(
                                     foregroundColor: Colors.white,
-                                    padding: const EdgeInsets.symmetric(vertical: 14),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
+                                    side: BorderSide(color: Colors.white.withValues(alpha: 0.22)),
+                                    minimumSize: const Size(double.infinity, 50),
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                                   ),
-                                  icon: const Icon(Icons.share, size: 20),
-                                  label: Text(
-                                    l10n.shareToWhatsAppStatus,
-                                    style: GoogleFonts.dmSans(fontWeight: FontWeight.w600, fontSize: 15),
-                                  ),
+                                  icon: const Icon(Icons.edit_outlined, size: 18),
+                                  label: Text('Edit', style: GoogleFonts.dmSans(fontWeight: FontWeight.w700)),
                                 ),
                               ),
                               const SizedBox(width: 10),
-                              Material(
-                                color: Colors.white.withValues(alpha: 0.14),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(14),
-                                  side: BorderSide(color: Colors.white.withValues(alpha: 0.18)),
-                                ),
-                                clipBehavior: Clip.antiAlias,
-                                child: InkWell(
-                                  onTap: () => _editCurrent(lang, card),
-                                  child: const SizedBox(
-                                    width: 56,
-                                    height: 48,
-                                    child: Icon(Icons.photo_outlined, color: Colors.white, size: 22),
+                              Expanded(
+                                child: OutlinedButton.icon(
+                                  onPressed: () => _saveCurrent(lang, card),
+                                  style: OutlinedButton.styleFrom(
+                                    foregroundColor: Colors.white,
+                                    side: BorderSide(color: Colors.white.withValues(alpha: 0.22)),
+                                    minimumSize: const Size(double.infinity, 50),
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                                   ),
+                                  icon: const Icon(Icons.download_outlined, size: 18),
+                                  label: Text('Save', style: GoogleFonts.dmSans(fontWeight: FontWeight.w700)),
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: FilledButton.icon(
+                                  onPressed: _sharing ? null : () => _shareCurrentDirect(lang, card),
+                                  style: FilledButton.styleFrom(
+                                    backgroundColor: AppColors.protoBrandDeep,
+                                    foregroundColor: Colors.white,
+                                    minimumSize: const Size(double.infinity, 50),
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                  ),
+                                  icon: const Icon(Icons.ios_share, size: 18),
+                                  label: Text('Status', style: GoogleFonts.dmSans(fontWeight: FontWeight.w800)),
                                 ),
                               ),
                             ],
@@ -460,119 +502,3 @@ class _FeedPageDots extends StatelessWidget {
   }
 }
 
-class _FeedSideRail extends StatelessWidget {
-  const _FeedSideRail({
-    required this.liked,
-    required this.saved,
-    required this.onLike,
-    required this.onSave,
-    required this.onEdit,
-    required this.onShare,
-  });
-
-  final bool liked;
-  final bool saved;
-  final VoidCallback onLike;
-  final VoidCallback onSave;
-  final VoidCallback onEdit;
-  final VoidCallback onShare;
-
-  @override
-  Widget build(BuildContext context) {
-    const gap = 12.0;
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        _RailAction(
-          label: liked ? 'Liked' : 'Like',
-          active: liked,
-          accent: const Color(0xFFFF5A6E),
-          icon: liked ? Icons.favorite : Icons.favorite_border,
-          onTap: onLike,
-        ),
-        const SizedBox(height: gap),
-        _RailAction(
-          label: saved ? 'Saved' : 'Save',
-          active: saved,
-          accent: AppColors.protoSaffron,
-          icon: saved ? Icons.bookmark : Icons.bookmark_border,
-          onTap: onSave,
-        ),
-        const SizedBox(height: gap),
-        _RailAction(
-          label: 'Edit',
-          active: false,
-          accent: Colors.white,
-          icon: Icons.edit_outlined,
-          onTap: onEdit,
-        ),
-        const SizedBox(height: gap),
-        _RailAction(
-          label: 'Share',
-          active: false,
-          accent: Colors.white,
-          icon: Icons.ios_share,
-          onTap: onShare,
-        ),
-      ],
-    );
-  }
-}
-
-class _RailAction extends StatelessWidget {
-  const _RailAction({
-    required this.label,
-    required this.active,
-    required this.accent,
-    required this.icon,
-    required this.onTap,
-  });
-
-  final String label;
-  final bool active;
-  final Color accent;
-  final IconData icon;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      behavior: HitTestBehavior.opaque,
-      child: SizedBox(
-        width: 56,
-        child: Column(
-          children: [
-            Container(
-              width: 44,
-              height: 44,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: active ? Colors.white.withValues(alpha: 0.95) : Colors.white.withValues(alpha: 0.14),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.2),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-                border: Border.all(color: Colors.white.withValues(alpha: 0.16)),
-              ),
-              child: Icon(icon, size: 20, color: active ? accent : Colors.white),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              style: GoogleFonts.dmSans(
-                fontSize: 10,
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
-                letterSpacing: 0.2,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

@@ -34,12 +34,9 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
 
   KathaCard _draft(String lang) {
     final input = _text.text.trim();
-    // "Convert to English" (offline v1): store the user input as English, and also as the current UI language.
-    // When you later enable translation API, replace this mapping.
-    final quote = <String, String>{
-      'en': input,
-      if (lang != 'en') lang: input,
-    };
+    // UX: while creating, show only the text user typed (no echo line).
+    // Store in the current language only; (optional) translation can be added later.
+    final quote = <String, String>{lang: input};
 
     return KathaCard(
       id: 'user_${DateTime.now().microsecondsSinceEpoch}',

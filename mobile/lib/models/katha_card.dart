@@ -28,10 +28,16 @@ class KathaCard {
 
   /// Secondary line under main quote: English echo unless UI language is English, then Telugu.
   String secondaryQuoteFor(String contentLanguage) {
+    final primary = quoteFor(contentLanguage).trim();
+    String echo;
     if (contentLanguage == 'en') {
-      return quote['te'] ?? quote['hi'] ?? quote['en'] ?? '';
+      echo = (quote['te'] ?? quote['hi'] ?? quote['en'] ?? '').trim();
+    } else {
+      echo = (quote['en'] ?? '').trim();
     }
-    return quote['en'] ?? '';
+    // If we only have one language (e.g. user-created cards), avoid duplicating the same line twice.
+    if (echo.isEmpty || echo == primary) return '';
+    return echo;
   }
 
   factory KathaCard.fromJson(Map<String, dynamic> json) {
