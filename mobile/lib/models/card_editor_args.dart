@@ -8,6 +8,7 @@ class CardEditorArgs {
   const CardEditorArgs({
     required this.card,
     required this.contentLanguage,
+    this.preferStatusPrimaryCta = false,
     this.initialPhotoBytes,
     this.initialPhotoOffset = Offset.zero,
     this.initialPhotoScale = 1.0,
@@ -19,6 +20,7 @@ class CardEditorArgs {
 
   final KathaCard card;
   final String contentLanguage;
+  final bool preferStatusPrimaryCta;
   final Uint8List? initialPhotoBytes;
   final Offset initialPhotoOffset;
   final double initialPhotoScale;

@@ -303,19 +303,31 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
                         ),
                         const SizedBox(width: 10),
                         Expanded(
-                          child: OutlinedButton.icon(
-                            onPressed: _busy ? null : _save,
-                            icon: const Icon(Icons.download_outlined),
-                            label: const Text('Save'),
-                          ),
+                          child: widget.args.preferStatusPrimaryCta
+                              ? OutlinedButton.icon(
+                                  onPressed: _busy ? null : _save,
+                                  icon: const Icon(Icons.download_outlined),
+                                  label: const Text('Save'),
+                                )
+                              : FilledButton.icon(
+                                  onPressed: _busy ? null : _save,
+                                  icon: const Icon(Icons.download_outlined),
+                                  label: const Text('Save'),
+                                ),
                         ),
                         const SizedBox(width: 10),
                         Expanded(
-                          child: FilledButton.icon(
-                            onPressed: _busy ? null : _status,
-                            icon: const Icon(Icons.schedule),
-                            label: const Text('Status'),
-                          ),
+                          child: widget.args.preferStatusPrimaryCta
+                              ? FilledButton.icon(
+                                  onPressed: _busy ? null : _status,
+                                  icon: const Icon(Icons.ios_share),
+                                  label: const Text('Share to Status'),
+                                )
+                              : OutlinedButton.icon(
+                                  onPressed: _busy ? null : _status,
+                                  icon: const Icon(Icons.schedule),
+                                  label: const Text('Status'),
+                                ),
                         ),
                       ],
                     ),

@@ -28,7 +28,6 @@ class FeedScreen extends ConsumerStatefulWidget {
 class _FeedScreenState extends ConsumerState<FeedScreen> {
   PageController? _controller;
   int _index = 0;
-  bool _sharing = false;
   final Set<String> _savedIds = {};
 
   List<KathaCard> _visible(List<KathaCard> full) {
@@ -93,37 +92,6 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     }
   }
 
-  Future<void> _shareCurrent(
-    String lang,
-    KathaCard card,
-  ) async {
-    if (_sharing || !mounted) return;
-    setState(() => _sharing = true);
-    final messenger = ScaffoldMessenger.of(context);
-    messenger.showSnackBar(
-      SnackBar(
-        content: Text(AppLocalizations.of(context).preparingCard),
-        duration: const Duration(seconds: 2),
-      ),
-    );
-    try {
-      await CardShareExport.shareKathaCardAsImage(
-        context: context,
-        card: card,
-        contentLanguage: lang,
-        shareService: ref.read(shareServiceProvider),
-      );
-      final demo = ref.read(sessionHolderProvider)?.accessToken == 'mock_access';
-      if (!AppConfig.useMockApi && !demo) {
-        try {
-          await ref.read(userActionsServiceProvider).share(cardId: card.id, channel: 'whatsapp_status');
-        } catch (_) {}
-      }
-    } finally {
-      if (mounted) setState(() => _sharing = false);
-    }
-  }
-
   Future<void> _saveCurrent(String lang, KathaCard card) async {
     final bytes = await CardShareExport.renderKathaCardPngBytes(
       context: context,
@@ -146,7 +114,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
   void _editCurrent(String lang, KathaCard card) {
     context.push(
       '/edit',
-      extra: CardEditorArgs(card: card, contentLanguage: lang),
+      extra: CardEditorArgs(card: card, contentLanguage: lang, preferStatusPrimaryCta: true),
     );
   }
 
@@ -354,7 +322,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                           onLike: () => _toggleLike(card.id),
                           onSave: () => _saveCurrent(lang, card),
                           onEdit: () => _editCurrent(lang, card),
-                          onShare: _sharing ? () {} : () => _shareCurrent(lang, card),
+                          onShare: () => _editCurrent(lang, card),
                         ),
                       ),
                     ),
@@ -382,7 +350,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                             children: [
                               Expanded(
                                 child: FilledButton.icon(
-                                  onPressed: _sharing ? null : () => _shareCurrent(lang, card),
+                                  onPressed: () => _editCurrent(lang, card),
                                   style: FilledButton.styleFrom(
                                     backgroundColor: AppColors.protoBrandDeep,
                                     foregroundColor: Colors.white,
