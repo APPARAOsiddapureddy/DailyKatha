@@ -570,9 +570,9 @@ class _PhotoSlot extends StatelessWidget {
                 Transform(
                   alignment: Alignment.center,
                   transform: Matrix4.identity()
-                    ..translateByDouble(offset.dx, offset.dy, 0, 0)
+                    ..translateByDouble(offset.dx, offset.dy, 0, 1)
                     ..rotateZ(rotation)
-                    ..scaleByDouble(scale, scale, 1, 0),
+                    ..scaleByDouble(scale, scale, 1, 1),
                   child: Opacity(
                     opacity: opacity.clamp(0.0, 1.0),
                     child: Image.memory(
