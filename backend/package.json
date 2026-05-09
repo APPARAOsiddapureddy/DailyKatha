@@ -24,7 +24,7 @@
     "node": "20.x"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.32.1",
+    "@anthropic-ai/sdk": "^0.95.1",
     "@sentry/node": "^8.0.0",
     "bullmq": "^5.34.5",
     "cors": "^2.8.5",
