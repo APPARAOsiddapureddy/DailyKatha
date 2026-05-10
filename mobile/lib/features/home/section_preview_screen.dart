@@ -8,9 +8,10 @@ import '../../l10n/app_localizations.dart';
 import '../../models/feed_route_args.dart';
 import '../../models/katha_card.dart';
 import '../../models/section_preview_args.dart';
+import '../../services/card_share_export.dart';
 import '../../theme/app_colors.dart';
-import '../../widgets/mini_card.dart';
 import '../../widgets/status_card.dart';
+import '../../widgets/status_rail_thumbnail.dart';
 
 class SectionPreviewScreen extends ConsumerWidget {
   const SectionPreviewScreen({super.key, required this.args});
@@ -26,14 +27,20 @@ class SectionPreviewScreen extends ConsumerWidget {
   int _startIndex(List<KathaCard> all, List<KathaCard> visible) {
     if (visible.isEmpty) return 0;
     final f = args.categoryFilter;
-    if (f == null || f.isEmpty) return args.initialIndex.clamp(0, visible.length - 1);
+    if (f == null || f.isEmpty) {
+      return args.initialIndex.clamp(0, visible.length - 1);
+    }
     final fi = args.initialIndex.clamp(0, all.length - 1);
     final targetId = all[fi].id;
     final j = visible.indexWhere((c) => c.id == targetId);
     return j >= 0 ? j : 0;
   }
 
-  void _openFeed(BuildContext context, int index, {required Set<String>? categoryFilter}) {
+  void _openFeed(
+    BuildContext context,
+    int index, {
+    required Set<String>? categoryFilter,
+  }) {
     context.push(
       '/feed',
       extra: FeedRouteArgs(initialIndex: index, categoryFilter: categoryFilter),
@@ -61,10 +68,15 @@ class SectionPreviewScreen extends ConsumerWidget {
           icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 18),
           onPressed: () => context.pop(),
         ),
-        title: Text(args.title, style: tt.titleMedium?.copyWith(fontWeight: FontWeight.w600)),
+        title: Text(
+          args.title,
+          style: tt.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+        ),
       ),
       body: catalog.when(
-        loading: () => const Center(child: CircularProgressIndicator(color: AppColors.protoBrand)),
+        loading: () => const Center(
+          child: CircularProgressIndicator(color: AppColors.protoBrand),
+        ),
         error: (e, _) => Center(
           child: Text(
             e.toString(),
@@ -75,7 +87,10 @@ class SectionPreviewScreen extends ConsumerWidget {
           final visible = _visible(all);
           if (visible.isEmpty) {
             return Center(
-              child: Text(l10n.noCards, style: const TextStyle(color: AppColors.protoInk)),
+              child: Text(
+                l10n.noCards,
+                style: const TextStyle(color: AppColors.protoInk),
+              ),
             );
           }
 
@@ -108,11 +123,25 @@ class SectionPreviewScreen extends ConsumerWidget {
                           clipBehavior: Clip.antiAlias,
                           borderRadius: BorderRadius.circular(20),
                           child: InkWell(
-                            onTap: () => _openFeed(context, all.indexOf(first), categoryFilter: args.categoryFilter),
-                            child: StatusCard(
-                              card: first,
-                              contentLanguage: lang,
-                              compact: true,
+                            onTap: () => _openFeed(
+                              context,
+                              all.indexOf(first),
+                              categoryFilter: args.categoryFilter,
+                            ),
+                            child: FittedBox(
+                              fit: BoxFit.contain,
+                              alignment: Alignment.center,
+                              child: SizedBox(
+                                width: CardShareExport.logicalExportWidth,
+                                height: CardShareExport.logicalExportHeight,
+                                child: StatusCard(
+                                  card: first,
+                                  contentLanguage: lang,
+                                  compact: false,
+                                  width: CardShareExport.logicalExportWidth,
+                                  height: CardShareExport.logicalExportHeight,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -123,12 +152,18 @@ class SectionPreviewScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 16),
               FilledButton.icon(
-                onPressed: () => _openFeed(context, all.indexOf(first), categoryFilter: args.categoryFilter),
+                onPressed: () => _openFeed(
+                  context,
+                  all.indexOf(first),
+                  categoryFilter: args.categoryFilter,
+                ),
                 icon: const Icon(Icons.arrow_forward, size: 20),
                 label: Text(l10n.sectionOpenAll(visible.length)),
                 style: FilledButton.styleFrom(
                   minimumSize: const Size(double.infinity, 48),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
                 ),
               ),
               if (rest.isNotEmpty) ...[
@@ -148,10 +183,10 @@ class SectionPreviewScreen extends ConsumerWidget {
                   runSpacing: 12,
                   children: [
                     for (final c in rest)
-                      MiniCard(
+                      StatusRailThumbnail(
                         card: c,
                         contentLanguage: lang,
-                        width: 150,
+                        height: 232,
                         blurred: true,
                         onTap: () => _openFeed(
                           context,

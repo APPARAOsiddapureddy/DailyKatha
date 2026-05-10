@@ -1,0 +1,1336 @@
+[
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "అమ్మ పిలుపు వినగానే\nమనసు మృదువవుతుంది",
+      "hi": "मां की आवाज़ सुनते\nदिल नरम पड़ता है",
+      "ta": "அம்மா அழைப்பு கேட்டால்\nமனம் மென்மை",
+      "kn": "ಅಮ್ಮನ ಕರೆದಾಗ\nಮನ ಮೃದು",
+      "ml": "അമ്മ വിളിച്ചാൽ\nമനം മൃദു",
+      "en": "At mother’s call\nThe heart softens"
+    },
+    "author": {
+      "te": "— అమ్మ పిలుపు",
+      "hi": "— मां की पुकार",
+      "ta": "— அம்மா அழைப்பு",
+      "kn": "— ಅಮ್ಮ ಕರೆಯು",
+      "ml": "— അമ്മ വിളി",
+      "en": "— Mother’s call"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నాన్న నిశ్శబ్దంలోనే\nఆశీర్వాదం దాగి ఉంటుంది",
+      "hi": "पिता की खामोशी में\nआशीर्वाद छुपा है",
+      "ta": "அப்பா மௌனத்தில்\nஆசீர்வாதம் உள்ளது",
+      "kn": "ಅಪ್ಪನ ಮೌನದಲ್ಲಿ\nಆಶೀರ್ವಾದ ಇದೆ",
+      "ml": "അച്ഛന്റെ മൗനത്തിൽ\nഅനുഗ്രഹം ഒളിക്കുന്നു",
+      "en": "In father’s silence\nBlessings are hidden"
+    },
+    "author": {
+      "te": "— నాన్న మౌనం",
+      "hi": "— पिता का मौन",
+      "ta": "— அப்பா மௌனம்",
+      "kn": "— ಅಪ್ಪ ಮೌನ",
+      "ml": "— അച്ഛൻ മൗനം",
+      "en": "— Father’s silence"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఇంటి వంట వాసనలోనే\nజ్ఞాపకాలు ఉంటాయి",
+      "hi": "घर के खाने की खुशबू\nयादें बनती हैं",
+      "ta": "வீட்டு வாசனை\nநினைவுகள் தரும்",
+      "kn": "ಮನೆಯ ಊಟದ ವಾಸನೆ\nನೆನಪು ಕೊಡುತ್ತದೆ",
+      "ml": "വീട്ടു ഭക്ഷണ മണത്തിൽ\nഓർമ്മകൾ",
+      "en": "In home-cooked aroma\nMemories are made"
+    },
+    "author": {
+      "te": "— వంట జ్ఞాపకం",
+      "hi": "— खाने की याद",
+      "ta": "— சமையல் நினைவு",
+      "kn": "— ಊಟ ನೆನಪು",
+      "ml": "— ഭക്ഷണ ഓർമ്മ",
+      "en": "— Food memory"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "సోదరులతో చిన్న గొడవలు\nపెద్ద ప్రేమను దాచుతాయి",
+      "hi": "छोटी लड़ाई भी\nबड़े प्यार की निशानी",
+      "ta": "சிறு சண்டை கூட\nஅன்பின் அடையாளம்",
+      "kn": "ಸಣ್ಣ ಜಗಳವೂ\nದೊಡ್ಡ ಪ್ರೀತಿ",
+      "ml": "ചെറിയ തർക്കം പോലും\nവലിയ സ്നേഹം",
+      "en": "Little fights with siblings\nHide big love"
+    },
+    "author": {
+      "te": "— సోదర ప్రేమ",
+      "hi": "— भाई बहन प्यार",
+      "ta": "— சகோதர அன்பு",
+      "kn": "— ಸಹೋದರ ಪ್ರೀತಿ",
+      "ml": "— സഹോദര സ്നേഹം",
+      "en": "— Sibling love"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఇల్లు అంటే\nఎవరైనా ఎదురు చూస్తారు",
+      "hi": "घर वही है\nजहां कोई इंतज़ार करे",
+      "ta": "வீடு என்பது\nயாரோ காத்திருப்பது",
+      "kn": "ಮನೆ ಅಂದರೆ\nಯಾರೋ ಕಾಯುತ್ತಾರೆ",
+      "ml": "വീട് എന്നാൽ\nആരെങ്കിലും കാത്തിരിക്കും",
+      "en": "Home is where\nSomeone waits for you"
+    },
+    "author": {
+      "te": "— ఇంటి భావం",
+      "hi": "— घर एहसास",
+      "ta": "— வீட்டு உணர்வு",
+      "kn": "— ಮನೆಯ ಭಾವ",
+      "ml": "— വീട്ടിലെ വികാരം",
+      "en": "— Feeling of home"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఇంటి స్నేహమే\nబయటి ప్రపంచానికి బలం",
+      "hi": "घर का साथ ही\nदुनिया की ताकत",
+      "ta": "வீட்டு ஆதரவு\nஉலக பலம்",
+      "kn": "ಮನೆಯ ಬೆಂಬಲ\nಲೋಕದ ಶಕ್ತಿ",
+      "ml": "വീട്ടിലെ പിന്തുണ\nലോകശക്തി",
+      "en": "Family support\nIs strength for the world"
+    },
+    "author": {
+      "te": "— ఆధారం",
+      "hi": "— सहारा",
+      "ta": "— ஆதரவு",
+      "kn": "— ಬೆಂಬಲ",
+      "ml": "— പിന്തുണ",
+      "en": "— Support"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "అమ్మ నవ్వు చూసినప్పుడు\nరోజు వెలుగుతుంది",
+      "hi": "मां मुस्कुराए तो\nदिन चमक उठे",
+      "ta": "அம்மா சிரித்தால்\nநாள் ஒளிரும்",
+      "kn": "ಅಮ್ಮ ನಗಿದರೆ\nದಿನ ಹೊಳೆಯುತ್ತದೆ",
+      "ml": "അമ്മ ചിരിക്കുമ്പോൾ\nദിവസം തെളിയും",
+      "en": "When mother smiles\nThe day lights up"
+    },
+    "author": {
+      "te": "— అమ్మ వెలుగు",
+      "hi": "— मां रोशनी",
+      "ta": "— அம்மா ஒளி",
+      "kn": "— ಅಮ್ಮ ಬೆಳಕು",
+      "ml": "— അമ്മ വെളിച്ചം",
+      "en": "— Mother’s light"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నాన్న నీడలోనే\nభద్రత ఉంటుంది",
+      "hi": "पिता की छाया में\nसुरक्षा मिलती है",
+      "ta": "அப்பா நிழலில்\nபாதுகாப்பு உள்ளது",
+      "kn": "ಅಪ್ಪನ ನೆರಳಲ್ಲಿ\nಭದ್ರತೆ",
+      "ml": "അച്ഛന്റെ നിഴലിൽ\nസുരക്ഷ",
+      "en": "In father’s shadow\nThere is safety"
+    },
+    "author": {
+      "te": "— నాన్న నీడ",
+      "hi": "— पिता छाया",
+      "ta": "— அப்பா நிழல்",
+      "kn": "— ಅಪ್ಪ ನೆರಳು",
+      "ml": "— അച്ഛൻ നിഴൽ",
+      "en": "— Father’s shade"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఇల్లు అంటే\nమనసు విశ్రాంతి తీసుకునే చోటు",
+      "hi": "घर वही है\nजहां दिल आराम करे",
+      "ta": "வீடு என்பது\nமனம் ஓய்வு இடம்",
+      "kn": "ಮನೆ ಅಂದರೆ\nಮನ ವಿಶ್ರಾಂತಿ ಸ್ಥಳ",
+      "ml": "വീട് എന്നത്\nമനം വിശ്രമിക്കുന്നിടം",
+      "en": "Home is where\nThe heart finds rest"
+    },
+    "author": {
+      "te": "— విశ్రాంతి",
+      "hi": "— आराम",
+      "ta": "— ஓய்வு",
+      "kn": "— ವಿಶ್ರಾಂತಿ",
+      "ml": "— വിശ്രമം",
+      "en": "— Rest"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "కలిసి ఉన్నప్పుడు\nసమస్యలు చిన్నవైపోతాయి",
+      "hi": "साथ हो तो\nमुश्किल छोटी लगती",
+      "ta": "சேர்ந்து இருந்தால்\nபிரச்சனை சிறியது",
+      "kn": "ಒಟ್ಟಿಗೆ ಇದ್ದರೆ\nಸಮಸ್ಯೆ ಚಿಕ್ಕದು",
+      "ml": "കൂടെ ഉണ്ടെങ്കിൽ\nപ്രശ്നം ചെറുത്",
+      "en": "When together\nProblems feel smaller"
+    },
+    "author": {
+      "te": "— కలిసి బలం",
+      "hi": "— साथ ताकत",
+      "ta": "— சேர்ந்து பலம்",
+      "kn": "— ಜೊತೆಯ ಶಕ್ತಿ",
+      "ml": "— കൂടിയ ശക്തി",
+      "en": "— Strength together"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ జీవితం సినిమా\nనువ్వే హీరో",
+      "hi": "तुम्हारी जिंदगी फिल्म\nतुम ही हीरो",
+      "ta": "உன் வாழ்க்கை படம்\nநீயே ஹீரோ",
+      "kn": "ನಿನ್ನ ಜೀವನ ಸಿನಿಮಾ\nನೀನೇ ಹೀರೋ",
+      "ml": "നിന്റെ ജീവിതം സിനിമ\nനീ ഹീറോ",
+      "en": "Your life is a film\nYou are the hero"
+    },
+    "author": {
+      "te": "— జీవన సినిమా",
+      "hi": "— जीवन फिल्म",
+      "ta": "— வாழ்க்கை படம்",
+      "kn": "— ಜೀವನ ಸಿನಿಮಾ",
+      "ml": "— ജീവിത സിനിമ",
+      "en": "— Life cinema"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ప్రతి సీన్ ముఖ్యం\nనీ కథను మార్చుతుంది",
+      "hi": "हर सीन जरूरी\nकहानी बदलता है",
+      "ta": "ஒவ்வொரு காட்சி முக்கியம்\nகதை மாறும்",
+      "kn": "ಪ್ರತಿ ಸೀನ್ ಮುಖ್ಯ\nಕಥೆ ಬದಲಿಸುತ್ತದೆ",
+      "ml": "ഓരോ സീനും പ്രധാന്യം\nകഥ മാറ്റും",
+      "en": "Every scene matters\nIt shapes your story"
+    },
+    "author": {
+      "te": "— కథ సత్యం",
+      "hi": "— कहानी सच",
+      "ta": "— கதை உண்மை",
+      "kn": "— ಕಥೆ ಸತ್ಯ",
+      "ml": "— കഥ സത്യം",
+      "en": "— Story truth"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "విలన్ వచ్చినప్పుడు\nహీరో బలంగా మారతాడు",
+      "hi": "विलेन आए तो\nहीरो मजबूत होता है",
+      "ta": "வில்லன் வந்தால்\nஹீரோ வலிமை",
+      "kn": "ವಿಲನ್ ಬಂದರೆ\nಹೀರೋ ಬಲವಾಗುತ್ತಾನೆ",
+      "ml": "വില്ലൻ വന്നാൽ\nഹീറോ ശക്തൻ",
+      "en": "When villains rise\nHeroes grow stronger"
+    },
+    "author": {
+      "te": "— పోరాటం",
+      "hi": "— संघर्ष",
+      "ta": "— போராட்டம்",
+      "kn": "— ಹೋರಾಟ",
+      "ml": "— പോരാട്ടം",
+      "en": "— Struggle"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ కథకు నువ్వే డైరెక్టర్\nదారి నువ్వే నిర్ణయించు",
+      "hi": "तुम डायरेक्टर हो\nरास्ता खुद चुनो",
+      "ta": "நீயே இயக்குனர்\nபாதை நீ தேர்வு",
+      "kn": "ನೀನೇ ಡೈರೆಕ್ಟರ್\nದಾರಿ ನೀ ಆರಿಸು",
+      "ml": "നീ ഡയറക്ടർ\nവഴി നീ തിരഞ്ഞെടുക്കൂ",
+      "en": "You are the director\nChoose your path"
+    },
+    "author": {
+      "te": "— నియంత్రణ",
+      "hi": "— नियंत्रण",
+      "ta": "— கட்டுப்பாடு",
+      "kn": "— ನಿಯಂತ್ರಣ",
+      "ml": "— നിയന്ത്രണം",
+      "en": "— Control"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "క్లైమాక్స్ ముందు\nపరీక్షలు ఎక్కువగా ఉంటాయి",
+      "hi": "क्लाइमैक्स से पहले\nमुश्किलें ज्यादा",
+      "ta": "கிளைமாக்ஸ் முன்\nசோதனை அதிகம்",
+      "kn": "ಕ್ಲೈಮ್ಯಾಕ್ಸ್ ಮೊದಲು\nಪರೀಕ್ಷೆ ಹೆಚ್ಚು",
+      "ml": "ക്ലൈമാക്സ് മുമ്പ്\nപരീക്ഷകൾ കൂടുതലാണ്",
+      "en": "Before the climax\nChallenges increase"
+    },
+    "author": {
+      "te": "— చివరి దశ",
+      "hi": "— आखिरी पड़ाव",
+      "ta": "— இறுதி நிலை",
+      "kn": "— ಕೊನೆಯ ಹಂತ",
+      "ml": "— അവസാന ഘട്ടം",
+      "en": "— Final phase"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "సీన్ కష్టం అయినా\nహీరో వెనక్కి తగ్గడు",
+      "hi": "सीन मुश्किल हो\nहीरो नहीं रुकता",
+      "ta": "காட்சி கடினம்\nஹீரோ நிற்காது",
+      "kn": "ಸೀನ್ ಕಷ್ಟವಾದರೂ\nಹೀರೋ ನಿಲ್ಲೋದಿಲ್ಲ",
+      "ml": "സീൻ കഠിനമായാലും\nഹീറോ നിൽക്കില്ല",
+      "en": "Even in tough scenes\nThe hero doesn’t quit"
+    },
+    "author": {
+      "te": "— ధైర్యం",
+      "hi": "— साहस",
+      "ta": "— தைரியம்",
+      "kn": "— ಧೈರ್ಯ",
+      "ml": "— ധൈര്യം",
+      "en": "— Courage"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఫెయిల్యూర్ ఒక సీన్ మాత్రమే\nకథ ఇంకా ఉంది",
+      "hi": "फेल होना एक सीन\nकहानी बाकी है",
+      "ta": "தோல்வி ஒரு காட்சி\nகதை உள்ளது",
+      "kn": "ವಿಫಲತೆ ಒಂದು ಸೀನ್\nಕಥೆ ಇನ್ನೂ ಇದೆ",
+      "ml": "പരാജയം ഒരു സീൻ\nകഥ ബാക്കി",
+      "en": "Failure is one scene\nThe story goes on"
+    },
+    "author": {
+      "te": "— కొనసాగింపు",
+      "hi": "— जारी",
+      "ta": "— தொடர்ச்சி",
+      "kn": "— ಮುಂದುವರಿಕೆ",
+      "ml": "— തുടർച്ച",
+      "en": "— Continue"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ కథ నువ్వే రాయాలి\nఇతరులు కాదు",
+      "hi": "अपनी कहानी खुद लिखो\nदूसरे नहीं",
+      "ta": "கதை நீ எழுது\nமற்றவர் இல்லை",
+      "kn": "ಕಥೆ ನೀ ಬರೆಯು\nಇತರರು ಅಲ್ಲ",
+      "ml": "കഥ നീ എഴുതൂ\nമറ്റുള്ളവർ അല്ല",
+      "en": "Write your story\nNot others"
+    },
+    "author": {
+      "te": "— స్వయంకథ",
+      "hi": "— अपनी कहानी",
+      "ta": "— தனி கதை",
+      "kn": "— ಸ್ವಕಥೆ",
+      "ml": "— സ്വന്തം കഥ",
+      "en": "— Own story"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "హీరో అవ్వాలంటే\nపరీక్షలు దాటాలి",
+      "hi": "हीरो बनना है\nतो मुश्किलें पार करो",
+      "ta": "ஹீரோ ஆக\nசோதனை கடக்க வேண்டும்",
+      "kn": "ಹೀರೋ ಆಗಲು\nಪರೀಕ್ಷೆ ದಾಟು",
+      "ml": "ഹീറോ ആകാൻ\nപരീക്ഷ കടക്കണം",
+      "en": "To be a hero\nYou must pass tests"
+    },
+    "author": {
+      "te": "— ప్రయాణం",
+      "hi": "— सफर",
+      "ta": "— பயணம்",
+      "kn": "— ಪ್ರಯಾಣ",
+      "ml": "— യാത്ര",
+      "en": "— Journey"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ జీవితం హిట్ అవుతుంది\nనువ్వు ఆపకపోతే",
+      "hi": "जिंदगी हिट होगी\nअगर रुको नहीं",
+      "ta": "வாழ்க்கை ஹிட் ஆகும்\nநீ நிற்காமல்",
+      "kn": "ಜೀವನ ಹಿಟ್ ಆಗುತ್ತದೆ\nನೀ ನಿಲ್ಲದೆ ಇದ್ದರೆ",
+      "ml": "ജീവితం ഹിറ്റ് ആവും\nനീ നിർത്താതെ",
+      "en": "Life becomes a hit\nIf you don’t stop"
+    },
+    "author": {
+      "te": "— విజయం",
+      "hi": "— सफलता",
+      "ta": "— வெற்றி",
+      "kn": "— ಯಶಸ್ಸು",
+      "ml": "— വിജയം",
+      "en": "— Success"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఇంటర్వెల్ తర్వాతే\nకథ ఆసక్తికరం",
+      "hi": "इंटरवल के बाद\nकहानी रोचक होती है",
+      "ta": "இடைவேளைக்குப் பிறகு\nகதை சுவாரஸ்யம்",
+      "kn": "ಇಂಟರ್ವೆಲ್ ನಂತರ\nಕಥೆ ರೋಚಕ",
+      "ml": "ഇന്റർവലിന് ശേഷം\nകഥ രസകരം",
+      "en": "After the interval\nThe story gets better"
+    },
+    "author": {
+      "te": "— మధ్య దశ",
+      "hi": "— बीच का दौर",
+      "ta": "— நடுநிலை",
+      "kn": "— ಮಧ್ಯ ಹಂತ",
+      "ml": "— ഇടക്കാലം",
+      "en": "— Mid phase"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ప్రతి సీన్ నీది\nదానిని బలంగా ఆడు",
+      "hi": "हर सीन तुम्हारा\nउसे दमदार बनाओ",
+      "ta": "ஒவ்வொரு காட்சி உன்\nஅதை வலிமையாக்கு",
+      "kn": "ಪ್ರತಿ ಸೀನ್ ನಿನ್ನದು\nಬಲವಾಗಿ ಆಡಿಸು",
+      "ml": "ഓരോ സീനും നിനക്ക്\nശക്തമായി കളിക്കൂ",
+      "en": "Every scene is yours\nPlay it strong"
+    },
+    "author": {
+      "te": "— పాత్ర",
+      "hi": "— किरदार",
+      "ta": "— கதாபாத்திரம்",
+      "kn": "— ಪಾತ್ರ",
+      "ml": "— കഥാപാത്രം",
+      "en": "— Character"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "స్క్రిప్ట్ మారినా\nహీరో మారడు",
+      "hi": "स्क्रिप्ट बदले\nहीरो नहीं बदलता",
+      "ta": "கதை மாறினாலும்\nஹீரோ மாறாது",
+      "kn": "ಸ್ಕ್ರಿಪ್ಟ್ ಬದಲಾದರೂ\nಹೀರೋ ಬದಲಾಗೋದಿಲ್ಲ",
+      "ml": "സ്ക്രിപ്റ്റ് മാറിയാലും\nഹീറോ മാറില്ല",
+      "en": "Scripts may change\nThe hero stays true"
+    },
+    "author": {
+      "te": "— స్థిరత్వం",
+      "hi": "— स्थिरता",
+      "ta": "— நிலைத்தன்மை",
+      "kn": "— ಸ್ಥಿರತೆ",
+      "ml": "— സ്ഥിരത",
+      "en": "— Consistency"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ కథలో\nనువ్వే ప్రధాన పాత్ర",
+      "hi": "अपनी कहानी में\nतुम ही मुख्य हो",
+      "ta": "உன் கதையில்\nநீயே முக்கியம்",
+      "kn": "ನಿನ್ನ ಕಥೆಯಲ್ಲಿ\nನೀನೇ ಮುಖ್ಯ",
+      "ml": "നിന്റെ കഥയിൽ\nനീ പ്രധാനമാണ്",
+      "en": "In your story\nYou are the lead"
+    },
+    "author": {
+      "te": "— ప్రధాన పాత్ర",
+      "hi": "— मुख्य किरदार",
+      "ta": "— முக்கிய பாத்திரம்",
+      "kn": "— ಮುಖ್ಯ ಪಾತ್ರ",
+      "ml": "— പ്രധാന കഥാപാത്രം",
+      "en": "— Main role"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఫ్లాప్ అనిపించినా\nమళ్లీ హిట్ అవచ్చు",
+      "hi": "फ्लॉप लगे तो भी\nहिट बन सकता है",
+      "ta": "தோல்வி என்றாலும்\nவெற்றி ஆகலாம்",
+      "kn": "ಫ್ಲಾಪ್ ಅನ್ನಿಸಿದರೂ\nಹಿಟ್ ಆಗಬಹುದು",
+      "ml": "ഫ്ലോപ്പ് ആയാലും\nഹിറ്റ് ആകാം",
+      "en": "Even a flop phase\nCan turn into a hit"
+    },
+    "author": {
+      "te": "— మార్పు",
+      "hi": "— बदलाव",
+      "ta": "— மாற்றம்",
+      "kn": "— ಬದಲಾವಣೆ",
+      "ml": "— മാറ്റം",
+      "en": "— Turnaround"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నువ్వు నమ్మితేనే\nకథ హిట్ అవుతుంది",
+      "hi": "तुम भरोसा करो\nकहानी हिट होगी",
+      "ta": "நீ நம்பினால்\nகதை வெற்றி",
+      "kn": "ನೀ ನಂಬಿದರೆ\nಕಥೆ ಹಿಟ್",
+      "ml": "നീ വിശ്വസിച്ചാൽ\nകഥ ഹിറ്റ്",
+      "en": "If you believe\nThe story succeeds"
+    },
+    "author": {
+      "te": "— నమ్మకం",
+      "hi": "— भरोसा",
+      "ta": "— நம்பிக்கை",
+      "kn": "— ನಂಬಿಕೆ",
+      "ml": "— വിശ്വാസം",
+      "en": "— Belief"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "సీన్ మారుతుంది\nనువ్వు ఆగకపోతే",
+      "hi": "सीन बदलेगा\nअगर रुको नहीं",
+      "ta": "காட்சி மாறும்\nநீ நிற்காமல்",
+      "kn": "ಸೀನ್ ಬದಲಾಗುತ್ತದೆ\nನೀ ನಿಲ್ಲದೆ ಇದ್ದರೆ",
+      "ml": "സീൻ മാറും\nനീ നിർത്താതെ",
+      "en": "Scenes will change\nIf you keep going"
+    },
+    "author": {
+      "te": "— కొనసాగింపు",
+      "hi": "— जारी",
+      "ta": "— தொடர்ச்சி",
+      "kn": "— ಮುಂದುವರಿಕೆ",
+      "ml": "— തുടർച്ച",
+      "en": "— Continuity"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "హీరో ఒంటరిగా అయినా\nముందుకు సాగుతాడు",
+      "hi": "हीरो अकेला भी\nआगे बढ़ता है",
+      "ta": "ஹீரோ தனியாக இருந்தாலும்\nமுன்னேறும்",
+      "kn": "ಹೀರೋ ಒಬ್ಬನೇ ಇದ್ದರೂ\nಮುಂದೆ ಸಾಗುತ್ತಾನೆ",
+      "ml": "ഹീറോ ഒറ്റയായാലും\nമുന്നോട്ട് പോകും",
+      "en": "A hero walks ahead\nEven when alone"
+    },
+    "author": {
+      "te": "— ధైర్యం",
+      "hi": "— साहस",
+      "ta": "— தைரியம்",
+      "kn": "— ಧೈರ್ಯ",
+      "ml": "— ധൈര്യം",
+      "en": "— Courage"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ కథను ఎవరూ రాయకూడదు\nనువ్వే రాయాలి",
+      "hi": "तुम्हारी कहानी\nतुम ही लिखो",
+      "ta": "உன் கதை\nநீயே எழுது",
+      "kn": "ನಿನ್ನ ಕಥೆ\nನೀನೇ ಬರೆಯು",
+      "ml": "നിന്റെ കഥ\nനീ തന്നെ എഴുതൂ",
+      "en": "No one writes your story\nYou must"
+    },
+    "author": {
+      "te": "— స్వాతంత్ర్యం",
+      "hi": "— स्वतंत्रता",
+      "ta": "— சுதந்திரம்",
+      "kn": "— ಸ್ವಾತಂತ್ರ್ಯ",
+      "ml": "— സ്വാതന്ത്ര്യം",
+      "en": "— Freedom"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "చివరి సీన్ వరకు\nనువ్వు పోరాడాలి",
+      "hi": "आखिरी सीन तक\nलड़ते रहो",
+      "ta": "இறுதி வரை\nபோராடு",
+      "kn": "ಕೊನೆಯ ಸೀನ್ ತನಕ\nಹೋರಾಡು",
+      "ml": "അവസാനം വരെ\nപോരാടൂ",
+      "en": "Till the final scene\nKeep fighting"
+    },
+    "author": {
+      "te": "— ముగింపు",
+      "hi": "— अंत",
+      "ta": "— முடிவு",
+      "kn": "— ಅಂತ್ಯ",
+      "ml": "— അവസാനം",
+      "en": "— Ending"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "హీరోలు పుట్టరు\nవాళ్లు తయారవుతారు",
+      "hi": "हीरो पैदा नहीं होते\nबनते हैं",
+      "ta": "ஹீரோ பிறக்க மாட்டார்\nஉருவாகிறார்",
+      "kn": "ಹೀರೋ ಹುಟ್ಟುವುದಿಲ್ಲ\nಆಗುತ್ತಾರೆ",
+      "ml": "ഹീറോ ജനിക്കുന്നില്ല\nഅവരാകുന്നു",
+      "en": "Heroes aren’t born\nThey are made"
+    },
+    "author": {
+      "te": "— సృష్టి",
+      "hi": "— निर्माण",
+      "ta": "— உருவாக்கம்",
+      "kn": "— ನಿರ್ಮಾಣ",
+      "ml": "— സൃഷ്ടി",
+      "en": "— Creation"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "భయం ఉన్నా ముందుకు నడిచేవాడే హీరో",
+      "hi": "डर के साथ भी\nआगे बढ़े वही हीरो",
+      "ta": "பயம் இருந்தாலும்\nமுன்னேறும் ஹீரோ",
+      "kn": "ಭಯ ಇದ್ದರೂ\nಮುಂದೆ ಸಾಗುವವನೇ ಹೀರೋ",
+      "ml": "ഭയം ഉണ്ടെങ്കിലും\nമുന്നോട്ട് പോകുന്നവൻ ഹീറോ",
+      "en": "Even with fear\nThe one who moves forward is a hero"
+    },
+    "author": {
+      "te": "— ధైర్యం",
+      "hi": "— साहस",
+      "ta": "— தைரியம்",
+      "kn": "— ಧೈರ್ಯ",
+      "ml": "— ധൈര്യം",
+      "en": "— Courage"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "హీరోలు సమస్యల్ని తప్పించరు\nవాటిని ఎదుర్కొంటారు",
+      "hi": "हीरो समस्याओं से\nभागते नहीं, सामना करते हैं",
+      "ta": "ஹீரோ பிரச்சனைக்கு ஓடமாட்டார்\nஎதிர்கொள்வார்",
+      "kn": "ಹೀರೋ ಸಮಸ್ಯೆಯಿಂದ ಓಡೋದಿಲ್ಲ\nಎದುರಿಸುತ್ತಾನೆ",
+      "ml": "ഹീറോ പ്രശ്നങ്ങളിൽ നിന്ന് ഓടില്ല\nഎതിർക്കും",
+      "en": "Heroes don’t escape problems\nThey face them"
+    },
+    "author": {
+      "te": "— పోరాటం",
+      "hi": "— संघर्ष",
+      "ta": "— போராட்டம்",
+      "kn": "— ಹೋರಾಟ",
+      "ml": "— പോരാട്ടം",
+      "en": "— Struggle"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఒక్క నిర్ణయం\nహీరోని మార్చుతుంది",
+      "hi": "एक फैसला\nहीरो बनाता है",
+      "ta": "ஒரு முடிவு\nஹீரோ ஆக்கும்",
+      "kn": "ಒಂದು ನಿರ್ಧಾರ\nಹೀರೋ ಮಾಡುತ್ತದೆ",
+      "ml": "ഒരു തീരുമാനം\nഹീറോ ആക്കും",
+      "en": "One decision\nCan create a hero"
+    },
+    "author": {
+      "te": "— నిర్ణయం",
+      "hi": "— फैसला",
+      "ta": "— முடிவு",
+      "kn": "— ನಿರ್ಧಾರ",
+      "ml": "— തീരുമാനം",
+      "en": "— Decision"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "హీరోగా మారాలంటే\nతప్పులు అంగీకరించాలి",
+      "hi": "हीरो बनने के लिए\nगलती माननी होगी",
+      "ta": "ஹீரோ ஆக\nதவறு ஏற்க வேண்டும்",
+      "kn": "ಹೀರೋ ಆಗಲು\nತಪ್ಪು ಒಪ್ಪಿಕೊಳ್ಳಬೇಕು",
+      "ml": "ഹീറോ ആകാൻ\nതെറ്റ് അംഗീകരിക്കണം",
+      "en": "To become a hero\nYou must accept mistakes"
+    },
+    "author": {
+      "te": "— నేర్చుకోవడం",
+      "hi": "— सीख",
+      "ta": "— கற்றல்",
+      "kn": "— ಕಲಿಕೆ",
+      "ml": "— പഠനം",
+      "en": "— Learning"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నిశ్శబ్దంగా కష్టపడేవాడు\nనిజమైన హీరో",
+      "hi": "चुपचाप मेहनत करने वाला\nसच्चा हीरो",
+      "ta": "அமைதியாக உழைப்பவன்\nஉண்மையான ஹீரோ",
+      "kn": "ಮೌನವಾಗಿ ಕೆಲಸ ಮಾಡುವವನು\nನಿಜ ಹೀರೋ",
+      "ml": "നിശബ്ദമായി പരിശ്രമിക്കുന്നവൻ\nയഥാർത്ഥ ഹീറോ",
+      "en": "The one who works silently\nIs a real hero"
+    },
+    "author": {
+      "te": "— కృషి",
+      "hi": "— मेहनत",
+      "ta": "— உழைப்பு",
+      "kn": "— ಪರಿಶ್ರಮ",
+      "ml": "— പരിശ്രമം",
+      "en": "— Hard work"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "హీరోలు దారి చూపుతారు\nవాళ్లు వెంబడించరు",
+      "hi": "हीरो रास्ता दिखाते हैं\nपीछे नहीं चलते",
+      "ta": "ஹீரோ வழி காட்டுவார்\nபின்தொடர மாட்டார்",
+      "kn": "ಹೀರೋ ದಾರಿ ತೋರಿಸುತ್ತಾನೆ\nಹಿಂಬಾಲಿಸುವುದಿಲ್ಲ",
+      "ml": "ഹീറോ വഴി കാണിക്കും\nപിന്നിൽ പോകില്ല",
+      "en": "Heroes lead the way\nThey don’t follow"
+    },
+    "author": {
+      "te": "— నాయకత్వం",
+      "hi": "— नेतृत्व",
+      "ta": "— தலைமை",
+      "kn": "— ನಾಯಕತ್ವ",
+      "ml": "— നേതൃത്വം",
+      "en": "— Leadership"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఒంటరిగా ఉన్నా\nధైర్యంగా నిలబడేవాడు హీరో",
+      "hi": "अकेला हो कर भी\nखड़ा रहे वही हीरो",
+      "ta": "தனியாக இருந்தாலும்\nநிலைக்கும் ஹீரோ",
+      "kn": "ಒಬ್ಬನೇ ಇದ್ದರೂ\nನಿಂತುಬಿಡುವವನೇ ಹೀರೋ",
+      "ml": "ഒറ്റയായാലും\nനിൽക്കുന്നവൻ ഹീറോ",
+      "en": "Even alone\nStanding strong makes you a hero"
+    },
+    "author": {
+      "te": "— నిలువు ధైర్యం",
+      "hi": "— अडिग साहस",
+      "ta": "— நிலைத்த தைரியம்",
+      "kn": "— ದೃಢ ಧೈರ್ಯ",
+      "ml": "— ഉറച്ച ധൈര്യം",
+      "en": "— Steady courage"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "విజయం కాదు\nప్రయత్నమే హీరోని చూపిస్తుంది",
+      "hi": "सिर्फ जीत नहीं\nकोशिश ही हीरो दिखाती है",
+      "ta": "வெற்றி அல்ல\nமுயற்சியே ஹீரோ",
+      "kn": "ಜಯ ಮಾತ್ರ ಅಲ್ಲ\nಪ್ರಯತ್ನವೇ ಹೀರೋ ತೋರಿಸುತ್ತದೆ",
+      "ml": "വിജയം മാത്രമല്ല\nശ്രമം ഹീറോ ആക്കും",
+      "en": "Not just victory\nEffort reveals a hero"
+    },
+    "author": {
+      "te": "— ప్రయత్నం",
+      "hi": "— कोशिश",
+      "ta": "— முயற்சி",
+      "kn": "— ಪ್ರಯತ್ನ",
+      "ml": "— ശ്രമം",
+      "en": "— Effort"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "హీరోగా ఉండటం అంటే\nఎప్పుడూ ముందుకు సాగటం",
+      "hi": "हीरो होना मतलब\nहमेशा आगे बढ़ना",
+      "ta": "ஹீரோ என்பது\nமுன்னேறுவது",
+      "kn": "ಹೀರೋ ಅಂದರೆ\nಮುಂದೆ ಸಾಗುವುದು",
+      "ml": "ഹീറോ ആകുന്നത്\nമുന്നോട്ട് പോകുന്നത്",
+      "en": "Being a hero\nMeans always moving forward"
+    },
+    "author": {
+      "te": "— ముందడుగు",
+      "hi": "— आगे बढ़ना",
+      "ta": "— முன்னேற்றம்",
+      "kn": "— ಮುಂದುವರಿಕೆ",
+      "ml": "— മുന്നേറ്റം",
+      "en": "— Progress"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "హీరోలు అవకాశాల కోసం\nఎదురు చూడరు, సృష్టిస్తారు",
+      "hi": "हीरो मौके का इंतज़ार नहीं\nउसे बनाते हैं",
+      "ta": "ஹீரோ வாய்ப்பை காத்திருக்க மாட்டார்\nஉருவாக்குவார்",
+      "kn": "ಹೀರೋ ಅವಕಾಶಕ್ಕಾಗಿ ಕಾಯೋದಿಲ್ಲ\nಸೃಷ್ಟಿಸುತ್ತಾನೆ",
+      "ml": "ഹീറോ അവസരം കാത്തിരിക്കില്ല\nസൃഷ്ടിക്കും",
+      "en": "Heroes don’t wait for chances\nThey create them"
+    },
+    "author": {
+      "te": "— సృష్టి",
+      "hi": "— निर्माण",
+      "ta": "— உருவாக்கம்",
+      "kn": "— ನಿರ್ಮಾಣ",
+      "ml": "— സൃഷ്ടി",
+      "en": "— Creation"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "హీరోల్ని గెలుపు కాదు\nవారి ధైర్యం గుర్తుంచుకుంటారు",
+      "hi": "हीरो को जीत नहीं\nउसका साहस याद रहता है",
+      "ta": "ஹீரோவின் வெற்றி அல்ல\nதைரியம் நினைவில்",
+      "kn": "ಹೀರೋಗೆ ಜಯ ಅಲ್ಲ\nಧೈರ್ಯ ನೆನಪು",
+      "ml": "ഹീറോയുടെ വിജയം അല്ല\nധൈര്യം ഓർമ്മ",
+      "en": "Heroes aren’t remembered for wins\nBut for courage"
+    },
+    "author": {
+      "te": "— జ్ఞాపకం",
+      "hi": "— याद",
+      "ta": "— நினைவு",
+      "kn": "— ನೆನಪು",
+      "ml": "— ഓർമ്മ",
+      "en": "— Memory"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "పడిపోవడం తప్పు కాదు\nలేవకపోవడమే తప్పు",
+      "hi": "गिरना गलत नहीं\nउठना छोड़ना गलत",
+      "ta": "விழுவது தவறு இல்லை\nஎழாததே தவறு",
+      "kn": "ಬೀಳುವುದು ತಪ್ಪಲ್ಲ\nಎದ್ದಿಲ್ಲದಿದ್ದರೆ ತಪ್ಪು",
+      "ml": "വീഴുന്നത് തെറ്റല്ല\nഎഴുന്നേൽക്കാത്തത് തെറ്റ്",
+      "en": "Falling isn’t wrong\nNot rising is"
+    },
+    "author": {
+      "te": "— నిలకడ",
+      "hi": "— हिम्मत",
+      "ta": "— உறுதி",
+      "kn": "— ದೃಢತೆ",
+      "ml": "— ഉറച്ചത്",
+      "en": "— Resilience"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "హీరో తన భయాన్ని దాచడు\nదాన్ని జయిస్తాడు",
+      "hi": "हीरो डर छुपाता नहीं\nउसे जीतता है",
+      "ta": "ஹீரோ பயத்தை மறைக்க மாட்டார்\nஅதை வெல்வார்",
+      "kn": "ಹೀರೋ ಭಯ ಮುಚ್ಚೋದಿಲ್ಲ\nಜಯಿಸುತ್ತಾನೆ",
+      "ml": "ഹീറോ ഭയം മറയ്ക്കില്ല\nഅതിനെ ജയിക്കും",
+      "en": "A hero doesn’t hide fear\nHe conquers it"
+    },
+    "author": {
+      "te": "— జయం",
+      "hi": "— जीत",
+      "ta": "— வெற்றி",
+      "kn": "— ಜಯ",
+      "ml": "— വിജയം",
+      "en": "— Victory"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "హీరో అవ్వడం అంటే\nఇతరుల కోసం నిలబడటం",
+      "hi": "हीरो बनना मतलब\nदूसरों के लिए खड़ा होना",
+      "ta": "ஹீரோ என்பது\nமற்றவருக்காக நிற்பது",
+      "kn": "ಹೀರೋ ಅಂದರೆ\nಇತರರಿಗಾಗಿ ನಿಲ್ಲುವುದು",
+      "ml": "ഹീറോ ആകുന്നത്\nമറ്റുള്ളവർക്കായി നിൽക്കുന്നത്",
+      "en": "Being a hero\nMeans standing for others"
+    },
+    "author": {
+      "te": "— సేవ",
+      "hi": "— सेवा",
+      "ta": "— சேவை",
+      "kn": "— ಸೇವೆ",
+      "ml": "— സേവനം",
+      "en": "— Service"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "హీరోల ప్రయాణం\nసులభం కాదు కానీ గొప్పది",
+      "hi": "हीरो का सफर\nआसान नहीं पर महान",
+      "ta": "ஹீரோ பயணம்\nஎளிதல்ல ஆனால் சிறப்பு",
+      "kn": "ಹೀರೋ ಪ್ರಯಾಣ\nಸುಲಭವಲ್ಲ ಆದರೆ ಮಹಾನ್",
+      "ml": "ഹീറോയുടെ യാത്ര\nലളിതമല്ല പക്ഷേ മഹത്തായ",
+      "en": "A hero’s journey\nIs tough but great"
+    },
+    "author": {
+      "te": "— ప్రయాణం",
+      "hi": "— सफर",
+      "ta": "— பயணம்",
+      "kn": "— ಪ್ರಯಾಣ",
+      "ml": "— യാത്ര",
+      "en": "— Journey"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీపై నువ్వు గెలిస్తే\nనిజమైన హీరో",
+      "hi": "खुद पर जीत\nसच्चा हीरो",
+      "ta": "உன்னை வென்றால்\nஉண்மையான ஹீரோ",
+      "kn": "ನಿನ್ನ ಮೇಲೆ ಜಯ\nನಿಜ ಹೀರೋ",
+      "ml": "സ്വയം ജയിച്ചാൽ\nയഥാർത്ഥ ഹീറോ",
+      "en": "If you conquer yourself\nYou are a true hero"
+    },
+    "author": {
+      "te": "— అంతర జయం",
+      "hi": "— आत्म जीत",
+      "ta": "— உள்ள வெற்றி",
+      "kn": "— ಒಳ ಜಯ",
+      "ml": "— ആത്മ വിജയം",
+      "en": "— Inner victory"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "హీరోలు మాటలతో కాదు\nచర్యలతో గుర్తుంటారు",
+      "hi": "हीरो बातों से नहीं\nकर्म से याद रहते हैं",
+      "ta": "ஹீரோ வார்த்தை அல்ல\nசெயலில் தெரியும்",
+      "kn": "ಹೀರೋ ಮಾತಲ್ಲ\nಕ್ರಿಯೆಯಲ್ಲಿ ಕಾಣುತ್ತಾನೆ",
+      "ml": "ഹീറോ വാക്കുകൾ അല്ല\nപ്രവർത്തിയിൽ ഓർമ്മ",
+      "en": "Heroes are remembered\nFor actions, not words"
+    },
+    "author": {
+      "te": "— చర్య",
+      "hi": "— कर्म",
+      "ta": "— செயல்",
+      "kn": "— ಕ್ರಿಯೆ",
+      "ml": "— പ്രവർത്തി",
+      "en": "— Action"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఒక్క అడుగు ధైర్యంగా వేయి\nహీరోగా మారుతావు",
+      "hi": "एक कदम साहस से\nहीरो बन जाओगे",
+      "ta": "ஒரு துணிவு படி\nஹீரோ ஆகும்",
+      "kn": "ಒಂದು ಧೈರ್ಯದ ಹೆಜ್ಜೆ\nಹೀರೋ ಆಗುತ್ತೀಯ",
+      "ml": "ഒരു ധൈര്യ ചുവട്\nഹീറോ ആക്കും",
+      "en": "Take one brave step\nYou become a hero"
+    },
+    "author": {
+      "te": "— అడుగు",
+      "hi": "— कदम",
+      "ta": "— படி",
+      "kn": "— ಹೆಜ್ಜೆ",
+      "ml": "— ചുവട്",
+      "en": "— Step"
+    }
+  },
+  {
+    "category": "HEROES",
+    "mood": "inspiring",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "హీరోగా నిలవాలి అంటే\nఎప్పుడూ నిజాయితీగా ఉండు",
+      "hi": "हीरो बनना है\nतो सच्चा रहो",
+      "ta": "ஹீரோ ஆக\nஉண்மையாக இரு",
+      "kn": "ಹೀರೋ ಆಗಲು\nನಿಷ್ಠೆಯಿಂದಿರು",
+      "ml": "ഹീറോ ആകാൻ\nസത്യസന്ധനാകൂ",
+      "en": "To be a hero\nStay true always"
+    },
+    "author": {
+      "te": "— నిజం",
+      "hi": "— सच",
+      "ta": "— உண்மை",
+      "kn": "— ಸತ್ಯ",
+      "ml": "— സത്യം",
+      "en": "— Truth"
+    }
+  },
+  {
+    "category": "GOOD_MORNING",
+    "mood": "positive",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "శుభోదయం! కొత్త రోజు\nకొత్త ఆశలు తెస్తుంది",
+      "hi": "सुप्रभात! नया दिन\nनई उम्मीदें लाता है",
+      "ta": "காலை வணக்கம்!\nபுதிய நாள் புதிய நம்பிக்கை",
+      "kn": "ಶುಭೋದಯ!\nಹೊಸ ದಿನ ಹೊಸ ಆಶೆ",
+      "ml": "സുപ്രഭാതം!\nപുതിയ ദിവസം പുതിയ പ്രതീക്ഷ",
+      "en": "Good morning!\nA new day brings new hope"
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കథ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "శుభరాత్రి\nశాంతిగా నిద్రించు",
+      "hi": "शुभ रात्रि\nशांति से सो जाओ",
+      "ta": "இனிய இரவு\nஅமைதியாக உறங்கு",
+      "kn": "ಶುಭ ರಾತ್ರಿ\nಶಾಂತಿಯಿಂದ ನಿದ್ರೆ",
+      "ml": "ശുഭ രാത്രി\nശാന്തിയായി ഉറങ്ങൂ",
+      "en": "Good night\nSleep peacefully"
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കథ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నువ్వు ఉంటే\nజీవితం అందంగా ఉంటుంది",
+      "hi": "तुम हो तो\nजिंदगी खूबसूरत है",
+      "ta": "நீ இருந்தால்\nவாழ்க்கை அழகு",
+      "kn": "ನೀ ಇದ್ದರೆ\nಜೀವನ ಸುಂದರ",
+      "ml": "നീ ഉണ്ടെങ്കിൽ\nജീവിതം സുന്ദരം",
+      "en": "With you\nLife is beautiful"
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കథ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "దైవం నీలోనే ఉంది\nదానిని గుర్తించు",
+      "hi": "ईश्वर तुम्हारे भीतर है\nउसे पहचानो",
+      "ta": "தெய்வம் உன்னுள் உள்ளது\nஅதை உணர்",
+      "kn": "ದೈವ ನಿನ್ನೊಳಗೆ ಇದೆ\nಅದನ್ನು ಅರಿತುಕೋ",
+      "ml": "ദൈവം നിനക്കുള്ളിൽ\nഅത് തിരിച്ചറിയൂ",
+      "en": "The divine is within you\nRealize it"
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കథ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఇప్పుడే ప్రారంభించు\nసమయం వేచి ఉండదు",
+      "hi": "अभी शुरू करो\nसमय नहीं रुकेगा",
+      "ta": "இப்போது தொடங்கு\nநேரம் காத்திருக்காது",
+      "kn": "ಈಗಲೇ ಆರಂಭಿಸು\nಸಮಯ ಕಾಯುವುದಿಲ್ಲ",
+      "ml": "ഇപ്പോൾ തുടങ്ങൂ\nസമയം കാത്തിരിക്കില്ല",
+      "en": "Start now\nTime won’t wait"
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കథ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "ఆనందం పంచుకోండి 🎉\nజీవితం అందంగా మారుతుంది",
+      "hi": "खुशी बांटो 🎉\nजिंदगी सुंदर बनेगी",
+      "ta": "மகிழ்ச்சி பகிர் 🎉\nவாழ்க்கை அழகு",
+      "kn": "ಸಂತೋಷ ಹಂಚಿ 🎉\nಜೀವನ ಸುಂದರ",
+      "ml": "സന്തോഷം പങ്കിടൂ 🎉\nജീവിതം സുന്ദരം",
+      "en": "Share joy 🎉\nLife becomes beautiful"
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കథ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఇల్లు అంటే ప్రేమ\nమనసుకు శాంతి",
+      "hi": "घर मतलब प्यार\nदिल को सुकून",
+      "ta": "வீடு என்பது அன்பு\nமனம் அமைதி",
+      "kn": "ಮನೆ ಅಂದರೆ ಪ್ರೀತಿ\nಮನ ಶಾಂತಿ",
+      "ml": "വീട് സ്നേഹം\nമനശാന്തി",
+      "en": "Home means love\nPeace for the heart"
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കథ",
+      "en": "— Daily Katha"
+    }
+  },
+  {
+    "category": "CINEMA",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ జీవితం సినిమా\nనువ్వే హీరో",
+      "hi": "जिंदगी फिल्म है\nतुम ही हीरो",
+      "ta": "வாழ்க்கை படம்\nநீயே ஹீரோ",
+      "kn": "ಜೀವನ ಸಿನಿಮಾ\nನೀನೇ ಹೀರೋ",
+      "ml": "ജീവിതം സിനിമ\nനീ ഹീറോ",
+      "en": "Life is a movie\nYou are the hero"
+    },
+    "author": {
+      "hi": "— दैनिक कथा",
+      "te": "— దైనిక కథ",
+      "ta": "— தினசரி கதை",
+      "kn": "— ದೈನಂದಿನ ಕಥೆ",
+      "ml": "— ദൈനിക കథ",
+      "en": "— Daily Katha"
+    }
+  }
+]

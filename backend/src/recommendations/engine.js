@@ -1,8 +1,25 @@
 import { pool } from '../db/pool.js';
 import { scoreCard } from './scoring.js';
 import { diversify } from './diversity.js';
+import {
+  buildRecommendationContext,
+  expandCandidateCategories,
+  moodAffinityForContext,
+  applyContextualLead,
+} from './context.js';
 
-export async function runRecommendationEngine({ userId, interests, lang, section, limit, offset }) {
+export async function runRecommendationEngine({
+  userId,
+  interests,
+  lang,
+  section,
+  limit,
+  offset,
+  timezone = 'Asia/Kolkata',
+}) {
+  const context = buildRecommendationContext({ timezone });
+  const candidateCategories = expandCandidateCategories(interests, context);
+
   const interactionCount = await pool.query('SELECT COUNT(*) FROM interactions WHERE user_id = $1', [userId]);
   const isColdStart = parseInt(interactionCount.rows[0].count, 10) < 5;
 
@@ -19,13 +36,14 @@ export async function runRecommendationEngine({ userId, interests, lang, section
 
   const sec = section ? `AND c.section = $${skippedIds.length > 0 ? 4 : 3}` : '';
 
-  const params = skippedIds.length > 0
-    ? section
-      ? [userId, interests, skippedIds, section]
-      : [userId, interests, skippedIds]
-    : section
-      ? [userId, interests, section]
-      : [userId, interests];
+  const params =
+    skippedIds.length > 0
+      ? section
+        ? [userId, candidateCategories, skippedIds, section]
+        : [userId, candidateCategories, skippedIds]
+      : section
+        ? [userId, candidateCategories, section]
+        : [userId, candidateCategories];
 
   const candidateQuery = `
     SELECT c.*,
@@ -64,11 +82,9 @@ export async function runRecommendationEngine({ userId, interests, lang, section
 
   const candidateResult = await pool.query(candidateQuery, params);
   const candidates = candidateResult.rows;
-  if (candidates.length === 0) return { cards: [], total: 0 };
+  if (candidates.length === 0) return { cards: [], total: 0, recommendationContext: context };
 
-  const hour = new Date().getHours();
-  const timeOfDay = hour < 12 ? 'morning' : hour < 17 ? 'afternoon' : hour < 21 ? 'evening' : 'night';
-  const moodAffinity = { morning: 'warm', afternoon: 'bold', evening: 'calm', night: 'calm' }[timeOfDay];
+  const moodAffinity = moodAffinityForContext(context);
 
   const maxTrendScore = Math.max(...candidates.map((c) => Number(c.trend_score || 0)), 1);
   const maxCollabScore = Math.max(...candidates.map((c) => Number(c.collab_score || 0)), 1);
@@ -82,6 +98,7 @@ export async function runRecommendationEngine({ userId, interests, lang, section
       isViewed: viewedIds.has(card.id),
       maxTrendScore,
       maxCollabScore,
+      context,
     });
     return { ...card, _score: score };
   });
@@ -89,8 +106,11 @@ export async function runRecommendationEngine({ userId, interests, lang, section
   scored.sort((a, b) => b._score - a._score);
 
   const diversified = diversify(scored, interests);
-  const total = diversified.length;
-  const page = diversified.slice(offset, offset + limit);
+  let ordered = diversified;
+  if (offset === 0) ordered = applyContextualLead(diversified, context);
 
-  return { cards: page, total };
+  const total = ordered.length;
+  const page = ordered.slice(offset, offset + limit);
+
+  return { cards: page, total, recommendationContext: context };
 }

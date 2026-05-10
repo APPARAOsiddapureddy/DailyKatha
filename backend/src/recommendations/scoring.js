@@ -1,4 +1,17 @@
-export function scoreCard({ card, interests, moodAffinity, isColdStart, isViewed, maxTrendScore, maxCollabScore }) {
+/**
+ * @param {object} params
+ * @param {object} [params.context] - from buildRecommendationContext
+ */
+export function scoreCard({
+  card,
+  interests,
+  moodAffinity,
+  isColdStart,
+  isViewed,
+  maxTrendScore,
+  maxCollabScore,
+  context,
+}) {
   let score = 0;
 
   const primaryInterest = interests[0];
@@ -10,6 +23,39 @@ export function scoreCard({ card, interests, moodAffinity, isColdStart, isViewed
   else if (card.category === tertiaryInterest) score += 0.1;
 
   if (card.mood === moodAffinity) score += 0.15;
+
+  if (context) {
+    if (context.primaryTimeCategory) {
+      if (card.category === context.primaryTimeCategory) score += 0.28;
+      else if (
+        context.primaryTimeCategory === 'goodnight' &&
+        (card.category === 'calm' || card.category === 'goodnight')
+      ) {
+        score += 0.24;
+      }
+    }
+    if (context.secondaryTimeCategory && card.category === context.secondaryTimeCategory) {
+      score += 0.12;
+    }
+
+    if (context.festivalBoostActive && (card.category === 'festival' || card.is_festival)) {
+      score += 0.34;
+    } else if (
+      context.festivalApproaching &&
+      !context.festivalBoostActive &&
+      (card.category === 'festival' || card.is_festival)
+    ) {
+      score += 0.16;
+    }
+
+    if (context.festivalBoostActive && festivalTagMatches(card, context.activeFestivals)) {
+      score += 0.14;
+    }
+
+    if (context.festivalApproaching && festivalTagMatches(card, context.upcomingFestivals)) {
+      score += 0.06;
+    }
+  }
 
   if (isColdStart) {
     score *= 0.5;
@@ -24,6 +70,18 @@ export function scoreCard({ card, interests, moodAffinity, isColdStart, isViewed
   if (isViewed) score -= 0.5;
 
   return Math.max(0, score);
+}
+
+function festivalTagMatches(card, festivalList) {
+  if (!festivalList?.length) return false;
+  const raw = card.festival;
+  const blob =
+    typeof raw === 'string'
+      ? raw.toLowerCase()
+      : JSON.stringify(raw ?? {})
+          .toLowerCase();
+  if (!blob) return false;
+  return festivalList.some((f) => (f.tags || []).some((t) => blob.includes(String(t).toLowerCase())));
 }
 
 function freshnessScore(createdAt) {

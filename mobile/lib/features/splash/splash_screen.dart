@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
 import '../../observability/analytics/analytics.dart';
@@ -108,24 +106,19 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                       children: [
                         TextSpan(
                           text: 'Daily ',
-                          style: GoogleFonts.spectral(
-                            fontSize: 52,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
-                            letterSpacing: -0.6,
-                            height: 1.0,
-                          ),
+                          style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                                fontSize: 52,
+                                color: Colors.white,
+                                letterSpacing: -0.6,
+                              ),
                         ),
                         TextSpan(
                           text: 'Katha',
-                          style: GoogleFonts.spectral(
-                            fontSize: 52,
-                            fontWeight: FontWeight.w500,
-                            fontStyle: FontStyle.italic,
-                            color: AppColors.protoSaffron,
-                            letterSpacing: -0.6,
-                            height: 1.0,
-                          ),
+                          style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                                fontSize: 52,
+                                color: AppColors.protoSaffron,
+                                letterSpacing: -0.6,
+                              ),
                         ),
                       ],
                     ),
@@ -134,12 +127,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                   const SizedBox(height: 18),
                   Text(
                     l10n.splashTagline.toUpperCase(),
-                    style: GoogleFonts.dmSans(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 3,
-                      color: Colors.white.withValues(alpha: 0.58),
-                    ),
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                          fontSize: 12,
+                          letterSpacing: 3,
+                          color: Colors.white.withValues(alpha: 0.58),
+                        ),
                   ),
                 ],
               ),

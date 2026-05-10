@@ -4,6 +4,8 @@ import { redis } from './redis.js';
 import { generateCards } from './claude.js';
 import { validateAllCards } from '../validation/cardSchema.js';
 import { invalidateAllFeedCaches } from './redis.js';
+import { buildRecommendationContext } from '../recommendations/context.js';
+import { normalizeTimezone } from '../recommendations/timeAndFestivals.js';
 
 export const ALL_INTERESTS = [
   'goodmorning',
@@ -149,9 +151,37 @@ function distribution(interests) {
   ];
 }
 
-export async function getUserTodaysPicks({ userId, lang }) {
+/** Align first pick with festival window or time-of-day (matches feed recommendation intent). */
+function orderPicksForContext(picks, context) {
+  if (!picks?.length) return picks;
+  const out = [...picks];
+  if (context.festivalBoostActive) {
+    const fi = out.findIndex((p) => p.category === 'festival' || p.isFestival);
+    if (fi > 0) {
+      const [x] = out.splice(fi, 1);
+      out.unshift(x);
+    }
+    return out;
+  }
+  const lead = context.primaryTimeCategory;
+  const ti = out.findIndex(
+    (p) =>
+      p.category === lead ||
+      (lead === 'goodnight' && (p.category === 'calm' || p.category === 'goodnight')),
+  );
+  if (ti > 0) {
+    const [x] = out.splice(ti, 1);
+    out.unshift(x);
+  }
+  return out;
+}
+
+export async function getUserTodaysPicks({ userId, lang, timezone: timezoneIn }) {
+  const tz = normalizeTimezone(timezoneIn);
+  const recommendationContext = buildRecommendationContext({ timezone: tz });
+
   const date = todayISO();
-  const cacheKey = `todays_picks:${userId}:${date}:${lang}`;
+  const cacheKey = `todays_picks:${userId}:${date}:${lang}:${tz}`;
   if (redis) {
     const cached = await redis.get(cacheKey);
     if (cached) return JSON.parse(cached);
@@ -185,7 +215,13 @@ export async function getUserTodaysPicks({ userId, lang }) {
     picks.push(...rows.map((c) => ({ ...formatCard(c, lang), pickRank: c.pick_rank, pickInterest: c.pick_interest })));
   }
 
-  const out = { date, picks: picks.slice(0, 5), generatedFor: interests };
+  const ordered = orderPicksForContext(picks.slice(0, 5), recommendationContext);
+  const out = {
+    date,
+    picks: ordered,
+    generatedFor: interests,
+    recommendationContext,
+  };
 
   // Track served picks (best effort)
   try {

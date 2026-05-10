@@ -142,7 +142,7 @@ class _DailyReminderScreenState extends ConsumerState<DailyReminderScreen> {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  'Tip: if notifications are blocked by the OS, enable them in system settings.',
+                  'Daily reminders use your phone’s notification system at the time you choose (same clock each day). If alerts are blocked, turn them on in system Settings.',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.protoInk3),
                 ),
               ],

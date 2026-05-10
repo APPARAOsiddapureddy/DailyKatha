@@ -81,12 +81,12 @@
     }
   },
   "homeSectionStartTitle": "Start with morning blessings",
-  "homeSectionFestivalTitle": "Today's Ugadi specials",
+  "homeSectionFestivalTitle": "Today's festival specials",
   "homeSectionInterestsTitle": "Based on what you love",
   "homeSectionTrendingTitle": "What everyone is sharing",
   "homeSectionCinemaTitle": "From Telugu cinema",
   "festivalBannerKicker": "TODAY'S FESTIVAL",
-  "festivalBannerTitle": "Happy Ugadi",
+  "festivalBannerTitle": "Festival greetings",
   "festivalBannerSubtitle": "12 new greetings ready to share",
   "festivalBannerCta": "Open pack →",
   "homeViewAll": "View all →",
@@ -100,7 +100,7 @@
   "exploreCuratedPacks": "Curated packs",
   "exploreCuratedPacksSub": "Hand-picked sets you can save",
   "exploreFestivalLive": "Festival Pack · Live",
-  "exploreFestivalTitle": "Ugadi greetings",
+  "exploreFestivalTitle": "Festival greetings",
   "exploreFestivalBody": "12 cards · refreshed daily until 14 May",
   "explorePack1Title": "Monday strength",
   "explorePack1Sub": "8 motivation cards · for the week ahead",
@@ -109,6 +109,7 @@
   "explorePack3Title": "Quiet evenings",
   "explorePack3Sub": "6 cards · slow down with these",
   "exploreSearchHint": "Search greetings, festivals, names…",
+  "exploreSearchNoMatch": "No match — try morning, birthday, love, festival…",
   "exploreJumpIn": "JUMP IN",
   "exploreWhatToShare": "What are you sharing?",
   "exploreTrendingLine": "TRENDING",
@@ -132,6 +133,15 @@
   "profileDownloads": "Downloads",
   "profileNotificationsOn": "Notifications on",
   "profileHelp": "Help & About",
+  "namePromptTitle": "What should we call you?",
+  "namePromptBody": "We'll personalize your greeting on Home and show it here.",
+  "namePromptHint": "Your name",
+  "namePromptSave": "Save",
+  "namePromptSkip": "Not now",
+  "profileYourName": "Your name",
+  "profileYourNameSub": "Shown in your Home greeting",
+  "profileEditNameTitle": "Your name",
+  "profileEditNameCancel": "Cancel",
   "profileSignOut": "Sign out",
   "profileFooter": "Daily Katha · crafted with care",
   "profileStreakSub": "You've sent a card every day this week.",
@@ -157,6 +167,21 @@
       }
     }
   },
+  "profileRowMyShares": "My shares",
+  "profileRowMySharesSub": "{count} cards shared",
+  "@profileRowMySharesSub": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "profileDialogNoSavedTitle": "No saved cards yet",
+  "profileDialogNoSavedBody": "Save a card from Home or the feed to build your gallery.",
+  "profileDialogNoEditsTitle": "No edits yet",
+  "profileDialogNoEditsBody": "Create a card with your photos to see it here.",
+  "profileDialogNoSharesTitle": "Nothing shared yet",
+  "profileDialogNoSharesBody": "Share a card to WhatsApp Status from the feed and it will appear here.",
   "profileRowDailyReminder": "Daily reminder",
   "profileRowReminderSub": "7:00 AM",
   "profileRowSettingsOnly": "Settings",
@@ -209,6 +234,7 @@
   "otpDevModeHint": "Dev mode: enter any 6 digits to continue.",
   "splashTagline": "A line for the day",
   "homeHeroKicker": "Your card today",
+  "homeTodayPickHint": "Tap a side card to bring it to the center; tap the center card to open it.",
   "homeShareToStatus": "Share to Status",
   "homeRailNewToday": "{count} new today",
   "@homeRailNewToday": {

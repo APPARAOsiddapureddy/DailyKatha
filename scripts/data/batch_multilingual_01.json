@@ -1,0 +1,1014 @@
+[
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఈ ఉదయం నీకు కొత్త ఆశ ఇస్తుంది\nనిన్నటి బాధలు వదిలిపో\nఈ రోజు నీది",
+      "hi": "यह सुबह नई उम्मीद लाती है\nकल का दर्द छोड़ दो\nआज तुम्हारा है",
+      "ta": "இந்த காலை புதிய நம்பிக்கை தரும்\nநேற்றை விடு\nஇன்று உன்னுடையது",
+      "kn": "ಈ ಬೆಳಗ್ಗೆ ಹೊಸ ಆಶೆ ತರುತ್ತದೆ\nನಿನ್ನೆದನ್ನು ಬಿಡು\nಇಂದು ನಿನ್ನದು",
+      "ml": "ഈ പ്രഭാതം പുതിയ പ്രതീക്ഷയാണ്\nഇന്നലെ വിട്ടേക്കൂ\nഇന്ന് നിനക്കുള്ളത്",
+      "en": "This morning brings new hope\nLet go of yesterday’s pain\nToday is yours"
+    },
+    "author": {
+      "te": "— ఒక కొత్త ఆరంభం",
+      "hi": "— एक नई शुरुआत",
+      "ta": "— ஒரு புதிய தொடக்கம்",
+      "kn": "— ಹೊಸ ಆರಂಭ",
+      "ml": "— ഒരു പുതിയ തുടക്കം",
+      "en": "— A new beginning"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "సూర్యుడు లేచాడు\nనీ కలలూ లేవాలి\nప్రయత్నం మొదలుపెట్టు",
+      "hi": "सूरज निकल आया है\nतुम भी उठो\nसपनों को जगाओ",
+      "ta": "சூரியன் உதித்தான்\nநீயும் எழு\nகனவுகளை தொடங்கு",
+      "kn": "ಸೂರ್ಯ ಉದಯವಾಯಿತು\nನೀನು ಎದ್ದು ಬಾ\nಕನಸು ಆರಂಭಿಸು",
+      "ml": "സൂര്യൻ ഉദിച്ചു\nനീയും എഴുന്നേൽക്കൂ\nസ്വപ്നം തുടങ്ങൂ",
+      "en": "The sun has risen\nRise with your dreams\nStart your effort"
+    },
+    "author": {
+      "te": "— ఉదయ సందేశం",
+      "hi": "— सुबह का संदेश",
+      "ta": "— காலையின் சொல்",
+      "kn": "— ಬೆಳಗಿನ ಸಂದೇಶ",
+      "ml": "— പ്രഭാത വാക്ക്",
+      "en": "— Morning whisper"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఈ రోజు చిన్న అడుగు వేయి\nరేపు అది మార్గం అవుతుంది",
+      "hi": "आज छोटा कदम उठाओ\nकल वही रास्ता बनेगा",
+      "ta": "இன்று சிறு படி போடு\nநாளை அது பாதை ஆகும்",
+      "kn": "ಇಂದು ಸಣ್ಣ ಹೆಜ್ಜೆ ಇಡು\nನಾಳೆ ದಾರಿ ಆಗುತ್ತದೆ",
+      "ml": "ഇന്ന് ചെറിയ ചുവടുവെക്കൂ\nനാളെ അത് വഴി",
+      "en": "Take a small step today\nTomorrow it becomes your path"
+    },
+    "author": {
+      "te": "— జీవన సత్యం",
+      "hi": "— जीवन सत्य",
+      "ta": "— வாழ்க்கை உண்மை",
+      "kn": "— ಜೀವನ ಸತ್ಯ",
+      "ml": "— ജീവിത സത്യം",
+      "en": "— A life truth"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఉదయం కాంతి నీలో వెలుగు\nచిన్న నవ్వుతో మొదలు\nరోజు మృదువవుతుంది",
+      "hi": "सुबह की रोशनी तुममें है\nमुस्कान से शुरू करो\nदिन हल्का होगा",
+      "ta": "காலை ஒளி உன்னுள் உள்ளது\nசிரிப்புடன் தொடங்கு\nநாள் மென்மையாகும்",
+      "kn": "ಬೆಳಗಿನ ಬೆಳಕು ನಿನ್ನೊಳಗೆ ಇದೆ\nನಗುವಿನಿಂದ ಆರಂಭಿಸು\nದಿನ ಮೃದು ಆಗುತ್ತದೆ",
+      "ml": "പ്രഭാതം നിന്റെ ഉള്ളിലെ വെളിച്ചം\nപുഞ്ചിരിയോടെ തുടങ്ങൂ\nദിവസം മൃദുവാകും",
+      "en": "Morning light lives in you\nBegin with a smile\nThe day softens"
+    },
+    "author": {
+      "te": "— ఉదయ స్ఫూర్తి",
+      "hi": "— सुबह की प्रेरणा",
+      "ta": "— காலை ஊக்கம்",
+      "kn": "— ಬೆಳಗಿನ ಪ್ರೇರಣೆ",
+      "ml": "— പ്രഭാത പ്രചോദനം",
+      "en": "— Morning spark"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నిన్నటి భారాన్ని దించు\nఈ రోజు తేలికగా నడువు",
+      "hi": "कल का बोझ उतारो\nआज हल्के कदम चलो",
+      "ta": "நேற்றின் சுமை விடு\nஇன்று லேசாக நட",
+      "kn": "ನಿನ್ನೆದಿನದ ಭಾರ ಬಿಡು\nಇಂದು ಹಗುರವಾಗಿ ನಡೆ",
+      "ml": "ഇന്നലെയുടെ ഭാരമൊഴിക്കൂ\nഇന്ന് ലഘുവായി നടക്കൂ",
+      "en": "Drop yesterday’s weight\nWalk light today"
+    },
+    "author": {
+      "te": "— ఒక జ్ఞాపకం",
+      "hi": "— एक याद",
+      "ta": "— ஒரு நினைவு",
+      "kn": "— ಒಂದು ನೆನಪು",
+      "ml": "— ഒരു ഓർമ്മ",
+      "en": "— A gentle note"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "చాయ్ వాసనలో నిశ్శబ్దం\nమనసు సర్దుకుంటుంది",
+      "hi": "चाय की खुशबू में सुकून\nमन खुद सध जाता है",
+      "ta": "தேநீர் வாசனையில் அமைதி\nமனம் சீராகும்",
+      "kn": "ಚಹಾದ ವಾಸನೆಯಲ್ಲಿ ಶಾಂತಿ\nಮನ ಸರಿಯಾಗುತ್ತದೆ",
+      "ml": "ചായയുടെ മണത്തിൽ ശാന്തി\nമനം ഒത്തുതീരും",
+      "en": "In tea’s aroma, there’s calm\nThe mind finds its place"
+    },
+    "author": {
+      "te": "— ఉదయ క్షణం",
+      "hi": "— सुबह का पल",
+      "ta": "— காலையின் தருணம்",
+      "kn": "— ಬೆಳಗಿನ ಕ್ಷಣ",
+      "ml": "— പ്രഭാത നിമിഷം",
+      "en": "— A quiet moment"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "పక్షుల స్వరం చెబుతుంది\nమళ్లీ మొదలు పెట్టు",
+      "hi": "पंछी कहते हैं आज\nफिर से शुरू करो",
+      "ta": "பறவைகள் சொல்கின்றன\nமீண்டும் தொடங்கு",
+      "kn": "ಹಕ್ಕಿಗಳು ಹೇಳುತ್ತವೆ ಇಂದು\nಮತ್ತೆ ಆರಂಭಿಸು",
+      "ml": "പക്ഷികൾ പറയുന്നു\nവീണ്ടും തുടങ്ങൂ",
+      "en": "Birds are saying today\nBegin once again"
+    },
+    "author": {
+      "te": "— ప్రకృతి గానం",
+      "hi": "— प्रकृति की आवाज़",
+      "ta": "— இயற்கை குரல்",
+      "kn": "— ಪ್ರಕೃತಿಯ ಧ್ವನಿ",
+      "ml": "— പ്രകൃതി ശബ്ദം",
+      "en": "— Nature’s call"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "చిన్న కృతజ్ఞత చెప్పు\nరోజు వెలుగుతో నిండుతుంది",
+      "hi": "एक धन्यवाद कहो\nदिन रोशनी से भर जाएगा",
+      "ta": "ஒரு நன்றி சொல்லு\nநாள் ஒளியால் நிரையும்",
+      "kn": "ಒಂದು ಧನ್ಯವಾದ ಹೇಳು\nದಿನ ಬೆಳಕಿನಿಂದ ತುಂಬುತ್ತದೆ",
+      "ml": "ഒരു നന്ദി പറ\nദിവസം വെളിച്ചമാകും",
+      "en": "Say a small thank you\nThe day fills with light"
+    },
+    "author": {
+      "te": "— కృతజ్ఞత గమనిక",
+      "hi": "— आभार की बात",
+      "ta": "— நன்றி குறிப்பு",
+      "kn": "— ಕೃತಜ್ಞತೆ ಮಾತು",
+      "ml": "— നന്ദിയുടെ കുറിപ്പ്",
+      "en": "— Gratitude note"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "కొత్త పుట తెరవు\nనీ కథ మళ్లీ రాయు",
+      "hi": "नई पन्ना खोलो\nअपनी कहानी फिर लिखो",
+      "ta": "புதிய பக்கம் திற\nகதையை மீண்டும் எழுது",
+      "kn": "ಹೊಸ ಪುಟ ತೆರೆ\nನಿನ್ನ ಕಥೆ ಮತ್ತೆ ಬರೆಯು",
+      "ml": "പുതിയ പേജ് തുറക്കൂ\nകഥ വീണ്ടും എഴുതൂ",
+      "en": "Open a new page\nWrite your story again"
+    },
+    "author": {
+      "te": "— ఆరంభ స్వరం",
+      "hi": "— शुरुआत की धुन",
+      "ta": "— தொடக்க இசை",
+      "kn": "— ಆರಂಭದ ಸ್ವರ",
+      "ml": "— തുടക്കത്തിന്റെ സ്വരം",
+      "en": "— A fresh start"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నిద్ర ముగిసింది\nసాహసం మొదలైంది",
+      "hi": "नींद खत्म हुई\nहिम्मत शुरू हुई",
+      "ta": "உறக்கம் முடிந்தது\nதைரியம் தொடங்கியது",
+      "kn": "ನಿದ್ರೆ ಮುಗಿದಿತು\nಧೈರ್ಯ ಆರಂಭವಾಯಿತು",
+      "ml": "നിദ്ര അവസാനിച്ചു\nധൈര്യം തുടങ്ങി",
+      "en": "Sleep has ended\nCourage has begun"
+    },
+    "author": {
+      "te": "— ఉదయ ధైర్యం",
+      "hi": "— सुबह का साहस",
+      "ta": "— காலை தைரியம்",
+      "kn": "— ಬೆಳಗಿನ ಧೈರ್ಯ",
+      "ml": "— പ്രഭാത ധൈര്യം",
+      "en": "— Morning courage"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ శ్వాసలో నూతనం ఉంది\nదానిని విను",
+      "hi": "तेरी सांस में नया है\nउसे सुनो",
+      "ta": "உன் மூச்சில் புதுமை\nஅதை கேள்",
+      "kn": "ನಿನ್ನ ಉಸಿರಲ್ಲಿ ಹೊಸದು\nಅದನ್ನು ಕೇಳು",
+      "ml": "നിന്റെ ശ്വാസത്തിൽ പുതിയത്\nഅതിനെ കേൾക്കൂ",
+      "en": "There’s newness in your breath\nListen to it"
+    },
+    "author": {
+      "te": "— అంతర స్వరం",
+      "hi": "— भीतर की आवाज़",
+      "ta": "— உள்ளத்தின் குரல்",
+      "kn": "— ಒಳಗಿನ ಧ್ವನಿ",
+      "ml": "— ഉള്ളിലെ ശബ്ദം",
+      "en": "— Inner voice"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "అలసటను వదిలేయ్\nఆశను పట్టుకో",
+      "hi": "थकान छोड़ दो\nउम्मीद पकड़ो",
+      "ta": "சோர்வு விடு\nநம்பிக்கை பிடி",
+      "kn": "ದಣಿವು ಬಿಡು\nಆಶೆ ಹಿಡಿ",
+      "ml": "ക്ഷീണം വിടൂ\nപ്രതീക്ഷ പിടിക്കൂ",
+      "en": "Let go of tiredness\nHold on to hope"
+    },
+    "author": {
+      "te": "— ఉదయ నిర్ణయం",
+      "hi": "— सुबह का फैसला",
+      "ta": "— காலை தீர்மானம்",
+      "kn": "— ಬೆಳಗಿನ ನಿರ್ಧಾರ",
+      "ml": "— പ്രഭാത തീരുമാനം",
+      "en": "— Morning choice"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నెమ్మదిగా మొదలు పెట్టు\nస్థిరంగా ముందుకు వెళ్లు",
+      "hi": "धीरे शुरू करो\nस्थिर आगे बढ़ो",
+      "ta": "மெதுவாக தொடங்கு\nநிலையாக செல்லு",
+      "kn": "ನಿಧಾನವಾಗಿ ಆರಂಭಿಸು\nಸ್ಥಿರವಾಗಿ ಮುಂದೆ ಹೋಗು",
+      "ml": "മന്ദമായി തുടങ്ങൂ\nസ്ഥിരമായി നീങ്ങൂ",
+      "en": "Start slow\nMove steady forward"
+    },
+    "author": {
+      "te": "— స్థిరత పాఠం",
+      "hi": "— स्थिरता पाठ",
+      "ta": "— நிலைத்த பாடம்",
+      "kn": "— ಸ್ಥಿರತೆಯ ಪಾಠ",
+      "ml": "— സ്ഥിരത പാഠം",
+      "en": "— Lesson in steadiness"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "చిన్న విజయం గుర్తు పెట్టు\nరోజు చిరునవ్వుతుంది",
+      "hi": "छोटी जीत याद करो\nदिन मुस्कुराएगा",
+      "ta": "சிறு வெற்றி நினை\nநாள் சிரிக்கும்",
+      "kn": "ಸಣ್ಣ ಗೆಲುವು ನೆನಪು\nದಿನ ನಗುತ್ತದೆ",
+      "ml": "ചെറിയ വിജയം ഓർക്കൂ\nദിവസം ചിരിക്കും",
+      "en": "Remember a small win\nThe day will smile"
+    },
+    "author": {
+      "te": "— ఆనంద కిరణం",
+      "hi": "— खुशी की किरण",
+      "ta": "— மகிழ்ச்சி கதிர்",
+      "kn": "— ಸಂತೋಷ ಕಿರಣ",
+      "ml": "— സന്തോഷ കിരണം",
+      "en": "— A ray of joy"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ అడుగులు చిన్నవైనా\nదిశ గొప్పది కావాలి",
+      "hi": "कदम छोटे हों\nदिशा बड़ी रखो",
+      "ta": "அடி சிறியதாக இருந்தாலும்\nதிசை பெரியதாக இருக்கட்டும்",
+      "kn": "ಹೆಜ್ಜೆ ಸಣ್ಣದಾದರೂ\nದಿಕ್ಕು ದೊಡ್ಡದಿರಲಿ",
+      "ml": "ചുവട് ചെറുതായാലും\nദിശ വലിയതാകട്ടെ",
+      "en": "Even if steps are small\nLet direction be big"
+    },
+    "author": {
+      "te": "— మార్గ సందేశం",
+      "hi": "— रास्ते की बात",
+      "ta": "— பாதை சொல்",
+      "kn": "— ದಾರಿ ಮಾತು",
+      "ml": "— വഴി വാക്ക്",
+      "en": "— Path reminder"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "వెలుగు తలుపు తట్టింది\nమనసు తీయగా తెరువు",
+      "hi": "रोशनी दस्तक दे रही\nदिल से दरवाज़ा खोलो",
+      "ta": "ஒளி தட்டுகிறது\nமனதை திற",
+      "kn": "ಬೆಳಕು ತಟ್ಟುತ್ತಿದೆ\nಮನದ ಬಾಗಿಲು ತೆರೆ",
+      "ml": "വെളിച്ചം തട്ടുന്നു\nഹൃദയം തുറക്കൂ",
+      "en": "Light is knocking\nOpen your heart door"
+    },
+    "author": {
+      "te": "— ఉదయ తలుపు",
+      "hi": "— सुबह की दस्तक",
+      "ta": "— காலை தட்டல்",
+      "kn": "— ಬೆಳಗಿನ ತಟ್ಟಾಟ",
+      "ml": "— പ്രഭാത തട്ടൽ",
+      "en": "— Morning knock"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ లోపల శక్తి ఉంది\nఈ రోజు దాన్ని చూపు",
+      "hi": "तुममें ताकत है\nआज उसे दिखाओ",
+      "ta": "உன்னுள் சக்தி உள்ளது\nஇன்று அதை காட்டு",
+      "kn": "ನಿನ್ನೊಳಗೆ ಶಕ್ತಿ ಇದೆ\nಇಂದು ತೋರಿಸು",
+      "ml": "നിനക്കുള്ളിൽ ശക്തിയുണ്ട്\nഇന്ന് കാണിക്കൂ",
+      "en": "There’s strength in you\nShow it today"
+    },
+    "author": {
+      "te": "— నమ్మకం మాట",
+      "hi": "— भरोसे की बात",
+      "ta": "— நம்பிக்கை சொல்",
+      "kn": "— ನಂಬಿಕೆಯ ಮಾತು",
+      "ml": "— വിശ്വാസ വാക്ക്",
+      "en": "— A word of belief"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "మంచి ఆలోచనతో లేవు\nరోజు మంచి అవుతుంది",
+      "hi": "अच्छी सोच से उठो\nदिन अच्छा होगा",
+      "ta": "நல்ல எண்ணத்துடன் எழு\nநாள் நல்லதாகும்",
+      "kn": "ಒಳ್ಳೆಯ ಚಿಂತನೆ ಜೊತೆ ಎದ್ದು\nದಿನ ಒಳ್ಳೆಯದು",
+      "ml": "നല്ല ചിന്തയോടെ എഴുന്നേൽക്കൂ\nദിവസം നല്ലത്",
+      "en": "Wake with a good thought\nThe day turns good"
+    },
+    "author": {
+      "te": "— ఆలోచన శక్తి",
+      "hi": "— सोच की ताकत",
+      "ta": "— எண்ணத்தின் பலம்",
+      "kn": "— ಚಿಂತನೆಯ ಶಕ್ತಿ",
+      "ml": "— ചിന്തയുടെ ശക്തി",
+      "en": "— Power of thought"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "భయం తగ్గుతుంది\nనువ్వు ముందుకు నడిస్తే",
+      "hi": "डर घटता है\nजब तुम आगे बढ़ते हो",
+      "ta": "பயம் குறையும்\nநீ முன்னே சென்றால்",
+      "kn": "ಭಯ ಕಡಿಮೆಯಾಗುತ್ತದೆ\nಮುಂದೆ ಹೋದರೆ",
+      "ml": "ഭയം കുറയും\nനീ മുന്നോട്ട് പോയാൽ",
+      "en": "Fear fades away\nWhen you move forward"
+    },
+    "author": {
+      "te": "— ధైర్య గమనిక",
+      "hi": "— हिम्मत की बात",
+      "ta": "— தைரிய குறிப்பு",
+      "kn": "— ಧೈರ್ಯದ ಮಾತು",
+      "ml": "— ധൈര്യ കുറിപ്പ്",
+      "en": "— Courage note"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ గడియారం నడుస్తుంది\nనీ కలలూ నడవాలి",
+      "hi": "घड़ी चल रही है\nसपने भी चलाओ",
+      "ta": "கடிகாரம் ஓடுகிறது\nகனவும் ஓடட்டும்",
+      "kn": "ಗಡಿಯಾರ ನಡೆಯುತ್ತಿದೆ\nಕನಸುಗಳೂ ನಡೆಯಲಿ",
+      "ml": "ഘടികാരം നടക്കുന്നു\nസ്വപ്നവും നീങ്ങട്ടെ",
+      "en": "The clock is ticking\nLet dreams move too"
+    },
+    "author": {
+      "te": "— సమయ సూచన",
+      "hi": "— समय की याद",
+      "ta": "— நேர நினைவு",
+      "kn": "— ಸಮಯ ಸ್ಮರಣೆ",
+      "ml": "— സമയ ഓർമ്മ",
+      "en": "— Time reminder"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "తప్పులు పాఠాలు అవుతాయి\nఈ రోజు వాటిని విను",
+      "hi": "गलतियाँ सीख बनती हैं\nआज उन्हें सुनो",
+      "ta": "தவறுகள் பாடம் ஆகும்\nஇன்று அதை கேள்",
+      "kn": "ತಪ್ಪುಗಳು ಪಾಠವಾಗುತ್ತವೆ\nಇಂದು ಕೇಳು",
+      "ml": "തെറ്റുകൾ പാഠമാകും\nഇന്ന് കേൾക്കൂ",
+      "en": "Mistakes turn lessons\nListen today"
+    },
+    "author": {
+      "te": "— పాఠం పలుకు",
+      "hi": "— सीख की आवाज़",
+      "ta": "— பாடம் சொல்",
+      "kn": "— ಪಾಠದ ಧ್ವನಿ",
+      "ml": "— പാഠത്തിന്റെ ശബ്ദം",
+      "en": "— Lesson voice"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ చిరునవ్వు వెలుగు\nఇంటికీ రోజు తీసుకెళ్తుంది",
+      "hi": "तुम्हारी मुस्कान रोशनी\nघर तक दिन ले जाती है",
+      "ta": "உன் சிரிப்பு ஒளி\nவீட்டுக்கு நாள் கொண்டுவரும்",
+      "kn": "ನಿನ್ನ ನಗು ಬೆಳಕು\nಮನೆಗೆ ದಿನ ತರುತ್ತದೆ",
+      "ml": "നിന്റെ പുഞ്ചിരി വെളിച്ചം\nവീട്ടിലേക്ക് ദിവസം കൊണ്ടുവരും",
+      "en": "Your smile is light\nIt carries the day home"
+    },
+    "author": {
+      "te": "— స్నేహ కిరణం",
+      "hi": "— मुस्कान की किरण",
+      "ta": "— சிரிப்பு கதிர்",
+      "kn": "— ನಗು ಕಿರಣ",
+      "ml": "— പുഞ്ചിരി കിരണം",
+      "en": "— Smile ray"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఆలోచనలు స్వచ్ఛంగా ఉంచు\nరోజు స్వచ్ఛంగా ఉంటుంది",
+      "hi": "सोच साफ रखो\nदिन साफ रहेगा",
+      "ta": "எண்ணம் சுத்தமாக வைத்தால்\nநாள் சுத்தம்",
+      "kn": "ಚಿಂತನೆ ಶುದ್ಧ ಇರಲಿ\nದಿನ ಶುದ್ಧವಾಗುತ್ತದೆ",
+      "ml": "ചിന്ത ശുദ്ധമാക്കൂ\nദിവസം ശുദ്ധം",
+      "en": "Keep thoughts clean\nThe day stays clear"
+    },
+    "author": {
+      "te": "— మనసు పాఠం",
+      "hi": "— मन का पाठ",
+      "ta": "— மனப் பாடம்",
+      "kn": "— ಮನದ ಪಾಠ",
+      "ml": "— മനസിന്റെ പാഠം",
+      "en": "— Mind lesson"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఇది నీ రోజు\nదానిని ప్రేమగా జీవించు",
+      "hi": "यह तुम्हारा दिन है\nइसे प्यार से जियो",
+      "ta": "இது உன் நாள்\nஅதை அன்பாக வாழ்",
+      "kn": "ಇದು ನಿನ್ನ ದಿನ\nಪ್ರೀತಿಯಿಂದ ಬದುಕು",
+      "ml": "ഇത് നിന്റെ ദിവസം\nസ്നേഹത്തോടെ ജീവിക്കൂ",
+      "en": "This is your day\nLive it with love"
+    },
+    "author": {
+      "te": "— జీవన పలుకు",
+      "hi": "— जीवन की बात",
+      "ta": "— வாழ்வு சொல்",
+      "kn": "— ಜೀವನ ಮಾತು",
+      "ml": "— ജീവിത വാക്ക്",
+      "en": "— Life note"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "సందేహం తగ్గించు\nచర్య పెంచు",
+      "hi": "संदेह घटाओ\nकदम बढ़ाओ",
+      "ta": "சந்தேகம் குறை\nசெயல் அதிகரி",
+      "kn": "ಸಂದೇಹ ಕಡಿಮೆ ಮಾಡು\nಕಾಲಿಟ್ಟು ಮುಂದೆ ಹೋಗು",
+      "ml": "സംശയം കുറയ്ക്കൂ\nനടപ്പ് കൂട്ടൂ",
+      "en": "Reduce doubt\nIncrease action"
+    },
+    "author": {
+      "te": "— కార్య మంత్రం",
+      "hi": "— कर्म मंत्र",
+      "ta": "— செயல் மந்திரம்",
+      "kn": "— ಕ್ರಿಯೆ ಮಂತ್ರ",
+      "ml": "— പ്രവർത്തി മന്ത്രം",
+      "en": "— Action mantra"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ కథలో హీరో నీవే\nఈ రోజు సీన్ మొదలు",
+      "hi": "कहानी के हीरो तुम\nआज का सीन शुरू",
+      "ta": "கதையின் ஹீரோ நீ\nஇன்றைய சீன் தொடங்கு",
+      "kn": "ಕಥೆಯ ಹೀರೋ ನೀನು\nಇಂದಿನ ಸೀನ್ ಆರಂಭ",
+      "ml": "കഥയിലെ ഹീറോ നീ\nഇന്നത്തെ സീൻ തുടങ്ങി",
+      "en": "You’re the hero\nToday’s scene begins"
+    },
+    "author": {
+      "te": "— జీవన సినిమా",
+      "hi": "— जीवन सिनेमा",
+      "ta": "— வாழ்க்கை சினிமா",
+      "kn": "— ಜೀವನ ಸಿನಿಮಾ",
+      "ml": "— ജീവിത സിനിമ",
+      "en": "— Life cinema"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "మొదటి అడుగు వేసి చూడు\nదారి తానే కనిపిస్తుంది",
+      "hi": "पहला कदम रखो\nरास्ता खुद दिखेगा",
+      "ta": "முதல் படி வை\nபாதை தானே வரும்",
+      "kn": "ಮೊದಲ ಹೆಜ್ಜೆ ಇಡು\nದಾರಿ ತಾನೇ ಕಾಣುತ್ತದೆ",
+      "ml": "ആദ്യ ചുവട് വെക്കൂ\nവഴി കാണും",
+      "en": "Take the first step\nThe path will appear"
+    },
+    "author": {
+      "te": "— మొదటి ధైర్యం",
+      "hi": "— पहला साहस",
+      "ta": "— முதல் தைரியம்",
+      "kn": "— ಮೊದಲ ಧೈರ್ಯ",
+      "ml": "— ആദ്യ ധൈര്യം",
+      "en": "— First courage"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ గుండె చెప్పేది విను\nఅది నిజం చూపుతుంది",
+      "hi": "दिल की सुनो\nवही सच दिखाता है",
+      "ta": "இதயத்தை கேள்\nஅது உண்மை காட்டும்",
+      "kn": "ಹೃದಯದ ಮಾತು ಕೇಳು\nಅದು ಸತ್ಯ ತೋರಿಸುತ್ತದೆ",
+      "ml": "ഹൃദയം കേൾക്കൂ\nഅതിൽ സത്യം",
+      "en": "Listen to your heart\nIt shows the truth"
+    },
+    "author": {
+      "te": "— అంతర సత్యం",
+      "hi": "— भीतर का सच",
+      "ta": "— உள்ளச் சத்தியம்",
+      "kn": "— ಒಳಗಿನ ಸತ್ಯ",
+      "ml": "— ഉള്ളിലെ സത്യം",
+      "en": "— Inner truth"
+    }
+  },
+  {
+    "category": "GOODMORNING",
+    "mood": "warm",
+    "section": "morning",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ రోజు నీ చేతిలోనే\nదానిని జాగ్రత్తగా నడిపించు",
+      "hi": "दिन तुम्हारे हाथ में\nइसे संभाल कर चलाओ",
+      "ta": "நாள் உன் கையில்\nஅதை நன்றாக நடத்தி",
+      "kn": "ದಿನ ನಿನ್ನ ಕೈಯಲ್ಲಿ\nಅದನ್ನು ಜಾಗರೂಕವಾಗಿ ನಡೆಸು",
+      "ml": "ദിവസം നിന്റെ കൈയിൽ\nശ്രദ്ധിച്ച് നയിക്കൂ",
+      "en": "Your day is in your hands\nGuide it with care"
+    },
+    "author": {
+      "te": "— బాధ్యత గీతం",
+      "hi": "— जिम्मेदारी की बात",
+      "ta": "— பொறுப்பு சொல்",
+      "kn": "— ಜವಾಬ್ದಾರಿ ಮಾತು",
+      "ml": "— ഉത്തരവാദിത്വ വാക്ക്",
+      "en": "— A note on care"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఈ రాత్రి నిశ్శబ్దం\nనీ మనసు సేదతీరనివ్వు\nరేపు కొత్త వెలుగు",
+      "hi": "इस रात की शांति में\nमन को आराम दो\nकल नई रोशनी",
+      "ta": "இந்த இரவு அமைதியில்\nமனம் ஓய்வெடுக்கட்டும்\nநாளை புதிய ஒளி",
+      "kn": "ಈ ರಾತ್ರಿ ಶಾಂತಿಯಲ್ಲಿ\nಮನಸ್ಸಿಗೆ ವಿಶ್ರಾಂತಿ ಕೊಡು\nನಾಳೆ ಹೊಸ ಬೆಳಕು",
+      "ml": "ഈ രാത്രിയുടെ ശാന്തിയിൽ\nമനസിന് വിശ്രമം\nനാളെ പുതിയ വെളിച്ചം",
+      "en": "In tonight’s silence\nLet your heart rest\nTomorrow brings light"
+    },
+    "author": {
+      "te": "— రాత్రి శాంతి",
+      "hi": "— रात की शांति",
+      "ta": "— இரவு அமைதி",
+      "kn": "— ರಾತ್ರಿ ಶಾಂತಿ",
+      "ml": "— രാത്രി ശാന്തി",
+      "en": "— Night peace"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "రోజు ముగిసింది\nబాధలు వదిలేయ్\nనిద్రలో నెమ్మది",
+      "hi": "दिन खत्म हुआ\nदर्द छोड़ दो\nनींद में सुकून",
+      "ta": "நாள் முடிந்தது\nவலி விடு\nஉறக்கத்தில் அமைதி",
+      "kn": "ದಿನ ಮುಗಿದಿತು\nನೋವು ಬಿಡು\nನಿದ್ರೆಯಲ್ಲಿ ಶಾಂತಿ",
+      "ml": "ദിവസം അവസാനിച്ചു\nവേദന വിടൂ\nഉറക്കത്തിൽ ശാന്തി",
+      "en": "The day is done\nLet go of pain\nFind peace in sleep"
+    },
+    "author": {
+      "te": "— విశ్రాంతి పలుకు",
+      "hi": "— आराम की बात",
+      "ta": "— ஓய்வு சொல்",
+      "kn": "— ವಿಶ್ರಾಂತಿ ಮಾತು",
+      "ml": "— വിശ്രമ വാക്ക്",
+      "en": "— Rest note"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "చంద్రుడు చెబుతున్నాడు\nనిశ్శబ్దం విను\nమనసు సాంతం",
+      "hi": "चाँद कहता है\nखामोशी सुनो\nदिल शांत होगा",
+      "ta": "நிலா சொல்கிறது\nஅமைதியை கேள்\nமனம் அமைதி",
+      "kn": "ಚಂದ್ರ ಹೇಳುತ್ತಾನೆ\nನಿಶ್ಶಬ್ದ ಕೇಳು\nಮನ ಶಾಂತ",
+      "ml": "ചന്ദ്രൻ പറയുന്നു\nനിശ്ശബ്ദം കേൾക്കൂ\nമനം ശാന്തം",
+      "en": "The moon whispers\nListen to silence\nYour heart calms"
+    },
+    "author": {
+      "te": "— చంద్ర గీతం",
+      "hi": "— चाँद की बात",
+      "ta": "— நிலா குரல்",
+      "kn": "— ಚಂದ್ರ ಮಾತು",
+      "ml": "— ചന്ദ്ര വാക്ക്",
+      "en": "— Moon note"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఈ రోజు చేసినంత చాలు\nనీకు శాంతి ఇవ్వు\nనిద్రలో నవ్వు",
+      "hi": "आज जितना किया काफी\nखुद को शांति दो\nनींद में मुस्कान",
+      "ta": "இன்று செய்தது போதும்\nஉனக்கு அமைதி கொடு\nஉறக்கத்தில் சிரி",
+      "kn": "ಇಂದು ಮಾಡಿದಷ್ಟು ಸಾಕು\nನಿನಗೆ ಶಾಂತಿ ಕೊಡು\nನಿದ್ರೆಯಲ್ಲಿ ನಗು",
+      "ml": "ഇന്ന് ചെയ്തതൊക്കെ മതിയാകട്ടെ\nനിനക്ക് ശാന്തി\nഉറക്കത്തിൽ പുഞ്ചിരി",
+      "en": "You did enough today\nGive yourself peace\nSmile in sleep"
+    },
+    "author": {
+      "te": "— స్వయం ప్రేమ",
+      "hi": "— खुद से प्यार",
+      "ta": "— தன்னலம் அன்பு",
+      "kn": "— ಸ್ವಯಂ ಪ್ರೀತಿ",
+      "ml": "— സ്വയം സ്നേഹം",
+      "en": "— Self kindness"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నక్షత్రాలు వెలిగుతున్నాయి\nనీ కలలు కూడా వెలిగాలి",
+      "hi": "तारे चमक रहे\nतुम्हारे सपने भी चमकें",
+      "ta": "நட்சத்திரம் ஒளிர்கிறது\nகனவும் ஒளிரட்டும்",
+      "kn": "ನಕ್ಷತ್ರಗಳು ಹೊಳೆಯುತ್ತವೆ\nಕನಸುಗಳೂ ಹೊಳೆಯಲಿ",
+      "ml": "നക്ഷത്രങ്ങൾ തിളങ്ങുന്നു\nസ്വപ്നങ്ങളും തിളങ്ങട്ടെ",
+      "en": "Stars are shining\nLet your dreams shine too"
+    },
+    "author": {
+      "te": "— రాత్రి ఆశ",
+      "hi": "— रात की उम्मीद",
+      "ta": "— இரவு நம்பிக்கை",
+      "kn": "— ರಾತ್ರಿ ಆಶೆ",
+      "ml": "— രാത്രി പ്രതീക്ഷ",
+      "en": "— Night hope"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నిశ్శబ్దం నిన్ను చుట్టుకుంది\nమనసు మెల్లగా నిద్రపో",
+      "hi": "खामोशी ने घेरा है\nदिल धीरे सो जाए",
+      "ta": "அமைதி சூழ்ந்துள்ளது\nமனம் மெதுவாக உறங்கு",
+      "kn": "ನಿಶ್ಶಬ್ದ ಸುತ್ತಿಕೊಂಡಿದೆ\nಮನ ಮೃದುವಾಗಿ ನಿದ್ರೆ",
+      "ml": "നിശ്ശബ്ദം ചുറ്റുന്നു\nമനം മന്ദമായി ഉറങ്ങൂ",
+      "en": "Silence surrounds you\nLet your heart drift to sleep"
+    },
+    "author": {
+      "te": "— మృదువైన రాత్రి",
+      "hi": "— कोमल रात",
+      "ta": "— மென்மையான இரவு",
+      "kn": "— ಮೃದುವಾದ ರಾತ್ರಿ",
+      "ml": "— മൃദുവായ രാത്രി",
+      "en": "— Gentle night"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "అలసట కరిగిపోతోంది\nశాంతి నీకు చేరుతోంది",
+      "hi": "थकान पिघल रही\nसुकून पास आ रहा",
+      "ta": "சோர்வு கரைகிறது\nஅமைதி அருகில்",
+      "kn": "ದಣಿವು ಕರಗುತ್ತಿದೆ\nಶಾಂತಿ ಹತ್ತಿರ",
+      "ml": "ക്ഷീണം ലയിക്കുന്നു\nശാന്തി അടുത്ത്",
+      "en": "Tiredness melts away\nPeace comes closer"
+    },
+    "author": {
+      "te": "— విశ్రాంతి సత్యం",
+      "hi": "— आराम का सच",
+      "ta": "— ஓய்வு உண்மை",
+      "kn": "— ವಿಶ್ರಾಂತಿ ಸತ್ಯ",
+      "ml": "— വിശ്രമ സത്യം",
+      "en": "— Rest truth"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఈ రాత్రి నీకు హత్తుకుంది\nభయం దూరంగా పోయింది",
+      "hi": "रात ने तुम्हें थामा\nडर दूर चला गया",
+      "ta": "இரவு உன்னை தழுவியது\nபயம் தொலைந்தது",
+      "kn": "ರಾತ್ರಿ ನಿನ್ನ ಹಿಡಿದಿದೆ\nಭಯ ದೂರವಾಗಿದೆ",
+      "ml": "രാത്രി നിന്നെ ചേർത്തു\nഭയം മാറി",
+      "en": "Night holds you close\nFear fades away"
+    },
+    "author": {
+      "te": "— నిశ్శబ్ద ఆలింగనం",
+      "hi": "— खामोश आलिंगन",
+      "ta": "— அமைதி அணைப்பு",
+      "kn": "— ಮೌನ ಆಲಿಂಗನ",
+      "ml": "— മൗന അങ്ങാടി",
+      "en": "— Silent embrace"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ కళ్ళు మూసుకో\nమనసు తేలిక అవుతుంది",
+      "hi": "आंखें बंद करो\nदिल हल्का होगा",
+      "ta": "கண்களை மூடு\nமனம் லேசாகும்",
+      "kn": "ಕಣ್ಣು ಮುಚ್ಚು\nಮನ ಹಗುರ",
+      "ml": "കണ്ണുകൾ അടയ്ക്കൂ\nമനം ലഘുവാകും",
+      "en": "Close your eyes\nYour heart feels lighter"
+    },
+    "author": {
+      "te": "— నిద్ర పిలుపు",
+      "hi": "— नींद की पुकार",
+      "ta": "— உறக்க அழைப்பு",
+      "kn": "— ನಿದ್ರೆಯ ಕರೆಯು",
+      "ml": "— ഉറക്ക വിളി",
+      "en": "— Sleep call"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "చీకటి భయం కాదు\nఅది విశ్రాంతి",
+      "hi": "अंधेरा डर नहीं\nयह आराम है",
+      "ta": "இருள் பயமில்லை\nஅது ஓய்வு",
+      "kn": "ಕತ್ತಲೆ ಭಯವಲ್ಲ\nಅದು ವಿಶ್ರಾಂತಿ",
+      "ml": "ഇരുട്ട് ഭയമല്ല\nഅത് വിശ്രമം",
+      "en": "Darkness isn’t fear\nIt is rest"
+    },
+    "author": {
+      "te": "— రాత్రి అర్థం",
+      "hi": "— रात का अर्थ",
+      "ta": "— இரவு அர்த்தம்",
+      "kn": "— ರಾತ್ರಿ ಅರ್ಥ",
+      "ml": "— രാത്രി അർത്ഥം",
+      "en": "— Meaning of night"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "రేపు గురించి ఆలోచించకు\nఈ రాత్రి సేదతీరుకో",
+      "hi": "कल की मत सोचो\nआज आराम करो",
+      "ta": "நாளை பற்றி யோசிக்காதே\nஇன்று ஓய்வெடு",
+      "kn": "ನಾಳೆ ಯೋಚಿಸಬೇಡ\nಇಂದು ವಿಶ್ರಾಂತಿ",
+      "ml": "നാളെ ചിന്തിക്കേണ്ട\nഇന്ന് വിശ്രമിക്കൂ",
+      "en": "Don’t think of tomorrow\nRest tonight"
+    },
+    "author": {
+      "te": "— శాంతి గీతం",
+      "hi": "— शांति गीत",
+      "ta": "— அமைதி பாடல்",
+      "kn": "— ಶಾಂತಿ ಗೀತೆ",
+      "ml": "— ശാന്തി ഗാനം",
+      "en": "— Song of peace"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "రోజు నీతో మాట్లాడింది\nఇప్పుడు నిశ్శబ్దం విను",
+      "hi": "दिन ने बात की\nअब खामोशी सुनो",
+      "ta": "நாள் பேசியது\nஇப்போது அமைதி கேள்",
+      "kn": "ದಿನ ಮಾತಾಡಿತು\nಇಗಾ ನಿಶ್ಶಬ್ದ ಕೇಳು",
+      "ml": "ദിവസം സംസാരിച്ചു\nഇപ്പോൾ മൗനം കേൾക്കൂ",
+      "en": "The day has spoken\nNow hear the silence"
+    },
+    "author": {
+      "te": "— మౌన పాఠం",
+      "hi": "— मौन पाठ",
+      "ta": "— மௌன பாடம்",
+      "kn": "— ಮೌನ ಪಾಠ",
+      "ml": "— മൗന പാഠം",
+      "en": "— Silent lesson"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "చిన్న క్షణాలు గుర్తు చేసుకో\nమనసు నిండిపోతుంది",
+      "hi": "छोटे पल याद करो\nदिल भर जाएगा",
+      "ta": "சிறு தருணம் நினை\nமனம் நிரையும்",
+      "kn": "ಸಣ್ಣ ಕ್ಷಣ ನೆನಪು\nಮನ ತುಂಬುತ್ತದೆ",
+      "ml": "ചെറിയ നിമിഷങ്ങൾ ഓർക്കൂ\nമനം നിറയും",
+      "en": "Recall small moments\nYour heart fills up"
+    },
+    "author": {
+      "te": "— జ్ఞాపక రాత్రి",
+      "hi": "— यादों की रात",
+      "ta": "— நினைவு இரவு",
+      "kn": "— ನೆನಪು ರಾತ್ರಿ",
+      "ml": "— ഓർമ്മ രാത്രി",
+      "en": "— Night of memories"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ హృదయం విశ్రాంతి కోరుతుంది\nదానికి అవును చెప్పు",
+      "hi": "दिल आराम चाहता\nउसे हाँ कहो",
+      "ta": "இதயம் ஓய்வு கேட்கிறது\nஆம் சொல்",
+      "kn": "ಹೃದಯ ವಿಶ್ರಾಂತಿ ಕೇಳುತ್ತದೆ\nಹೌದು ಹೇಳು",
+      "ml": "ഹൃദയം വിശ്രമം ചോദിക്കുന്നു\nഅതെ പറയൂ",
+      "en": "Your heart asks for rest\nSay yes to it"
+    },
+    "author": {
+      "te": "— స్వయం వినికిడి",
+      "hi": "— खुद की सुनो",
+      "ta": "— தன்னை கேள்",
+      "kn": "— ಸ್ವತಃ ಕೇಳು",
+      "ml": "— സ്വയം കേൾക്കൂ",
+      "en": "— Listen within"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నక్షత్రాలు నీకు తోడుగా\nరాత్రి మృదువుగా ఉంది",
+      "hi": "तारे साथ हैं\nरात कोमल है",
+      "ta": "நட்சத்திரம் உனக்குடன்\nஇரவு மென்மை",
+      "kn": "ನಕ್ಷತ್ರಗಳು ಜೊತೆ\nರಾತ್ರಿ ಮೃದು",
+      "ml": "നക്ഷത്രങ്ങൾ കൂട്ടായി\nരാത്രി മൃദുവാണ്",
+      "en": "Stars are with you\nThe night is gentle"
+    },
+    "author": {
+      "te": "— ఆకాశ స్నేహం",
+      "hi": "— आसमान दोस्त",
+      "ta": "— வான நண்பன்",
+      "kn": "— ಆಕಾಶ ಸ್ನೇಹ",
+      "ml": "— ആകാശ സൗഹൃദം",
+      "en": "— Sky companion"
+    }
+  }
+]

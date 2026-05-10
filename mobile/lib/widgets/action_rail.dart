@@ -33,8 +33,16 @@ class FeedActionBar extends StatelessWidget {
       children: [
         _ActBtn(
           label: 'Like',
-          icon: Icon(Icons.favorite_border, size: 20, color: liked ? const Color(0xFFD45064) : icon),
-          iconLiked: const Icon(Icons.favorite, size: 20, color: Color(0xFFD45064)),
+          icon: Icon(
+            Icons.favorite_border,
+            size: 20,
+            color: liked ? const Color(0xFFD45064) : icon,
+          ),
+          iconLiked: const Icon(
+            Icons.favorite,
+            size: 20,
+            color: Color(0xFFD45064),
+          ),
           liked: liked,
           base: base,
           border: border,
@@ -97,7 +105,9 @@ class _ActBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fill = liked ? const Color(0xFFD45064).withValues(alpha: 0.15) : base;
-    final side = liked ? const Color(0xFFD45064).withValues(alpha: 0.3) : border;
+    final side = liked
+        ? const Color(0xFFD45064).withValues(alpha: 0.3)
+        : border;
 
     return Material(
       color: fill,

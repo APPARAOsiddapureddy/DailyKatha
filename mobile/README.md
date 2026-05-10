@@ -2,6 +2,8 @@
 
 Multilingual shareable status cards. The production client lives here; product specs live in the repo root (`PRD.md`, etc.).
 
+**Shipping version:** `1.2.0+119` in `pubspec.yaml` (`versionName` / `CFBundleShortVersionString` **1.2.0**, `versionCode` / `CFBundleVersion` **119**).
+
 ## Run
 
 ```bash

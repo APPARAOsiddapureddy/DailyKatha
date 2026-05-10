@@ -146,6 +146,55 @@ abstract final class AppTheme {
   /// Kept for reference; app uses [dark] only.
   static ThemeData light() => dark();
 
+  /// Card editor sits on near-black [#0A0807]); global [chrome] would paint buttons with dark foreground.
+  /// This scope restores readable chrome (light text / gold outlines) matching the viewer.
+  static ThemeData editorCard() {
+    final base = dark();
+    return base.copyWith(
+      scaffoldBackgroundColor: AppColors.feedScaffold,
+      appBarTheme: base.appBarTheme.copyWith(
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        scrolledUnderElevation: 0,
+        elevation: 0,
+        foregroundColor: AppColors.textPrimaryDark,
+        titleTextStyle: base.appBarTheme.titleTextStyle?.copyWith(
+          color: AppColors.textPrimaryDark,
+          fontWeight: FontWeight.w600,
+          fontSize: 18,
+          letterSpacing: -0.2,
+        ),
+        iconTheme: const IconThemeData(color: AppColors.textPrimaryDark),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: AppColors.textPrimaryDark,
+          disabledForegroundColor: AppColors.textTertiaryDark,
+          side: BorderSide(color: AppColors.accentGold.withValues(alpha: 0.5), width: 1.2),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+          textStyle: const TextStyle(fontWeight: FontWeight.w600, letterSpacing: -0.08),
+          minimumSize: const Size(0, 46),
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        ),
+      ),
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          elevation: 0,
+          backgroundColor: AppColors.accentGold,
+          foregroundColor: const Color(0xFF161310),
+          disabledBackgroundColor: AppColors.surfaceElevatedDark,
+          disabledForegroundColor: AppColors.textTertiaryDark,
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+          minimumSize: const Size(0, 48),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+          textStyle: const TextStyle(fontWeight: FontWeight.w700, letterSpacing: -0.08),
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        ),
+      ),
+    );
+  }
+
   /// Light cream shell matching `prototype.html` (onboarding, tabs, home chrome).
   static ThemeData chrome() {
     const brand = AppColors.protoBrand;

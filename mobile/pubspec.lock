@@ -26,7 +26,7 @@ packages:
     source: hosted
     version: "2.1.2"
   characters:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: characters
       sha256: faf38497bda5ead2a8c7615f4f7939df04333478bf32e4173fcb06d428b5716b
@@ -336,6 +336,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_timezone:
+    dependency: "direct main"
+    description:
+      name: flutter_timezone
+      sha256: "13b2109ad75651faced4831bf262e32559e44aa549426eab8a597610d385d934"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.1"
   flutter_web_plugins:
     dependency: transitive
     description: flutter

@@ -2,10 +2,33 @@ import { Router } from 'express';
 import { pool } from '../db/pool.js';
 import { getUserInterests } from '../db/queries/userInterests.js';
 import { runRecommendationEngine } from '../recommendations/engine.js';
+import { buildRecommendationContext } from '../recommendations/context.js';
+import { normalizeTimezone } from '../recommendations/timeAndFestivals.js';
 import { getCachedFeed, setCachedFeed } from '../recommendations/cache.js';
 import { getUserTodaysPicks } from '../services/todaysPicks.js';
 
 const router = Router();
+
+/** Resolve IANA timezone: query → X-Timezone header → user profile → Asia/Kolkata */
+async function resolveTimezone(userId, req) {
+  const raw = req.query.timezone || req.get('x-timezone');
+  const { rows } = await pool.query(`SELECT timezone FROM users WHERE id = $1`, [userId]);
+  return normalizeTimezone(raw || rows[0]?.timezone);
+}
+
+// GET /v1/feed/recommendation-context — signals for UI (time slot, festivals, boosts)
+router.get('/recommendation-context', async (req, res, next) => {
+  try {
+    const timezone = await resolveTimezone(req.user.id, req);
+    const recommendationContext = buildRecommendationContext({ timezone });
+    res.json({
+      recommendationContext,
+      lang: req.lang,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
 
 // GET /v1/feed — personalised feed strictly filtered by user's selected categories
 router.get('/', async (req, res, next) => {
@@ -26,18 +49,20 @@ router.get('/', async (req, res, next) => {
       });
     }
 
-    const cacheKey = `feed:${userId}:${page}:${limit}:${section || 'all'}`;
+    const timezone = await resolveTimezone(userId, req);
+    const cacheKey = `feed:${userId}:${page}:${limit}:${section || 'all'}:${timezone}`;
     const cached = await getCachedFeed(cacheKey);
     if (cached) return res.json(cached);
 
     const offset = (page - 1) * limit;
-    const { cards, total } = await runRecommendationEngine({
+    const { cards, total, recommendationContext } = await runRecommendationEngine({
       userId,
       interests,
       lang,
       section,
       limit,
       offset,
+      timezone,
     });
 
     const response = {
@@ -45,6 +70,7 @@ router.get('/', async (req, res, next) => {
       nextPage: offset + limit < total ? page + 1 : null,
       total,
       lang,
+      recommendationContext,
     };
 
     await setCachedFeed(cacheKey, response, 900);
@@ -154,7 +180,8 @@ router.get('/today-picks', async (req, res, next) => {
   try {
     const userId = req.user.id;
     const lang = req.lang;
-    const picks = await getUserTodaysPicks({ userId, lang });
+    const timezone = await resolveTimezone(userId, req);
+    const picks = await getUserTodaysPicks({ userId, lang, timezone });
     res.json({ ...picks, lang, refreshesAt: 'midnight IST' });
   } catch (err) {
     next(err);

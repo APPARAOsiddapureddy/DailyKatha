@@ -143,7 +143,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeSectionStartTitle => 'Start with morning blessings';
 
   @override
-  String get homeSectionFestivalTitle => 'Today\'s Ugadi specials';
+  String get homeSectionFestivalTitle => 'Today\'s festival specials';
 
   @override
   String get homeSectionInterestsTitle => 'Based on what you love';
@@ -158,7 +158,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get festivalBannerKicker => 'TODAY\'S FESTIVAL';
 
   @override
-  String get festivalBannerTitle => 'Happy Ugadi';
+  String get festivalBannerTitle => 'Festival greetings';
 
   @override
   String get festivalBannerSubtitle => '12 new greetings ready to share';
@@ -200,7 +200,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get exploreFestivalLive => 'Festival Pack · Live';
 
   @override
-  String get exploreFestivalTitle => 'Ugadi greetings';
+  String get exploreFestivalTitle => 'Festival greetings';
 
   @override
   String get exploreFestivalBody => '12 cards · refreshed daily until 14 May';
@@ -225,6 +225,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get exploreSearchHint => 'Search greetings, festivals, names…';
+
+  @override
+  String get exploreSearchNoMatch =>
+      'No match — try morning, birthday, love, festival…';
 
   @override
   String get exploreJumpIn => 'JUMP IN';
@@ -296,6 +300,34 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileHelp => 'Help & About';
 
   @override
+  String get namePromptTitle => 'What should we call you?';
+
+  @override
+  String get namePromptBody =>
+      'We\'ll personalize your greeting on Home and show it here.';
+
+  @override
+  String get namePromptHint => 'Your name';
+
+  @override
+  String get namePromptSave => 'Save';
+
+  @override
+  String get namePromptSkip => 'Not now';
+
+  @override
+  String get profileYourName => 'Your name';
+
+  @override
+  String get profileYourNameSub => 'Shown in your Home greeting';
+
+  @override
+  String get profileEditNameTitle => 'Your name';
+
+  @override
+  String get profileEditNameCancel => 'Cancel';
+
+  @override
   String get profileSignOut => 'Sign out';
 
   @override
@@ -331,6 +363,35 @@ class AppLocalizationsEn extends AppLocalizations {
   String profileRowMyEditsSub(int count) {
     return '$count cards with your photos';
   }
+
+  @override
+  String get profileRowMyShares => 'My shares';
+
+  @override
+  String profileRowMySharesSub(int count) {
+    return '$count cards shared';
+  }
+
+  @override
+  String get profileDialogNoSavedTitle => 'No saved cards yet';
+
+  @override
+  String get profileDialogNoSavedBody =>
+      'Save a card from Home or the feed to build your gallery.';
+
+  @override
+  String get profileDialogNoEditsTitle => 'No edits yet';
+
+  @override
+  String get profileDialogNoEditsBody =>
+      'Create a card with your photos to see it here.';
+
+  @override
+  String get profileDialogNoSharesTitle => 'Nothing shared yet';
+
+  @override
+  String get profileDialogNoSharesBody =>
+      'Share a card to WhatsApp Status from the feed and it will appear here.';
 
   @override
   String get profileRowDailyReminder => 'Daily reminder';
@@ -431,6 +492,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeHeroKicker => 'Your card today';
+
+  @override
+  String get homeTodayPickHint =>
+      'Tap a side card to bring it to the center; tap the center card to open it.';
 
   @override
   String get homeShareToStatus => 'Share to Status';

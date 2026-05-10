@@ -18,6 +18,7 @@ import 'feed_repository.dart';
 import 'local/bundled_catalog_loader.dart';
 import 'local/mock_catalog.dart';
 import 'local/user_created_cards_store.dart';
+import 'local/user_engagement_store.dart';
 import 'session_holder.dart';
 
 final secureStorageProvider = Provider<FlutterSecureStorage>((ref) {
@@ -96,6 +97,11 @@ final shareServiceProvider = Provider<ShareService>((ref) => const ShareService(
 
 final notificationServiceProvider = Provider<NotificationService>((ref) {
   return const NotificationService();
+});
+
+/// Saved / shared card ids + per-category affinity for Home ordering.
+final userEngagementProvider = FutureProvider<UserEngagementSnapshot>((ref) {
+  return UserEngagementStore.load();
 });
 
 final catalogProvider = FutureProvider<List<KathaCard>>((ref) async {

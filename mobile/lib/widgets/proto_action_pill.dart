@@ -14,6 +14,15 @@ class ProtoActionPill extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
 
+  /// Font metrics matching [ProtoActionPill]; set [color] for the surrounding control (never forces white/black).
+  static TextStyle typographyOnly(BuildContext context) {
+    final base =
+        Theme.of(context).textTheme.titleMedium ??
+        Theme.of(context).textTheme.titleLarge ??
+        const TextStyle();
+    return base.copyWith(fontWeight: FontWeight.w700, letterSpacing: -0.1);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -35,11 +44,9 @@ class ProtoActionPill extends StatelessWidget {
               const SizedBox(width: 8),
               Text(
                 label,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.protoInk,
-                  letterSpacing: -0.1,
-                ),
+                style: typographyOnly(
+                  context,
+                ).copyWith(color: AppColors.protoInk),
               ),
             ],
           ),
@@ -48,4 +55,3 @@ class ProtoActionPill extends StatelessWidget {
     );
   }
 }
-

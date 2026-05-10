@@ -202,7 +202,7 @@ Mirror structure in `NOTIFICATIONS`: `id`, `type`, `icon` key or enum, `timeAgo`
 **FR-4** Home: load section rails from API (paged); tap opens feed at selected index.  
 **FR-5** Feed: vertical paging; prefetch next card assets; sync like state optimistically.  
 **FR-6** Share: use platform share sheet; deep link or image file as required for WhatsApp status (typically **image export** of card).  
-**FR-7** Save / download: render card to PNG at target resolution (e.g. 1080×1920); save to gallery with permission handling (Android/iOS).  
+**FR-7** Save / download: render card to a high-DPI 9:16 PNG (e.g. ~1440×2560 from 360×640 logical at 4× export scale); save to gallery with permission handling (Android/iOS).  
 **FR-8** Wallpaper: OS-specific “set wallpaper” where supported or guide user from saved image.  
 **FR-9** Edit: v1 can open simple text overlay editor or defer to v2 (prototype stub).  
 **FR-10** Explore: search queries hit `/search?q=`; intents map to category filters.  

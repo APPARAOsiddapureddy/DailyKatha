@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../data/local/mock_catalog.dart';
+import '../../data/local/user_engagement_store.dart';
 import '../../data/providers.dart';
 import '../../data/user_stats_controller.dart';
 import '../../l10n/app_localizations.dart';
+import '../../models/feed_route_args.dart';
 import '../../models/user_profile.dart';
+import '../../services/user_display_name.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/app_background.dart';
+import '../../widgets/display_name_prompt_dialog.dart';
 
 /// Mirrors `screens-main.jsx` `ProfileScreen` — cream shell, streak hero, stats, grouped rows.
 /// Not driven by backend layout APIs; profile fields come from session / catalog like the prototype’s static copy.
@@ -26,6 +29,10 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     ref.read(sessionHolderProvider.notifier).clear();
     if (!mounted) return;
     context.go('/onboarding/language');
+  }
+
+  Future<void> _editDisplayName() async {
+    await showDisplayNameEditor(context, ref);
   }
 
   Future<void> _pickLanguage() async {
@@ -59,6 +66,93 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(AppLocalizations.of(context).languageUpdated)),
+    );
+  }
+
+  Future<void> _openSavedCards(BuildContext context, WidgetRef ref) async {
+    final snap = await UserEngagementStore.load();
+    if (!context.mounted) return;
+    final l10n = AppLocalizations.of(context);
+    if (snap.savedCardIds.isEmpty) {
+      await showDialog<void>(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: Text(l10n.profileDialogNoSavedTitle),
+          content: Text(l10n.profileDialogNoSavedBody),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: Text(l10n.profileEditNameCancel),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+    context.push(
+      '/feed',
+      extra: FeedRouteArgs(
+        initialIndex: 0,
+        cardIds: snap.savedCardIds,
+      ),
+    );
+  }
+
+  Future<void> _openMyEdits(BuildContext context, WidgetRef ref) async {
+    final created = await ref.read(userCreatedCardsProvider.future);
+    if (!context.mounted) return;
+    final l10n = AppLocalizations.of(context);
+    if (created.isEmpty) {
+      await showDialog<void>(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: Text(l10n.profileDialogNoEditsTitle),
+          content: Text(l10n.profileDialogNoEditsBody),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: Text(l10n.profileEditNameCancel),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+    context.push(
+      '/feed',
+      extra: FeedRouteArgs(
+        initialIndex: 0,
+        cardIds: created.map((c) => c.id).toList(),
+      ),
+    );
+  }
+
+  Future<void> _openMyShares(BuildContext context) async {
+    final snap = await UserEngagementStore.load();
+    if (!context.mounted) return;
+    final l10n = AppLocalizations.of(context);
+    if (snap.sharedCardIds.isEmpty) {
+      await showDialog<void>(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: Text(l10n.profileDialogNoSharesTitle),
+          content: Text(l10n.profileDialogNoSharesBody),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: Text(l10n.profileEditNameCancel),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+    context.push(
+      '/feed',
+      extra: FeedRouteArgs(
+        initialIndex: 0,
+        cardIds: snap.sharedCardIds,
+      ),
     );
   }
 
@@ -113,7 +207,17 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   Widget build(BuildContext context) {
     final session = ref.watch(sessionHolderProvider);
     final l10n = AppLocalizations.of(context);
+    final tt = Theme.of(context).textTheme;
     final stats = ref.watch(userStatsProvider).valueOrNull;
+
+    final profile = session?.profile;
+    final resolvedName = profile == null
+        ? l10n.profileYourName
+        : () {
+            final t = profile.displayName.trim();
+            if (t.isEmpty || isPlaceholderDisplayName(t)) return l10n.profileYourName;
+            return t;
+          }();
 
     final saved = stats?.savedCount ?? (session?.profile.savedCount ?? 0);
     final edits = session?.profile.likedCount ?? 0;
@@ -129,13 +233,59 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               SliverPadding(
                 padding: const EdgeInsets.fromLTRB(20, 14, 20, 8),
                 sliver: SliverToBoxAdapter(
-                  child: Text(
-                    l10n.navProfile,
-                    style: GoogleFonts.spectral(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: -0.4,
-                      color: AppColors.protoInk,
+                  child: Text(l10n.navProfile, style: tt.headlineMedium?.copyWith(fontSize: 30)),
+                ),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 14),
+                sliver: SliverToBoxAdapter(
+                  child: Material(
+                    color: AppColors.protoSurface,
+                    borderRadius: BorderRadius.circular(18),
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(18),
+                      onTap: _editDisplayName,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(18),
+                          border: Border.all(color: AppColors.protoBorder),
+                        ),
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 22,
+                              backgroundColor: AppColors.protoBrand.withValues(alpha: 0.15),
+                              child: profile == null
+                                  ? Icon(Icons.person, color: AppColors.protoBrand.withValues(alpha: 0.8))
+                                  : Text(
+                                      UserDisplayName.avatarInitial(profile),
+                                      style: tt.titleMedium?.copyWith(color: AppColors.protoBrand),
+                                    ),
+                            ),
+                            const SizedBox(width: 14),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    resolvedName,
+                                    style: tt.titleLarge?.copyWith(fontSize: 20),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  const SizedBox(height: 2),
+                                  Text(
+                                    l10n.profileYourNameSub,
+                                    style: tt.bodySmall?.copyWith(color: AppColors.protoInk3),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Icon(Icons.edit_outlined, size: 20, color: AppColors.protoInk3),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -180,10 +330,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                             children: [
                               Text(
                                 '5 days',
-                                style: GoogleFonts.spectral(
+                                style: tt.headlineSmall?.copyWith(
                                   fontSize: 28,
-                                  fontWeight: FontWeight.w500,
-                                  letterSpacing: -0.3,
                                   height: 1,
                                   color: Colors.white,
                                 ),
@@ -191,7 +339,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                               const SizedBox(height: 4),
                               Text(
                                 l10n.profileStreakSub,
-                                style: GoogleFonts.dmSans(
+                                style: tt.bodyMedium?.copyWith(
                                   fontSize: 13,
                                   height: 1.3,
                                   color: Colors.white.withValues(alpha: 0.7),
@@ -230,7 +378,17 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   iconColor: AppColors.protoBrand,
                   title: l10n.profileRowSavedCards,
                   sub: l10n.profileRowSavedSub(saved),
-                  onTap: () => context.push('/feed', extra: 0),
+                  onTap: () => _openSavedCards(context, ref),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: _ProfileRow(
+                  icon: Icons.ios_share,
+                  iconBg: const Color(0xFFE8F4FF),
+                  iconColor: AppColors.protoInk2,
+                  title: l10n.profileRowMyShares,
+                  sub: l10n.profileRowMySharesSub(shared),
+                  onTap: () => _openMyShares(context),
                 ),
               ),
               SliverToBoxAdapter(
@@ -240,7 +398,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   iconColor: AppColors.protoSaffron,
                   title: l10n.profileRowMyEdits,
                   sub: l10n.profileRowMyEditsSub(edits),
-                  onTap: () => context.push('/feed', extra: 0),
+                  onTap: () => _openMyEdits(context, ref),
                 ),
               ),
               SliverPadding(
@@ -316,7 +474,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   child: Text(
                     l10n.profileFooter,
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.dmSans(fontSize: 11, color: AppColors.protoInk4, letterSpacing: 1),
+                    style: tt.bodySmall?.copyWith(fontSize: 11, color: AppColors.protoInk4, letterSpacing: 1),
                   ),
                 ),
               ),
@@ -335,13 +493,13 @@ class _SectionLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tt = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Text(
         text.toUpperCase(),
-        style: GoogleFonts.dmSans(
+        style: tt.labelLarge?.copyWith(
           fontSize: 11,
-          fontWeight: FontWeight.w700,
           letterSpacing: 2,
           color: AppColors.protoInk3,
         ),
@@ -358,6 +516,7 @@ class _StatTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tt = Theme.of(context).textTheme;
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
       decoration: BoxDecoration(
@@ -369,19 +528,13 @@ class _StatTile extends StatelessWidget {
         children: [
           Text(
             '$n',
-            style: GoogleFonts.spectral(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: AppColors.protoInk,
-              height: 1,
-            ),
+            style: tt.titleLarge?.copyWith(fontSize: 24, height: 1),
           ),
           const SizedBox(height: 4),
           Text(
             label.toUpperCase(),
-            style: GoogleFonts.dmSans(
+            style: tt.bodySmall?.copyWith(
               fontSize: 11,
-              fontWeight: FontWeight.w500,
               letterSpacing: 0.3,
               color: AppColors.protoInk3,
             ),
@@ -412,6 +565,7 @@ class _ProfileRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tt = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
       child: Material(
@@ -444,15 +598,10 @@ class _ProfileRow extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: GoogleFonts.dmSans(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: -0.1,
-                          color: AppColors.protoInk,
-                        ),
+                        style: tt.titleMedium?.copyWith(fontSize: 16),
                       ),
                       if (sub != null && sub!.isNotEmpty)
-                        Text(sub!, style: GoogleFonts.dmSans(fontSize: 12, color: AppColors.protoInk3)),
+                        Text(sub!, style: tt.bodySmall?.copyWith(color: AppColors.protoInk3)),
                     ],
                   ),
                 ),

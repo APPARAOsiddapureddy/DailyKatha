@@ -343,7 +343,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeSectionFestivalTitle.
   ///
   /// In en, this message translates to:
-  /// **'Today\'s Ugadi specials'**
+  /// **'Today\'s festival specials'**
   String get homeSectionFestivalTitle;
 
   /// No description provided for @homeSectionInterestsTitle.
@@ -373,7 +373,7 @@ abstract class AppLocalizations {
   /// No description provided for @festivalBannerTitle.
   ///
   /// In en, this message translates to:
-  /// **'Happy Ugadi'**
+  /// **'Festival greetings'**
   String get festivalBannerTitle;
 
   /// No description provided for @festivalBannerSubtitle.
@@ -457,7 +457,7 @@ abstract class AppLocalizations {
   /// No description provided for @exploreFestivalTitle.
   ///
   /// In en, this message translates to:
-  /// **'Ugadi greetings'**
+  /// **'Festival greetings'**
   String get exploreFestivalTitle;
 
   /// No description provided for @exploreFestivalBody.
@@ -507,6 +507,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search greetings, festivals, names…'**
   String get exploreSearchHint;
+
+  /// No description provided for @exploreSearchNoMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'No match — try morning, birthday, love, festival…'**
+  String get exploreSearchNoMatch;
 
   /// No description provided for @exploreJumpIn.
   ///
@@ -646,6 +652,60 @@ abstract class AppLocalizations {
   /// **'Help & About'**
   String get profileHelp;
 
+  /// No description provided for @namePromptTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What should we call you?'**
+  String get namePromptTitle;
+
+  /// No description provided for @namePromptBody.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll personalize your greeting on Home and show it here.'**
+  String get namePromptBody;
+
+  /// No description provided for @namePromptHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get namePromptHint;
+
+  /// No description provided for @namePromptSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get namePromptSave;
+
+  /// No description provided for @namePromptSkip.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get namePromptSkip;
+
+  /// No description provided for @profileYourName.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get profileYourName;
+
+  /// No description provided for @profileYourNameSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Shown in your Home greeting'**
+  String get profileYourNameSub;
+
+  /// No description provided for @profileEditNameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get profileEditNameTitle;
+
+  /// No description provided for @profileEditNameCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get profileEditNameCancel;
+
   /// No description provided for @profileSignOut.
   ///
   /// In en, this message translates to:
@@ -711,6 +771,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count} cards with your photos'**
   String profileRowMyEditsSub(int count);
+
+  /// No description provided for @profileRowMyShares.
+  ///
+  /// In en, this message translates to:
+  /// **'My shares'**
+  String get profileRowMyShares;
+
+  /// No description provided for @profileRowMySharesSub.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} cards shared'**
+  String profileRowMySharesSub(int count);
+
+  /// No description provided for @profileDialogNoSavedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No saved cards yet'**
+  String get profileDialogNoSavedTitle;
+
+  /// No description provided for @profileDialogNoSavedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Save a card from Home or the feed to build your gallery.'**
+  String get profileDialogNoSavedBody;
+
+  /// No description provided for @profileDialogNoEditsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No edits yet'**
+  String get profileDialogNoEditsTitle;
+
+  /// No description provided for @profileDialogNoEditsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a card with your photos to see it here.'**
+  String get profileDialogNoEditsBody;
+
+  /// No description provided for @profileDialogNoSharesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing shared yet'**
+  String get profileDialogNoSharesTitle;
+
+  /// No description provided for @profileDialogNoSharesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Share a card to WhatsApp Status from the feed and it will appear here.'**
+  String get profileDialogNoSharesBody;
 
   /// No description provided for @profileRowDailyReminder.
   ///
@@ -891,6 +999,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your card today'**
   String get homeHeroKicker;
+
+  /// No description provided for @homeTodayPickHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap a side card to bring it to the center; tap the center card to open it.'**
+  String get homeTodayPickHint;
 
   /// No description provided for @homeShareToStatus.
   ///

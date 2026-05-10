@@ -9,8 +9,10 @@ import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/card_editor_args.dart';
 import '../../models/katha_card.dart';
+import '../../models/user_profile.dart';
 import '../../observability/analytics/analytics.dart';
 import '../../observability/analytics/analytics_provider.dart';
+import '../../services/card_share_export.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/status_card.dart';
 
@@ -32,7 +34,14 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
     super.dispose();
   }
 
-  KathaCard _draft(String lang) {
+  /// Attribution line on the card — English only, matches profile name when set.
+  static String _authorEnglish(UserProfile? profile) {
+    final raw = profile?.displayName.trim() ?? '';
+    if (raw.isEmpty || isPlaceholderDisplayName(raw)) return 'You';
+    return raw;
+  }
+
+  KathaCard _draft(String lang, UserProfile? profile) {
     final input = _text.text.trim();
     // UX: while creating, show only the text user typed (no echo line).
     // Store in the current language only; (optional) translation can be added later.
@@ -44,7 +53,7 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
       category: _genre,
       mood: 'warm',
       quote: quote,
-      author: const {'en': 'You'},
+      author: {'en': _authorEnglish(profile)},
     );
   }
 
@@ -53,6 +62,7 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
     final messenger = ScaffoldMessenger.of(context);
     final router = GoRouter.of(context);
     final session = ref.read(sessionHolderProvider);
+    if (session == null) return;
     final lang = effectiveContentLanguage(session);
     final input = _text.text.trim();
     if (input.length < 3) {
@@ -63,21 +73,30 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
     }
     setState(() => _saving = true);
     try {
-      final card = _draft(lang);
+      final card = _draft(lang, session.profile);
       await UserCreatedCardsStore.add(card);
-      await ref.read(analyticsProvider).log(
-        AEvents.cardCreated,
-        props: {
-          'source': 'home_create',
-          'category': _genre,
-          'text_len': input.length,
-        },
-      );
+      await ref
+          .read(analyticsProvider)
+          .log(
+            AEvents.cardCreated,
+            props: {
+              'source': 'home_create',
+              'category': _genre,
+              'text_len': input.length,
+            },
+          );
       ref.invalidate(userCreatedCardsProvider);
       ref.invalidate(catalogProvider);
       if (!mounted) return;
       // Open editor so user can add photo/caption and share as Status.
-      router.push('/edit', extra: CardEditorArgs(card: card, contentLanguage: lang, preferStatusPrimaryCta: true));
+      router.push(
+        '/edit',
+        extra: CardEditorArgs(
+          card: card,
+          contentLanguage: lang,
+          preferStatusPrimaryCta: true,
+        ),
+      );
     } finally {
       if (mounted) setState(() => _saving = false);
     }
@@ -88,18 +107,21 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
     final l10n = AppLocalizations.of(context);
     final session = ref.watch(sessionHolderProvider);
     final lang = effectiveContentLanguage(session);
-    final card = _draft(lang);
+    final card = _draft(lang, session?.profile);
 
     return Scaffold(
       backgroundColor: AppColors.protoCream,
-      appBar: AppBar(
-        title: const Text('Create Card'),
-      ),
+      appBar: AppBar(title: const Text('Create Card')),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            Text(l10n.onboardingInterestsTitle, style: Theme.of(context).textTheme.titleLarge?.copyWith(color: AppColors.protoInk)),
+            Text(
+              l10n.onboardingInterestsTitle,
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(color: AppColors.protoInk),
+            ),
             const SizedBox(height: 10),
             DropdownButtonFormField<String>(
               initialValue: _genre,
@@ -111,7 +133,9 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
                     ),
                   )
                   .toList(growable: false),
-              onChanged: _saving ? null : (v) => setState(() => _genre = v ?? _genre),
+              onChanged: _saving
+                  ? null
+                  : (v) => setState(() => _genre = v ?? _genre),
               decoration: const InputDecoration(labelText: 'Genre'),
             ),
             const SizedBox(height: 12),
@@ -128,16 +152,37 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
               onChanged: (_) => setState(() {}),
             ),
             const SizedBox(height: 16),
-            Center(
-              child: SizedBox(
-                width: 360,
-                child: StatusCard(
-                  card: card,
-                  contentLanguage: lang,
-                  compact: false,
-                  height: 560,
-                ),
-              ),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                final maxW =
+                    (constraints.maxWidth.isFinite
+                            ? constraints.maxWidth
+                            : MediaQuery.sizeOf(context).width - 32)
+                        .clamp(260.0, CardShareExport.logicalExportWidth);
+                return Center(
+                  child: SizedBox(
+                    width: maxW,
+                    child: AspectRatio(
+                      aspectRatio: CardShareExport.logicalAspectRatio,
+                      child: FittedBox(
+                        fit: BoxFit.contain,
+                        alignment: Alignment.center,
+                        child: SizedBox(
+                          width: CardShareExport.logicalExportWidth,
+                          height: CardShareExport.logicalExportHeight,
+                          child: StatusCard(
+                            card: card,
+                            contentLanguage: lang,
+                            compact: false,
+                            width: CardShareExport.logicalExportWidth,
+                            height: CardShareExport.logicalExportHeight,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 16),
             FilledButton(
@@ -150,4 +195,3 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
     );
   }
 }
-

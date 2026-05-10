@@ -5,7 +5,7 @@ class UserProfile {
   const UserProfile({
     required this.id,
     required this.phoneE164,
-    this.displayName = 'Ravi Kumar',
+    this.displayName = 'Friend',
     this.displayNameNative,
     this.contentLanguage = 'en',
     this.religionId,
@@ -133,6 +133,13 @@ class UserProfile {
       'religionId': religionId,
     };
   }
+}
+
+bool isPlaceholderDisplayName(String raw) {
+  final s = raw.trim().toLowerCase();
+  if (s.isEmpty) return true;
+  const placeholders = {'friend', 'demo user', 'ravi kumar'};
+  return placeholders.contains(s);
 }
 
 @immutable

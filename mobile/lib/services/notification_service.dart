@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
@@ -26,6 +27,12 @@ class NotificationService {
     if (_didInit) return;
     _didInit = true;
     tz.initializeTimeZones();
+    try {
+      final tzName = await FlutterTimezone.getLocalTimezone();
+      tz.setLocalLocation(tz.getLocation(tzName));
+    } catch (_) {
+      // Scheduling still works using whatever default `timezone` resolved.
+    }
 
     const android = AndroidInitializationSettings('@mipmap/ic_launcher');
     const ios = DarwinInitializationSettings();

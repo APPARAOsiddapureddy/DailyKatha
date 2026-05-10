@@ -43,38 +43,47 @@ class MiniCard extends StatelessWidget {
             ),
           ),
         ),
-        Center(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-            decoration: BoxDecoration(
-              color: const Color(0xEBFFFFFF),
-              borderRadius: BorderRadius.circular(999),
-              boxShadow: const [
-                BoxShadow(
-                  color: Color(0x2E000000),
-                  blurRadius: 12,
-                  offset: Offset(0, 4),
+        Builder(
+          builder: (context) {
+            final chip = Theme.of(context).textTheme.bodySmall?.copyWith(
+              decoration: TextDecoration.none,
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+              color: AppColors.protoInk,
+              letterSpacing: 0.2,
+            );
+            return Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 8,
                 ),
-              ],
-            ),
-            child: const Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.touch_app_outlined, size: 16, color: AppColors.protoBrand),
-                SizedBox(width: 6),
-                Text(
-                  'Tap to open',
-                  style: TextStyle(
-                    decoration: TextDecoration.none,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w800,
-                    color: AppColors.protoInk,
-                    letterSpacing: 0.2,
-                  ),
+                decoration: BoxDecoration(
+                  color: const Color(0xEBFFFFFF),
+                  borderRadius: BorderRadius.circular(999),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0x2E000000),
+                      blurRadius: 12,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(
+                      Icons.touch_app_outlined,
+                      size: 16,
+                      color: AppColors.protoBrand,
+                    ),
+                    const SizedBox(width: 6),
+                    Text('Tap to open', style: chip),
+                  ],
+                ),
+              ),
+            );
+          },
         ),
       ],
     );

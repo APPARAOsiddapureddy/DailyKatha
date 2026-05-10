@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/content_language.dart';
+import '../../data/local/user_engagement_store.dart';
 import '../../data/providers.dart';
 import '../../data/user_stats_controller.dart';
 import '../../l10n/app_localizations.dart';
@@ -17,6 +17,7 @@ import '../../observability/analytics/analytics.dart';
 import '../../observability/analytics/analytics_provider.dart';
 import '../../services/card_share_export.dart';
 import '../../theme/app_colors.dart';
+import '../../widgets/proto_action_pill.dart';
 import '../../widgets/status_card.dart';
 
 class FeedScreen extends ConsumerStatefulWidget {
@@ -41,18 +42,27 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     if (_loggedOpen) return;
     _loggedOpen = true;
     final filter = widget.args.categoryFilter;
-    ref.read(analyticsProvider).log(
-      AEvents.feedOpened,
-      props: {
-        'source': widget.args.categoryFilter == null ? 'unknown' : 'filtered',
-        'has_filter': filter != null && filter.isNotEmpty,
-        'filter': filter?.toList(),
-        'initial_index': widget.args.initialIndex,
-      },
-    );
+    ref
+        .read(analyticsProvider)
+        .log(
+          AEvents.feedOpened,
+          props: {
+            'source': widget.args.categoryFilter == null
+                ? 'unknown'
+                : 'filtered',
+            'has_filter': filter != null && filter.isNotEmpty,
+            'filter': filter?.toList(),
+            'initial_index': widget.args.initialIndex,
+          },
+        );
   }
 
   List<KathaCard> _visible(List<KathaCard> full) {
+    final ids = widget.args.cardIds;
+    if (ids != null && ids.isNotEmpty) {
+      final byId = {for (final c in full) c.id: c};
+      return ids.map((id) => byId[id]).whereType<KathaCard>().toList();
+    }
     final f = widget.args.categoryFilter;
     if (f == null || f.isEmpty) return full;
     return full.where((c) => f.contains(c.category)).toList();
@@ -60,6 +70,10 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
 
   int _startPage(List<KathaCard> full, List<KathaCard> visible) {
     if (visible.isEmpty) return 0;
+    final ids = widget.args.cardIds;
+    if (ids != null && ids.isNotEmpty) {
+      return widget.args.initialIndex.clamp(0, visible.length - 1);
+    }
     final filter = widget.args.categoryFilter;
     if (filter == null || filter.isEmpty) {
       return widget.args.initialIndex.clamp(0, visible.length - 1);
@@ -70,7 +84,10 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     return j >= 0 ? j : 0;
   }
 
-  void _scheduleControllerIfNeeded(List<KathaCard> full, List<KathaCard> visible) {
+  void _scheduleControllerIfNeeded(
+    List<KathaCard> full,
+    List<KathaCard> visible,
+  ) {
     if (_controller != null || visible.isEmpty) return;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || _controller != null) return;
@@ -105,7 +122,10 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     if (!mounted) return;
     if (ok) setState(() => _savedIds.add(card.id));
     if (ok) {
+      await UserEngagementStore.recordSaved(card.id);
+      await UserEngagementStore.bumpCategoryAffinity(card.category);
       await ref.read(userStatsProvider.notifier).incrementSaved();
+      ref.invalidate(userEngagementProvider);
     }
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -118,29 +138,33 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     if (_sharing || !mounted) return;
     setState(() => _sharing = true);
     try {
-      await ref.read(analyticsProvider).log(
-        AEvents.shareClicked,
-        props: {
-          'channel': 'whatsapp_status',
-          'source': 'feed_quick',
-          'card_id': card.id,
-          'category': card.category,
-        },
-      );
+      await ref
+          .read(analyticsProvider)
+          .log(
+            AEvents.shareClicked,
+            props: {
+              'channel': 'whatsapp_status',
+              'source': 'feed_quick',
+              'card_id': card.id,
+              'category': card.category,
+            },
+          );
       await CardShareExport.shareKathaCardAsImage(
         context: context,
         card: card,
         contentLanguage: lang,
         shareService: ref.read(shareServiceProvider),
       );
+      await UserEngagementStore.recordShared(card.id);
+      await UserEngagementStore.bumpCategoryAffinity(card.category);
       await ref.read(userStatsProvider.notifier).incrementShared();
-      await ref.read(analyticsProvider).log(
-        AEvents.shareSheetOpened,
-        props: {
-          'channel': 'whatsapp_status',
-          'source': 'feed_quick',
-        },
-      );
+      ref.invalidate(userEngagementProvider);
+      await ref
+          .read(analyticsProvider)
+          .log(
+            AEvents.shareSheetOpened,
+            props: {'channel': 'whatsapp_status', 'source': 'feed_quick'},
+          );
     } finally {
       if (mounted) setState(() => _sharing = false);
     }
@@ -149,7 +173,11 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
   void _editCurrent(String lang, KathaCard card) {
     context.push(
       '/edit',
-      extra: CardEditorArgs(card: card, contentLanguage: lang, preferStatusPrimaryCta: true),
+      extra: CardEditorArgs(
+        card: card,
+        contentLanguage: lang,
+        preferStatusPrimaryCta: true,
+      ),
     );
   }
 
@@ -173,6 +201,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     final bottomInset = MediaQuery.paddingOf(context).bottom;
     final topInset = MediaQuery.paddingOf(context).top;
     final l10n = AppLocalizations.of(context);
+    final tt = Theme.of(context).textTheme;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
@@ -185,7 +214,9 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
       child: Scaffold(
         backgroundColor: AppColors.feedScaffold,
         body: catalog.when(
-          loading: () => const Center(child: CircularProgressIndicator(color: AppColors.white)),
+          loading: () => const Center(
+            child: CircularProgressIndicator(color: AppColors.white),
+          ),
           error: (e, _) => Center(
             child: Text(
               '${l10n.errorGeneric}: $e',
@@ -194,17 +225,29 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
           ),
           data: (cards) {
             if (cards.isEmpty) {
-              return Center(child: Text(l10n.noCards, style: const TextStyle(color: AppColors.white)));
+              return Center(
+                child: Text(
+                  l10n.noCards,
+                  style: const TextStyle(color: AppColors.white),
+                ),
+              );
             }
             final visible = _visible(cards);
             if (visible.isEmpty) {
-              return Center(child: Text(l10n.noCards, style: const TextStyle(color: AppColors.white)));
+              return Center(
+                child: Text(
+                  l10n.noCards,
+                  style: const TextStyle(color: AppColors.white),
+                ),
+              );
             }
 
             final ctrl = _controller;
             if (ctrl == null) {
               _scheduleControllerIfNeeded(cards, visible);
-              return const Center(child: CircularProgressIndicator(color: AppColors.white));
+              return const Center(
+                child: CircularProgressIndicator(color: AppColors.white),
+              );
             }
 
             final card = visible[_index.clamp(0, visible.length - 1)];
@@ -213,9 +256,6 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
 
             return LayoutBuilder(
               builder: (context, constraints) {
-                final h = constraints.maxHeight - headerBottom - bottomBarH;
-                final cardHeight = h.clamp(320.0, constraints.maxHeight);
-
                 return Stack(
                   fit: StackFit.expand,
                   children: [
@@ -234,14 +274,31 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                           itemBuilder: (context, i) {
                             final c = visible[i];
                             return Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 6,
+                                vertical: 8,
+                              ),
                               child: Stack(
                                 children: [
                                   Center(
-                                    child: StatusCard(
-                                      card: c,
-                                      contentLanguage: lang,
-                                      height: cardHeight,
+                                    child: FittedBox(
+                                      fit: BoxFit.contain,
+                                      alignment: Alignment.center,
+                                      child: SizedBox(
+                                        width:
+                                            CardShareExport.logicalExportWidth,
+                                        height:
+                                            CardShareExport.logicalExportHeight,
+                                        child: StatusCard(
+                                          card: c,
+                                          contentLanguage: lang,
+                                          compact: false,
+                                          width: CardShareExport
+                                              .logicalExportWidth,
+                                          height: CardShareExport
+                                              .logicalExportHeight,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                   Positioned(
@@ -250,25 +307,44 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                     bottom: 10,
                                     child: Center(
                                       child: Material(
-                                        color: Colors.white.withValues(alpha: 0.14),
-                                        borderRadius: BorderRadius.circular(999),
+                                        color: Colors.white.withValues(
+                                          alpha: 0.14,
+                                        ),
+                                        borderRadius: BorderRadius.circular(
+                                          999,
+                                        ),
                                         child: InkWell(
-                                          borderRadius: BorderRadius.circular(999),
-                                          onTap: _sharing ? null : () => _shareCurrentDirect(lang, c),
+                                          borderRadius: BorderRadius.circular(
+                                            999,
+                                          ),
+                                          onTap: _sharing
+                                              ? null
+                                              : () => _shareCurrentDirect(
+                                                  lang,
+                                                  c,
+                                                ),
                                           child: Padding(
-                                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 14,
+                                              vertical: 10,
+                                            ),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
-                                                const Icon(Icons.share, size: 18, color: Colors.white),
+                                                const Icon(
+                                                  Icons.share,
+                                                  size: 18,
+                                                  color: Colors.white,
+                                                ),
                                                 const SizedBox(width: 8),
                                                 Text(
                                                   'Share to Status',
-                                                  style: GoogleFonts.dmSans(
-                                                    fontWeight: FontWeight.w700,
-                                                    color: Colors.white,
-                                                    letterSpacing: -0.1,
-                                                  ),
+                                                  style:
+                                                      ProtoActionPill.typographyOnly(
+                                                        context,
+                                                      ).copyWith(
+                                                        color: Colors.white,
+                                                      ),
                                                 ),
                                               ],
                                             ),
@@ -316,7 +392,11 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                   child: const SizedBox(
                                     width: 40,
                                     height: 40,
-                                    child: Icon(Icons.chevron_left, size: 22, color: Colors.white),
+                                    child: Icon(
+                                      Icons.chevron_left,
+                                      size: 22,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -325,19 +405,21 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                   children: [
                                     Text(
                                       l10n.feedScreenLabel.toUpperCase(),
-                                      style: GoogleFonts.dmSans(
+                                      style: tt.labelLarge?.copyWith(
                                         fontSize: 11,
-                                        fontWeight: FontWeight.w700,
-                                        letterSpacing: 2,
-                                        color: Colors.white.withValues(alpha: 0.6),
+                                        color: Colors.white.withValues(
+                                          alpha: 0.6,
+                                        ),
                                       ),
                                     ),
                                     const SizedBox(height: 2),
                                     Text(
-                                      l10n.feedIndexOf(_index + 1, visible.length),
-                                      style: GoogleFonts.dmSans(
+                                      l10n.feedIndexOf(
+                                        _index + 1,
+                                        visible.length,
+                                      ),
+                                      style: tt.titleMedium?.copyWith(
                                         fontSize: 14,
-                                        fontWeight: FontWeight.w600,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -349,16 +431,16 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                 shape: const CircleBorder(),
                                 clipBehavior: Clip.antiAlias,
                                 child: InkWell(
-                                  onTap: () {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(content: Text('Search coming soon')),
-                                    );
-                                  },
+                                  onTap: () => context.go('/explore'),
                                   customBorder: const CircleBorder(),
                                   child: const SizedBox(
                                     width: 40,
                                     height: 40,
-                                    child: Icon(Icons.search, size: 20, color: Colors.white),
+                                    child: Icon(
+                                      Icons.search,
+                                      size: 20,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -409,12 +491,31 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                   onPressed: () => _editCurrent(lang, card),
                                   style: OutlinedButton.styleFrom(
                                     foregroundColor: Colors.white,
-                                    side: BorderSide(color: Colors.white.withValues(alpha: 0.22)),
-                                    minimumSize: const Size(double.infinity, 50),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                    side: BorderSide(
+                                      color: Colors.white.withValues(
+                                        alpha: 0.22,
+                                      ),
+                                    ),
+                                    minimumSize: const Size(
+                                      double.infinity,
+                                      50,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(14),
+                                    ),
                                   ),
-                                  icon: const Icon(Icons.edit_outlined, size: 18),
-                                  label: Text('Edit', style: GoogleFonts.dmSans(fontWeight: FontWeight.w700)),
+                                  icon: const Icon(
+                                    Icons.edit_outlined,
+                                    size: 18,
+                                  ),
+                                  label: Text(
+                                    'Edit',
+                                    style: tt.titleMedium?.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      letterSpacing: -0.1,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
                               ),
                               const SizedBox(width: 10),
@@ -423,26 +524,59 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                   onPressed: () => _saveCurrent(lang, card),
                                   style: OutlinedButton.styleFrom(
                                     foregroundColor: Colors.white,
-                                    side: BorderSide(color: Colors.white.withValues(alpha: 0.22)),
-                                    minimumSize: const Size(double.infinity, 50),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                    side: BorderSide(
+                                      color: Colors.white.withValues(
+                                        alpha: 0.22,
+                                      ),
+                                    ),
+                                    minimumSize: const Size(
+                                      double.infinity,
+                                      50,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(14),
+                                    ),
                                   ),
-                                  icon: const Icon(Icons.download_outlined, size: 18),
-                                  label: Text('Save', style: GoogleFonts.dmSans(fontWeight: FontWeight.w700)),
+                                  icon: const Icon(
+                                    Icons.download_outlined,
+                                    size: 18,
+                                  ),
+                                  label: Text(
+                                    'Save',
+                                    style: tt.titleMedium?.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      letterSpacing: -0.1,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
                               ),
                               const SizedBox(width: 10),
                               Expanded(
                                 child: FilledButton.icon(
-                                  onPressed: _sharing ? null : () => _shareCurrentDirect(lang, card),
+                                  onPressed: _sharing
+                                      ? null
+                                      : () => _shareCurrentDirect(lang, card),
                                   style: FilledButton.styleFrom(
                                     backgroundColor: AppColors.protoBrandDeep,
                                     foregroundColor: Colors.white,
-                                    minimumSize: const Size(double.infinity, 50),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                    minimumSize: const Size(
+                                      double.infinity,
+                                      50,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(14),
+                                    ),
                                   ),
                                   icon: const Icon(Icons.ios_share, size: 18),
-                                  label: Text('Status', style: GoogleFonts.dmSans(fontWeight: FontWeight.w800)),
+                                  label: Text(
+                                    'Status',
+                                    style: tt.titleMedium?.copyWith(
+                                      fontWeight: FontWeight.w800,
+                                      letterSpacing: -0.1,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
@@ -490,7 +624,9 @@ class _FeedPageDots extends StatelessWidget {
                 width: 4,
                 height: active ? 22 : 4,
                 decoration: BoxDecoration(
-                  color: active ? Colors.white : Colors.white.withValues(alpha: 0.32),
+                  color: active
+                      ? Colors.white
+                      : Colors.white.withValues(alpha: 0.32),
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
@@ -501,4 +637,3 @@ class _FeedPageDots extends StatelessWidget {
     );
   }
 }
-

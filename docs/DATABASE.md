@@ -3,7 +3,7 @@
 There are **two migration paths** in this repo:
 
 1. **`npm run migrate`** (`backend/migrations/*.js`, node-pg-migrate) — v1 API tables (`quotes` integer id, `users` email in older migration file, etc.).
-2. **`backend/src/db/migrations/*.sql`** — legacy **cards / UUID users** schema used by `src/server.js` (Render production today).
+2. **`backend/src/db/migrations/*.sql`** — legacy **cards / UUID users** schema consumed by **`backend/src/server.js`** when running the legacy Express stack (`npm run legacy:start` from `backend/`).
 
 Your Neon database may contain **one or both**, depending on what you applied.
 

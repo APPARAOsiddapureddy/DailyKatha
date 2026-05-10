@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/content_language.dart';
 import '../../data/local/mock_catalog.dart';
@@ -11,10 +10,11 @@ import '../../l10n/app_localizations.dart';
 import '../../l10n/genre_localizer.dart';
 import '../../models/feed_route_args.dart';
 import '../../models/katha_card.dart';
-import '../../models/section_preview_args.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/proto_category_palette.dart';
+import '../../utils/daily_card_picker.dart';
 import '../../utils/error_handler.dart';
+import '../../utils/explore_search_resolver.dart';
 import '../../widgets/app_background.dart';
 
 /// Mirrors `screens-main.jsx` ExploreScreen — single scroll, no tabs.
@@ -26,40 +26,41 @@ class ExploreScreen extends ConsumerWidget {
     BuildContext context,
     List<KathaCard> all,
     String interestId,
-    String title,
-    String tag,
   ) {
-    final idx = all.indexWhere((c) => c.category == interestId);
+    final pick = DailyCardPicker.pickForCategory(all, interestId);
+    final ix = all.indexWhere((c) => c.id == pick.id);
     context.push(
-      '/section',
-      extra: SectionPreviewArgs(
-        title: title,
-        tag: tag,
-        initialIndex: idx >= 0 ? idx : 0,
+      '/feed',
+      extra: FeedRouteArgs(
+        initialIndex: ix >= 0 ? ix : 0,
         categoryFilter: {interestId},
       ),
     );
   }
 
-  static void _openFestivalFeatured(BuildContext context, List<KathaCard> all, String lang) {
-    final idx = all.indexWhere((c) => c.category == 'festival' || c.section == 'festival');
+  static void _openFestivalFeatured(BuildContext context, List<KathaCard> all) {
+    final pick = DailyCardPicker.pickForFestival(all);
+    final ix = all.indexWhere((c) => c.id == pick.id);
     context.push(
-      '/section',
-      extra: SectionPreviewArgs(
-        title: GenreLocalizer.getName('festival', lang),
-        tag: '',
-        initialIndex: idx >= 0 ? idx : 0,
+      '/feed',
+      extra: FeedRouteArgs(
+        initialIndex: ix >= 0 ? ix : 0,
         categoryFilter: {'festival'},
       ),
     );
   }
 
-  static void _openPack(BuildContext context, List<KathaCard> cards, String category) {
-    final idx = cards.indexWhere((c) => c.category == category);
+  static void _openPack(
+    BuildContext context,
+    List<KathaCard> cards,
+    String category,
+  ) {
+    final pick = DailyCardPicker.pickForCategory(cards, category);
+    final ix = cards.indexWhere((c) => c.id == pick.id);
     context.push(
       '/feed',
       extra: FeedRouteArgs(
-        initialIndex: idx >= 0 ? idx : 0,
+        initialIndex: ix >= 0 ? ix : 0,
         categoryFilter: {category},
       ),
     );
@@ -77,7 +78,9 @@ class ExploreScreen extends ConsumerWidget {
         child: SafeArea(
           bottom: false,
           child: catalog.when(
-            loading: () => const Center(child: CircularProgressIndicator(color: AppColors.protoBrand)),
+            loading: () => const Center(
+              child: CircularProgressIndicator(color: AppColors.protoBrand),
+            ),
             error: (e, _) => Center(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -92,6 +95,7 @@ class ExploreScreen extends ConsumerWidget {
             ),
             data: (cards) {
               final l10n = AppLocalizations.of(context);
+              final tt = Theme.of(context).textTheme;
               final interests = MockCatalog.interests.take(9).toList();
               return CustomScrollView(
                 slivers: [
@@ -103,17 +107,12 @@ class ExploreScreen extends ConsumerWidget {
                         children: [
                           Text(
                             l10n.exploreHeadline,
-                            style: GoogleFonts.spectral(
-                              fontSize: 30,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: -0.4,
-                              color: AppColors.protoInk,
-                            ),
+                            style: tt.headlineMedium?.copyWith(fontSize: 30),
                           ),
                           const SizedBox(height: 4),
                           Text(
                             l10n.exploreSubtitle,
-                            style: GoogleFonts.dmSans(
+                            style: tt.bodyLarge?.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: AppColors.protoInk3,
@@ -126,38 +125,7 @@ class ExploreScreen extends ConsumerWidget {
                   SliverPadding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 18),
                     sliver: SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: 52,
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: AppColors.protoSurface,
-                            borderRadius: BorderRadius.circular(16),
-                            boxShadow: [
-                              BoxShadow(
-                                color: AppColors.protoInk.withValues(alpha: 0.04),
-                                blurRadius: 8,
-                              ),
-                            ],
-                            border: Border.all(color: AppColors.protoBorder),
-                          ),
-                          child: Row(
-                            children: [
-                              const SizedBox(width: 14),
-                              Icon(Icons.search, size: 20, color: AppColors.protoInk3),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                child: Text(
-                                  l10n.exploreSearchHint,
-                                  style: GoogleFonts.dmSans(
-                                    fontSize: 16,
-                                    color: AppColors.protoInk3,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      child: _ExploreSearchField(cards: cards),
                     ),
                   ),
                   SliverPadding(
@@ -167,7 +135,7 @@ class ExploreScreen extends ConsumerWidget {
                         color: Colors.transparent,
                         child: InkWell(
                           borderRadius: BorderRadius.circular(22),
-                          onTap: () => _openFestivalFeatured(context, cards, lang),
+                          onTap: () => _openFestivalFeatured(context, cards),
                           child: Ink(
                             height: 168,
                             decoration: BoxDecoration(
@@ -184,7 +152,9 @@ class ExploreScreen extends ConsumerWidget {
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFF7E1F0E).withValues(alpha: 0.22),
+                                  color: const Color(
+                                    0xFF7E1F0E,
+                                  ).withValues(alpha: 0.22),
                                   blurRadius: 32,
                                   offset: const Offset(0, 16),
                                 ),
@@ -212,33 +182,39 @@ class ExploreScreen extends ConsumerWidget {
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 11,
+                                        vertical: 5,
+                                      ),
                                       decoration: BoxDecoration(
-                                        color: Colors.white.withValues(alpha: 0.18),
-                                        borderRadius: BorderRadius.circular(999),
+                                        color: Colors.white.withValues(
+                                          alpha: 0.18,
+                                        ),
+                                        borderRadius: BorderRadius.circular(
+                                          999,
+                                        ),
                                       ),
                                       child: Text(
                                         l10n.exploreFestivalLive,
-                                        style: GoogleFonts.dmSans(
+                                        style: tt.labelLarge?.copyWith(
                                           fontSize: 10,
-                                          fontWeight: FontWeight.w700,
                                           letterSpacing: 2,
                                           color: Colors.white,
                                         ),
                                       ),
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           l10n.exploreFestivalTitle,
-                                          style: GoogleFonts.spectral(
+                                          style: tt.headlineSmall?.copyWith(
                                             fontSize: 28,
-                                            fontWeight: FontWeight.w500,
-                                            letterSpacing: -0.3,
                                             height: 1.1,
                                             color: Colors.white,
                                           ),
@@ -246,10 +222,12 @@ class ExploreScreen extends ConsumerWidget {
                                         const SizedBox(height: 6),
                                         Text(
                                           l10n.exploreFestivalBody,
-                                          style: GoogleFonts.dmSans(
+                                          style: tt.bodyMedium?.copyWith(
                                             fontSize: 13,
                                             fontWeight: FontWeight.w500,
-                                            color: Colors.white.withValues(alpha: 0.78),
+                                            color: Colors.white.withValues(
+                                              alpha: 0.78,
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -263,69 +241,73 @@ class ExploreScreen extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  SliverToBoxAdapter(child: _SectionHead(title: l10n.exploreByInterest, sub: l10n.exploreByInterestSub)),
+                  SliverToBoxAdapter(
+                    child: _SectionHead(
+                      title: l10n.exploreByInterest,
+                      sub: l10n.exploreByInterestSub,
+                    ),
+                  ),
                   SliverPadding(
                     padding: const EdgeInsets.fromLTRB(20, 4, 20, 24),
                     sliver: SliverGrid(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10,
-                        childAspectRatio: 1,
-                      ),
-                      delegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                          final item = interests[index];
-                          final bg = ProtoCategoryPalette.bg(item.id);
-                          return Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              borderRadius: BorderRadius.circular(16),
-                              onTap: () => _openInterest(
-                                context,
-                                cards,
-                                item.id,
-                                GenreLocalizer.getName(item.id, lang),
-                                l10n.sectionForYou,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10,
+                            childAspectRatio: 1,
+                          ),
+                      delegate: SliverChildBuilderDelegate((context, index) {
+                        final item = interests[index];
+                        final bg = ProtoCategoryPalette.bg(item.id);
+                        return Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(16),
+                            onTap: () => _openInterest(context, cards, item.id),
+                            child: Ink(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: bg,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: bg.withValues(alpha: 0.25),
+                                    blurRadius: 10,
+                                    offset: const Offset(0, 4),
+                                  ),
+                                ],
                               ),
-                              child: Ink(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: bg,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: bg.withValues(alpha: 0.25),
-                                      blurRadius: 10,
-                                      offset: const Offset(0, 4),
+                              padding: const EdgeInsets.all(12),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    item.emoji,
+                                    style: const TextStyle(fontSize: 22),
+                                  ),
+                                  Text(
+                                    GenreLocalizer.getName(item.id, lang),
+                                    style: tt.titleMedium?.copyWith(
+                                      fontSize: 13,
+                                      color: Colors.white,
                                     ),
-                                  ],
-                                ),
-                                padding: const EdgeInsets.all(12),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(item.emoji, style: const TextStyle(fontSize: 22)),
-                                    Text(
-                                      GenreLocalizer.getName(item.id, lang),
-                                      style: GoogleFonts.dmSans(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w700,
-                                        letterSpacing: -0.1,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
-                          );
-                        },
-                        childCount: interests.length,
-                      ),
+                          ),
+                        );
+                      }, childCount: interests.length),
                     ),
                   ),
-                  SliverToBoxAdapter(child: _SectionHead(title: l10n.exploreCuratedPacks, sub: l10n.exploreCuratedPacksSub)),
+                  SliverToBoxAdapter(
+                    child: _SectionHead(
+                      title: l10n.exploreCuratedPacks,
+                      sub: l10n.exploreCuratedPacksSub,
+                    ),
+                  ),
                   SliverPadding(
                     padding: const EdgeInsets.fromLTRB(20, 4, 20, 110),
                     sliver: SliverList(
@@ -363,6 +345,99 @@ class ExploreScreen extends ConsumerWidget {
   }
 }
 
+class _ExploreSearchField extends ConsumerStatefulWidget {
+  const _ExploreSearchField({required this.cards});
+
+  final List<KathaCard> cards;
+
+  @override
+  ConsumerState<_ExploreSearchField> createState() =>
+      _ExploreSearchFieldState();
+}
+
+class _ExploreSearchFieldState extends ConsumerState<_ExploreSearchField> {
+  late final TextEditingController _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _submit() {
+    final lang = effectiveContentLanguage(ref.read(sessionHolderProvider));
+    final id = ExploreSearchResolver.resolve(_controller.text, lang);
+    if (!mounted) return;
+    final l10n = AppLocalizations.of(context);
+    if (id == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.exploreSearchNoMatch)),
+      );
+      return;
+    }
+    ExploreScreen._openInterest(context, widget.cards, id);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final tt = Theme.of(context).textTheme;
+    return SizedBox(
+      height: 52,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: AppColors.protoSurface,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.protoInk.withValues(alpha: 0.04),
+              blurRadius: 8,
+            ),
+          ],
+          border: Border.all(color: AppColors.protoBorder),
+        ),
+        child: Row(
+          children: [
+            const SizedBox(width: 10),
+            Icon(Icons.search, size: 20, color: AppColors.protoInk3),
+            const SizedBox(width: 6),
+            Expanded(
+              child: TextField(
+                controller: _controller,
+                textInputAction: TextInputAction.search,
+                onSubmitted: (_) => _submit(),
+                style: tt.bodyLarge?.copyWith(
+                  fontSize: 16,
+                  color: AppColors.protoInk,
+                ),
+                cursorColor: AppColors.protoBrand,
+                decoration: InputDecoration(
+                  hintText: l10n.exploreSearchHint,
+                  border: InputBorder.none,
+                  isDense: true,
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 4),
+                  hintStyle: tt.bodyLarge?.copyWith(
+                    fontSize: 16,
+                    color: AppColors.protoInk3,
+                  ),
+                ),
+              ),
+            ),
+            IconButton(
+              tooltip: 'Search',
+              onPressed: _submit,
+              icon: Icon(
+                Icons.arrow_forward_rounded,
+                color: AppColors.protoBrand,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _SectionHead extends StatelessWidget {
   const _SectionHead({required this.title, required this.sub});
 
@@ -371,6 +446,7 @@ class _SectionHead extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tt = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 4, 20, 10),
       child: Column(
@@ -378,18 +454,16 @@ class _SectionHead extends StatelessWidget {
         children: [
           Text(
             title,
-            style: GoogleFonts.spectral(
-              fontSize: 22,
-              fontWeight: FontWeight.w500,
-              letterSpacing: -0.2,
-              height: 1.15,
-              color: AppColors.protoInk,
-            ),
+            style: tt.titleLarge?.copyWith(fontSize: 22, height: 1.15),
           ),
           const SizedBox(height: 2),
           Text(
             sub,
-            style: GoogleFonts.dmSans(fontSize: 12, color: AppColors.protoInk3, letterSpacing: 0.1),
+            style: tt.bodySmall?.copyWith(
+              fontSize: 12,
+              letterSpacing: 0.1,
+              color: AppColors.protoInk3,
+            ),
           ),
         ],
       ),
@@ -412,6 +486,7 @@ class _CuratedPackRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tt = Theme.of(context).textTheme;
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -456,10 +531,11 @@ class _CuratedPackRow extends StatelessWidget {
                       right: 7,
                       child: Text(
                         'Aa',
-                        style: GoogleFonts.spectral(
+                        style: tt.bodySmall?.copyWith(
                           fontSize: 9,
                           color: Colors.white,
                           height: 1.1,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
@@ -471,19 +547,11 @@ class _CuratedPackRow extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      title,
-                      style: GoogleFonts.dmSans(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: -0.1,
-                        color: AppColors.protoInk,
-                      ),
-                    ),
+                    Text(title, style: tt.titleMedium?.copyWith(fontSize: 15)),
                     const SizedBox(height: 3),
                     Text(
                       sub,
-                      style: GoogleFonts.dmSans(fontSize: 12, color: AppColors.protoInk3),
+                      style: tt.bodySmall?.copyWith(color: AppColors.protoInk3),
                     ),
                   ],
                 ),

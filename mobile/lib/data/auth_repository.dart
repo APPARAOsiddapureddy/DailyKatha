@@ -9,6 +9,7 @@ import '../core/app_config.dart';
 import '../models/auth_api_models.dart';
 import '../models/user_profile.dart';
 import '../services/auth_service.dart';
+import '../services/user_display_name.dart';
 
 /// Persists tokens and coordinates mock vs live API.
 class AuthRepository {
@@ -51,13 +52,14 @@ class AuthRepository {
     final refresh = await _storage.read(key: _kRefresh);
     final effectiveRefresh = (refresh == null || refresh.isEmpty) ? access : refresh;
     final profileJson = await _storage.read(key: _kProfile);
-    final profile = profileJson != null
+    final profileRaw = profileJson != null
         ? UserProfile.fromJson(jsonDecode(profileJson) as Map<String, dynamic>)
         : UserProfile(
             id: 'local',
             phoneE164: '',
             onboardingComplete: false,
           );
+    final profile = UserDisplayName.withNativeSynced(profileRaw);
 
     // Demo session should never be validated against the backend.
     if (access == 'mock_access' || profile.id == 'demo-user') {
@@ -67,8 +69,9 @@ class AuthRepository {
     if (!AppConfig.useMockApi) {
       try {
         final fresh = await _authService.getMeWithAccessToken(access).timeout(const Duration(seconds: 8));
-        await _storage.write(key: _kProfile, value: jsonEncode(_profileToJson(fresh)));
-        return UserSession(accessToken: access, refreshToken: effectiveRefresh, profile: fresh);
+        final synced = UserDisplayName.withNativeSynced(fresh);
+        await _storage.write(key: _kProfile, value: jsonEncode(_profileToJson(synced)));
+        return UserSession(accessToken: access, refreshToken: effectiveRefresh, profile: synced);
       } on DioException {
         await _storage.deleteAll();
         return null;
@@ -146,8 +149,8 @@ class AuthRepository {
         throw StateError('Server returned no token');
       }
       final profile = UserProfile.fromJson(result.profile);
-      await _persistTokens(access: access, refresh: refresh, profile: profile);
-      return UserSession(accessToken: access, refreshToken: refresh, profile: profile);
+      final synced = await _persistTokens(access: access, refresh: refresh, profile: profile);
+      return UserSession(accessToken: access, refreshToken: refresh, profile: synced);
     } on DioException catch (e) {
       final msg = _dioMessage(e);
       throw Exception(msg);
@@ -195,11 +198,11 @@ class AuthRepository {
       joinedAt: DateTime.now(),
     );
     const access = 'mock_access';
-    await _persistTokens(access: access, refresh: access, profile: profile);
+    final synced = await _persistTokens(access: access, refresh: access, profile: profile);
     return UserSession(
       accessToken: access,
       refreshToken: access,
-      profile: profile,
+      profile: synced,
     );
   }
 
@@ -209,8 +212,9 @@ class AuthRepository {
       return existing?.profile ?? const UserProfile(id: 'demo', phoneE164: '', onboardingComplete: true);
     }
     final profile = await _authService.getMe();
-    await _storage.write(key: _kProfile, value: jsonEncode(_profileToJson(profile)));
-    return profile;
+    final synced = UserDisplayName.withNativeSynced(profile);
+    await _storage.write(key: _kProfile, value: jsonEncode(_profileToJson(synced)));
+    return synced;
   }
 
   Future<UserSession> applyProfile(UserProfile profile) async {
@@ -218,8 +222,8 @@ class AuthRepository {
     if (existing?.accessToken == 'mock_access' || AppConfig.useMockApi) {
       final access = existing?.accessToken ?? 'mock_access';
       final refresh = existing?.refreshToken ?? access;
-      await _persistTokens(access: access, refresh: refresh, profile: profile);
-      return UserSession(accessToken: access, refreshToken: refresh, profile: profile);
+      final synced = await _persistTokens(access: access, refresh: refresh, profile: profile);
+      return UserSession(accessToken: access, refreshToken: refresh, profile: synced);
     }
 
     if (existing == null) {
@@ -228,8 +232,8 @@ class AuthRepository {
     final access = existing.accessToken;
     final refresh = existing.refreshToken.isEmpty ? access : existing.refreshToken;
     final server = await _authService.updateMe(profile);
-    await _persistTokens(access: access, refresh: refresh, profile: server);
-    return UserSession(accessToken: access, refreshToken: refresh, profile: server);
+    final synced = await _persistTokens(access: access, refresh: refresh, profile: server);
+    return UserSession(accessToken: access, refreshToken: refresh, profile: synced);
   }
 
   Future<UserSession> completeOnboardingOnServer({
@@ -250,7 +254,7 @@ class AuthRepository {
         interestIds: interestIds,
         onboardingComplete: true,
       );
-      await _persistTokens(
+      final synced = await _persistTokens(
         access: existing.accessToken,
         refresh: existing.refreshToken,
         profile: updated,
@@ -258,7 +262,7 @@ class AuthRepository {
       return UserSession(
         accessToken: existing.accessToken,
         refreshToken: existing.refreshToken,
-        profile: updated,
+        profile: synced,
       );
     }
 
@@ -270,7 +274,7 @@ class AuthRepository {
     await _authService.updateMe(partial);
     await _authService.updateInterests(interestIds);
     final fresh = await _authService.getMe();
-    await _persistTokens(
+    final synced = await _persistTokens(
       access: existing.accessToken,
       refresh: existing.refreshToken,
       profile: fresh,
@@ -278,7 +282,7 @@ class AuthRepository {
     return UserSession(
       accessToken: existing.accessToken,
       refreshToken: existing.refreshToken,
-      profile: fresh,
+      profile: synced,
     );
   }
 
@@ -289,16 +293,17 @@ class AuthRepository {
   /// Alias for sign-out flows (e.g. global 401 handler).
   Future<void> logout() => signOut();
 
-  Future<void> _persistTokens({
+  Future<UserProfile> _persistTokens({
     required String access,
     required String refresh,
     required UserProfile profile,
   }) async {
+    final stored = UserDisplayName.withNativeSynced(profile);
     try {
       await Future<void>(() async {
         await _storage.write(key: _kAccess, value: access);
         await _storage.write(key: _kRefresh, value: refresh.isEmpty ? access : refresh);
-        await _storage.write(key: _kProfile, value: jsonEncode(_profileToJson(profile)));
+        await _storage.write(key: _kProfile, value: jsonEncode(_profileToJson(stored)));
       }).timeout(
         const Duration(seconds: 15),
         onTimeout: () => throw TimeoutException('Secure storage timed out'),
@@ -311,6 +316,7 @@ class AuthRepository {
       debugPrint('AuthRepository: secure storage write failed (session works until app restart): $e');
       debugPrint('$st');
     }
+    return stored;
   }
 
   Map<String, dynamic> _profileToJson(UserProfile p) => {

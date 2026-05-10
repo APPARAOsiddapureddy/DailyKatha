@@ -18,10 +18,10 @@ class BrandMark extends StatelessWidget {
         Text(
           'Dailykatha',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w800,
-                letterSpacing: -0.5,
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
+            fontWeight: FontWeight.w800,
+            letterSpacing: -0.5,
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
         ),
       ],
     );

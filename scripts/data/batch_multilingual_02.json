@@ -1,0 +1,2302 @@
+[
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నిశ్శబ్దం నీకు దుప్పటి\nశాంతిగా కళ్ళు మూసుకో",
+      "hi": "खामोशी चादर है\nआंखें बंद करो",
+      "ta": "அமைதி போர்வை\nகண்களை மூடு",
+      "kn": "ನಿಶ್ಶಬ್ದ ಹಾಸಿಗೆ\nಕಣ್ಣು ಮುಚ್ಚು",
+      "ml": "മൗനം പുതപ്പ്\nകണ്ണടയ്ക്കൂ",
+      "en": "Silence is your blanket\nClose your eyes in peace"
+    },
+    "author": {
+      "te": "— రాత్రి ఆలింగనం",
+      "hi": "— रात की चादर",
+      "ta": "— இரவு போர்வை",
+      "kn": "— ರಾತ್ರಿ ಹೊದಿಕೆ",
+      "ml": "— രാത്രി പുതപ്പ്",
+      "en": "— Night cover"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "చీకటి నిన్ను కాపాడుతుంది\nనిద్రలో నెమ్మది",
+      "hi": "अंधेरा संभालेगा\nनींद में सुकून",
+      "ta": "இருள் காக்கும்\nஉறக்கத்தில் அமைதி",
+      "kn": "ಕತ್ತಲೆ ಕಾಪಾಡುತ್ತದೆ\nನಿದ್ರೆಯಲ್ಲಿ ಶಾಂತಿ",
+      "ml": "ഇരുട്ട് കാക്കും\nഉറക്കത്തിൽ ശാന്തി",
+      "en": "Darkness protects you\nSleep in calm"
+    },
+    "author": {
+      "te": "— రాత్రి కవచం",
+      "hi": "— रात का कवच",
+      "ta": "— இரவு கவசம்",
+      "kn": "— ರಾತ್ರಿ ಕವಚ",
+      "ml": "— രാത്രി കവചം",
+      "en": "— Night shield"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ ఆలోచనలు మెల్లగా ఆగాలి\nమనసు విశ్రాంతి పొందాలి",
+      "hi": "सोच धीमी हो जाए\nदिल आराम पाए",
+      "ta": "எண்ணம் மெல்ல நிற்கட்டும்\nமனம் ஓய்வெடுக்கட்டும்",
+      "kn": "ಚಿಂತನೆ ನಿಧಾನವಾಗಲಿ\nಮನ ವಿಶ್ರಾಂತಿ ಪಡೆಯಲಿ",
+      "ml": "ചിന്ത മന്ദമാകട്ടെ\nമനം വിശ്രമിക്കട്ടെ",
+      "en": "Let thoughts slow down\nLet your heart rest"
+    },
+    "author": {
+      "te": "— మెల్లని రాత్రి",
+      "hi": "— धीमी रात",
+      "ta": "— மெதுவான இரவு",
+      "kn": "— ನಿಧಾನ ರಾತ್ರಿ",
+      "ml": "— മന്ദമായ രാത്രി",
+      "en": "— Slow night"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఈ రోజు ముగిసింది\nనీకు ధన్యవాదాలు చెప్పు",
+      "hi": "दिन खत्म हुआ\nखुद को धन्यवाद दो",
+      "ta": "நாள் முடிந்தது\nஉனக்கு நன்றி சொல்",
+      "kn": "ದಿನ ಮುಗಿದಿತು\nನಿನ್ನಿಗೆ ಧನ್ಯವಾದ ಹೇಳು",
+      "ml": "ദിവസം അവസാനിച്ചു\nനിനക്ക് നന്ദി പറയൂ",
+      "en": "The day is over\nThank yourself"
+    },
+    "author": {
+      "te": "— కృతజ్ఞత రాత్రి",
+      "hi": "— आभार रात",
+      "ta": "— நன்றி இரவு",
+      "kn": "— ಕೃತಜ್ಞತೆ ರಾತ್ರಿ",
+      "ml": "— നന്ദി രാത്രി",
+      "en": "— Grateful night"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "రేపు ఇంకా ఉంది\nఈ రాత్రి విశ్రాంతి తీసుకో",
+      "hi": "कल अभी बाकी है\nआज आराम करो",
+      "ta": "நாளை உள்ளது\nஇன்று ஓய்வெடு",
+      "kn": "ನಾಳೆ ಇದೆ\nಇಂದು ವಿಶ್ರಾಂತಿ",
+      "ml": "നാളെ ബാക്കിയുണ്ട്\nഇന്ന് വിശ്രമിക്കൂ",
+      "en": "Tomorrow is waiting\nRest tonight"
+    },
+    "author": {
+      "te": "— సమయం పలుకు",
+      "hi": "— समय की बात",
+      "ta": "— நேர சொல்",
+      "kn": "— ಸಮಯ ಮಾತು",
+      "ml": "— സമയ വാക്ക്",
+      "en": "— Time whisper"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ గుండె శాంతి కోరుతుంది\nదానికి సమయం ఇవ్వు",
+      "hi": "दिल शांति चाहता\nउसे समय दो",
+      "ta": "இதயம் அமைதி கேட்கும்\nஅதை நேரம் கொடு",
+      "kn": "ಹೃದಯ ಶಾಂತಿ ಕೇಳುತ್ತದೆ\nಅದಕ್ಕೆ ಸಮಯ ಕೊಡು",
+      "ml": "ഹൃദയം ശാന്തി തേടുന്നു\nസമയം കൊടുക്കൂ",
+      "en": "Your heart needs peace\nGive it time"
+    },
+    "author": {
+      "te": "— హృదయ స్వరం",
+      "hi": "— दिल की आवाज़",
+      "ta": "— இதய குரல்",
+      "kn": "— ಹೃದಯ ಧ್ವನಿ",
+      "ml": "— ഹൃദയ ശബ്ദം",
+      "en": "— Heart voice"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "అలసటను కరిగించు\nనిద్రలో తేలిపో",
+      "hi": "थकान छोड़ दो\nनींद में बहो",
+      "ta": "சோர்வு விடு\nஉறக்கத்தில் மித",
+      "kn": "ದಣಿವು ಬಿಡು\nನಿದ್ರೆಯಲ್ಲಿ ತೇಲಿರು",
+      "ml": "ക്ഷീണം വിട്ടേക്കൂ\nഉറക്കത്തിൽ ഒഴുകൂ",
+      "en": "Let tiredness go\nDrift into sleep"
+    },
+    "author": {
+      "te": "— నిద్ర గీతం",
+      "hi": "— नींद गीत",
+      "ta": "— உறக்க பாடல்",
+      "kn": "— ನಿದ್ರೆ ಗೀತೆ",
+      "ml": "— ഉറക്ക ഗാനം",
+      "en": "— Sleep song"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నిశ్శబ్దం మాట్లాడుతోంది\nమనసు వినాలి",
+      "hi": "खामोशी बोलती है\nदिल सुन ले",
+      "ta": "அமைதி பேசுகிறது\nமனம் கேள்",
+      "kn": "ನಿಶ್ಶಬ್ದ ಮಾತನಾಡುತ್ತದೆ\nಮನ ಕೇಳಲಿ",
+      "ml": "മൗനം സംസാരിക്കുന്നു\nമനം കേൾക്കട്ടെ",
+      "en": "Silence is speaking\nLet your heart hear"
+    },
+    "author": {
+      "te": "— మౌన గమనిక",
+      "hi": "— मौन बात",
+      "ta": "— மௌன குறிப்பு",
+      "kn": "— ಮೌನ ಮಾತು",
+      "ml": "— മൗന കുറിപ്പ്",
+      "en": "— Silent note"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ కలలు నిన్ను పిలుస్తున్నాయి\nనిద్రలో వాటిని చేరుకో",
+      "hi": "सपने बुला रहे\nनींद में मिलो",
+      "ta": "கனவு அழைக்கிறது\nஉறக்கத்தில் சேரு",
+      "kn": "ಕನಸುಗಳು ಕರೆಯುತ್ತವೆ\nನಿದ್ರೆಯಲ್ಲಿ ಸೇರಿ",
+      "ml": "സ്വപ്നങ്ങൾ വിളിക്കുന്നു\nഉറക്കത്തിൽ കാണൂ",
+      "en": "Dreams are calling\nMeet them in sleep"
+    },
+    "author": {
+      "te": "— కలల దారి",
+      "hi": "— सपनों का रास्ता",
+      "ta": "— கனவு பாதை",
+      "kn": "— ಕನಸಿನ ದಾರಿ",
+      "ml": "— സ്വപ്ന വഴി",
+      "en": "— Dream path"
+    }
+  },
+  {
+    "category": "GOODNIGHT",
+    "mood": "calm",
+    "section": "evening",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ శ్వాస నెమ్మదిగా ఉంది\nరాత్రి నిన్ను హత్తుకుంది",
+      "hi": "सांस धीमी है\nरात ने थामा",
+      "ta": "மூச்சு மெதுவாக\nஇரவு தழுவியது",
+      "kn": "ಉಸಿರು ನಿಧಾನ\nರಾತ್ರಿ ಹಿಡಿದಿದೆ",
+      "ml": "ശ്വാസം മന്ദം\nരാത്രി ചേർന്നു",
+      "en": "Your breath is slow\nNight holds you"
+    },
+    "author": {
+      "te": "— మృదువైన క్షణం",
+      "hi": "— कोमल पल",
+      "ta": "— மென்மை தருணம்",
+      "kn": "— ಮೃದು ಕ್ಷಣ",
+      "ml": "— മൃദു നിമിഷം",
+      "en": "— Gentle moment"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నువ్వు దగ్గరగా ఉంటే\nప్రపంచం చిన్నగా అనిపిస్తుంది",
+      "hi": "तुम पास होते हो\nदुनिया छोटी लगती है",
+      "ta": "நீ அருகில் இருந்தால்\nஉலகம் சிறியது",
+      "kn": "ನೀನು ಹತ್ತಿರ ಇದ್ದರೆ\nಲೋಕ ಚಿಕ್ಕದು",
+      "ml": "നീ അടുത്തുണ്ടെങ്കിൽ\nലോകം ചെറുത്",
+      "en": "When you are near\nThe world feels small"
+    },
+    "author": {
+      "te": "— ప్రేమ భావం",
+      "hi": "— प्रेम एहसास",
+      "ta": "— காதல் உணர்வு",
+      "kn": "— ಪ್ರೀತಿ ಭಾವ",
+      "ml": "— സ്നേഹ അനുഭവം",
+      "en": "— A feeling of love"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ నవ్వు చూసినప్పుడే\nనా రోజు పూర్తి అవుతుంది",
+      "hi": "तुम्हारी मुस्कान से\nमेरा दिन पूरा होता है",
+      "ta": "உன் சிரிப்பால்\nஎன் நாள் நிறைவு",
+      "kn": "ನಿನ್ನ ನಗುವಿನಿಂದ\nನನ್ನ ದಿನ ಪೂರ್ಣ",
+      "ml": "നിന്റെ പുഞ്ചിരി\nഎന്റെ ദിവസം പൂർത്തി",
+      "en": "Your smile alone\nCompletes my day"
+    },
+    "author": {
+      "te": "— మధుర క్షణం",
+      "hi": "— मीठा पल",
+      "ta": "— இனிய தருணம்",
+      "kn": "— ಸಿಹಿ ಕ್ಷಣ",
+      "ml": "— മധുര നിമിഷം",
+      "en": "— A sweet moment"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీతో మాట్లాడితే\nమనసు తేలికగా మారుతుంది",
+      "hi": "तुमसे बात करूं तो\nदिल हल्का हो जाता है",
+      "ta": "உன்னிடம் பேசினால்\nமனம் லேசாகும்",
+      "kn": "ನಿನ್ನ ಜೊತೆ ಮಾತಾಡಿದರೆ\nಮನ ಹಗುರವಾಗುತ್ತದೆ",
+      "ml": "നിനക്കൊപ്പം സംസാരിച്ചാൽ\nമനം ലഘുവാകും",
+      "en": "Talking to you\nMakes my heart lighter"
+    },
+    "author": {
+      "te": "— స్నేహ ప్రేమ",
+      "hi": "— स्नेह प्रेम",
+      "ta": "— அன்பு நேசம்",
+      "kn": "— ಸ್ನೇಹ ಪ್ರೀತಿ",
+      "ml": "— സ്നേഹ പ്രേമം",
+      "en": "— Gentle love"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నువ్వు ఉన్న చోటే\nనా హృదయం ఉంటుంది",
+      "hi": "जहां तुम हो\nवहीं मेरा दिल है",
+      "ta": "நீ இருக்கும் இடமே\nஎன் இதயம்",
+      "kn": "ನೀ ಇರುವ ಜಾಗದಲ್ಲೇ\nನನ್ನ ಹೃದಯ",
+      "ml": "നീ ഉള്ളിടത്ത്\nഎന്റെ ഹൃദയം",
+      "en": "Where you are\nMy heart lives there"
+    },
+    "author": {
+      "te": "— హృదయ బంధం",
+      "hi": "— दिल का रिश्ता",
+      "ta": "— இதய பிணைப்பு",
+      "kn": "— ಹೃದಯ ಬಾಂಧವ್ಯ",
+      "ml": "— ഹൃദയ ബന്ധം",
+      "en": "— Heart bond"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ మాటల్లోనే\nనా శాంతి దొరుకుతుంది",
+      "hi": "तुम्हारी बातों में\nमेरा सुकून है",
+      "ta": "உன் வார்த்தையில்\nஎன் அமைதி",
+      "kn": "ನಿನ್ನ ಮಾತಿನಲ್ಲಿ\nನನ್ನ ಶಾಂತಿ",
+      "ml": "നിന്റെ വാക്കുകളിൽ\nഎന്റെ ശാന്തി",
+      "en": "In your words\nI find my peace"
+    },
+    "author": {
+      "te": "— ప్రేమ నిశ్శబ్దం",
+      "hi": "— प्रेम की शांति",
+      "ta": "— காதல் அமைதி",
+      "kn": "— ಪ್ರೀತಿ ಶಾಂತಿ",
+      "ml": "— സ്നേഹ ശാന്തി",
+      "en": "— Quiet love"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నిన్ను చూసిన ప్రతిసారి\nకొత్తగా ప్రేమలో పడతాను",
+      "hi": "हर बार तुम्हें देखकर\nफिर से प्यार होता है",
+      "ta": "உன்னை பார்த்தால்\nமீண்டும் காதல்",
+      "kn": "ನಿನ್ನ ನೋಡಿದಾಗ\nಮತ್ತೆ ಪ್ರೀತಿ",
+      "ml": "നിന്നെ കണ്ടാൽ\nവീണ്ടും സ്നേഹം",
+      "en": "Every time I see you\nI fall in love again"
+    },
+    "author": {
+      "te": "— మళ్లీ ప్రేమ",
+      "hi": "— फिर से प्यार",
+      "ta": "— மீண்டும் காதல்",
+      "kn": "— ಮತ್ತೆ ಪ್ರೀತಿ",
+      "ml": "— വീണ്ടും സ്നേഹം",
+      "en": "— Love again"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ పేరు వినగానే\nనవ్వు వస్తుంది",
+      "hi": "तुम्हारा नाम सुनते ही\nमुस्कान आ जाती है",
+      "ta": "உன் பெயர் கேட்டால்\nசிரிப்பு வரும்",
+      "kn": "ನಿನ್ನ ಹೆಸರು ಕೇಳಿದರೆ\nನಗು ಬರುತ್ತದೆ",
+      "ml": "നിന്റെ പേര് കേട്ടാൽ\nപുഞ്ചിരി വരും",
+      "en": "Hearing your name\nBrings me a smile"
+    },
+    "author": {
+      "te": "— మధుర జ్ఞాపకం",
+      "hi": "— मीठी याद",
+      "ta": "— இனிய நினைவு",
+      "kn": "— ಸಿಹಿ ನೆನಪು",
+      "ml": "— മധുര ഓർമ്മ",
+      "en": "— Sweet memory"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నువ్వు లేకుంటే\nరోజు ఖాళీగా అనిపిస్తుంది",
+      "hi": "तुम बिना\nदिन खाली लगता है",
+      "ta": "நீ இல்லாமல்\nநாள் வெறுமை",
+      "kn": "ನೀ ಇಲ್ಲದೆ\nದಿನ ಖಾಲಿ",
+      "ml": "നീ ഇല്ലാതെ\nദിവസം ശൂന്യം",
+      "en": "Without you\nThe day feels empty"
+    },
+    "author": {
+      "te": "— లోటు ప్రేమ",
+      "hi": "— कमी का प्यार",
+      "ta": "— வெறுமை காதல்",
+      "kn": "— ಕೊರತೆ ಪ್ರೀತಿ",
+      "ml": "— കുറവ് സ്നേഹം",
+      "en": "— Love in absence"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ కళ్ళలో చూసి\nనా ప్రపంచం కనుగొన్నాను",
+      "hi": "तेरी आंखों में\nमैंने दुनिया पाई",
+      "ta": "உன் கண்களில்\nஎன் உலகம்",
+      "kn": "ನಿನ್ನ ಕಣ್ಣಲ್ಲಿ\nನನ್ನ ಲೋಕ",
+      "ml": "നിന്റെ കണ്ണിൽ\nഎന്റെ ലോകം",
+      "en": "In your eyes\nI found my world"
+    },
+    "author": {
+      "te": "— కళ్ల ప్రేమ",
+      "hi": "— आंखों का प्यार",
+      "ta": "— கண் காதல்",
+      "kn": "— ಕಣ್ಣಿನ ಪ್ರೀತಿ",
+      "ml": "— കണ്ണ് സ്നേഹം",
+      "en": "— Love in eyes"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీతో ఉన్నప్పుడు\nసమయం ఆగిపోతుంది",
+      "hi": "तुम्हारे साथ\nसमय रुक जाता है",
+      "ta": "நீ உடன் இருந்தால்\nநேரம் நின்றது",
+      "kn": "ನಿನ್ನ ಜೊತೆ\nಸಮಯ ನಿಲ್ಲುತ್ತದೆ",
+      "ml": "നിനക്കൊപ്പം\nസമയം നിൽക്കും",
+      "en": "With you\nTime stands still"
+    },
+    "author": {
+      "te": "— కాలం ప్రేమ",
+      "hi": "— समय का प्यार",
+      "ta": "— நேர காதல்",
+      "kn": "— ಸಮಯ ಪ್ರೀತಿ",
+      "ml": "— സമയം സ്നേഹം",
+      "en": "— Timeless love"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ దగ్గరగా నడిస్తే\nహృదయం ప్రశాంతం",
+      "hi": "तुम संग चलूं तो\nदिल को सुकून",
+      "ta": "நீ உடன் நடந்தால்\nமனம் அமைதி",
+      "kn": "ನಿನ್ನ ಜೊತೆ ನಡೆದರೆ\nಮನ ಶಾಂತಿ",
+      "ml": "നിനക്കൊപ്പം നടന്നാൽ\nമനം ശാന്തം",
+      "en": "Walking with you\nMy heart feels calm"
+    },
+    "author": {
+      "te": "— మృదువైన బంధం",
+      "hi": "— कोमल रिश्ता",
+      "ta": "— மென்மை பிணைப்பு",
+      "kn": "— ಮೃದು ಬಂಧ",
+      "ml": "— മൃദു ബന്ധം",
+      "en": "— Gentle bond"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీతో మాట్లాడని రోజు\nఅసంపూర్తిగా ఉంటుంది",
+      "hi": "तुमसे बात बिना\nदिन अधूरा",
+      "ta": "உன்னுடன் பேசாமல்\nநாள் முழுமையில்லை",
+      "kn": "ನಿನ್ನ ಜೊತೆ ಮಾತಿಲ್ಲದೆ\nದಿನ ಅಪೂರ್ಣ",
+      "ml": "നിനക്കൊപ്പം സംസാരിക്കാതെ\nദിവസം അപൂർണ്ണം",
+      "en": "A day without you\nFeels incomplete"
+    },
+    "author": {
+      "te": "— మాటల ప్రేమ",
+      "hi": "— बातों का प्यार",
+      "ta": "— வார்த்தை காதல்",
+      "kn": "— ಮಾತಿನ ಪ್ರೀತಿ",
+      "ml": "— വാക്കുകളുടെ സ്നേഹം",
+      "en": "— Love in words"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ స్పర్శలోనే\nనా శాంతి దాగి ఉంది",
+      "hi": "तेरे स्पर्श में\nमेरा सुकून छुपा",
+      "ta": "உன் தொடுதலில்\nஎன் அமைதி உள்ளது",
+      "kn": "ನಿನ್ನ ಸ್ಪರ್ಶದಲ್ಲಿ\nನನ್ನ ಶಾಂತಿ ಇದೆ",
+      "ml": "നിന്റെ സ്പർശത്തിൽ\nഎന്റെ ശാന്തി",
+      "en": "In your touch\nI find my peace"
+    },
+    "author": {
+      "te": "— స్పర్శ సత్యం",
+      "hi": "— स्पर्श सत्य",
+      "ta": "— தொடு உண்மை",
+      "kn": "— ಸ್ಪರ್ಶ ಸತ್ಯ",
+      "ml": "— സ്പർശ സത്യം",
+      "en": "— Truth of touch"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీతో నిశ్శబ్దం కూడా\nమాటలకన్నా ఎక్కువ",
+      "hi": "तुम संग खामोशी\nबातों से गहरी",
+      "ta": "உன்னுடன் அமைதி\nவார்த்தை விட ஆழம்",
+      "kn": "ನಿನ್ನ ಜೊತೆ ಮೌನ\nಮಾತಿಗಿಂತ ಆಳ",
+      "ml": "നിനക്കൊപ്പം മൗനം\nവാക്കിനേക്കാൾ ആഴം",
+      "en": "Silence with you\nSpeaks deeper than words"
+    },
+    "author": {
+      "te": "— మౌన ప్రేమ",
+      "hi": "— खामोश प्यार",
+      "ta": "— மௌன காதல்",
+      "kn": "— ಮೌನ ಪ್ರೀತಿ",
+      "ml": "— മൗന സ്നേഹം",
+      "en": "— Silent love"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ జ్ఞాపకం వచ్చినప్పుడు\nహృదయం వెలుగుతుంది",
+      "hi": "तुम याद आओ तो\nदिल जगमगाता",
+      "ta": "நினைவு வந்தால்\nமனம் ஒளிரும்",
+      "kn": "ನಿನ್ನ ನೆನಪು ಬಂದರೆ\nಮನ ಹೊಳೆಯುತ್ತದೆ",
+      "ml": "നിന്റെ ഓർമ്മ വന്നാൽ\nമനം തെളിയും",
+      "en": "When I think of you\nMy heart lights up"
+    },
+    "author": {
+      "te": "— జ్ఞాపక కాంతి",
+      "hi": "— याद की रोशनी",
+      "ta": "— நினைவு ஒளி",
+      "kn": "— ನೆನಪು ಬೆಳಕು",
+      "ml": "— ഓർമ്മ വെളിച്ചം",
+      "en": "— Memory light"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీతో ఉన్న నిమిషాలు\nజీవితం లాగా ఉంటాయి",
+      "hi": "तुम संग पल\nजिंदगी जैसे",
+      "ta": "உன் தருணம்\nவாழ்க்கை போல்",
+      "kn": "ನಿನ್ನ ಜೊತೆ ಕ್ಷಣಗಳು\nಜೀವನದಂತೆ",
+      "ml": "നിനക്കൊപ്പം നിമിഷങ്ങൾ\nജീവിതം പോലെ",
+      "en": "Moments with you\nFeel like a lifetime"
+    },
+    "author": {
+      "te": "— కాల ప్రేమ",
+      "hi": "— पल का प्यार",
+      "ta": "— தருண காதல்",
+      "kn": "— ಕ್ಷಣ ಪ್ರೀತಿ",
+      "ml": "— നിമിഷ സ്നേഹം",
+      "en": "— Timeless moments"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ పేరు పలికితే\nమనసు నవ్వుతుంది",
+      "hi": "नाम लेते ही\nदिल मुस्कुराए",
+      "ta": "பெயர் சொன்னால்\nமனம் சிரி",
+      "kn": "ಹೆಸರು ಹೇಳಿದರೆ\nಮನ ನಗು",
+      "ml": "പേര് പറഞ്ഞാൽ\nമനം ചിരിക്കും",
+      "en": "Saying your name\nMakes my heart smile"
+    },
+    "author": {
+      "te": "— పేరు మధురం",
+      "hi": "— नाम की मिठास",
+      "ta": "— பெயர் இனிமை",
+      "kn": "— ಹೆಸರಿನ ಸಿಹಿ",
+      "ml": "— പേരിന്റെ മാധുര്യം",
+      "en": "— Sweet name"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ కళ్లలో చూడగానే\nభయం మాయమవుతుంది",
+      "hi": "आंखों में देखूं तो\nडर खो जाए",
+      "ta": "கண் பார்த்தால்\nபயம் மறையும்",
+      "kn": "ಕಣ್ಣು ನೋಡಿದರೆ\nಭಯ ಹೋಗುತ್ತದೆ",
+      "ml": "കണ്ണിൽ നോക്കുമ്പോൾ\nഭയം പോകും",
+      "en": "Looking into your eyes\nMy fears disappear"
+    },
+    "author": {
+      "te": "— కళ్ల నమ్మకం",
+      "hi": "— आंखों का भरोसा",
+      "ta": "— கண் நம்பிக்கை",
+      "kn": "— ಕಣ್ಣಿನ ನಂಬಿಕೆ",
+      "ml": "— കണ്ണിന്റെ വിശ്വാസം",
+      "en": "— Trust in eyes"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ దగ్గర ఉండగానే\nప్రపంచం మాయమవుతుంది",
+      "hi": "तुम पास हो तो\nदुनिया गायब",
+      "ta": "நீ அருகில் இருந்தால்\nஉலகம் மறையும்",
+      "kn": "ನೀ ಹತ್ತಿರ ಇದ್ದರೆ\nಲೋಕ ಮಾಯ",
+      "ml": "നീ അടുത്തുണ്ടെങ്കിൽ\nലോകം മറയും",
+      "en": "When you're near\nThe world fades away"
+    },
+    "author": {
+      "te": "— సమీప ప్రేమ",
+      "hi": "— पास का प्यार",
+      "ta": "— அருகு காதல்",
+      "kn": "— ಹತ್ತಿರ ಪ್ರೀತಿ",
+      "ml": "— അടുത്ത സ്നേഹം",
+      "en": "— Close love"
+    }
+  },
+  {
+    "category": "LOVE",
+    "mood": "romantic",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీతో జీవితం\nచిన్నగా కానీ అందంగా",
+      "hi": "तुम संग जीवन\nछोटा पर सुंदर",
+      "ta": "நீ உடன் வாழ்க்கை\nசிறியது ஆனாலும் அழகு",
+      "kn": "ನಿನ್ನ ಜೊತೆ ಜೀವನ\nಚಿಕ್ಕದಾದರೂ ಸುಂದರ",
+      "ml": "നിനക്കൊപ്പം ജീവിതം\nചെറുതെങ്കിലും സുന്ദരം",
+      "en": "Life with you\nFeels small yet beautiful"
+    },
+    "author": {
+      "te": "— జీవన ప్రేమ",
+      "hi": "— जीवन का प्यार",
+      "ta": "— வாழ்க்கை காதல்",
+      "kn": "— ಜೀವನ ಪ್ರೀತಿ",
+      "ml": "— ജീവിത സ്നേഹം",
+      "en": "— Love of life"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నిశ్శబ్దంలోనే దైవం\nమనసు వినగలిగితే",
+      "hi": "खामोशी में ही ईश्वर\nदिल सुन सके तो",
+      "ta": "அமைதியில் தான் தெய்வம்\nமனம் கேட்கும் போது",
+      "kn": "ನಿಶ್ಶಬ್ದದಲ್ಲೇ ದೈವ\nಮನ ಕೇಳಿದರೆ",
+      "ml": "മൗനത്തിൽ ദൈവം\nമനം കേട്ടാൽ",
+      "en": "In silence lives the divine\nIf the heart can listen"
+    },
+    "author": {
+      "te": "— అంతర సత్యం",
+      "hi": "— भीतर का सत्य",
+      "ta": "— உள்ள சத்தியம்",
+      "kn": "— ಒಳಗಿನ ಸತ್ಯ",
+      "ml": "— ഉള്ളിലെ സത്യം",
+      "en": "— Inner truth"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "భయం వచ్చినప్పుడు\nవిశ్వాసం గుర్తు చేసుకో",
+      "hi": "डर आए तो\nविश्वास याद करो",
+      "ta": "பயம் வந்தால்\nநம்பிக்கை நினை",
+      "kn": "ಭಯ ಬಂದರೆ\nನಂಬಿಕೆ ನೆನಪು",
+      "ml": "ഭയം വന്നാൽ\nവിശ്വാസം ഓർക്കൂ",
+      "en": "When fear comes\nRemember your faith"
+    },
+    "author": {
+      "te": "— విశ్వాస గీతం",
+      "hi": "— विश्वास गीत",
+      "ta": "— நம்பிக்கை பாடல்",
+      "kn": "— ನಂಬಿಕೆ ಗೀತೆ",
+      "ml": "— വിശ്വാസ ഗാനം",
+      "en": "— Song of faith"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "దైవం బయట కాదు\nనీ లోపలే ఉంది",
+      "hi": "ईश्वर बाहर नहीं\nतुम्हारे भीतर है",
+      "ta": "தெய்வம் வெளியில்லை\nஉள்ளே உள்ளது",
+      "kn": "ದೈವ ಹೊರಗೆ ಅಲ್ಲ\nನಿನ್ನೊಳಗೆ ಇದೆ",
+      "ml": "ദൈവം പുറത്തല്ല\nനിന്റെ ഉള്ളിൽ",
+      "en": "The divine is not outside\nIt lives within you"
+    },
+    "author": {
+      "te": "— ఆత్మ సత్యం",
+      "hi": "— आत्म सत्य",
+      "ta": "— ஆன்ம உண்மை",
+      "kn": "— ಆತ್ಮ ಸತ್ಯ",
+      "ml": "— ആത്മ സത്യം",
+      "en": "— Inner divine"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీవు వదిలినప్పుడు\nశాంతి నీకు చేరుతుంది",
+      "hi": "जब छोड़ देते हो\nसुकून मिलता है",
+      "ta": "விடும் போது\nஅமைதி வரும்",
+      "kn": "ಬಿಟ್ಟಾಗ\nಶಾಂತಿ ಬರುತ್ತದೆ",
+      "ml": "വിട്ടാൽ\nശാന്തി വരും",
+      "en": "When you let go\nPeace finds you"
+    },
+    "author": {
+      "te": "— సమర్పణం",
+      "hi": "— समर्पण",
+      "ta": "— சமர்ப்பணம்",
+      "kn": "— ಸಮರ್ಪಣೆ",
+      "ml": "— സമർപ്പണം",
+      "en": "— Surrender"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ప్రార్థన చిన్నదైనా\nమనసు నిజమైతే చాలు",
+      "hi": "प्रार्थना छोटी हो\nदिल सच्चा हो बस",
+      "ta": "பிரார்த்தனை சிறியது\nமனம் உண்மை போதும்",
+      "kn": "ಪ್ರಾರ್ಥನೆ ಚಿಕ್ಕದಾದರೂ\nಮನ ಸತ್ಯವಾಗಿರಲಿ",
+      "ml": "പ്രാർത്ഥന ചെറുതായാലും\nമനം സത്യമായാൽ മതി",
+      "en": "Even a small prayer\nTrue heart is enough"
+    },
+    "author": {
+      "te": "— భక్తి భావం",
+      "hi": "— भक्ति भाव",
+      "ta": "— பக்தி உணர்வு",
+      "kn": "— ಭಕ್ತಿ ಭಾವ",
+      "ml": "— ഭക്തി ഭാവം",
+      "en": "— Devotion"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ నిశ్శబ్దంలో\nదారి కనిపిస్తుంది",
+      "hi": "खामोशी में\nरास्ता दिखता है",
+      "ta": "அமைதியில்\nபாதை தெரியும்",
+      "kn": "ನಿಶ್ಶಬ್ದದಲ್ಲಿ\nದಾರಿ ಕಾಣುತ್ತದೆ",
+      "ml": "മൗനത്തിൽ\nവഴി കാണാം",
+      "en": "In your silence\nThe path appears"
+    },
+    "author": {
+      "te": "— మౌన మార్గం",
+      "hi": "— मौन मार्ग",
+      "ta": "— அமைதி பாதை",
+      "kn": "— ಮೌನ ದಾರಿ",
+      "ml": "— മൗന വഴി",
+      "en": "— Silent path"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "విశ్వాసం ఉన్న చోట\nభయం ఉండదు",
+      "hi": "जहां विश्वास है\nवहां डर नहीं",
+      "ta": "நம்பிக்கை உள்ள இடம்\nபயம் இல்லை",
+      "kn": "ನಂಬಿಕೆ ಇರುವಲ್ಲಿ\nಭಯ ಇಲ್ಲ",
+      "ml": "വിശ്വാസമുള്ളിടത്ത്\nഭയം ഇല്ല",
+      "en": "Where there is faith\nThere is no fear"
+    },
+    "author": {
+      "te": "— నమ్మకం వెలుగు",
+      "hi": "— भरोसे की रोशनी",
+      "ta": "— நம்பிக்கை ஒளி",
+      "kn": "— ನಂಬಿಕೆ ಬೆಳಕು",
+      "ml": "— വിശ്വാസ വെളിച്ചം",
+      "en": "— Light of faith"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "దారి తెలియకపోతే\nమనసు నడిపిస్తుంది",
+      "hi": "रास्ता न मिले\nदिल रास्ता देगा",
+      "ta": "பாதை தெரியவில்லை என்றால்\nமனம் காட்டும்",
+      "kn": "ದಾರಿ ಗೊತ್ತಿಲ್ಲದರೆ\nಮನ ದಾರಿ ತೋರಿಸುತ್ತದೆ",
+      "ml": "വഴി അറിയില്ലെങ്കിൽ\nമനം കാണിക്കും",
+      "en": "If the path is unclear\nYour heart will guide"
+    },
+    "author": {
+      "te": "— అంతర మార్గం",
+      "hi": "— भीतर का रास्ता",
+      "ta": "— உள்ள பாதை",
+      "kn": "— ಒಳಗಿನ ದಾರಿ",
+      "ml": "— ഉള്ളിലെ വഴി",
+      "en": "— Inner path"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నమ్మకం నీలో ఉంటే\nదైవం నీతోనే ఉంటుంది",
+      "hi": "विश्वास तुममें हो\nईश्वर साथ है",
+      "ta": "நம்பிக்கை உன்னுள் இருந்தால்\nதெய்வம் உன்னுடன்",
+      "kn": "ನಂಬಿಕೆ ನಿನ್ನೊಳಗಿದ್ದರೆ\nದೈವ ಜೊತೆ",
+      "ml": "വിശ്വാസം നിനക്കുള്ളിൽ\nദൈവം കൂടെ",
+      "en": "If faith lives in you\nThe divine walks with you"
+    },
+    "author": {
+      "te": "— అంతర దైవం",
+      "hi": "— भीतर का ईश्वर",
+      "ta": "— உள்ள தெய்வம்",
+      "kn": "— ಒಳಗಿನ ದೈವ",
+      "ml": "— ഉള്ളിലെ ദൈവം",
+      "en": "— Inner divine"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "శాంతి కోసం వెతకకు\nనిశ్శబ్దంగా ఉండు",
+      "hi": "शांति मत खोजो\nबस शांत रहो",
+      "ta": "அமைதி தேடாதே\nஅமைதியாக இரு",
+      "kn": "ಶಾಂತಿ ಹುಡುಕಬೇಡ\nಶಾಂತವಾಗಿರು",
+      "ml": "ശാന്തി തേടേണ്ട\nശാന്തമായി ഇരിക്കൂ",
+      "en": "Don’t search for peace\nBe still"
+    },
+    "author": {
+      "te": "— మౌన ఉపదేశం",
+      "hi": "— मौन उपदेश",
+      "ta": "— மௌன உபதேசம்",
+      "kn": "— ಮೌನ ಉಪದೇಶ",
+      "ml": "— മൗന ഉപദേശം",
+      "en": "— Silent wisdom"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "మనసు నిశ్శబ్దమైతే\nదారి స్పష్టమవుతుంది",
+      "hi": "दिल शांत हो तो\nरास्ता साफ दिखे",
+      "ta": "மனம் அமைதியானால்\nபாதை தெளிவு",
+      "kn": "ಮನ ಶಾಂತವಾದರೆ\nದಾರಿ ಸ್ಪಷ್ಟ",
+      "ml": "മനം ശാന്തമായാൽ\nവഴി തെളിയും",
+      "en": "When the mind is still\nThe path becomes clear"
+    },
+    "author": {
+      "te": "— శాంతి మార్గం",
+      "hi": "— शांति मार्ग",
+      "ta": "— அமைதி பாதை",
+      "kn": "— ಶಾಂತಿ ದಾರಿ",
+      "ml": "— ശാന്തി വഴി",
+      "en": "— Path of peace"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "విశ్వాసం చిన్నదైనా\nబలం గొప్పది",
+      "hi": "विश्वास छोटा हो\nताकत बड़ी होती है",
+      "ta": "நம்பிக்கை சிறியது\nபலன் பெரியது",
+      "kn": "ನಂಬಿಕೆ ಚಿಕ್ಕದಾದರೂ\nಬಲ ದೊಡ್ಡದು",
+      "ml": "വിശ്വാസം ചെറുതായാലും\nശക്തി വലുത്",
+      "en": "Even a small faith\nHolds great strength"
+    },
+    "author": {
+      "te": "— నమ్మకం బలం",
+      "hi": "— भरोसे की ताकत",
+      "ta": "— நம்பிக்கை பலம்",
+      "kn": "— ನಂಬಿಕೆಯ ಶಕ್ತಿ",
+      "ml": "— വിശ്വാസ ശക്തി",
+      "en": "— Strength of faith"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ హృదయం శుభ్రమైతే\nదైవం దగ్గరే ఉంటుంది",
+      "hi": "दिल साफ हो तो\nईश्वर पास होता है",
+      "ta": "இதயம் சுத்தம்\nதெய்வம் அருகில்",
+      "kn": "ಹೃದಯ ಶುದ್ಧವಿದ್ದರೆ\nದೈವ ಹತ್ತಿರ",
+      "ml": "ഹൃദയം ശുദ്ധമായാൽ\nദൈവം അടുത്ത്",
+      "en": "If your heart is pure\nThe divine stays near"
+    },
+    "author": {
+      "te": "— పవిత్ర హృదయం",
+      "hi": "— पवित्र दिल",
+      "ta": "— தூய இதயம்",
+      "kn": "— ಪವಿತ್ರ ಹೃದಯ",
+      "ml": "— വിശുദ്ധ ഹൃദയം",
+      "en": "— Pure heart"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ బాధలు చెప్పు\nమనసు తేలిక అవుతుంది",
+      "hi": "दर्द कह दो\nदिल हल्का होगा",
+      "ta": "வலி சொல்லு\nமனம் லேசாகும்",
+      "kn": "ನೋವು ಹೇಳು\nಮನ ಹಗುರ",
+      "ml": "വേദന പറഞ്ഞാൽ\nമനം ലഘുവാകും",
+      "en": "Share your pain\nYour heart feels light"
+    },
+    "author": {
+      "te": "— ఆత్మ శాంతి",
+      "hi": "— आत्म शांति",
+      "ta": "— ஆன்ம அமைதி",
+      "kn": "— ಆತ್ಮ ಶಾಂತಿ",
+      "ml": "— ആത്മ ശാന്തി",
+      "en": "— Inner calm"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నువ్వు ఒంటరివి కాదు\nఒక శక్తి తోడుంది",
+      "hi": "तुम अकेले नहीं\nएक शक्ति साथ है",
+      "ta": "நீ தனியாக இல்லை\nஒரு சக்தி உண்டு",
+      "kn": "ನೀನು ಒಬ್ಬನಲ್ಲ\nಒಂದು ಶಕ್ತಿ ಜೊತೆ",
+      "ml": "നീ ഒറ്റയല്ല\nഒരു ശക്തി കൂടെ",
+      "en": "You are not alone\nA higher force walks with you"
+    },
+    "author": {
+      "te": "— ఆత్మ ధైర్యం",
+      "hi": "— आत्म साहस",
+      "ta": "— ஆன்ம தைரியம்",
+      "kn": "— ಆತ್ಮ ಧೈರ್ಯ",
+      "ml": "— ആത്മ ധൈര്യം",
+      "en": "— Inner courage"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ నిశ్శబ్దం లోతులో\nసత్యం దాగి ఉంది",
+      "hi": "खामोशी की गहराई में\nसच छुपा है",
+      "ta": "அமைதியின் ஆழத்தில்\nஉண்மை உள்ளது",
+      "kn": "ನಿಶ್ಶಬ್ದದ ಆಳದಲ್ಲಿ\nಸತ್ಯ ಇದೆ",
+      "ml": "മൗനത്തിന്റെ ആഴത്തിൽ\nസത്യം ഒളിക്കുന്നു",
+      "en": "In the depth of silence\nTruth quietly rests"
+    },
+    "author": {
+      "te": "— లోతైన జ్ఞానం",
+      "hi": "— गहरी समझ",
+      "ta": "— ஆழமான அறிவு",
+      "kn": "— ಆಳವಾದ ಜ್ಞಾನ",
+      "ml": "— ആഴത്തിലുള്ള ജ്ഞാനം",
+      "en": "— Deep knowing"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "సమయం తీసుకుంటుంది\nకానీ దారి చూపుతుంది",
+      "hi": "समय लेता है\nपर रास्ता दिखाता है",
+      "ta": "நேரம் எடுக்கும்\nஆனால் பாதை தரும்",
+      "kn": "ಸಮಯ ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ\nಆದರೆ ದಾರಿ ತೋರಿಸುತ್ತದೆ",
+      "ml": "സമയം എടുക്കും\nപക്ഷേ വഴി കാണിക്കും",
+      "en": "Time may take its pace\nBut it shows the way"
+    },
+    "author": {
+      "te": "— కాల నమ్మకం",
+      "hi": "— समय भरोसा",
+      "ta": "— நேர நம்பிக்கை",
+      "kn": "— ಸಮಯ ನಂಬಿಕೆ",
+      "ml": "— സമയം വിശ്വാസം",
+      "en": "— Trust time"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ విశ్వాసం నీ బలం\nదానిని నిలబెట్టు",
+      "hi": "तुम्हारा विश्वास ताकत\nउसे संभालो",
+      "ta": "உன் நம்பிக்கை பலம்\nஅதை காப்பாற்று",
+      "kn": "ನಿನ್ನ ನಂಬಿಕೆ ಶಕ್ತಿ\nಅದನ್ನು ಉಳಿಸು",
+      "ml": "നിന്റെ വിശ്വാസം ശക്തി\nഅതിനെ നിലനിർത്തൂ",
+      "en": "Your faith is your strength\nHold it close"
+    },
+    "author": {
+      "te": "— బలం సత్యం",
+      "hi": "— ताकत का सच",
+      "ta": "— பலம் உண்மை",
+      "kn": "— ಶಕ್ತಿ ಸತ್ಯ",
+      "ml": "— ശക്തി സത്യം",
+      "en": "— Strength truth"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నిశ్శబ్దంగా ఉండు\nజవాబు లోపలే వస్తుంది",
+      "hi": "शांत रहो\nजवाब अंदर मिलेगा",
+      "ta": "அமைதியாக இரு\nபதில் உள்ளே வரும்",
+      "kn": "ಶಾಂತವಾಗಿರು\nಉತ್ತರ ಒಳಗೆ ಸಿಗುತ್ತದೆ",
+      "ml": "ശാന്തമായി ഇരിക്കൂ\nഉത്തരം ഉള്ളിൽ",
+      "en": "Stay still\nThe answer comes within"
+    },
+    "author": {
+      "te": "— అంతర జవాబు",
+      "hi": "— भीतर का जवाब",
+      "ta": "— உள்ள பதில்",
+      "kn": "— ಒಳಗಿನ ಉತ್ತರ",
+      "ml": "— ഉള്ളിലെ മറുപടി",
+      "en": "— Inner answer"
+    }
+  },
+  {
+    "category": "BHAKTI",
+    "mood": "devotional",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "శాంతి కోసం పరుగెత్తకు\nదానిని అనుభవించు",
+      "hi": "शांति के पीछे मत भागो\nउसे महसूस करो",
+      "ta": "அமைதியை தேடாதே\nஅதை உணர்",
+      "kn": "ಶಾಂತಿಗಾಗಿ ಓಡಬೇಡ\nಅದನ್ನು ಅನುಭವಿಸು",
+      "ml": "ശാന്തിക്കായി ഓടേണ്ട\nഅനുഭവിക്കൂ",
+      "en": "Don’t chase peace\nFeel it within"
+    },
+    "author": {
+      "te": "— అనుభవ సత్యం",
+      "hi": "— अनुभव सत्य",
+      "ta": "— அனுபவ உண்மை",
+      "kn": "— ಅನುಭವ ಸತ್ಯ",
+      "ml": "— അനുഭവ സത്യം",
+      "en": "— Felt truth"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "పడిపోతే లేవు\nఅదే నీ నిజమైన బలం",
+      "hi": "गिरो तो उठो\nयही असली ताकत",
+      "ta": "விழுந்தால் எழு\nஅதுவே பலம்",
+      "kn": "ಬಿದ್ದರೆ ಎದ್ದು ಬಾ\nಅದೇ ಶಕ್ತಿ",
+      "ml": "വീണാൽ എഴുന്നേൽക്കൂ\nഅതാണ് ശക്തി",
+      "en": "If you fall, rise\nThat is real strength"
+    },
+    "author": {
+      "te": "— ధైర్యం",
+      "hi": "— साहस",
+      "ta": "— தைரியம்",
+      "kn": "— ಧೈರ್ಯ",
+      "ml": "— ധൈര്യം",
+      "en": "— Courage"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "చిన్న అడుగు అయినా\nముందుకు వేయి",
+      "hi": "कदम छोटा हो\nपर आगे बढ़ो",
+      "ta": "சிறு படி போடு\nஆனால் முன்னேறு",
+      "kn": "ಸಣ್ಣ ಹೆಜ್ಜೆ ಇಡು\nಮುಂದೆ ಹೋಗು",
+      "ml": "ചെറിയ ചുവട് വെക്കൂ\nമുന്നോട്ട് നീങ്ങൂ",
+      "en": "Even a small step\nMove forward"
+    },
+    "author": {
+      "te": "— ముందడుగు",
+      "hi": "— पहला कदम",
+      "ta": "— முதல் படி",
+      "kn": "— ಮೊದಲ ಹೆಜ್ಜೆ",
+      "ml": "— ആദ്യ ചുവട്",
+      "en": "— First step"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నిన్ను నువ్వు నమ్ము\nదారి కనిపిస్తుంది",
+      "hi": "खुद पर भरोसा\nरास्ता दिखेगा",
+      "ta": "உன்னை நம்பு\nபாதை வரும்",
+      "kn": "ನಿನ್ನನ್ನು ನಂಬು\nದಾರಿ ಬರುತ್ತದೆ",
+      "ml": "സ്വയം വിശ്വസിക്കൂ\nവഴി കാണും",
+      "en": "Believe in yourself\nThe path will appear"
+    },
+    "author": {
+      "te": "— నమ్మకం",
+      "hi": "— भरोसा",
+      "ta": "— நம்பிக்கை",
+      "kn": "— ನಂಬಿಕೆ",
+      "ml": "— വിശ്വാസം",
+      "en": "— Belief"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "వేళ వృథా చేయకు\nఇది నీ సమయం",
+      "hi": "समय मत खोओ\nयह तुम्हारा वक्त",
+      "ta": "நேரம் வீணாக்காதே\nஇது உன் நேரம்",
+      "kn": "ಸಮಯ ವ್ಯರ್ಥ ಮಾಡಬೇಡ\nಇದು ನಿನ್ನ ಸಮಯ",
+      "ml": "സമയം കളയരുത്\nഇത് നിന്റെ സമയം",
+      "en": "Don’t waste time\nThis is your moment"
+    },
+    "author": {
+      "te": "— సమయ విలువ",
+      "hi": "— समय मूल्य",
+      "ta": "— நேர மதிப்பு",
+      "kn": "— ಸಮಯ ಮೌಲ್ಯ",
+      "ml": "— സമയം വില",
+      "en": "— Value of time"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "భయం ముందు నిలబడు\nఅది తగ్గిపోతుంది",
+      "hi": "डर के सामने खड़े हो\nवह कम होगा",
+      "ta": "பயத்தை எதிர்கொள்\nஅது குறையும்",
+      "kn": "ಭಯ ಎದುರು ನಿಲ್ಲು\nಅದು ಕಡಿಮೆಯಾಗುತ್ತದೆ",
+      "ml": "ഭയത്തെ നേരിടൂ\nഅത് കുറയും",
+      "en": "Stand before fear\nIt will shrink"
+    },
+    "author": {
+      "te": "— ధైర్య అడుగు",
+      "hi": "— हिम्मत कदम",
+      "ta": "— தைரிய படி",
+      "kn": "— ಧೈರ್ಯದ ಹೆಜ್ಜೆ",
+      "ml": "— ധൈര്യ ചുവട്",
+      "en": "— Brave step"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ కష్టం వృథా కాదు\nఫలితం తప్పక వస్తుంది",
+      "hi": "मेहनत बेकार नहीं\nफल जरूर मिलेगा",
+      "ta": "உன் உழைப்பு வீணில்லை\nபலன் வரும்",
+      "kn": "ನಿನ್ನ ಪರಿಶ್ರಮ ವ್ಯರ್ಥವಲ್ಲ\nಫಲ ಬರುತ್ತದೆ",
+      "ml": "നിന്റെ പരിശ്രമം വൃഥയല്ല\nഫലം വരും",
+      "en": "Your effort isn’t wasted\nResults will come"
+    },
+    "author": {
+      "te": "— కృషి సత్యం",
+      "hi": "— मेहनत सच",
+      "ta": "— உழைப்பு உண்மை",
+      "kn": "— ಪರಿಶ್ರಮ ಸತ್ಯ",
+      "ml": "— പരിശ്രമ സത്യം",
+      "en": "— Truth of effort"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "వేచి ఉండకు\nఇప్పుడే మొదలు పెట్టు",
+      "hi": "इंतज़ार मत करो\nअभी शुरू करो",
+      "ta": "காத்திருக்காதே\nஇப்போது தொடங்கு",
+      "kn": "ಕಾಯಬೇಡ\nಈಗಲೇ ಆರಂಭಿಸು",
+      "ml": "കാത്തിരിക്കേണ്ട\nഇപ്പോൾ തുടങ്ങൂ",
+      "en": "Don’t wait\nStart now"
+    },
+    "author": {
+      "te": "— ప్రారంభం",
+      "hi": "— शुरुआत",
+      "ta": "— தொடக்கம்",
+      "kn": "— ಆರಂಭ",
+      "ml": "— തുടക്കം",
+      "en": "— Beginning"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నిన్నటి తప్పు\nఈ రోజు పాఠం",
+      "hi": "कल की गलती\nआज की सीख",
+      "ta": "நேற்றின் தவறு\nஇன்றைய பாடம்",
+      "kn": "ನಿನ್ನೆದಿನದ ತಪ್ಪು\nಇಂದಿನ ಪಾಠ",
+      "ml": "ഇന്നലെയുടെ തെറ്റ്\nഇന്നത്തെ പാഠം",
+      "en": "Yesterday’s mistake\nToday’s lesson"
+    },
+    "author": {
+      "te": "— నేర్చుకోవడం",
+      "hi": "— सीखना",
+      "ta": "— கற்றல்",
+      "kn": "— ಕಲಿಕೆ",
+      "ml": "— പഠനം",
+      "en": "— Learning"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ గమ్యం పెద్దదైతే\nశ్రమ కూడా పెద్దది",
+      "hi": "मंजिल बड़ी हो\nमेहनत भी बड़ी",
+      "ta": "இலக்கு பெரியது\nஉழைப்பு பெரியது",
+      "kn": "ಗುರಿ ದೊಡ್ಡದಾದರೆ\nಪರಿಶ್ರಮ ದೊಡ್ಡದು",
+      "ml": "ലക്ഷ്യം വലുതെങ്കിൽ\nശ്രമവും വലുത്",
+      "en": "If the goal is big\nEffort must be big"
+    },
+    "author": {
+      "te": "— గమ్యం",
+      "hi": "— मंजिल",
+      "ta": "— இலக்கு",
+      "kn": "— ಗುರಿ",
+      "ml": "— ലക്ഷ്യം",
+      "en": "— Goal"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీపై నమ్మకం ఉంటే\nఏదైనా సాధ్యం",
+      "hi": "खुद पर भरोसा हो\nसब संभव है",
+      "ta": "நம்பிக்கை இருந்தால்\nஎல்லாம் சாத்தியம்",
+      "kn": "ನಂಬಿಕೆ ಇದ್ದರೆ\nಎಲ್ಲ ಸಾಧ್ಯ",
+      "ml": "വിശ്വാസം ഉണ്ടെങ്കിൽ\nഎല്ലാം സാധ്യം",
+      "en": "With self-belief\nAnything is possible"
+    },
+    "author": {
+      "te": "— నమ్మకం శక్తి",
+      "hi": "— भरोसे की ताकत",
+      "ta": "— நம்பிக்கை பலம்",
+      "kn": "— ನಂಬಿಕೆ ಶಕ್ತಿ",
+      "ml": "— വിശ്വാസ ശക്തി",
+      "en": "— Power of belief"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "అడుగు వేయకపోతే\nగమ్యం చేరదు",
+      "hi": "कदम न बढ़ाओ\nमंजिल नहीं मिलेगी",
+      "ta": "அடி போடாவிட்டால்\nஇலக்கு இல்லை",
+      "kn": "ಹೆಜ್ಜೆ ಇಡದಿದ್ದರೆ\nಗುರಿ ಸಿಗದು",
+      "ml": "ചുവട് വെക്കാതെ\nലക്ഷ്യം ഇല്ല",
+      "en": "Without a step\nNo destination is reached"
+    },
+    "author": {
+      "te": "— ముందడుగు సత్యం",
+      "hi": "— कदम का सच",
+      "ta": "— படி உண்மை",
+      "kn": "— ಹೆಜ್ಜೆ ಸತ್ಯ",
+      "ml": "— ചുവട് സത്യം",
+      "en": "— Truth of action"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "సమయం పోతుంది\nనువ్వు మొదలు పెట్టు",
+      "hi": "समय जा रहा है\nतुम शुरू करो",
+      "ta": "நேரம் செல்கிறது\nநீ தொடங்கு",
+      "kn": "ಸಮಯ ಹೋಗುತ್ತಿದೆ\nನೀ ಆರಂಭಿಸು",
+      "ml": "സമയം പോകുന്നു\nനീ തുടങ്ങൂ",
+      "en": "Time is passing\nYou must begin"
+    },
+    "author": {
+      "te": "— సమయ పిలుపు",
+      "hi": "— समय पुकार",
+      "ta": "— நேர அழைப்பு",
+      "kn": "— ಸಮಯ ಕರೆಯು",
+      "ml": "— സമയ വിളി",
+      "en": "— Time call"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నిన్నటి నువ్వు కాదు\nఈ రోజు కొత్త నువ్వు",
+      "hi": "तुम वही नहीं\nआज नए बनो",
+      "ta": "நேற்று நீ அல்ல\nஇன்று புதிய நீ",
+      "kn": "ನಿನ್ನೆದಿನದ ನೀ ಅಲ್ಲ\nಇಂದು ಹೊಸ ನೀ",
+      "ml": "ഇന്നലെ നീ അല്ല\nഇന്ന് പുതിയ നീ",
+      "en": "You’re not yesterday\nBe new today"
+    },
+    "author": {
+      "te": "— మార్పు",
+      "hi": "— बदलाव",
+      "ta": "— மாற்றம்",
+      "kn": "— ಬದಲಾವಣೆ",
+      "ml": "— മാറ്റം",
+      "en": "— Change"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "భయం దాటి నడిస్తే\nవిజయం దగ్గరే",
+      "hi": "डर पार करो\nजीत पास है",
+      "ta": "பயம் கடந்து\nவெற்றி அருகில்",
+      "kn": "ಭಯ ದಾಟಿದರೆ\nಜಯ ಹತ್ತಿರ",
+      "ml": "ഭയം കടന്നാൽ\nവിജയം അടുത്ത്",
+      "en": "Cross your fear\nSuccess is near"
+    },
+    "author": {
+      "te": "— విజయం దారి",
+      "hi": "— जीत रास्ता",
+      "ta": "— வெற்றி பாதை",
+      "kn": "— ಜಯ ದಾರಿ",
+      "ml": "— വിജയം വഴി",
+      "en": "— Path to success"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నువ్వే నీ శక్తి\nదానిని గుర్తించు",
+      "hi": "तुम ही ताकत हो\nपहचानो",
+      "ta": "நீயே சக்தி\nஅதை அறி",
+      "kn": "ನೀನೇ ಶಕ್ತಿ\nಅದನ್ನು ಅರಿತುಕೋ",
+      "ml": "നീ തന്നെയാണ് ശക്തി\nഅത് തിരിച്ചറിയൂ",
+      "en": "You are your strength\nRecognize it"
+    },
+    "author": {
+      "te": "— స్వశక్తి",
+      "hi": "— आत्म शक्ति",
+      "ta": "— தனிச் சக்தி",
+      "kn": "— ಸ್ವಶಕ್ತಿ",
+      "ml": "— സ്വശക്തി",
+      "en": "— Inner power"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఒక్కసారి ప్రయత్నించు\nనీకు నువ్వే ఆశ్చర్యం",
+      "hi": "एक बार कोशिश करो\nखुद हैरान हो जाओ",
+      "ta": "ஒருமுறை முயற்சி செய்\nநீயே ஆச்சரியம்",
+      "kn": "ಒಮ್ಮೆ ಪ್ರಯತ್ನಿಸು\nನೀನೇ ಆಶ್ಚರ್ಯ",
+      "ml": "ഒരിക്കൽ ശ്രമിക്കൂ\nനീ തന്നെ അത്ഭുതം",
+      "en": "Try once\nYou’ll surprise yourself"
+    },
+    "author": {
+      "te": "— ప్రయత్నం",
+      "hi": "— कोशिश",
+      "ta": "— முயற்சி",
+      "kn": "— ಪ್ರಯತ್ನ",
+      "ml": "— ശ്രമം",
+      "en": "— Effort"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "అడ్డంకి వచ్చినప్పుడు\nమరింత బలంగా ఉండు",
+      "hi": "रुकावट आए तो\nऔर मजबूत बनो",
+      "ta": "தடை வந்தால்\nமேலும் வலிமை",
+      "kn": "ಅಡ್ಡಿ ಬಂದರೆ\nಹೆಚ್ಚು ಬಲವಾಗು",
+      "ml": "തടസ്സം വന്നാൽ\nകൂടുതൽ ശക്തി",
+      "en": "When obstacles come\nStand even stronger"
+    },
+    "author": {
+      "te": "— బలం",
+      "hi": "— ताकत",
+      "ta": "— வலிமை",
+      "kn": "— ಬಲ",
+      "ml": "— ശക്തി",
+      "en": "— Strength"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ ప్రయత్నం ఆపకు\nఫలితం దగ్గరలోనే ఉంది",
+      "hi": "कोशिश मत रोक\nफल पास है",
+      "ta": "முயற்சி நிறுத்தாதே\nபலன் அருகில்",
+      "kn": "ಪ್ರಯತ್ನ ನಿಲ್ಲಿಸಬೇಡ\nಫಲ ಹತ್ತಿರ",
+      "ml": "ശ്രമം നിർത്തരുത്\nഫലം അടുത്ത്",
+      "en": "Don’t stop trying\nResults are near"
+    },
+    "author": {
+      "te": "— నిరంతరం",
+      "hi": "— निरंतर",
+      "ta": "— தொடர்ச்சி",
+      "kn": "— ನಿರಂತರ",
+      "ml": "— തുടർച്ച",
+      "en": "— Consistency"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "సందేహం తగ్గించు\nచర్య పెంచు",
+      "hi": "संदेह घटाओ\nकदम बढ़ाओ",
+      "ta": "சந்தேகம் குறை\nசெயல் அதிகரி",
+      "kn": "ಸಂದೇಹ ಕಡಿಮೆ\nಕ್ರಿಯೆ ಹೆಚ್ಚಿಸು",
+      "ml": "സംശയം കുറയ്ക്കൂ\nനടപ്പ് കൂട്ടൂ",
+      "en": "Reduce doubt\nIncrease action"
+    },
+    "author": {
+      "te": "— చర్య",
+      "hi": "— कर्म",
+      "ta": "— செயல்",
+      "kn": "— ಕ್ರಿಯೆ",
+      "ml": "— പ്രവർത്തി",
+      "en": "— Action"
+    }
+  },
+  {
+    "category": "MOTIVATION",
+    "mood": "bold",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నీ కలల కోసం\nనువ్వే పోరాడు",
+      "hi": "अपने सपनों के लिए\nखुद लड़ो",
+      "ta": "கனவுக்காக\nநீயே போராடு",
+      "kn": "ಕನಸುಗಳಿಗಾಗಿ\nನೀನೇ ಹೋರಾಡು",
+      "ml": "സ്വപ്നങ്ങൾക്ക് വേണ്ടി\nനീ പോരാടൂ",
+      "en": "Fight for your dreams\nStand for yourself"
+    },
+    "author": {
+      "te": "— కలల దారి",
+      "hi": "— सपनों का रास्ता",
+      "ta": "— கனவு பாதை",
+      "kn": "— ಕನಸು ದಾರಿ",
+      "ml": "— സ്വപ്ന വഴി",
+      "en": "— Dream path"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "ఇల్లు వెలుగులతో నిండాలి ✨\nమనసు ప్రేమతో నిండాలి",
+      "hi": "घर रोशनी से भरे ✨\nदिल प्यार से भरे",
+      "ta": "வீடு ஒளியால் நிரம்பட்டும் ✨\nமனம் அன்பால் நிரம்பட்டும்",
+      "kn": "ಮನೆ ಬೆಳಕಿನಿಂದ ತುಂಬಲಿ ✨\nಮನ ಪ್ರೀತಿಯಿಂದ ತುಂಬಲಿ",
+      "ml": "വീട് വെളിച്ചം നിറയട്ടെ ✨\nമനം സ്നേഹം നിറയട്ടെ",
+      "en": "May your home glow with light ✨\nAnd your heart with love"
+    },
+    "author": {
+      "te": "— ఆనంద వేళ",
+      "hi": "— खुशी का समय",
+      "ta": "— மகிழ்ச்சி நேரம்",
+      "kn": "— ಸಂತೋಷ ಸಮಯ",
+      "ml": "— സന്തോഷ സമയം",
+      "en": "— Joyful time"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "చిరునవ్వులు పంచుకోండి 🎉\nసంతోషం పెరుగుతుంది",
+      "hi": "मुस्कान बांटो 🎉\nखुशी बढ़ती है",
+      "ta": "சிரிப்பு பகிர் 🎉\nமகிழ்ச்சி அதிகரிக்கும்",
+      "kn": "ನಗು ಹಂಚಿ 🎉\nಸಂತೋಷ ಹೆಚ್ಚುತ್ತದೆ",
+      "ml": "പുഞ്ചിരി പങ്കിടൂ 🎉\nസന്തോഷം വളരും",
+      "en": "Share your smiles 🎉\nJoy multiplies"
+    },
+    "author": {
+      "te": "— పంచుకోవడం",
+      "hi": "— बांटना",
+      "ta": "— பகிர்வு",
+      "kn": "— ಹಂಚಿಕೆ",
+      "ml": "— പങ്കിടൽ",
+      "en": "— Sharing joy"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "కలిసి నవ్వే క్షణాలు 🎊\nజ్ఞాపకాలుగా మిగులుతాయి",
+      "hi": "साथ हंसी के पल 🎊\nयाद बन जाते हैं",
+      "ta": "சேர்ந்து சிரித்த தருணம் 🎊\nநினைவாகும்",
+      "kn": "ಒಟ್ಟಿಗೆ ನಗುವ ಕ್ಷಣ 🎊\nನೆನಪಾಗುತ್ತದೆ",
+      "ml": "കൂടെ ചിരിച്ച നിമിഷങ്ങൾ 🎊\nഓർമ്മയാകും",
+      "en": "Moments of shared laughter 🎊\nTurn into memories"
+    },
+    "author": {
+      "te": "— జ్ఞాపకాలు",
+      "hi": "— यादें",
+      "ta": "— நினைவுகள்",
+      "kn": "— ನೆನಪುಗಳು",
+      "ml": "— ഓർമ്മകൾ",
+      "en": "— Memories"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "ప్రతి దీపం వెలిగాలి 🪔\nఆశలు నిండాలి",
+      "hi": "हर दीप जले 🪔\nउम्मीदें भर जाएं",
+      "ta": "ஒவ்வொரு தீபமும் 🪔\nநம்பிக்கை தரட்டும்",
+      "kn": "ಪ್ರತಿ ದೀಪ ಬೆಳಗಲಿ 🪔\nಆಶೆ ತುಂಬಲಿ",
+      "ml": "ഓരോ ദീപവും 🪔\nപ്രതീക്ഷ നിറയട്ടെ",
+      "en": "May every lamp glow 🪔\nFilling hearts with hope"
+    },
+    "author": {
+      "te": "— వెలుగు ఆశ",
+      "hi": "— रोशनी आशा",
+      "ta": "— ஒளி நம்பிக்கை",
+      "kn": "— ಬೆಳಕು ಆಶೆ",
+      "ml": "— വെളിച്ച പ്രതീക്ഷ",
+      "en": "— Light and hope"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "స్వీట్లు పంచుకుంటే 🍬\nప్రేమ కూడా పెరుగుతుంది",
+      "hi": "मिठाई बांटो 🍬\nप्यार भी बढ़ेगा",
+      "ta": "இனிப்பு பகிர்ந்தால் 🍬\nஅன்பும் பெருகும்",
+      "kn": "ಸಿಹಿ ಹಂಚಿದರೆ 🍬\nಪ್ರೀತಿ ಹೆಚ್ಚುತ್ತದೆ",
+      "ml": "മധുരം പങ്കിട്ടാൽ 🍬\nസ്നേഹം വളരും",
+      "en": "Share some sweets 🍬\nLove grows sweeter"
+    },
+    "author": {
+      "te": "— మధుర క్షణం",
+      "hi": "— मीठा पल",
+      "ta": "— இனிய தருணம்",
+      "kn": "— ಸಿಹಿ ಕ್ಷಣ",
+      "ml": "— മധുര നിമിഷം",
+      "en": "— Sweet moment"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "కలిసే వేళలే పండుగ 🎈\nమనసులు దగ్గరవుతాయి",
+      "hi": "मिलने के पल ही त्योहार 🎈\nदिल पास आते हैं",
+      "ta": "சேரும் நேரம் திருவிழா 🎈\nஇதயம் நெருங்கும்",
+      "kn": "ಕೂಡುವ ಕ್ಷಣವೇ ಹಬ್ಬ 🎈\nಮನ ಹತ್ತಿರ",
+      "ml": "കൂടെ കൂടുന്ന നേരം 🎈\nഹൃദയം അടുത്ത്",
+      "en": "Together moments are festivals 🎈\nHearts come closer"
+    },
+    "author": {
+      "te": "— కలిసి ఆనందం",
+      "hi": "— साथ की खुशी",
+      "ta": "— சேர்ந்து மகிழ்ச்சி",
+      "kn": "— ಜೊತೆಯ ಸಂತೋಷ",
+      "ml": "— കൂടിയ സന്തോഷം",
+      "en": "— Togetherness"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "ప్రతి క్షణం ఆనందంగా 🎶\nహృదయం పాడాలి",
+      "hi": "हर पल खुशी 🎶\nदिल गुनगुनाए",
+      "ta": "ஒவ்வொரு தருணமும் 🎶\nமனம் பாடட்டும்",
+      "kn": "ಪ್ರತಿ ಕ್ಷಣ ಸಂತೋಷ 🎶\nಮನ ಹಾಡಲಿ",
+      "ml": "ഓരോ നിമിഷവും 🎶\nമനം പാടട്ടെ",
+      "en": "Let every moment sing 🎶\nWith joy in your heart"
+    },
+    "author": {
+      "te": "— ఆనంద గానం",
+      "hi": "— खुशी गीत",
+      "ta": "— மகிழ்ச்சி பாடல்",
+      "kn": "— ಸಂತೋಷ ಗೀತೆ",
+      "ml": "— സന്തോഷ ഗാനം",
+      "en": "— Song of joy"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "ఇల్లు నవ్వులతో నిండాలి 😊\nరోజు ప్రత్యేకం కావాలి",
+      "hi": "घर हंसी से भरे 😊\nदिन खास बने",
+      "ta": "வீடு சிரிப்பால் 😊\nநாள் சிறப்பு",
+      "kn": "ಮನೆ ನಗುವಿನಿಂದ 😊\nದಿನ ವಿಶೇಷ",
+      "ml": "വീട് ചിരിയാൽ 😊\nദിവസം പ്രത്യേക",
+      "en": "Fill your home with smiles 😊\nMake the day special"
+    },
+    "author": {
+      "te": "— నవ్వుల పండుగ",
+      "hi": "— हंसी त्योहार",
+      "ta": "— சிரிப்பு விழா",
+      "kn": "— ನಗು ಹಬ್ಬ",
+      "ml": "— ചിരി ഉത്സവം",
+      "en": "— Festival of smiles"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "ఆశలు వెలుగులా మెరవాలి ✨\nజీవితం రంగులా మారాలి",
+      "hi": "उम्मीदें चमकें ✨\nजीवन रंगीन हो",
+      "ta": "நம்பிக்கை பிரகாசிக்கட்டும் ✨\nவாழ்க்கை நிறமாய்",
+      "kn": "ಆಶೆ ಹೊಳೆಯಲಿ ✨\nಜೀವನ ಬಣ್ಣ",
+      "ml": "പ്രതീക്ഷ തിളങ്ങട്ടെ ✨\nജീവితం നിറം",
+      "en": "Let hopes shine bright ✨\nLife turns colorful"
+    },
+    "author": {
+      "te": "— ఆశ వెలుగు",
+      "hi": "— उम्मीद रोशनी",
+      "ta": "— நம்பிக்கை ஒளி",
+      "kn": "— ಆಶೆ ಬೆಳಕು",
+      "ml": "— പ്രതീക്ഷ വെളിച്ചം",
+      "en": "— Hope light"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "మనసులు కలిసే వేళ 🎊\nఅది నిజమైన ఆనందం",
+      "hi": "दिल मिलें जब 🎊\nवही असली खुशी",
+      "ta": "இதயம் சேரும் போது 🎊\nஅதுவே மகிழ்ச்சி",
+      "kn": "ಮನ ಸೇರಿದಾಗ 🎊\nಅದೇ ಸಂತೋಷ",
+      "ml": "ഹൃദയം കൂടുമ്പോൾ 🎊\nഅതാണ് സന്തോഷം",
+      "en": "When hearts connect 🎊\nThat is true joy"
+    },
+    "author": {
+      "te": "— హృదయ పండుగ",
+      "hi": "— दिल त्योहार",
+      "ta": "— இதய விழா",
+      "kn": "— ಹೃದಯ ಹಬ್ಬ",
+      "ml": "— ഹൃദയ ഉത്സവം",
+      "en": "— Heart festival"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "వెలుగులు దారి చూపాలి ✨\nఆశలు ముందుకు నడిపాలి",
+      "hi": "रोशनी राह दिखाए ✨\nउम्मीद आगे बढ़ाए",
+      "ta": "ஒளி வழி காட்டட்டும் ✨\nநம்பிக்கை முன்னேற்றட்டும்",
+      "kn": "ಬೆಳಕು ದಾರಿ ತೋರಲಿ ✨\nಆಶೆ ಮುಂದಕ್ಕೆ ಕರೆದೊಯ್ಯಲಿ",
+      "ml": "വെളിച്ചം വഴി കാണിക്കട്ടെ ✨\nപ്രതീക്ഷ മുന്നോട്ട് നയിക്കട്ടെ",
+      "en": "Let lights guide your way ✨\nAnd hope lead you forward"
+    },
+    "author": {
+      "te": "— వెలుగు మార్గం",
+      "hi": "— रोशनी मार्ग",
+      "ta": "— ஒளி பாதை",
+      "kn": "— ಬೆಳಕು ದಾರಿ",
+      "ml": "— വെളിച്ച വഴി",
+      "en": "— Light path"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "సంతోషం పంచితే 🎉\nరెట్టు అవుతుంది",
+      "hi": "खुशी बांटो 🎉\nदोगुनी होती है",
+      "ta": "மகிழ்ச்சி பகிர்ந்தால் 🎉\nஇரட்டாகும்",
+      "kn": "ಸಂತೋಷ ಹಂಚಿದರೆ 🎉\nಎರಡರಷ್ಟು",
+      "ml": "സന്തോഷം പങ്കിട്ടാൽ 🎉\nഇരട്ടിയാകും",
+      "en": "Share happiness 🎉\nIt doubles"
+    },
+    "author": {
+      "te": "— ఆనంద రహస్యం",
+      "hi": "— खुशी राज",
+      "ta": "— மகிழ்ச்சி ரகசியம்",
+      "kn": "— ಸಂತೋಷ ರಹಸ್ಯ",
+      "ml": "— സന്തോഷ രഹസ്യം",
+      "en": "— Joy secret"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "చిన్న వేడుకైనా 🎈\nహృదయం పెద్దదవుతుంది",
+      "hi": "छोटी खुशी भी 🎈\nदिल बड़ा करती है",
+      "ta": "சிறு விழாவும் 🎈\nஇதயம் பெரிது",
+      "kn": "ಸಣ್ಣ ಹಬ್ಬವೂ 🎈\nಮನ ದೊಡ್ಡದು",
+      "ml": "ചെറിയ ആഘോഷം 🎈\nഹൃദയം വലുത്",
+      "en": "Even a small celebration 🎈\nExpands the heart"
+    },
+    "author": {
+      "te": "— చిన్న ఆనందం",
+      "hi": "— छोटी खुशी",
+      "ta": "— சிறு மகிழ்ச்சி",
+      "kn": "— ಸಣ್ಣ ಸಂತೋಷ",
+      "ml": "— ചെറിയ സന്തോഷം",
+      "en": "— Little joy"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "మనసులు కలిసినప్పుడు 🎊\nప్రపంచం అందంగా మారుతుంది",
+      "hi": "दिल मिलें 🎊\nदुनिया सुंदर लगे",
+      "ta": "இதயம் சேர்ந்தால் 🎊\nஉலகம் அழகு",
+      "kn": "ಮನ ಸೇರಿದ್ದರೆ 🎊\nಲೋಕ ಸುಂದರ",
+      "ml": "ഹൃദയം കൂടുമ്പോൾ 🎊\nലോകം സുന്ദരം",
+      "en": "When hearts unite 🎊\nThe world feels beautiful"
+    },
+    "author": {
+      "te": "— కలయిక",
+      "hi": "— मिलन",
+      "ta": "— இணைவு",
+      "kn": "— ಸೇರಿಕೆ",
+      "ml": "— കൂടിച്ചേരൽ",
+      "en": "— Union"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "వెలుగు నీలో ఉండాలి 🪔\nజీవితం ప్రకాశించాలి",
+      "hi": "रोशनी तुममें हो 🪔\nजीवन चमके",
+      "ta": "ஒளி உன்னுள் 🪔\nவாழ்க்கை பிரகாசம்",
+      "kn": "ಬೆಳಕು ನಿನ್ನೊಳಗೆ 🪔\nಜೀವನ ಹೊಳೆಯಲಿ",
+      "ml": "വെളിച്ചം നിനക്കുള്ളിൽ 🪔\nജീവితం തിളങ്ങട്ടെ",
+      "en": "Let light live in you 🪔\nAnd life shine bright"
+    },
+    "author": {
+      "te": "— అంతర వెలుగు",
+      "hi": "— भीतर की रोशनी",
+      "ta": "— உள்ள ஒளி",
+      "kn": "— ಒಳ ಬೆಳಕು",
+      "ml": "— ഉള്ളിലെ വെളിച്ചം",
+      "en": "— Inner light"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "కలిసి గడిపే వేళ 🎶\nజీవితానికి రంగు",
+      "hi": "साथ बिताए पल 🎶\nजीवन रंगीन",
+      "ta": "சேர்ந்து கழிக்கும் நேரம் 🎶\nவாழ்க்கை நிறம்",
+      "kn": "ಒಟ್ಟಿಗೆ ಕಳೆದ ಕ್ಷಣ 🎶\nಜೀವನ ಬಣ್ಣ",
+      "ml": "കൂടെ ചെലവഴിക്കുന്ന സമയം 🎶\nജീവിതം നിറം",
+      "en": "Moments spent together 🎶\nColor your life"
+    },
+    "author": {
+      "te": "— కలిసి జీవితం",
+      "hi": "— साथ जीवन",
+      "ta": "— சேர்ந்து வாழ்வு",
+      "kn": "— ಜೊತೆಯ ಜೀವನ",
+      "ml": "— കൂടിയ ജീവിതം",
+      "en": "— Shared life"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "ప్రతి దీపం ఆశ 🪔\nప్రతి క్షణం ఆనందం",
+      "hi": "हर दीप उम्मीद 🪔\nहर पल खुशी",
+      "ta": "ஒவ்வொரு தீபம் நம்பிக்கை 🪔\nஒவ்வொரு தருணம் மகிழ்ச்சி",
+      "kn": "ಪ್ರತಿ ದೀಪ ಆಶೆ 🪔\nಪ್ರತಿ ಕ್ಷಣ ಸಂತೋಷ",
+      "ml": "ഓരോ ദീപം പ്രതീക്ഷ 🪔\nഓരോ നിമിഷം സന്തോഷം",
+      "en": "Each lamp is hope 🪔\nEach moment is joy"
+    },
+    "author": {
+      "te": "— ఆశ దీపం",
+      "hi": "— उम्मीद दीप",
+      "ta": "— நம்பிக்கை தீபம்",
+      "kn": "— ಆಶೆ ದೀಪ",
+      "ml": "— പ്രതീക്ഷ ദീപം",
+      "en": "— Lamp of hope"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "నవ్వు పంచుకుంటే 😊\nదూరం దగ్గరవుతుంది",
+      "hi": "मुस्कान बांटो 😊\nदूरी कम होगी",
+      "ta": "சிரிப்பு பகிர்ந்தால் 😊\nதூரம் குறையும்",
+      "kn": "ನಗು ಹಂಚಿದರೆ 😊\nದೂರ ಕಡಿಮೆ",
+      "ml": "പുഞ്ചിരി പങ്കിട്ടാൽ 😊\nദൂരം കുറയും",
+      "en": "Share a smile 😊\nDistances shrink"
+    },
+    "author": {
+      "te": "— స్నేహ వేళ",
+      "hi": "— दोस्ती समय",
+      "ta": "— நட்பு நேரம்",
+      "kn": "— ಸ್ನೇಹ ಸಮಯ",
+      "ml": "— സൗഹൃദ സമയം",
+      "en": "— Friendly time"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "ఆనందం హృదయంలో 🎊\nప్రపంచం ప్రకాశిస్తుంది",
+      "hi": "दिल में खुशी 🎊\nदुनिया चमके",
+      "ta": "இதயத்தில் மகிழ்ச்சி 🎊\nஉலகம் ஒளிரும்",
+      "kn": "ಮನದಲ್ಲಿ ಸಂತೋಷ 🎊\nಲೋಕ ಹೊಳೆಯುತ್ತದೆ",
+      "ml": "ഹൃദയം സന്തോഷം 🎊\nലോകം തെളിയും",
+      "en": "Joy in your heart 🎊\nLights up the world"
+    },
+    "author": {
+      "te": "— హృదయ వెలుగు",
+      "hi": "— दिल रोशनी",
+      "ta": "— இதய ஒளி",
+      "kn": "— ಹೃದಯ ಬೆಳಕು",
+      "ml": "— ഹൃദയ വെളിച്ചം",
+      "en": "— Heart light"
+    }
+  },
+  {
+    "category": "FESTIVAL",
+    "mood": "festive",
+    "section": "festival",
+    "isFestival": true,
+    "festival": "general",
+    "quote": {
+      "te": "కలిసి పండుగ జరుపుదాం 🎉\nజ్ఞాపకాలు సృష్టిద్దాం",
+      "hi": "साथ त्योहार मनाएं 🎉\nयादें बनाएं",
+      "ta": "சேர்ந்து கொண்டாடுவோம் 🎉\nநினைவுகள் உருவாக்குவோம்",
+      "kn": "ಒಟ್ಟಿಗೆ ಹಬ್ಬ ಆಚರಿಸೋಣ 🎉\nನೆನಪು ಮಾಡೋಣ",
+      "ml": "കൂടെ ആഘോഷിക്കാം 🎉\nഓർമ്മകൾ സൃഷ്ടിക്കാം",
+      "en": "Let’s celebrate together 🎉\nAnd create memories"
+    },
+    "author": {
+      "te": "— కలయిక ఆనందం",
+      "hi": "— मिलन खुशी",
+      "ta": "— இணைவு மகிழ்ச்சி",
+      "kn": "— ಸೇರಿಕೆ ಸಂತೋಷ",
+      "ml": "— കൂടിയ സന്തോഷം",
+      "en": "— Shared joy"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఇంటి నవ్వుల్లోనే\nమనసుకు శాంతి దొరుకుతుంది",
+      "hi": "घर की हंसी में\nदिल को सुकून मिलता है",
+      "ta": "வீட்டு சிரிப்பில்\nமனம் அமைதி பெறும்",
+      "kn": "ಮನೆಯ ನಗುವಿನಲ್ಲಿ\nಮನಕ್ಕೆ ಶಾಂತಿ ಸಿಗುತ್ತದೆ",
+      "ml": "വീട്ടിലെ ചിരിയിൽ\nമനസിന് ശാന്തി",
+      "en": "In family laughter\nThe heart finds peace"
+    },
+    "author": {
+      "te": "— ఇంటి ఆనందం",
+      "hi": "— घर की खुशी",
+      "ta": "— வீட்டு மகிழ்ச்சி",
+      "kn": "— ಮನೆಯ ಸಂತೋಷ",
+      "ml": "— വീട്ടിലെ സന്തോഷം",
+      "en": "— Home joy"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "అమ్మ చేతిలో భోజనం\nప్రేమతో నిండిన రుచి",
+      "hi": "मां के हाथ का खाना\nप्यार से भरा स्वाद",
+      "ta": "அம்மா சமைப்பு\nஅன்பு நிறைந்த சுவை",
+      "kn": "ಅಮ್ಮದ ಕೈ ಊಟ\nಪ್ರೀತಿಯ ರುಚಿ",
+      "ml": "അമ്മയുടെ കൈപ്പാചകം\nസ്നേഹത്തിന്റെ രുചി",
+      "en": "Food made by mother\nTastes like pure love"
+    },
+    "author": {
+      "te": "— అమ్మ ప్రేమ",
+      "hi": "— मां का प्यार",
+      "ta": "— அம்மா அன்பு",
+      "kn": "— ಅಮ್ಮ ಪ್ರೀತಿ",
+      "ml": "— അമ്മ സ്നേഹം",
+      "en": "— Mother’s love"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "నాన్న మాటలు తక్కువైనా\nఅర్థం ఎక్కువగా ఉంటుంది",
+      "hi": "पापा कम बोलते हैं\nपर गहराई ज्यादा",
+      "ta": "அப்பா குறைவு பேசுவார்\nஆழம் அதிகம்",
+      "kn": "ಅಪ್ಪ ಕಡಿಮೆ ಮಾತು\nಆಳ ಹೆಚ್ಚು",
+      "ml": "അച്ഛൻ കുറച്ച് സംസാരിക്കും\nഅർത്ഥം കൂടുതലാണ്",
+      "en": "Father speaks less\nBut means so much"
+    },
+    "author": {
+      "te": "— నాన్న బలం",
+      "hi": "— पिता की ताकत",
+      "ta": "— அப்பா பலம்",
+      "kn": "— ಅಪ್ಪ ಶಕ್ತಿ",
+      "ml": "— അച്ഛന്റെ ശക്തി",
+      "en": "— Father’s strength"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "సోదరులతో గడిపే క్షణాలు\nజీవితాంతం ఉంటాయి",
+      "hi": "भाई बहन के पल\nजिंदगी भर रहते हैं",
+      "ta": "சகோதர நேரம்\nநிலைத்த நினைவு",
+      "kn": "ಅಣ್ಣತಮ್ಮ ಕ್ಷಣಗಳು\nಜೀವನವಿಡೀ ಇರುತ್ತವೆ",
+      "ml": "സഹോദര നിമിഷങ്ങൾ\nജീവിതം മുഴുവൻ",
+      "en": "Moments with siblings\nStay for a lifetime"
+    },
+    "author": {
+      "te": "— సోదర బంధం",
+      "hi": "— भाई बहन रिश्ता",
+      "ta": "— சகோதர பிணைப்பு",
+      "kn": "— ಸಹೋದರ ಬಂಧ",
+      "ml": "— സഹോദര ബന്ധം",
+      "en": "— Sibling bond"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఇల్లు చిన్నదైనా\nప్రేమ పెద్దగా ఉంటుంది",
+      "hi": "घर छोटा हो\nप्यार बड़ा होता है",
+      "ta": "வீடு சிறியது\nஅன்பு பெரியது",
+      "kn": "ಮನೆ ಚಿಕ್ಕದಾದರೂ\nಪ್ರೀತಿ ದೊಡ್ಡದು",
+      "ml": "വീട് ചെറുതായാലും\nസ്നേഹം വലുത്",
+      "en": "The home may be small\nBut love is always big"
+    },
+    "author": {
+      "te": "— ఇంటి సత్యం",
+      "hi": "— घर का सच",
+      "ta": "— வீட்டு உண்மை",
+      "kn": "— ಮನೆಯ ಸತ್ಯ",
+      "ml": "— വീട്ടിലെ സത്യം",
+      "en": "— Truth of home"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఇంటి శబ్దాలు కూడా\nమనసుకు హాయిగా ఉంటాయి",
+      "hi": "घर की आवाजें भी\nदिल को सुकून देती हैं",
+      "ta": "வீட்டு சத்தமும்\nமனம் அமைதி",
+      "kn": "ಮನೆಯ ಶಬ್ದವೂ\nಮನಕ್ಕೆ ಹಾಯಿಯೇ",
+      "ml": "വീട്ടിലെ ശബ്ദവും\nമനസിന് ആശ്വാസം",
+      "en": "Even home noises\nFeel comforting"
+    },
+    "author": {
+      "te": "— ఇంటి హాయీ",
+      "hi": "— घर सुकून",
+      "ta": "— வீட்டு அமைதி",
+      "kn": "— ಮನೆಯ ಹಾಯೀ",
+      "ml": "— വീട്ടിലെ ആശ്വാസം",
+      "en": "— Home comfort"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "తల్లిదండ్రుల ఆశీర్వాదం\nజీవితానికి బలం",
+      "hi": "माता पिता का आशीर्वाद\nजीवन की ताकत",
+      "ta": "பெற்றோர் ஆசீர்வாதம்\nவாழ்க்கை பலம்",
+      "kn": "ತಾಯಿ ತಂದೆ ಆಶೀರ್ವಾದ\nಜೀವನ ಬಲ",
+      "ml": "മാതാപിതാക്കളുടെ അനുഗ്രഹം\nജീവിത ശക്തി",
+      "en": "Parents’ blessings\nAre life’s strength"
+    },
+    "author": {
+      "te": "— ఆశీర్వాదం",
+      "hi": "— आशीर्वाद",
+      "ta": "— ஆசீர்வாதம்",
+      "kn": "— ಆಶೀರ್ವಾದ",
+      "ml": "— അനുഗ്രഹം",
+      "en": "— Blessings"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఇల్లు అంటే గోడలు కాదు\nమనుషుల ప్రేమ",
+      "hi": "घर दीवार नहीं\nलोगों का प्यार है",
+      "ta": "வீடு சுவர் இல்லை\nஅன்பு தான்",
+      "kn": "ಮನೆ ಗೋಡೆ ಅಲ್ಲ\nಜನರ ಪ್ರೀತಿ",
+      "ml": "വീട് മതിൽ അല്ല\nമനുഷ്യരുടെ സ്നേഹം",
+      "en": "A home isn’t walls\nIt’s people’s love"
+    },
+    "author": {
+      "te": "— ఇంటి అర్థం",
+      "hi": "— घर अर्थ",
+      "ta": "— வீட்டு அர்த்தம்",
+      "kn": "— ಮನೆಯ ಅರ್ಥ",
+      "ml": "— വീട്ടിന്റെ അർത്ഥം",
+      "en": "— Meaning of home"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "కలిసి కూర్చునే వేళ\nఅది నిజమైన ఆనందం",
+      "hi": "साथ बैठने के पल\nसच्ची खुशी",
+      "ta": "சேர்ந்து அமரும் நேரம்\nஉண்மையான மகிழ்ச்சி",
+      "kn": "ಒಟ್ಟಿಗೆ ಕುಳಿತುಕೊಳ್ಳುವ ಕ್ಷಣ\nನಿಜ ಸಂತೋಷ",
+      "ml": "കൂടെ ഇരിക്കുന്ന സമയം\nയഥാർത്ഥ സന്തോഷം",
+      "en": "Sitting together\nIs true happiness"
+    },
+    "author": {
+      "te": "— కలిసి ఆనందం",
+      "hi": "— साथ खुशी",
+      "ta": "— சேர்ந்து மகிழ்ச்சி",
+      "kn": "— ಜೊತೆಯ ಸಂತೋಷ",
+      "ml": "— കൂടിയ സന്തോഷം",
+      "en": "— Togetherness"
+    }
+  },
+  {
+    "category": "FAMILY",
+    "mood": "warm",
+    "section": "interests",
+    "isFestival": false,
+    "festival": null,
+    "quote": {
+      "te": "ఇంటి ప్రేమే\nజీవితానికి బలం",
+      "hi": "घर का प्यार\nजीवन की ताकत",
+      "ta": "வீட்டு அன்பு\nவாழ்க்கை பலம்",
+      "kn": "ಮನೆಯ ಪ್ರೀತಿ\nಜೀವನ ಶಕ್ತಿ",
+      "ml": "വീട്ടിലെ സ്നേഹം\nജീവിത ശക്തി",
+      "en": "Family love\nIs life’s strength"
+    },
+    "author": {
+      "te": "— బంధం",
+      "hi": "— रिश्ता",
+      "ta": "— பிணைப்பு",
+      "kn": "— ಬಂಧ",
+      "ml": "— ബന്ധം",
+      "en": "— Bond"
+    }
+  }
+]

@@ -2,141 +2,150 @@ import 'package:flutter/material.dart';
 
 import '../l10n/genre_localizer.dart';
 
-/// Dark editorial card look (reference: luxe HTML card) — colours per interest.
+/// Visual frame / chrome for status cards — aligned with `themes.jsx` + `card.jsx` (THEMES + palette).
+/// Per-theme typography (hero, echo, scrim) lives in `status_type_tokens.dart`.
 @immutable
 class StatusLuxePalette {
   const StatusLuxePalette({
+    required this.chipLabel,
     required this.accent,
-    required this.bg0,
-    required this.bg1,
-    required this.bg2,
-    required this.radialA,
-    required this.radialB,
+    required this.frame,
+    required this.centerGlyph,
+    required this.cornerEmoji,
   });
 
-  final Color accent;
-  final Color bg0;
-  final Color bg1;
-  final Color bg2;
-  final Color radialA;
-  final Color radialB;
+  /// Genre pill text on the glass chip (readable on frosted bar).
+  final Color chipLabel;
 
-  /// Cream hero / echo tints (HTML #f5e6c0 family).
-  static const Color heroCream = Color(0xFFF5E6C0);
-  static const Color echoCream = Color(0x8CF5E6C0);
+  /// Accent dots, center-glyph strokes, footer diamonds (`palette.accent`).
+  final Color accent;
+
+  /// Dashed frames, paisley corners, pill borders (`palette.frame`).
+  final Color frame;
+
+  /// Ornament above hero (`CenterGlyph` in `card.jsx`).
+  final LuxeCenterGlyphKind centerGlyph;
+
+  /// Top-right badge character (`theme.icon` in JSX).
+  final String cornerEmoji;
+
+  static String _normalizedCategory(String category) {
+    switch (category) {
+      case 'calm':
+        return 'goodnight';
+      default:
+        return category;
+    }
+  }
+
+  static const StatusLuxePalette _cinemaFallback = StatusLuxePalette(
+    chipLabel: Color(0xFFFFFCF3),
+    accent: Color(0xFFD4A12A),
+    frame: Color(0xFFD4A12A),
+    centerGlyph: LuxeCenterGlyphKind.reel,
+    cornerEmoji: '▶',
+  );
 
   static StatusLuxePalette forCategory(String category) {
-    switch (category) {
-      case 'bhakti':
+    switch (_normalizedCategory(category)) {
+      case 'goodmorning':
         return const StatusLuxePalette(
-          accent: Color(0xFFE07840),
-          bg0: Color(0xFF180F08),
-          bg1: Color(0xFF0D0804),
-          bg2: Color(0xFF140A06),
-          radialA: Color(0x29C86428),
-          radialB: Color(0x1E904020),
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFF5D06B),
+          frame: Color(0xFFFFD78A),
+          centerGlyph: LuxeCenterGlyphKind.sun,
+          cornerEmoji: '☀',
+        );
+      case 'goodnight':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFB89BFF),
+          frame: Color(0xFF9C7CE0),
+          centerGlyph: LuxeCenterGlyphKind.lotus,
+          cornerEmoji: '☾',
         );
       case 'love':
         return const StatusLuxePalette(
-          accent: Color(0xFFD4607C),
-          bg0: Color(0xFF180A10),
-          bg1: Color(0xFF0E0608),
-          bg2: Color(0xFF120810),
-          radialA: Color(0x28C85078),
-          radialB: Color(0x18A04060),
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFFFB8C9),
+          frame: Color(0xFFFF96AE),
+          centerGlyph: LuxeCenterGlyphKind.heart,
+          cornerEmoji: '❤',
         );
-      case 'friendship':
+      case 'bhakti':
         return const StatusLuxePalette(
-          accent: Color(0xFFD08030),
-          bg0: Color(0xFF181008),
-          bg1: Color(0xFF0E0A04),
-          bg2: Color(0xFF120C06),
-          radialA: Color(0x28B07020),
-          radialB: Color(0x1CA05618),
+          chipLabel: Color(0xFFFFF5DC),
+          accent: Color(0xFFF5D06B),
+          frame: Color(0xFFFFC066),
+          centerGlyph: LuxeCenterGlyphKind.om,
+          cornerEmoji: 'ॐ',
         );
       case 'motivation':
         return const StatusLuxePalette(
-          accent: Color(0xFF5AAB70),
-          bg0: Color(0xFF061410),
-          bg1: Color(0xFF030B06),
-          bg2: Color(0xFF081208),
-          radialA: Color(0x243CA050),
-          radialB: Color(0x18207040),
-        );
-      case 'goodmorning':
-        return const StatusLuxePalette(
-          accent: Color(0xFFE0A030),
-          bg0: Color(0xFF16120A),
-          bg1: Color(0xFF0C0906),
-          bg2: Color(0xFF100C08),
-          radialA: Color(0x28C8961E),
-          radialB: Color(0x1E886010),
-        );
-      case 'poetry':
-        return const StatusLuxePalette(
-          accent: Color(0xFF7070C8),
-          bg0: Color(0xFF0C0C18),
-          bg1: Color(0xFF060610),
-          bg2: Color(0xFF0A0814),
-          radialA: Color(0x246464C8),
-          radialB: Color(0x18404090),
-        );
-      case 'goodnight':
-      case 'calm':
-        return const StatusLuxePalette(
-          accent: Color(0xFF8878D0),
-          bg0: Color(0xFF0C0C18),
-          bg1: Color(0xFF060610),
-          bg2: Color(0xFF0A0814),
-          radialA: Color(0x226050C0),
-          radialB: Color(0x18304090),
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFF2C76E),
+          frame: Color(0xFF7FB8A8),
+          centerGlyph: LuxeCenterGlyphKind.peak,
+          cornerEmoji: '↑',
         );
       case 'festival':
         return const StatusLuxePalette(
-          accent: Color(0xFFE0B040),
-          bg0: Color(0xFF181208),
-          bg1: Color(0xFF0E0B04),
-          bg2: Color(0xFF140C06),
-          radialA: Color(0x30D07820),
-          radialB: Color(0x20A05018),
-        );
-      case 'birthday':
-        return const StatusLuxePalette(
-          accent: Color(0xFFC860C0),
-          bg0: Color(0xFF180818),
-          bg1: Color(0xFF100510),
-          bg2: Color(0xFF140A12),
-          radialA: Color(0x30C040B8),
-          radialB: Color(0x20803090),
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFF5D06B),
+          frame: Color(0xFFFFC066),
+          centerGlyph: LuxeCenterGlyphKind.diya,
+          cornerEmoji: '✦',
         );
       case 'family':
         return const StatusLuxePalette(
-          accent: Color(0xFFA070C8),
-          bg0: Color(0xFF120A18),
-          bg1: Color(0xFF0A0610),
-          bg2: Color(0xFF100814),
-          radialA: Color(0x2A8040C0),
-          radialB: Color(0x1C503080),
+          chipLabel: Color(0xFFFFFBF5),
+          accent: Color(0xFFB94E11),
+          frame: Color(0xFF8E3E18),
+          centerGlyph: LuxeCenterGlyphKind.home,
+          cornerEmoji: '⌂',
+        );
+      case 'cinema':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFD4A12A),
+          frame: Color(0xFFD4A12A),
+          centerGlyph: LuxeCenterGlyphKind.reel,
+          cornerEmoji: '▶',
         );
       case 'heroes':
         return const StatusLuxePalette(
-          accent: Color(0xFF4090C8),
-          bg0: Color(0xFF080C18),
-          bg1: Color(0xFF040810),
-          bg2: Color(0xFF0A1018),
-          radialA: Color(0x283090C8),
-          radialB: Color(0x18206090),
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFF5D06B),
+          frame: Color(0xFFF4A547),
+          centerGlyph: LuxeCenterGlyphKind.sword,
+          cornerEmoji: '⚔',
         );
-      case 'cinema':
-      default:
+      case 'poetry':
         return const StatusLuxePalette(
-          accent: Color(0xFFC89B3C),
-          bg0: Color(0xFF1A1208),
-          bg1: Color(0xFF0E0B04),
-          bg2: Color(0xFF141008),
-          radialA: Color(0x2EB47828),
-          radialB: Color(0x1FC88C32),
+          chipLabel: Color(0xFFF5F7F3),
+          accent: Color(0xFF7A8E66),
+          frame: Color(0xFF5C7062),
+          centerGlyph: LuxeCenterGlyphKind.quill,
+          cornerEmoji: '✒',
         );
+      case 'friendship':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFF5D06B),
+          frame: Color(0xFFF2C76E),
+          centerGlyph: LuxeCenterGlyphKind.leaf,
+          cornerEmoji: '✿',
+        );
+      case 'birthday':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFF5D06B),
+          frame: Color(0xFFFFB8C9),
+          centerGlyph: LuxeCenterGlyphKind.candle,
+          cornerEmoji: '✦',
+        );
+      default:
+        return _cinemaFallback;
     }
   }
 
@@ -144,4 +153,20 @@ class StatusLuxePalette {
   static String pillLabel(String category, String contentLanguage) {
     return GenreLocalizer.getName(category, contentLanguage);
   }
+}
+
+/// Matches `centerGlyph` strings in `card.jsx` / `themes.jsx`.
+enum LuxeCenterGlyphKind {
+  lotus,
+  sun,
+  heart,
+  om,
+  peak,
+  diya,
+  home,
+  reel,
+  sword,
+  quill,
+  leaf,
+  candle,
 }

@@ -201,7 +201,7 @@ class AppLocalizationsMl extends AppLocalizations {
   String get exploreFestivalLive => 'Festival Pack · Live';
 
   @override
-  String get exploreFestivalTitle => 'Ugadi greetings';
+  String get exploreFestivalTitle => 'Festival greetings';
 
   @override
   String get exploreFestivalBody => '12 cards · refreshed daily until 14 May';
@@ -226,6 +226,10 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String get exploreSearchHint => 'ഉദ്ധരണി തിരയുക…';
+
+  @override
+  String get exploreSearchNoMatch =>
+      'No match — try morning, birthday, love, festival…';
 
   @override
   String get exploreJumpIn => 'ഉടൻ പ്രവേശിക്കുക';
@@ -297,6 +301,33 @@ class AppLocalizationsMl extends AppLocalizations {
   String get profileHelp => 'സഹായം';
 
   @override
+  String get namePromptTitle => 'നിങ്ങളെ എങ്ങനെ വിളിക്കണം?';
+
+  @override
+  String get namePromptBody => 'ഹോവും പ്രൊഫൈലിലും ഉപയോഗിക്കാം.';
+
+  @override
+  String get namePromptHint => 'നിങ്ങളുടെ പേര്';
+
+  @override
+  String get namePromptSave => 'സേവ് ചെയ്യുക';
+
+  @override
+  String get namePromptSkip => 'ഇപ്പോൾ വേണ്ട';
+
+  @override
+  String get profileYourName => 'നിങ്ങളുടെ പേര്';
+
+  @override
+  String get profileYourNameSub => 'ഹോം വാക്യത്തിൽ കാണും';
+
+  @override
+  String get profileEditNameTitle => 'പേര് മാറ്റുക';
+
+  @override
+  String get profileEditNameCancel => 'റദ്ദാക്കുക';
+
+  @override
   String get profileSignOut => 'സൈൻ ഔട്ട്';
 
   @override
@@ -332,6 +363,35 @@ class AppLocalizationsMl extends AppLocalizations {
   String profileRowMyEditsSub(int count) {
     return '$count cards with your photos';
   }
+
+  @override
+  String get profileRowMyShares => 'My shares';
+
+  @override
+  String profileRowMySharesSub(int count) {
+    return '$count cards shared';
+  }
+
+  @override
+  String get profileDialogNoSavedTitle => 'No saved cards yet';
+
+  @override
+  String get profileDialogNoSavedBody =>
+      'Save a card from Home or the feed to build your gallery.';
+
+  @override
+  String get profileDialogNoEditsTitle => 'No edits yet';
+
+  @override
+  String get profileDialogNoEditsBody =>
+      'Create a card with your photos to see it here.';
+
+  @override
+  String get profileDialogNoSharesTitle => 'Nothing shared yet';
+
+  @override
+  String get profileDialogNoSharesBody =>
+      'Share a card to WhatsApp Status from the feed and it will appear here.';
 
   @override
   String get profileRowDailyReminder => 'Daily reminder';
@@ -432,6 +492,10 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String get homeHeroKicker => 'Your card today';
+
+  @override
+  String get homeTodayPickHint =>
+      'Tap a side card to bring it to the center; tap the center card to open it.';
 
   @override
   String get homeShareToStatus => 'Share to Status';

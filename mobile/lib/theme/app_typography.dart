@@ -34,10 +34,12 @@ abstract final class AppTypography {
         height: 1.15,
         color: scheme.onSurface,
       ),
-      titleLarge: GoogleFonts.spectral(
+      // Section titles, list headers — same UI family as body (keeps chrome to 2 families).
+      titleLarge: GoogleFonts.dmSans(
         fontSize: 22,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w600,
         letterSpacing: -0.2,
+        height: 1.2,
         color: scheme.onSurface,
       ),
       titleMedium: GoogleFonts.dmSans(

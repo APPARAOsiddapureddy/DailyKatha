@@ -139,7 +139,7 @@ The card is the core product surface. It’s composed of:
 
 - **File**: `mobile/lib/services/card_share_export.dart`
 - **What**:
-  - Renders `StatusCard` off-screen into a 1080×1920 PNG
+  - Renders `StatusCard` off-screen into a 9:16 PNG at `logicalExportWidth × exportPixelRatio` (currently ~1440×2560; tune `CardShareExport.exportPixelRatio`)
   - Used by Save and Share
 
 ### Save to gallery
