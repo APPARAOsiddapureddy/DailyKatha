@@ -41,5 +41,7 @@ abstract final class AEvents {
   static const reminderEnabled = 'reminder_enabled';
   static const notificationOpened = 'notification_opened';
   static const cardCreated = 'card_created';
+  /// Like toggled from feed (double-tap or heart control).
+  static const cardLikeToggled = 'card_like_toggled';
 }
 

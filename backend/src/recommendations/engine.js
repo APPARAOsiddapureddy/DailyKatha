@@ -6,6 +6,7 @@ import {
   expandCandidateCategories,
   moodAffinityForContext,
   applyContextualLead,
+  applyLikedCategoryLead,
 } from './context.js';
 
 export async function runRecommendationEngine({
@@ -18,7 +19,34 @@ export async function runRecommendationEngine({
   timezone = 'Asia/Kolkata',
 }) {
   const context = buildRecommendationContext({ timezone });
-  const candidateCategories = expandCandidateCategories(interests, context);
+
+  const likedCatResult = await pool.query(
+    `SELECT c.category, COUNT(*)::int AS n
+     FROM interactions i
+     INNER JOIN cards c ON c.id = i.card_id
+     WHERE i.user_id = $1
+       AND i.action = 'liked'
+       AND i.created_at > NOW() - INTERVAL '120 days'
+     GROUP BY c.category`,
+    [userId],
+  );
+  /** @type {Record<string, number>} */
+  const likedCategoryCounts = {};
+  for (const row of likedCatResult.rows) {
+    likedCategoryCounts[row.category] = Number(row.n);
+  }
+  const dominantLikedCategories = Object.entries(likedCategoryCounts)
+    .sort((a, b) => b[1] - a[1])
+    .map(([cat]) => cat);
+
+  const maxCatLikes = Math.max(1, ...Object.values(likedCategoryCounts));
+  /** @type {Record<string, number>} */
+  const likedCategoryNorm = {};
+  for (const [cat, n] of Object.entries(likedCategoryCounts)) {
+    likedCategoryNorm[cat] = Math.min(1, n / maxCatLikes);
+  }
+
+  const candidateCategories = expandCandidateCategories(interests, context, dominantLikedCategories);
 
   const interactionCount = await pool.query('SELECT COUNT(*) FROM interactions WHERE user_id = $1', [userId]);
   const isColdStart = parseInt(interactionCount.rows[0].count, 10) < 5;
@@ -90,6 +118,7 @@ export async function runRecommendationEngine({
   const maxCollabScore = Math.max(...candidates.map((c) => Number(c.collab_score || 0)), 1);
 
   const scored = candidates.map((card) => {
+    const likedCategoryBoost = likedCategoryNorm[card.category] ?? 0;
     const score = scoreCard({
       card,
       interests,
@@ -99,6 +128,7 @@ export async function runRecommendationEngine({
       maxTrendScore,
       maxCollabScore,
       context,
+      likedCategoryBoost,
     });
     return { ...card, _score: score };
   });
@@ -107,7 +137,10 @@ export async function runRecommendationEngine({
 
   const diversified = diversify(scored, interests);
   let ordered = diversified;
-  if (offset === 0) ordered = applyContextualLead(diversified, context);
+  if (offset === 0) {
+    ordered = applyContextualLead(diversified, context);
+    ordered = applyLikedCategoryLead(ordered, dominantLikedCategories);
+  }
 
   const total = ordered.length;
   const page = ordered.slice(offset, offset + limit);

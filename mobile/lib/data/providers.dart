@@ -122,22 +122,3 @@ final catalogProvider = FutureProvider<List<KathaCard>>((ref) async {
   return [...created, ...remote];
 });
 
-/// Local optimistic likes for mock mode / offline parity.
-class LikedIdsNotifier extends Notifier<Set<String>> {
-  @override
-  Set<String> build() => <String>{};
-
-  void toggle(String id) {
-    final next = Set<String>.from(state);
-    if (next.contains(id)) {
-      next.remove(id);
-    } else {
-      next.add(id);
-    }
-    state = next;
-  }
-
-  bool contains(String id) => state.contains(id);
-}
-
-final likedIdsProvider = NotifierProvider<LikedIdsNotifier, Set<String>>(LikedIdsNotifier.new);

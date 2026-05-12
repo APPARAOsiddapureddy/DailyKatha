@@ -142,9 +142,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
     if (!context.mounted) return;
     if (ok) {
-      await UserEngagementStore.recordSaved(card.id);
-      await UserEngagementStore.bumpCategoryAffinity(card.category);
-      await ref.read(userStatsProvider.notifier).incrementSaved();
+      final freshlyAdded = await UserEngagementStore.recordSaved(card.id);
+      await UserEngagementStore.bumpCategoryAffinity(
+        card.category,
+        delta: freshlyAdded ? 4 : 1,
+      );
+      if (freshlyAdded) {
+        await ref.read(userStatsProvider.notifier).incrementSaved();
+      }
     }
     ref.invalidate(userEngagementProvider);
     ScaffoldMessenger.of(context).showSnackBar(

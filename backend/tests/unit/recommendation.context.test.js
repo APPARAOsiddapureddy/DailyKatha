@@ -4,6 +4,7 @@ import {
   getActiveFestivals,
 } from '../../src/recommendations/timeAndFestivals.js';
 import {
+  applyLikedCategoryLead,
   buildRecommendationContext,
   expandCandidateCategories,
   moodAffinityForContext,
@@ -65,6 +66,30 @@ describe('expandCandidateCategories', () => {
     const x = expandCandidateCategories(['love'], ctx);
     expect(x).toContain('calm');
   });
+
+  test('adds historically liked sections into SQL candidate pool', () => {
+    const ctx = {
+      primaryTimeCategory: 'goodmorning',
+      secondaryTimeCategory: null,
+      festivalBoostActive: false,
+      festivalApproaching: false,
+      timeSlot: 'morning',
+    };
+    const x = expandCandidateCategories(['cinema'], ctx, ['heroes', 'motivation']);
+    expect(x).toEqual(expect.arrayContaining(['cinema', 'heroes', 'motivation']));
+  });
+});
+
+describe('applyLikedCategoryLead', () => {
+  test('pulls first matching liked category to the front', () => {
+    const cards = [
+      { id: 'a', category: 'cinema' },
+      { id: 'b', category: 'heroes' },
+      { id: 'c', category: 'love' },
+    ];
+    const out = applyLikedCategoryLead(cards, ['heroes']);
+    expect(out[0].category).toBe('heroes');
+  });
 });
 
 describe('Republic Day active', () => {
@@ -118,5 +143,31 @@ describe('scoreCard with context', () => {
       context: null,
     });
     expect(s1).toBeGreaterThan(s0);
+  });
+
+  test('boosts normalized liked-category signal', () => {
+    const sLow = scoreCard({
+      card: { ...baseCard, category: 'cinema' },
+      interests: ['love', 'bhakti'],
+      moodAffinity: 'warm',
+      isColdStart: false,
+      isViewed: false,
+      maxTrendScore: 1,
+      maxCollabScore: 1,
+      context: null,
+      likedCategoryBoost: 0,
+    });
+    const sHi = scoreCard({
+      card: { ...baseCard, category: 'cinema' },
+      interests: ['love', 'bhakti'],
+      moodAffinity: 'warm',
+      isColdStart: false,
+      isViewed: false,
+      maxTrendScore: 1,
+      maxCollabScore: 1,
+      context: null,
+      likedCategoryBoost: 1,
+    });
+    expect(sHi).toBeGreaterThan(sLow);
   });
 });

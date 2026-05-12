@@ -4,7 +4,10 @@ import { redis } from './redis.js';
 import { generateCards } from './claude.js';
 import { validateAllCards } from '../validation/cardSchema.js';
 import { invalidateAllFeedCaches } from './redis.js';
-import { buildRecommendationContext } from '../recommendations/context.js';
+import {
+  applyLikedCategoryLead,
+  buildRecommendationContext,
+} from '../recommendations/context.js';
 import { normalizeTimezone } from '../recommendations/timeAndFestivals.js';
 
 export const ALL_INTERESTS = [
@@ -151,6 +154,41 @@ function distribution(interests) {
   ];
 }
 
+/** Recent likes reshuffle onboarding interest weights so favoured sections surface first. */
+async function rankInterestsByRecentLikes(userId, interests) {
+  if (!interests.length) {
+    return { ranked: interests, dominantLikedCategories: [] };
+  }
+
+  const { rows } = await pool.query(
+    `SELECT c.category, COUNT(*)::int AS n
+     FROM interactions i
+     INNER JOIN cards c ON c.id = i.card_id
+     WHERE i.user_id = $1
+       AND i.action = 'liked'
+       AND i.created_at > NOW() - INTERVAL '120 days'
+     GROUP BY c.category
+     ORDER BY n DESC`,
+    [userId],
+  );
+
+  const weight = {};
+  const dominantLikedCategories = [];
+  for (const r of rows) {
+    const n = Number(r.n);
+    weight[r.category] = n;
+    dominantLikedCategories.push(r.category);
+  }
+
+  const ranked = [...interests];
+  ranked.sort((a, b) => {
+    const diff = (weight[b] || 0) - (weight[a] || 0);
+    if (diff !== 0) return diff;
+    return interests.indexOf(a) - interests.indexOf(b);
+  });
+  return { ranked, dominantLikedCategories };
+}
+
 /** Align first pick with festival window or time-of-day (matches feed recommendation intent). */
 function orderPicksForContext(picks, context) {
   if (!picks?.length) return picks;
@@ -193,8 +231,11 @@ export async function getUserTodaysPicks({ userId, lang, timezone: timezoneIn })
   );
   const interests = irows.map((r) => r.interest_id);
 
+  const { ranked: interestsRanked, dominantLikedCategories } =
+    await rankInterestsByRecentLikes(userId, interests);
+
   const picks = [];
-  const plan = interests.length ? distribution(interests) : [{ interestId: null, count: 5 }];
+  const plan = interestsRanked.length ? distribution(interestsRanked) : [{ interestId: null, count: 5 }];
 
   for (const p of plan) {
     const q =
@@ -215,11 +256,12 @@ export async function getUserTodaysPicks({ userId, lang, timezone: timezoneIn })
     picks.push(...rows.map((c) => ({ ...formatCard(c, lang), pickRank: c.pick_rank, pickInterest: c.pick_interest })));
   }
 
-  const ordered = orderPicksForContext(picks.slice(0, 5), recommendationContext);
+  const contextual = orderPicksForContext(picks.slice(0, 5), recommendationContext);
+  const ordered = applyLikedCategoryLead(contextual, dominantLikedCategories);
   const out = {
     date,
     picks: ordered,
-    generatedFor: interests,
+    generatedFor: interestsRanked.length ? interestsRanked : interests,
     recommendationContext,
   };
 

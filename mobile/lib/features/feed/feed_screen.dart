@@ -29,6 +29,14 @@ class FeedScreen extends ConsumerStatefulWidget {
   ConsumerState<FeedScreen> createState() => _FeedScreenState();
 }
 
+bool _cardIdLooksLikeUuid(String raw) {
+  final s = raw.trim();
+  return RegExp(
+    r'^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$',
+    caseSensitive: false,
+  ).hasMatch(s);
+}
+
 class _FeedScreenState extends ConsumerState<FeedScreen> {
   PageController? _controller;
   int _index = 0;
@@ -134,13 +142,42 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     );
   }
 
+  Future<void> _toggleLike(KathaCard c) async {
+    final id = c.id;
+    final liked = await UserEngagementStore.toggleLiked(id, c.category);
+    await ref.read(analyticsProvider).log(
+          AEvents.cardLikeToggled,
+          props: {
+            'card_id': id,
+            'category': c.category,
+            'liked': liked,
+          },
+        );
+    if (liked) await _syncLikeToBackend(id);
+    ref.invalidate(userEngagementProvider);
+    if (mounted) setState(() {});
+  }
+
+  Future<void> _syncLikeToBackend(String normalizedId) async {
+    if (!_cardIdLooksLikeUuid(normalizedId)) return;
+    final session = ref.read(sessionHolderProvider);
+    final t = session?.accessToken;
+    if (t == null ||
+        t.isEmpty ||
+        t == 'mock_access' ||
+        session?.profile.id == 'demo-user') {
+      return;
+    }
+    try {
+      await ref.read(userActionsServiceProvider).like(normalizedId);
+    } catch (_) {}
+  }
+
   Future<void> _shareCurrentDirect(String lang, KathaCard card) async {
     if (_sharing || !mounted) return;
     setState(() => _sharing = true);
     try {
-      await ref
-          .read(analyticsProvider)
-          .log(
+      await ref.read(analyticsProvider).log(
             AEvents.shareClicked,
             props: {
               'channel': 'whatsapp_status',
@@ -159,9 +196,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
       await UserEngagementStore.bumpCategoryAffinity(card.category);
       await ref.read(userStatsProvider.notifier).incrementShared();
       ref.invalidate(userEngagementProvider);
-      await ref
-          .read(analyticsProvider)
-          .log(
+      await ref.read(analyticsProvider).log(
             AEvents.shareSheetOpened,
             props: {'channel': 'whatsapp_status', 'source': 'feed_quick'},
           );
@@ -169,6 +204,18 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
       if (mounted) setState(() => _sharing = false);
     }
   }
+
+  static ButtonStyle _feedOutlineStyle(TextTheme tt) =>
+      OutlinedButton.styleFrom(
+        foregroundColor: Colors.white,
+        side: BorderSide.none,
+        backgroundColor: Colors.transparent,
+        padding: EdgeInsets.zero,
+        minimumSize: const Size(double.infinity, 50),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.zero,
+        ),
+      );
 
   void _editCurrent(String lang, KathaCard card) {
     context.push(
@@ -197,7 +244,8 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     final session = ref.watch(sessionHolderProvider);
     final lang = effectiveContentLanguage(session);
     final catalog = ref.watch(catalogProvider);
-    // Likes are currently not shown in this chrome; keep provider wiring minimal.
+    final likedSnap = ref.watch(userEngagementProvider);
+    final likedSet = likedSnap.valueOrNull?.likedCardIds.toSet() ?? {};
     final bottomInset = MediaQuery.paddingOf(context).bottom;
     final topInset = MediaQuery.paddingOf(context).top;
     final l10n = AppLocalizations.of(context);
@@ -259,7 +307,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                 return Stack(
                   fit: StackFit.expand,
                   children: [
-                    /// Card — centered, with optional quick-share on-card button.
+                    /// Card — double-tap to like · share pill on-card.
                     Positioned(
                       left: 28,
                       right: 28,
@@ -278,82 +326,89 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                 horizontal: 6,
                                 vertical: 8,
                               ),
-                              child: Stack(
-                                children: [
-                                  Center(
-                                    child: FittedBox(
-                                      fit: BoxFit.contain,
-                                      alignment: Alignment.center,
-                                      child: SizedBox(
-                                        width:
-                                            CardShareExport.logicalExportWidth,
-                                        height:
-                                            CardShareExport.logicalExportHeight,
-                                        child: StatusCard(
-                                          card: c,
-                                          contentLanguage: lang,
-                                          compact: false,
-                                          width: CardShareExport
-                                              .logicalExportWidth,
-                                          height: CardShareExport
-                                              .logicalExportHeight,
+                              child: GestureDetector(
+                                behavior: HitTestBehavior.opaque,
+                                onDoubleTap: () => _toggleLike(c),
+                                child: SizedBox.expand(
+                                  child: Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      Center(
+                                        child: FittedBox(
+                                          fit: BoxFit.contain,
+                                          alignment: Alignment.center,
+                                          child: SizedBox(
+                                            width: CardShareExport
+                                                .logicalExportWidth,
+                                            height: CardShareExport
+                                                .logicalExportHeight,
+                                            child: StatusCard(
+                                              card: c,
+                                              contentLanguage: lang,
+                                              compact: false,
+                                              width: CardShareExport
+                                                  .logicalExportWidth,
+                                              height: CardShareExport
+                                                  .logicalExportHeight,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 0,
-                                    right: 0,
-                                    bottom: 10,
-                                    child: Center(
-                                      child: Material(
-                                        color: Colors.white.withValues(
-                                          alpha: 0.14,
-                                        ),
-                                        borderRadius: BorderRadius.circular(
-                                          999,
-                                        ),
-                                        child: InkWell(
-                                          borderRadius: BorderRadius.circular(
-                                            999,
-                                          ),
-                                          onTap: _sharing
-                                              ? null
-                                              : () => _shareCurrentDirect(
-                                                  lang,
-                                                  c,
-                                                ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 14,
-                                              vertical: 10,
+                                      Positioned(
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 10,
+                                        child: Center(
+                                          child: Material(
+                                            color: Colors.white.withValues(
+                                              alpha: 0.14,
                                             ),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                const Icon(
-                                                  Icons.share,
-                                                  size: 18,
-                                                  color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(999),
+                                            child: InkWell(
+                                              borderRadius:
+                                                  BorderRadius.circular(999),
+                                              onTap: _sharing
+                                                  ? null
+                                                  : () => _shareCurrentDirect(
+                                                        lang,
+                                                        c,
+                                                      ),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                  horizontal: 14,
+                                                  vertical: 10,
                                                 ),
-                                                const SizedBox(width: 8),
-                                                Text(
-                                                  'Share to Status',
-                                                  style:
-                                                      ProtoActionPill.typographyOnly(
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    const Icon(
+                                                      Icons.share,
+                                                      size: 18,
+                                                      color: Colors.white,
+                                                    ),
+                                                    const SizedBox(width: 8),
+                                                    Text(
+                                                      l10n.shareToWhatsAppStatus,
+                                                      style:
+                                                          ProtoActionPill.typographyOnly(
                                                         context,
                                                       ).copyWith(
                                                         color: Colors.white,
                                                       ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             );
                           },
@@ -465,7 +520,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                       ),
                     ),
 
-                    /// Bottom: professional action bar (Edit / Save / Share to Status)
+                    /// Bottom: single tray — ♥ · Edit · Save (order per spec).
                     Positioned(
                       left: 0,
                       right: 0,
@@ -484,102 +539,93 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                               ],
                             ),
                           ),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: OutlinedButton.icon(
-                                  onPressed: () => _editCurrent(lang, card),
-                                  style: OutlinedButton.styleFrom(
-                                    foregroundColor: Colors.white,
-                                    side: BorderSide(
-                                      color: Colors.white.withValues(
-                                        alpha: 0.22,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(14),
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: Colors.black.withValues(alpha: 0.35),
+                                border: Border.all(
+                                  color:
+                                      Colors.white.withValues(alpha: 0.22),
+                                  width: 1.5,
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      child: InkWell(
+                                        onTap: () => _toggleLike(card),
+                                        child: SizedBox(
+                                          height: 50,
+                                          child: Center(
+                                            child: Icon(
+                                              likedSet.contains(card.id)
+                                                  ? Icons.favorite
+                                                  : Icons.favorite_border,
+                                              size: 24,
+                                              color: likedSet
+                                                      .contains(card.id)
+                                                  ? Colors.redAccent
+                                                  : Colors.white,
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                    minimumSize: const Size(
-                                      double.infinity,
-                                      50,
-                                    ),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
                                   ),
-                                  icon: const Icon(
-                                    Icons.edit_outlined,
-                                    size: 18,
+                                  Container(
+                                    width: 1.5,
+                                    height: 32,
+                                    color: Colors.white.withValues(alpha: 0.18),
                                   ),
-                                  label: Text(
-                                    'Edit',
-                                    style: tt.titleMedium?.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                      letterSpacing: -0.1,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                child: OutlinedButton.icon(
-                                  onPressed: () => _saveCurrent(lang, card),
-                                  style: OutlinedButton.styleFrom(
-                                    foregroundColor: Colors.white,
-                                    side: BorderSide(
-                                      color: Colors.white.withValues(
-                                        alpha: 0.22,
+                                  Expanded(
+                                    child: OutlinedButton.icon(
+                                      onPressed: () =>
+                                          _editCurrent(lang, card),
+                                      style: _feedOutlineStyle(tt),
+                                      icon: const Icon(
+                                        Icons.edit_outlined,
+                                        size: 18,
+                                      ),
+                                      label: Text(
+                                        'Edit',
+                                        style: tt.titleMedium?.copyWith(
+                                          fontWeight: FontWeight.w700,
+                                          letterSpacing: -0.1,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
-                                    minimumSize: const Size(
-                                      double.infinity,
-                                      50,
-                                    ),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(14),
+                                  ),
+                                  Container(
+                                    width: 1.5,
+                                    height: 32,
+                                    color: Colors.white.withValues(alpha: 0.18),
+                                  ),
+                                  Expanded(
+                                    child: OutlinedButton.icon(
+                                      onPressed: () =>
+                                          _saveCurrent(lang, card),
+                                      style: _feedOutlineStyle(tt),
+                                      icon: const Icon(
+                                        Icons.download_outlined,
+                                        size: 18,
+                                      ),
+                                      label: Text(
+                                        'Save',
+                                        style: tt.titleMedium?.copyWith(
+                                          fontWeight: FontWeight.w700,
+                                          letterSpacing: -0.1,
+                                          color: Colors.white,
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                  icon: const Icon(
-                                    Icons.download_outlined,
-                                    size: 18,
-                                  ),
-                                  label: Text(
-                                    'Save',
-                                    style: tt.titleMedium?.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                      letterSpacing: -0.1,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
+                                ],
                               ),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                child: FilledButton.icon(
-                                  onPressed: _sharing
-                                      ? null
-                                      : () => _shareCurrentDirect(lang, card),
-                                  style: FilledButton.styleFrom(
-                                    backgroundColor: AppColors.protoBrandDeep,
-                                    foregroundColor: Colors.white,
-                                    minimumSize: const Size(
-                                      double.infinity,
-                                      50,
-                                    ),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
-                                  ),
-                                  icon: const Icon(Icons.ios_share, size: 18),
-                                  label: Text(
-                                    'Status',
-                                    style: tt.titleMedium?.copyWith(
-                                      fontWeight: FontWeight.w800,
-                                      letterSpacing: -0.1,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
                       ),

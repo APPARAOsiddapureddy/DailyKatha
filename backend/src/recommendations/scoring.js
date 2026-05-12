@@ -11,6 +11,8 @@ export function scoreCard({
   maxTrendScore,
   maxCollabScore,
   context,
+  /** 0–1 normalized like frequency for this card's category (this user). */
+  likedCategoryBoost = 0,
 }) {
   let score = 0;
 
@@ -56,6 +58,9 @@ export function scoreCard({
       score += 0.06;
     }
   }
+
+  const likeNorm = typeof likedCategoryBoost === 'number' ? Math.max(0, Math.min(1, likedCategoryBoost)) : 0;
+  if (likeNorm > 0) score += 0.22 * likeNorm;
 
   if (isColdStart) {
     score *= 0.5;

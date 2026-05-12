@@ -296,10 +296,15 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
       );
       if (ok) {
         final c = widget.args.card;
-        await UserEngagementStore.recordSaved(c.id);
-        await UserEngagementStore.bumpCategoryAffinity(c.category);
+        final freshlyAdded = await UserEngagementStore.recordSaved(c.id);
+        await UserEngagementStore.bumpCategoryAffinity(
+          c.category,
+          delta: freshlyAdded ? 4 : 1,
+        );
         final container = ProviderScope.containerOf(context);
-        await container.read(userStatsProvider.notifier).incrementSaved();
+        if (freshlyAdded) {
+          await container.read(userStatsProvider.notifier).incrementSaved();
+        }
         container.invalidate(userEngagementProvider);
       }
       if (!mounted) return;

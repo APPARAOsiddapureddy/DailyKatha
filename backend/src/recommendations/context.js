@@ -38,12 +38,15 @@ export function buildRecommendationContext({ now = new Date(), timezone = 'Asia/
  * Broaden SQL candidate categories so time-of-day & festival cards can surface
  * even if the user did not explicitly pick that interest (still ranked by score).
  */
-export function expandCandidateCategories(interests, context) {
+export function expandCandidateCategories(interests, context, likedCategories = []) {
   const set = new Set(Array.isArray(interests) ? [...interests] : []);
   if (context.primaryTimeCategory) set.add(context.primaryTimeCategory);
   if (context.secondaryTimeCategory) set.add(context.secondaryTimeCategory);
   if (context.festivalBoostActive || context.festivalApproaching) set.add('festival');
   if (context.timeSlot === 'night') set.add('calm');
+  for (const c of likedCategories) {
+    if (c && typeof c === 'string') set.add(c);
+  }
   return [...set];
 }
 
@@ -87,6 +90,23 @@ export function applyContextualLead(cards, context) {
   if (ti > 0) {
     const [x] = out.splice(ti, 1);
     out.unshift(x);
+  }
+  return out;
+}
+
+/**
+ * After time/festival lead, float the first card from a category the user has liked recently.
+ */
+export function applyLikedCategoryLead(cards, dominantLikedCategories = []) {
+  if (!cards?.length || !dominantLikedCategories?.length) return cards;
+  const out = [...cards];
+  for (const cat of dominantLikedCategories) {
+    const idx = out.findIndex((c) => c.category === cat);
+    if (idx > 0) {
+      const [x] = out.splice(idx, 1);
+      out.unshift(x);
+      break;
+    }
   }
   return out;
 }
