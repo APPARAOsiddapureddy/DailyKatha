@@ -139,7 +139,7 @@ router.get('/cards', async (req, res, next) => {
 
 router.post('/cards', async (req, res, next) => {
   try {
-    const { section, category, mood, isFestival, festival, quote, author } = req.body || {};
+    const { section, category, mood, isFestival, festival, quote, author, imageUrl } = req.body || {};
 
     const validation = validateCard({
       clientTempId: randomUUID(),
@@ -150,6 +150,7 @@ router.post('/cards', async (req, res, next) => {
       festival: festival || null,
       quote,
       author,
+      imageUrl: imageUrl || null,
     });
 
     if (!validation.success) {
@@ -160,8 +161,8 @@ router.post('/cards', async (req, res, next) => {
 
     const result = await pool.query(
       `INSERT INTO cards
-         (id, section, category, mood, is_festival, festival, quote, author, is_active)
-       VALUES (gen_random_uuid(), $1, $2, $3, $4, $5, $6::jsonb, $7::jsonb, true)
+         (id, section, category, mood, is_festival, festival, quote, author, image_url, is_active)
+       VALUES (gen_random_uuid(), $1, $2, $3, $4, $5, $6::jsonb, $7::jsonb, $8, true)
        RETURNING *`,
       [
         section,
@@ -171,6 +172,7 @@ router.post('/cards', async (req, res, next) => {
         festival || null,
         JSON.stringify(quote),
         JSON.stringify(author),
+        imageUrl || null,
       ],
     );
 
@@ -185,7 +187,7 @@ router.post('/cards', async (req, res, next) => {
 router.put('/cards/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { section, category, mood, isFestival, festival, quote, author, isActive } = req.body || {};
+    const { section, category, mood, isFestival, festival, quote, author, isActive, imageUrl } = req.body || {};
 
     const result = await pool.query(
       `UPDATE cards SET
@@ -196,8 +198,9 @@ router.put('/cards/:id', async (req, res, next) => {
          festival = COALESCE($5, festival),
          quote = COALESCE($6::jsonb, quote),
          author = COALESCE($7::jsonb, author),
-         is_active = COALESCE($8, is_active)
-       WHERE id = $9
+         is_active = COALESCE($8, is_active),
+         image_url = COALESCE($9, image_url)
+       WHERE id = $10
        RETURNING *`,
       [
         section ?? null,
@@ -208,6 +211,7 @@ router.put('/cards/:id', async (req, res, next) => {
         quote ? JSON.stringify(quote) : null,
         author ? JSON.stringify(author) : null,
         typeof isActive === 'boolean' ? isActive : null,
+        imageUrl ?? null,
         id,
       ],
     );

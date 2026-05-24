@@ -45,6 +45,7 @@ export const cardSchema = z.object({
   festival: z.string().nullable().default(null),
   quote: multiLangString,
   author: authorLangString,
+  imageUrl: z.string().url().nullable().optional(),
 });
 
 export const generationOutputSchema = z.object({

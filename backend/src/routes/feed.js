@@ -200,6 +200,7 @@ function formatCard(card, lang) {
     section: card.section,
     isFestival: card.is_festival,
     festival: card.festival,
+    image_url: card.image_url || null,
     displayQuote: card.quote?.[resolvedLang] || card.quote?.en || '',
     displayAuthor: card.author?.[resolvedLang] || card.author?.en || '',
     subQuote: card.quote?.[fallbackLang] || '',

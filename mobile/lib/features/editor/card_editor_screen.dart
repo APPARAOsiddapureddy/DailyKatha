@@ -86,8 +86,12 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
     if (_layers.isEmpty || !mounted) return;
     final out = <StatusCardPhotoLayer>[];
     for (final layer in _layers) {
-      final ar = await decodeImageAspectRatio(layer.bytes);
-      out.add(layer.copyWith(imageAspectRatio: ar));
+      if (layer.bytes != null) {
+        final ar = await decodeImageAspectRatio(layer.bytes!);
+        out.add(layer.copyWith(imageAspectRatio: ar));
+      } else {
+        out.add(layer);
+      }
     }
     if (!mounted) return;
     setState(() {
@@ -524,7 +528,7 @@ class _CardEditorScreenState extends State<CardEditorScreen> {
                             height: CardShareExport.logicalExportHeight,
                             child: StatusCard(
                               key: ValueKey(
-                                '${widget.args.card.id}_${_layers.map((e) => e.bytes.hashCode).join('_')}',
+                                '${widget.args.card.id}_${_layers.map((e) => e.bytes?.hashCode ?? e.url.hashCode).join('_')}',
                               ),
                               card: widget.args.card,
                               contentLanguage: widget.args.contentLanguage,

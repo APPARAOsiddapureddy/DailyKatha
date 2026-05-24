@@ -163,6 +163,18 @@ class StatusCard extends StatelessWidget {
         ),
       ];
     }
+    if (card.imageUrl != null && card.imageUrl!.isNotEmpty) {
+      return [
+        StatusCardPhotoLayer(
+          url: card.imageUrl,
+          imageAspectRatio: 1.0,
+          // Center it slightly lower for aesthetic balance with the quote
+          offset: Offset(0, height * 0.12),
+          scale: 1.1,
+          opacity: 1.0,
+        ),
+      ];
+    }
     return [];
   }
 
@@ -733,25 +745,44 @@ class _FreePhoto extends StatelessWidget {
 
     final image = Opacity(
       opacity: layer.opacity.clamp(0.0, 1.0),
-      child: Image.memory(
-        key: ValueKey(layer.bytes.hashCode),
-        layer.bytes,
-        fit: BoxFit.cover,
-        width: displaySize.width,
-        height: displaySize.height,
-        filterQuality: FilterQuality.high,
-        gaplessPlayback: true,
-        errorBuilder: (ctx, err, st) {
-          return Container(
-            color: Colors.black.withValues(alpha: 0.18),
-            alignment: Alignment.center,
-            child: Icon(
-              Icons.broken_image_outlined,
-              color: accent.withValues(alpha: 0.8),
+      child: layer.url != null
+          ? Image.network(
+              layer.url!,
+              key: ValueKey(layer.url.hashCode),
+              fit: BoxFit.cover,
+              width: displaySize.width,
+              height: displaySize.height,
+              filterQuality: FilterQuality.high,
+              errorBuilder: (ctx, err, st) {
+                return Container(
+                  color: Colors.black.withValues(alpha: 0.18),
+                  alignment: Alignment.center,
+                  child: Icon(
+                    Icons.broken_image_outlined,
+                    color: accent.withValues(alpha: 0.8),
+                  ),
+                );
+              },
+            )
+          : Image.memory(
+              key: ValueKey(layer.bytes?.hashCode),
+              layer.bytes!,
+              fit: BoxFit.cover,
+              width: displaySize.width,
+              height: displaySize.height,
+              filterQuality: FilterQuality.high,
+              gaplessPlayback: true,
+              errorBuilder: (ctx, err, st) {
+                return Container(
+                  color: Colors.black.withValues(alpha: 0.18),
+                  alignment: Alignment.center,
+                  child: Icon(
+                    Icons.broken_image_outlined,
+                    color: accent.withValues(alpha: 0.8),
+                  ),
+                );
+              },
             ),
-          );
-        },
-      ),
     );
 
     final framed = Container(

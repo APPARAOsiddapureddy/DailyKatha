@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 @immutable
 class StatusCardPhotoLayer {
   const StatusCardPhotoLayer({
-    required this.bytes,
+    this.bytes,
+    this.url,
     this.imageAspectRatio = 1.0,
     this.offset = Offset.zero,
     this.scale = 1.0,
@@ -14,9 +15,10 @@ class StatusCardPhotoLayer {
     this.opacity = 1.0,
     this.caption = '',
     this.captionColor,
-  });
+  }) : assert(bytes != null || url != null, 'Either bytes or url must be provided');
 
-  final Uint8List bytes;
+  final Uint8List? bytes;
+  final String? url;
 
   /// Decoded bitmap width ÷ height — frames the layer so rectangles stay rectangular.
   final double imageAspectRatio;
@@ -31,6 +33,7 @@ class StatusCardPhotoLayer {
 
   StatusCardPhotoLayer copyWith({
     Uint8List? bytes,
+    String? url,
     double? imageAspectRatio,
     Offset? offset,
     double? scale,
@@ -41,6 +44,7 @@ class StatusCardPhotoLayer {
   }) {
     return StatusCardPhotoLayer(
       bytes: bytes ?? this.bytes,
+      url: url ?? this.url,
       imageAspectRatio: imageAspectRatio ?? this.imageAspectRatio,
       offset: offset ?? this.offset,
       scale: scale ?? this.scale,

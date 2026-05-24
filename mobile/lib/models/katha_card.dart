@@ -12,6 +12,7 @@ class KathaCard {
     required this.author,
     this.isFestival = false,
     this.festivalTag,
+    this.imageUrl,
   });
 
   final String id;
@@ -20,6 +21,7 @@ class KathaCard {
   final String mood;
   final bool isFestival;
   final String? festivalTag;
+  final String? imageUrl;
   final Map<String, String> quote;
   final Map<String, String> author;
 
@@ -49,6 +51,7 @@ class KathaCard {
       mood: json['mood'] as String? ?? 'warm',
       isFestival: json['isFestival'] as bool? ?? false,
       festivalTag: json['festival'] as String?,
+      imageUrl: json['image_url'] as String? ?? json['imageUrl'] as String?,
       quote: _stringMap(json['quote']),
       author: _stringMap(json['author']),
     );
@@ -61,6 +64,7 @@ class KathaCard {
         'mood': mood,
         'isFestival': isFestival,
         if (festivalTag != null) 'festival': festivalTag,
+        if (imageUrl != null) 'image_url': imageUrl,
         'quote': quote,
         'author': author,
       };
