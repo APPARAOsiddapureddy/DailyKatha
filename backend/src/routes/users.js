@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { HttpError } from '../utils/errorHandler.js';
-import { query } from '../db/pool.js';
+import { pool, query } from '../db/pool.js';
 import { mapCardRow } from '../utils/cardMapper.js';
 import { invalidateUserFeedCache } from '../services/redis.js';
 import { getUserInterests, setUserInterests } from '../db/queries/userInterests.js';
@@ -109,6 +109,38 @@ router.post('/me/refresh-feed', feedRefreshLimiter, async (req, res, next) => {
     res.json({ ok: true });
   } catch (e) {
     next(e);
+  }
+});
+
+router.delete('/me', async (req, res, next) => {
+  const client = await pool.connect();
+  try {
+    const userId = req.user.id;
+    const { rows } = await client.query('SELECT phone FROM users WHERE id = $1', [userId]);
+    if (!rows.length) {
+      throw new HttpError(404, 'USER_NOT_FOUND', 'User not found');
+    }
+
+    const phone = rows[0].phone;
+    await client.query('BEGIN');
+    await client.query('DELETE FROM user_interests WHERE user_id = $1', [userId]);
+    await client.query('DELETE FROM interactions WHERE user_id = $1', [userId]);
+    await client.query('DELETE FROM otp_codes WHERE phone = $1', [phone]);
+    await client.query('DELETE FROM users WHERE id = $1', [userId]);
+    await client.query('COMMIT');
+
+    await invalidateUserFeedCache(userId);
+    res.json({
+      success: true,
+      message: 'Account deleted',
+    });
+  } catch (e) {
+    try {
+      await client.query('ROLLBACK');
+    } catch (_) {}
+    next(e);
+  } finally {
+    client.release();
   }
 });
 

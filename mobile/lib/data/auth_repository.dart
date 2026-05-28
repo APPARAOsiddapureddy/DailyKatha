@@ -4,35 +4,15 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/app_config.dart';
-import '../models/auth_api_models.dart';
 import '../models/user_profile.dart';
 import '../services/auth_service.dart';
 import '../services/user_display_name.dart';
 
 /// Persists tokens and coordinates mock vs live API.
 class AuthRepository {
-  /// Same rule as backend [otp.js]: 10-digit numbers starting with this prefix use fixed OTP 560102.
-  static const String _qaPhonePrefix = '123456';
-  static const String _qaFixedOtp = '560102';
-
-  static bool _isQaTestLine(String digits10) =>
-      digits10.length == 10 && digits10.startsWith(_qaPhonePrefix);
-
-  static String _digitsOnly(String raw) => raw.replaceAll(RegExp(r'\D'), '');
-
-  /// Normalizes to a 10-digit Indian mobile (strip leading +91 / 0 from digit runs).
-  static String _toIndia10(String raw) {
-    var d = _digitsOnly(raw);
-    if (d.length == 12 && d.startsWith('91')) {
-      d = d.substring(2);
-    } else if (d.length == 11 && d.startsWith('0')) {
-      d = d.substring(1);
-    }
-    return d;
-  }
-
   AuthRepository({
     required FlutterSecureStorage storage,
     required AuthService authService,
@@ -63,7 +43,8 @@ class AuthRepository {
 
     // Demo session should never be validated against the backend.
     if (access == 'mock_access' || profile.id == 'demo-user') {
-      return UserSession(accessToken: access, refreshToken: effectiveRefresh, profile: profile);
+      await _storage.deleteAll();
+      return null;
     }
 
     if (!AppConfig.useMockApi) {
@@ -85,123 +66,25 @@ class AuthRepository {
     return UserSession(accessToken: access, refreshToken: effectiveRefresh, profile: profile);
   }
 
-  Future<OtpSendResponse> sendOtp(String phoneDigits) async {
-    final d = _digitsOnly(phoneDigits);
-    // Internal testing or non-live-OTP builds should not hit send-OTP on the backend.
-    if (!AppConfig.useLiveOtp) {
-      return OtpSendResponse(requestId: d, message: 'Dev mode — enter any 6 digits');
-    }
-    return _authService
-        .sendOtp(phoneE164: '+91$d')
-        .timeout(
-          const Duration(seconds: 25),
-          onTimeout: () => throw TimeoutException(
-            'Could not reach the server to send OTP. Check internet and try again.',
-          ),
-        );
-  }
-
-  Future<UserSession> verifyOtp({
-    required String phoneDigits,
-    required String requestId,
-    required String code,
+  Future<UserSession> signInWithTruecaller({
+    required String authorizationCode,
+    required String codeVerifier,
+    required String state,
   }) async {
-    final normalizedPhone = _toIndia10(phoneDigits);
-    final normalizedCode = _digitsOnly(code);
-    if (normalizedCode.length != 6) {
-      throw ArgumentError('OTP must be 6 digits');
-    }
-
-    // QA numbers: complete immediately — avoids hung HTTP (cold Render, DNS) and Android Keystore
-    // deadlocks in FlutterSecureStorage that leave the UI stuck on "Verifying…".
-    if (_isQaTestLine(normalizedPhone) && normalizedCode == _qaFixedOtp) {
-      return _createDemoSession(
-        phoneDigits: normalizedPhone,
-        onboardingComplete: AppConfig.testingSkipToHomeAfterLocalOtp,
-      );
-    }
-
-    // Testing / internal APK: bypass server verify unless [AppConfig.useLiveOtp].
-    if (!AppConfig.useLiveOtp) {
-      return _createDemoSession(
-        phoneDigits: normalizedPhone,
-        onboardingComplete: AppConfig.testingSkipToHomeAfterLocalOtp,
-      );
-    }
-
-    try {
-      final result = await _authService
-          .verifyOtp(
-            phoneDigits: normalizedPhone,
-            requestId: _digitsOnly(requestId),
-            code: normalizedCode,
-          )
-          .timeout(
-            const Duration(seconds: 25),
-            onTimeout: () => throw TimeoutException(
-              'Verification timed out. Check internet or try again.',
-            ),
-          );
-
-      final access = result.accessToken;
-      final refresh = result.refreshToken;
-      if (access.isEmpty) {
-        throw StateError('Server returned no token');
-      }
-      final profile = UserProfile.fromJson(result.profile);
-      final synced = await _persistTokens(access: access, refresh: refresh, profile: profile);
-      return UserSession(accessToken: access, refreshToken: refresh, profile: synced);
-    } on DioException catch (e) {
-      final msg = _dioMessage(e);
-      throw Exception(msg);
-    }
-  }
-
-  String _dioMessage(DioException e) {
-    final data = e.response?.data;
-    if (data is Map && data['error'] is Map) {
-      final m = (data['error'] as Map)['message']?.toString();
-      if (m != null && m.isNotEmpty) return m;
-    }
-    switch (e.type) {
-      case DioExceptionType.connectionTimeout:
-      case DioExceptionType.sendTimeout:
-      case DioExceptionType.receiveTimeout:
-        return 'Connection timed out. Check internet and try again.';
-      case DioExceptionType.connectionError:
-        return 'No connection. Check internet or try again later.';
-      default:
-        return e.message ?? 'Verification failed';
-    }
-  }
-
-  Future<UserSession> createDemoSessionForTesting({required String phoneDigits}) async {
-    return _createDemoSession(
-      phoneDigits: phoneDigits,
-      onboardingComplete: AppConfig.testingSkipToHomeAfterLocalOtp,
+    final result = await _authService.truecallerLogin(
+      authorizationCode: authorizationCode,
+      codeVerifier: codeVerifier,
+      state: state,
     );
-  }
-
-  Future<UserSession> _createDemoSession({
-    required String phoneDigits,
-    bool onboardingComplete = false,
-  }) async {
-    final d = _digitsOnly(phoneDigits);
-    final profile = UserProfile(
-      id: 'demo-user',
-      phoneE164: '+91$d',
-      displayName: 'Demo User',
-      displayNameNative: null,
-      contentLanguage: 'te',
-      isAdmin: d == '6301567773',
-      onboardingComplete: onboardingComplete,
-      joinedAt: DateTime.now(),
+    final profile = UserProfile.fromJson(result.profile);
+    final synced = await _persistTokens(
+      access: result.accessToken,
+      refresh: result.refreshToken,
+      profile: profile,
     );
-    const access = 'mock_access';
-    final synced = await _persistTokens(access: access, refresh: access, profile: profile);
     return UserSession(
-      accessToken: access,
-      refreshToken: access,
+      accessToken: result.accessToken,
+      refreshToken: result.refreshToken,
       profile: synced,
     );
   }
@@ -290,8 +173,25 @@ class AuthRepository {
     await _storage.deleteAll();
   }
 
+  Future<void> deleteAccount() async {
+    final existing = await restoreSession();
+    if (existing != null &&
+        existing.accessToken != 'mock_access' &&
+        existing.profile.id != 'demo-user' &&
+        !AppConfig.useMockApi) {
+      await _authService.deleteMe();
+    }
+    await _clearLocalAppData();
+  }
+
   /// Alias for sign-out flows (e.g. global 401 handler).
   Future<void> logout() => signOut();
+
+  Future<void> _clearLocalAppData() async {
+    await _storage.deleteAll();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+  }
 
   Future<UserProfile> _persistTokens({
     required String access,

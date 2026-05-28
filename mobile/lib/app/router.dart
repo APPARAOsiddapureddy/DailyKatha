@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../data/providers.dart';
 import '../features/admin/admin_dashboard_screen.dart';
 import '../features/admin/admin_generate_screen.dart';
+import '../features/auth/login_screen.dart';
 import '../features/create/create_card_screen.dart';
 import '../features/editor/card_editor_screen.dart';
 import '../features/explore/explore_screen.dart';
@@ -56,6 +57,7 @@ String? _redirectLogic(Ref ref, GoRouterState state) {
   if (bootstrap.isLoading) {
     const loadingAllowed = {
       '/splash',
+      '/login',
       '/onboarding/language',
       '/onboarding/religion',
       '/onboarding/interests',
@@ -76,9 +78,8 @@ String? _redirectLogic(Ref ref, GoRouterState state) {
     '/onboarding/interests',
   };
 
-  // Login/OTP screens removed. If any stale deep link tries to hit them, reroute.
-  if (path == '/login' || path == '/otp') {
-    return done ? '/home' : '/onboarding/language';
+  if (path == '/login') {
+    return isAuth ? (done ? '/home' : '/onboarding/language') : '/login';
   }
 
   if (isAuth && done && onboardingPaths.contains(path)) {
@@ -97,8 +98,8 @@ String? _redirectLogic(Ref ref, GoRouterState state) {
     if (!isAdmin) return '/home';
   }
 
-  if (!isAuth && {'/home', '/explore', '/profile', '/feed'}.contains(path)) {
-    return '/onboarding/language';
+  if (!isAuth && {'/home', '/explore', '/profile', '/feed', '/onboarding/language', '/onboarding/religion', '/onboarding/interests'}.contains(path)) {
+    return '/login';
   }
 
   return null;
@@ -142,6 +143,10 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/splash',
         builder: (context, state) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: '/login',
+        builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
         parentNavigatorKey: _rootNavigatorKey,

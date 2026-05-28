@@ -12,6 +12,7 @@ import '../services/auth_service.dart';
 import '../services/feed_service.dart';
 import '../services/notification_service.dart';
 import '../services/share_service.dart';
+import '../services/truecaller_auth_service.dart';
 import '../services/user_actions_service.dart';
 import 'auth_repository.dart';
 import 'feed_repository.dart';
@@ -29,7 +30,7 @@ final secureStorageProvider = Provider<FlutterSecureStorage>((ref) {
 
 final sessionHolderProvider = NotifierProvider<SessionHolder, UserSession?>(SessionHolder.new);
 
-/// Restores persisted session once per app start.
+/// Restores a persisted session once per app start.
 final bootstrapProvider = FutureProvider<UserSession?>((ref) async {
   final repo = ref.watch(authRepositoryProvider);
   final restored = await repo.restoreSession();
@@ -37,12 +38,7 @@ final bootstrapProvider = FutureProvider<UserSession?>((ref) async {
     ref.read(sessionHolderProvider.notifier).setSession(restored);
     return restored;
   }
-
-  // Login-less app flow: ensure a local session exists so onboarding and profile persistence works
-  // without requiring OTP or server JWT.
-  final local = await repo.createDemoSessionForTesting(phoneDigits: '0000000000');
-  ref.read(sessionHolderProvider.notifier).setSession(local);
-  return local;
+  return null;
 });
 
 final apiClientProvider = Provider<ApiClient>((ref) {
@@ -85,6 +81,10 @@ final authRepositoryProvider = Provider<AuthRepository>((ref) {
   );
 });
 
+final truecallerAuthServiceProvider = Provider<TruecallerAuthService>((ref) {
+  return TruecallerAuthService();
+});
+
 final feedRepositoryProvider = Provider<FeedRepository>((ref) {
   return FeedRepository(ref.watch(feedServiceProvider));
 });
@@ -109,7 +109,7 @@ final catalogProvider = FutureProvider<List<KathaCard>>((ref) async {
   final lang = effectiveContentLanguage(session);
   final created = await ref.watch(userCreatedCardsProvider.future);
   /// Never hit the HTTP feed unless we clearly have a real token. Otherwise the Explore tab on
-  /// [StatefulNavigationShell]'s IndexedStack fires during auth transitions → 401 → global logout → "stuck" on OTP/Home.
+  /// [StatefulNavigationShell]'s IndexedStack fires during auth transitions → 401 → global logout → "stuck" on auth/Home.
   final useLocalCards = session == null ||
       session.accessToken == 'mock_access' ||
       session.profile.id == 'demo-user';
@@ -121,4 +121,3 @@ final catalogProvider = FutureProvider<List<KathaCard>>((ref) async {
   final remote = await ref.watch(feedRepositoryProvider).loadCards(contentLanguage: lang);
   return [...created, ...remote];
 });
-

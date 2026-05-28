@@ -2,8 +2,7 @@
 # Builds prod release APK and copies it to build/app/outputs/flutter-apk/app-release.apk
 # so the path matches older workflows before Android flavors existed.
 #
-# Internal testing (Dart default): real backend OTP is OFF — any 6 digits, then onboarding → Home.
-# Store / rollout with SMS OTP: add --dart-define=REQUIRE_BACKEND_OTP=true
+# Internal testing (Dart default): Truecaller login is the entry point, then onboarding → Home.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

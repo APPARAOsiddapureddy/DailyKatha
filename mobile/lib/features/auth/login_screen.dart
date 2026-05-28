@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/app_config.dart';
 import '../../data/providers.dart';
-import '../../l10n/app_localizations.dart';
-import '../../models/otp_route_args.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/brand_mark.dart';
 
@@ -18,41 +14,29 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  final _phone = TextEditingController();
   bool _loading = false;
   String? _error;
 
-  @override
-  void dispose() {
-    _phone.dispose();
-    super.dispose();
-  }
-
-  String get _digits => _phone.text.replaceAll(RegExp(r'\D'), '');
-
-  Future<void> _sendOtp() async {
-    final d = _digits;
-    setState(() {
-      _error = null;
-    });
-    if (d.length != 10) {
-      setState(() => _error = 'Enter a valid 10-digit mobile number');
-      return;
-    }
+  Future<void> _startTruecaller() async {
+    setState(() => _error = null);
     setState(() => _loading = true);
     try {
-      final res = await ref.read(authRepositoryProvider).sendOtp(d);
+      final login = await ref.read(truecallerAuthServiceProvider).startLogin();
+      final session = await ref.read(authRepositoryProvider).signInWithTruecaller(
+            authorizationCode: login.authorizationCode,
+            codeVerifier: login.codeVerifier,
+            state: login.state,
+          );
+      ref.read(sessionHolderProvider.notifier).setSession(session);
       if (!mounted) return;
-      final args = OtpRouteArgs(
-        phoneDigits: d,
-        requestId: res.requestId,
-        serverMessage: res.message,
-        channel: res.channel,
-      );
-      context.push('/otp', extra: args);
+      if (session.profile.onboardingComplete) {
+        context.go('/home');
+      } else {
+        context.go('/onboarding/language');
+      }
     } catch (e) {
       if (!mounted) return;
-      setState(() => _error = e.toString());
+      setState(() => _error = _messageFromError(e));
     } finally {
       if (mounted) setState(() => _loading = false);
     }
@@ -60,7 +44,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: AppColors.scaffoldDark,
       body: SafeArea(
@@ -72,47 +55,27 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               const SizedBox(height: 24),
               const BrandMark(compact: false),
               const SizedBox(height: 32),
-              Text(l10n.loginWelcome, style: Theme.of(context).textTheme.headlineMedium),
+              Text(
+                'Welcome back',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
               const SizedBox(height: 8),
               Text(
-                l10n.loginSubtitle,
+                'Continue with Truecaller to verify your number and enter Daily Katha.',
                 style: TextStyle(color: AppColors.textSecondaryDark, fontSize: 15),
               ),
               const SizedBox(height: 28),
-              Text(
-                l10n.loginMobileLabel,
-                style: const TextStyle(
-                  color: AppColors.textSecondaryDark,
-                  fontSize: 12,
-                  letterSpacing: 1.2,
-                  fontWeight: FontWeight.w600,
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: AppColors.surfaceElevatedDark,
+                  borderRadius: BorderRadius.circular(18),
+                  border: Border.all(color: AppColors.borderOnDarkStrong),
                 ),
-              ),
-              const SizedBox(height: 8),
-              TextField(
-                controller: _phone,
-                keyboardType: TextInputType.phone,
-                inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly,
-                  LengthLimitingTextInputFormatter(10),
-                ],
-                style: const TextStyle(color: AppColors.textPrimaryDark, fontSize: 20),
-                decoration: InputDecoration(
-                  hintText: '9876543210',
-                  hintStyle: TextStyle(color: AppColors.textTertiaryDark),
-                  filled: true,
-                  fillColor: AppColors.surfaceDark,
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(14),
-                    borderSide: const BorderSide(color: AppColors.borderOnDark),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(14),
-                    borderSide: const BorderSide(color: AppColors.accentGold, width: 1.5),
-                  ),
-                  prefixText: '+91 ',
-                  prefixStyle: const TextStyle(color: AppColors.textPrimaryDark, fontSize: 20),
+                child: const Text(
+                  'We will use your Truecaller consent to verify your phone number. '
+                  'No manual code entry is needed for this build.',
+                  style: TextStyle(color: AppColors.textSecondaryDark, height: 1.4),
                 ),
               ),
               if (_error != null) ...[
@@ -120,24 +83,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 Text(_error!, style: const TextStyle(color: Color(0xFFFF6B6B), fontSize: 13)),
               ],
               const Spacer(),
-              if (!AppConfig.useLiveOtp)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: Text(
-                    'Dev build: OTP is not sent to the server. Use any 6 digits on the next screen.',
-                    style: TextStyle(color: AppColors.textTertiaryDark, fontSize: 12),
-                  ),
-                ),
               SizedBox(
                 width: double.infinity,
                 child: FilledButton(
-                  onPressed: _loading ? null : _sendOtp,
-                  child: Text(_loading ? 'Sending…' : '${l10n.loginSendOtp} →'),
+                  onPressed: _loading ? null : _startTruecaller,
+                  child: Text(_loading ? 'Connecting…' : 'Continue with Truecaller'),
                 ),
               ),
               const SizedBox(height: 16),
-              Text(
-                l10n.loginTerms,
+              const Text(
+                'By continuing, you agree to our Terms and Privacy Policy.',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 11, color: AppColors.textTertiaryDark),
               ),
@@ -147,4 +102,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       ),
     );
   }
+}
+
+String _messageFromError(Object error) {
+  final text = error.toString();
+  if (text.contains('TRUECALLER_NOT_USABLE')) {
+    return 'Install and sign in to Truecaller on this device, then try again.';
+  }
+  if (text.contains('STATE_MISMATCH')) {
+    return 'Truecaller verification could not be matched. Please try again.';
+  }
+  if (text.contains('TRUECALLER_')) {
+    return 'Truecaller sign-in failed. Please try again.';
+  }
+  return text.startsWith('Exception: ') ? text.substring('Exception: '.length) : text;
 }

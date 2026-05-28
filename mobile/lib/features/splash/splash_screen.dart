@@ -51,9 +51,12 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     if (session?.profile.onboardingComplete == true) {
       // ignore: use_build_context_synchronously
       context.go('/home');
-    } else {
+    } else if (session != null) {
       // ignore: use_build_context_synchronously
       context.go('/onboarding/language');
+    } else {
+      // ignore: use_build_context_synchronously
+      context.go('/login');
     }
   }
 

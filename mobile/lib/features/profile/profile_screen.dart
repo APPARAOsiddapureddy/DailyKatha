@@ -28,7 +28,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     await ref.read(authRepositoryProvider).signOut();
     ref.read(sessionHolderProvider.notifier).clear();
     if (!mounted) return;
-    context.go('/onboarding/language');
+    context.go('/login');
   }
 
   Future<void> _editDisplayName() async {

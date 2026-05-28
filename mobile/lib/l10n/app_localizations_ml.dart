@@ -460,14 +460,13 @@ class AppLocalizationsMl extends AppLocalizations {
   String get loginMobileLabel => 'മൊബൈൽ നമ്പർ';
 
   @override
-  String get loginSendOtp => 'OTP അയയ്ക്കുക';
+  String get loginSendOtp => 'Continue with Truecaller';
 
   @override
-  String get loginTerms =>
-      'തുടർന്നാൽ SMS OTP ഉം സേവന അപ്‌ഡേറ്റുകളും ലഭിച്ചേക്കാം. കാരിയർ നിരക്കുകൾ ബാധകമായേക്കാം.';
+  String get loginTerms => 'By continuing you agree to use Truecaller for sign-in.';
 
   @override
-  String get otpEnterCode => 'കോഡ് നൽകുക';
+  String get otpEnterCode => 'Continue';
 
   @override
   String otpSentTo(Object phone) {
@@ -475,17 +474,16 @@ class AppLocalizationsMl extends AppLocalizations {
   }
 
   @override
-  String get otpVerify => 'Verify';
+  String get otpVerify => 'Continue';
 
   @override
-  String get otpResend => 'Resend';
+  String get otpResend => 'Try again';
 
   @override
-  String get otpSmsHintLive =>
-      'We sent a 6-digit code by SMS to this number. Test lines 123456xxxx may use a fixed code.';
+  String get otpSmsHintLive => 'Truecaller sign-in is used for this build.';
 
   @override
-  String get otpDevModeHint => 'Dev mode: enter any 6 digits to continue.';
+  String get otpDevModeHint => 'Development build: continue with Truecaller.';
 
   @override
   String get splashTagline => 'അനുഗ്രഹം പകരുക';

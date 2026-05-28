@@ -70,7 +70,7 @@ abstract final class ErrorHandler {
 
   static String? _codeMessage(String? code) {
     return switch (code) {
-      'INVALID_OTP' => 'Incorrect OTP. Please try again.',
+      'INVALID_OTP' => 'Incorrect sign-in code. Please try again.',
       'INVALID_PHONE' => 'Please enter a valid phone number.',
       'RATE_LIMITED' || 'AUTH_RATE_LIMITED' => 'Too many attempts. Wait a minute.',
       'DAILY_LIMIT_REACHED' => 'Daily limit reached. Try again tomorrow.',

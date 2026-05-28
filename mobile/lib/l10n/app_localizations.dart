@@ -943,19 +943,19 @@ abstract class AppLocalizations {
   /// No description provided for @loginSendOtp.
   ///
   /// In en, this message translates to:
-  /// **'Send OTP'**
+  /// **'Continue with Truecaller'**
   String get loginSendOtp;
 
   /// No description provided for @loginTerms.
   ///
   /// In en, this message translates to:
-  /// **'By continuing you agree to receive SMS OTPs and service updates. Carrier rates may apply.'**
+  /// **'By continuing you agree to use Truecaller for sign-in.'**
   String get loginTerms;
 
   /// No description provided for @otpEnterCode.
   ///
   /// In en, this message translates to:
-  /// **'Enter code'**
+  /// **'Continue'**
   String get otpEnterCode;
 
   /// No description provided for @otpSentTo.
@@ -967,19 +967,19 @@ abstract class AppLocalizations {
   /// No description provided for @otpVerify.
   ///
   /// In en, this message translates to:
-  /// **'Verify'**
+  /// **'Continue'**
   String get otpVerify;
 
   /// No description provided for @otpResend.
   ///
   /// In en, this message translates to:
-  /// **'Resend'**
+  /// **'Try again'**
   String get otpResend;
 
   /// No description provided for @otpSmsHintLive.
   ///
   /// In en, this message translates to:
-  /// **'We sent a 6-digit code by SMS to this number. Test lines 123456xxxx may use a fixed code.'**
+  /// **'Truecaller sign-in is used for this build.'**
   String get otpSmsHintLive;
 
   /// No description provided for @otpDevModeHint.

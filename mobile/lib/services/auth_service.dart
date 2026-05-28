@@ -11,30 +11,6 @@ class AuthService {
 
   final Dio _dio;
 
-  Future<OtpSendResponse> sendOtp({required String phoneE164}) async {
-    final response = await _dio.post<Map<String, dynamic>>(
-      '/auth/send-otp',
-      data: {'phone': phoneE164},
-    );
-    return OtpSendResponse.fromJson(response.data ?? const {});
-  }
-
-  Future<AuthTokensResponse> verifyOtp({
-    required String phoneDigits,
-    required String requestId,
-    required String code,
-  }) async {
-    final response = await _dio.post<Map<String, dynamic>>(
-      '/auth/verify-otp',
-      data: {
-        'phone': '+91$phoneDigits',
-        'requestId': requestId,
-        'code': code,
-      },
-    );
-    return AuthTokensResponse.fromJson(response.data ?? const {});
-  }
-
   Future<UserProfile> getMe() async {
     final response = await _dio.get<Map<String, dynamic>>('/users/me');
     return UserProfile.fromJson(response.data ?? const {});
@@ -61,5 +37,25 @@ class AuthService {
       '/users/me/interests',
       data: {'interests': interestIds},
     );
+  }
+
+  Future<void> deleteMe() async {
+    await _dio.delete<void>('/users/me');
+  }
+
+  Future<AuthTokensResponse> truecallerLogin({
+    required String authorizationCode,
+    required String codeVerifier,
+    required String state,
+  }) async {
+    final response = await _dio.post<Map<String, dynamic>>(
+      '/auth/truecaller',
+      data: {
+        'authorizationCode': authorizationCode,
+        'codeVerifier': codeVerifier,
+        'state': state,
+      },
+    );
+    return AuthTokensResponse.fromJson(response.data ?? const {});
   }
 }

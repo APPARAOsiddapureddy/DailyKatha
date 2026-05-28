@@ -1,7 +1,7 @@
 # Terms of Service — Daily Katha (template)
 
-**Last updated:** replace with date  
-**Contact:** replace with support email
+**Last updated:** 28 May 2026  
+**Contact:** support@dailykatha.com
 
 ## Eligibility
 
@@ -22,6 +22,14 @@ The app is provided **“as is.”** We are not liable for indirect damages or l
 ## Changes
 
 We may modify these terms; continued use after changes constitutes acceptance of the updated terms.
+
+## Account deletion
+
+You may delete your Daily Katha account from the app's Settings screen. Deleting your account removes your profile from the service and clears locally stored app data on that device.
+
+## Login
+
+Daily Katha may use Truecaller for account verification and sign-in. You are responsible for keeping access to the phone number linked to your Truecaller account.
 
 ---
 

@@ -219,19 +219,19 @@
   "loginWelcome": "Welcome home.",
   "loginSubtitle": "Enter your number. We'll send daily greetings, festival wishes, and words worth sharing — right to your phone.",
   "loginMobileLabel": "MOBILE NUMBER",
-  "loginSendOtp": "Send OTP",
-  "loginTerms": "By continuing you agree to receive SMS OTPs and service updates. Carrier rates may apply.",
-  "otpEnterCode": "Enter code",
+  "loginSendOtp": "Continue with Truecaller",
+  "loginTerms": "By continuing you agree to use Truecaller for sign-in.",
+  "otpEnterCode": "Continue",
   "otpSentTo": "+91 {phone}",
   "@otpSentTo": {
     "placeholders": {
       "phone": {}
     }
   },
-  "otpVerify": "Verify",
-  "otpResend": "Resend",
-  "otpSmsHintLive": "We sent a 6-digit code by SMS to this number. Test lines 123456xxxx may use a fixed code.",
-  "otpDevModeHint": "Dev mode: enter any 6 digits to continue.",
+  "otpVerify": "Continue",
+  "otpResend": "Try again",
+  "otpSmsHintLive": "Truecaller sign-in is used for this build.",
+  "otpDevModeHint": "Development build: continue with Truecaller.",
   "splashTagline": "A line for the day",
   "homeHeroKicker": "Your card today",
   "homeTodayPickHint": "Tap a side card to bring it to the center; tap the center card to open it.",

@@ -1,8 +1,17 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+}
+
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+val keystoreProperties = Properties()
+val hasReleaseKeystore = keystorePropertiesFile.exists()
+if (hasReleaseKeystore) {
+    keystorePropertiesFile.inputStream().use { keystoreProperties.load(it) }
 }
 
 android {
@@ -22,9 +31,9 @@ android {
 
     defaultConfig {
         applicationId = "com.dailykatha.daily_katha"
-        // flutter_secure_storage requires minSdk 23 on Android (prevents launch-time crashes on older configs).
-        minSdk = flutter.minSdkVersion
-        targetSdk = 34
+        // Truecaller OAuth requires API 24+. Keep the app on that floor for the login release.
+        minSdk = maxOf(flutter.minSdkVersion, 24)
+        targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName
         multiDexEnabled = true
@@ -62,10 +71,26 @@ android {
         }
     }
 
+    signingConfigs {
+        create("release") {
+            if (hasReleaseKeystore) {
+                keyAlias = keystoreProperties["keyAlias"] as String
+                keyPassword = keystoreProperties["keyPassword"] as String
+                storeFile = rootProject.file(keystoreProperties["storeFile"] as String)
+                storePassword = keystoreProperties["storePassword"] as String
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // Play Store: create a release keystore and set signingConfig before publishing.
-            signingConfig = signingConfigs.getByName("debug")
+            // Play Store: add android/keystore.properties to switch this release build to your
+            // real signing key. Until then, this stays signed with debug for local testing only.
+            signingConfig = if (hasReleaseKeystore) {
+                signingConfigs.getByName("release")
+            } else {
+                signingConfigs.getByName("debug")
+            }
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
@@ -81,6 +106,6 @@ flutter {
 }
 
 dependencies {
+    implementation("com.truecaller.android.sdk:truecaller-sdk:3.2.0")
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 }
-
