@@ -7,12 +7,15 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/app_config.dart';
+import '../models/auth_api_models.dart';
 import '../models/user_profile.dart';
 import '../services/auth_service.dart';
 import '../services/user_display_name.dart';
 
 /// Persists tokens and coordinates mock vs live API.
 class AuthRepository {
+  static String _digitsOnly(String raw) => raw.replaceAll(RegExp(r'\D'), '');
+
   AuthRepository({
     required FlutterSecureStorage storage,
     required AuthService authService,
@@ -87,6 +90,56 @@ class AuthRepository {
       refreshToken: result.refreshToken,
       profile: synced,
     );
+  }
+
+  Future<OtpSendResponse> sendOtp(String phoneDigits) async {
+    final d = _digitsOnly(phoneDigits);
+    return _authService
+        .sendOtp(phoneE164: '+91$d')
+        .timeout(
+          const Duration(seconds: 25),
+          onTimeout: () => throw TimeoutException(
+            'Could not reach the server to send OTP. Check internet and try again.',
+          ),
+        );
+  }
+
+  Future<UserSession> verifyOtp({
+    required String phoneDigits,
+    required String requestId,
+    required String code,
+  }) async {
+    final normalizedPhone = _digitsOnly(phoneDigits);
+    final normalizedCode = _digitsOnly(code);
+    if (normalizedCode.length != 6) {
+      throw ArgumentError('OTP must be 6 digits');
+    }
+
+    try {
+      final result = await _authService
+          .verifyOtp(
+            phoneDigits: normalizedPhone,
+            requestId: _digitsOnly(requestId),
+            code: normalizedCode,
+          )
+          .timeout(
+            const Duration(seconds: 25),
+            onTimeout: () => throw TimeoutException(
+              'Verification timed out. Check internet or try again.',
+            ),
+          );
+
+      final access = result.accessToken;
+      final refresh = result.refreshToken;
+      if (access.isEmpty) {
+        throw StateError('Server returned no token');
+      }
+      final profile = UserProfile.fromJson(result.profile);
+      final synced = await _persistTokens(access: access, refresh: refresh, profile: profile);
+      return UserSession(accessToken: access, refreshToken: refresh, profile: synced);
+    } on DioException catch (e) {
+      throw Exception(_dioMessage(e));
+    }
   }
 
   Future<UserProfile> refreshProfileFromServer() async {
@@ -229,4 +282,22 @@ class AuthRepository {
         'interestIds': p.interestIds,
         'onboardingComplete': p.onboardingComplete,
       };
+
+  String _dioMessage(DioException e) {
+    final data = e.response?.data;
+    if (data is Map && data['error'] is Map) {
+      final m = (data['error'] as Map)['message']?.toString();
+      if (m != null && m.isNotEmpty) return m;
+    }
+    switch (e.type) {
+      case DioExceptionType.connectionTimeout:
+      case DioExceptionType.sendTimeout:
+      case DioExceptionType.receiveTimeout:
+        return 'Connection timed out. Check internet and try again.';
+      case DioExceptionType.connectionError:
+        return 'No connection. Check internet or try again later.';
+      default:
+        return e.message ?? 'Verification failed';
+    }
+  }
 }

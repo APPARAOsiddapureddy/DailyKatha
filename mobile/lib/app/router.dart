@@ -6,6 +6,7 @@ import '../data/providers.dart';
 import '../features/admin/admin_dashboard_screen.dart';
 import '../features/admin/admin_generate_screen.dart';
 import '../features/auth/login_screen.dart';
+import '../features/auth/otp_screen.dart';
 import '../features/create/create_card_screen.dart';
 import '../features/editor/card_editor_screen.dart';
 import '../features/explore/explore_screen.dart';
@@ -24,6 +25,7 @@ import '../features/today_picks/today_picks_screen.dart';
 import '../models/card_editor_args.dart';
 import '../models/feed_route_args.dart';
 import '../models/onboarding_args.dart';
+import '../models/otp_route_args.dart';
 import '../models/section_preview_args.dart';
 import '../models/user_profile.dart';
 import '../widgets/app_shell.dart';
@@ -58,6 +60,7 @@ String? _redirectLogic(Ref ref, GoRouterState state) {
     const loadingAllowed = {
       '/splash',
       '/login',
+      '/otp',
       '/onboarding/language',
       '/onboarding/religion',
       '/onboarding/interests',
@@ -78,8 +81,8 @@ String? _redirectLogic(Ref ref, GoRouterState state) {
     '/onboarding/interests',
   };
 
-  if (path == '/login') {
-    return isAuth ? (done ? '/home' : '/onboarding/language') : '/login';
+  if (path == '/login' || path == '/otp') {
+    return isAuth ? (done ? '/home' : '/onboarding/language') : null;
   }
 
   if (isAuth && done && onboardingPaths.contains(path)) {
@@ -147,6 +150,13 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/login',
         builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: '/otp',
+        builder: (context, state) {
+          final args = state.extra as OtpRouteArgs;
+          return OtpScreen(args: args);
+        },
       ),
       GoRoute(
         parentNavigatorKey: _rootNavigatorKey,

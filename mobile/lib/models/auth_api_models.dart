@@ -1,6 +1,36 @@
 import 'package:flutter/foundation.dart';
 
 @immutable
+class OtpSendResponse {
+  const OtpSendResponse({
+    required this.requestId,
+    this.message,
+    this.channel,
+    this.success,
+    this.referenceId,
+    this.expiresIn,
+  });
+
+  final String requestId;
+  final String? message;
+  final String? channel;
+  final bool? success;
+  final String? referenceId;
+  final int? expiresIn;
+
+  factory OtpSendResponse.fromJson(Map<String, dynamic> json) {
+    return OtpSendResponse(
+      requestId: json['requestId']?.toString() ?? json['request_id']?.toString() ?? 'default',
+      message: json['message']?.toString(),
+      channel: json['channel']?.toString(),
+      success: json['success'] == true || json['ok'] == true,
+      referenceId: json['reference_id']?.toString(),
+      expiresIn: int.tryParse(json['expires_in']?.toString() ?? ''),
+    );
+  }
+}
+
+@immutable
 class AuthTokensResponse {
   const AuthTokensResponse({
     required this.accessToken,

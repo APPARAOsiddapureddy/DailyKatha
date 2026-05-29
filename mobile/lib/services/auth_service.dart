@@ -11,6 +11,30 @@ class AuthService {
 
   final Dio _dio;
 
+  Future<OtpSendResponse> sendOtp({required String phoneE164}) async {
+    final response = await _dio.post<Map<String, dynamic>>(
+      '/auth/send-otp',
+      data: {'phone': phoneE164},
+    );
+    return OtpSendResponse.fromJson(response.data ?? const {});
+  }
+
+  Future<AuthTokensResponse> verifyOtp({
+    required String phoneDigits,
+    required String requestId,
+    required String code,
+  }) async {
+    final response = await _dio.post<Map<String, dynamic>>(
+      '/auth/verify-otp',
+      data: {
+        'phone': '+91$phoneDigits',
+        'requestId': requestId,
+        'code': code,
+      },
+    );
+    return AuthTokensResponse.fromJson(response.data ?? const {});
+  }
+
   Future<UserProfile> getMe() async {
     final response = await _dio.get<Map<String, dynamic>>('/users/me');
     return UserProfile.fromJson(response.data ?? const {});
