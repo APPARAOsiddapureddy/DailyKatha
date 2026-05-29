@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 /// Logo row with diya motif.
 ///
 class BrandMark extends StatelessWidget {
-  const BrandMark({super.key, this.compact = false});
+  const BrandMark({super.key, this.compact = false, this.color});
 
   final bool compact;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class BrandMark extends StatelessWidget {
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
             fontWeight: FontWeight.w800,
             letterSpacing: -0.5,
-            color: Theme.of(context).colorScheme.onSurface,
+            color: color ?? Theme.of(context).colorScheme.onSurface,
           ),
         ),
       ],

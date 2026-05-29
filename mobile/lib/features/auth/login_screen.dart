@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -53,16 +54,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 24),
-              const BrandMark(compact: false),
+              const BrandMark(compact: false, color: AppColors.textPrimaryDark),
               const SizedBox(height: 32),
               Text(
                 'Welcome back',
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  color: AppColors.accentGold,
+                ),
               ),
               const SizedBox(height: 8),
               Text(
                 'Continue with Truecaller to verify your number and enter Daily Katha.',
-                style: TextStyle(color: AppColors.textSecondaryDark, fontSize: 15),
+                style: const TextStyle(color: AppColors.textPrimaryDark, fontSize: 15, height: 1.35),
               ),
               const SizedBox(height: 28),
               Container(
@@ -75,12 +78,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 child: const Text(
                   'We will use your Truecaller consent to verify your phone number. '
                   'No manual code entry is needed for this build.',
-                  style: TextStyle(color: AppColors.textSecondaryDark, height: 1.4),
+                  style: TextStyle(color: AppColors.textPrimaryDark, height: 1.4),
                 ),
               ),
               if (_error != null) ...[
                 const SizedBox(height: 12),
-                Text(_error!, style: const TextStyle(color: Color(0xFFFF6B6B), fontSize: 13)),
+                Text(
+                  _error!,
+                  style: const TextStyle(color: Color(0xFFFF8A8A), fontSize: 13, height: 1.35),
+                ),
               ],
               const Spacer(),
               SizedBox(
@@ -105,6 +111,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 }
 
 String _messageFromError(Object error) {
+  if (error is DioException) {
+    final status = error.response?.statusCode;
+    if (status == 401) {
+      return 'Truecaller sign-in could not be completed. Check the backend setup and try again.';
+    }
+    return 'Truecaller sign-in failed. Please try again.';
+  }
   final text = error.toString();
   if (text.contains('TRUECALLER_NOT_USABLE')) {
     return 'Install and sign in to Truecaller on this device, then try again.';
@@ -115,5 +128,5 @@ String _messageFromError(Object error) {
   if (text.contains('TRUECALLER_')) {
     return 'Truecaller sign-in failed. Please try again.';
   }
-  return text.startsWith('Exception: ') ? text.substring('Exception: '.length) : text;
+  return 'Truecaller sign-in failed. Please try again.';
 }
