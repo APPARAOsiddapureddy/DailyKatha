@@ -2,6 +2,7 @@ package com.dailykatha.daily_katha
 
 import android.content.Intent
 import android.util.Base64
+import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import io.flutter.embedding.android.FlutterFragmentActivity
@@ -27,6 +28,7 @@ class MainActivity : FlutterFragmentActivity() {
 
     private val truecallerCallback = object : TcOAuthCallback {
         override fun onSuccess(tcOAuthData: TcOAuthData) {
+            Log.i("Truecaller", "onSuccess callback: state='${tcOAuthData.state}', authorizationCode length=${tcOAuthData.authorizationCode?.length ?: 0}")
             val result = channelResult ?: return
             val returnedState = tcOAuthData.state.trim()
             if (pendingState.isNotEmpty() && returnedState.isNotEmpty() && pendingState != returnedState) {
@@ -41,8 +43,10 @@ class MainActivity : FlutterFragmentActivity() {
             }
 
             val authorizationCode = tcOAuthData.authorizationCode.trim()
+            Log.d("Truecaller", "authorizationCode (trimmed) length=${authorizationCode.length}")
             if (authorizationCode.isBlank()) {
                 runOnUiThread {
+                    Log.w("Truecaller", "Missing authorization code in TcOAuthData")
                     deliverError(
                         result,
                         "MISSING_AUTH_CODE",
@@ -68,6 +72,7 @@ class MainActivity : FlutterFragmentActivity() {
         }
 
         override fun onFailure(tcOAuthError: TcOAuthError) {
+            Log.w("Truecaller", "onFailure callback: code=${tcOAuthError.errorCode}, message=${tcOAuthError.errorMessage}")
             val result = channelResult ?: return
             runOnUiThread {
                 deliverError(
@@ -79,6 +84,7 @@ class MainActivity : FlutterFragmentActivity() {
         }
 
         override fun onVerificationRequired(tcOAuthError: TcOAuthError?) {
+            Log.w("Truecaller", "onVerificationRequired callback: code=${tcOAuthError?.errorCode}, message=${tcOAuthError?.errorMessage}")
             val result = channelResult ?: return
             val code = tcOAuthError?.errorCode ?: -1
             val message = tcOAuthError?.errorMessage?.ifBlank { null } ?: "Truecaller verification needs another step"
@@ -166,7 +172,7 @@ class MainActivity : FlutterFragmentActivity() {
                 }
 
                 TcSdk.getInstance().setOAuthState(pendingState)
-                TcSdk.getInstance().setOAuthScopes(arrayOf("phone", "profile"))
+                TcSdk.getInstance().setOAuthScopes(arrayOf("openid", "phone", "profile"))
                 TcSdk.getInstance().setCodeChallenge(codeChallenge)
 
                 runOnUiThread {
@@ -193,6 +199,7 @@ class MainActivity : FlutterFragmentActivity() {
     }
 
     private fun deliverError(result: MethodChannel.Result, code: String, message: String) {
+        Log.w("Truecaller", "deliverError -> code=$code message=$message")
         result.error(code, message, null)
         clearPending()
     }
