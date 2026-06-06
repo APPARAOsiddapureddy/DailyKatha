@@ -88,6 +88,13 @@ class UserProfile {
     );
   }
 
+  /// Backend has no explicit flag; treat onboarding as done once religion + interests exist.
+  static bool inferOnboardingComplete(Map<String, dynamic> json, List<String> interestIds) {
+    if (json['onboardingComplete'] == true) return true;
+    final religionId = (json['religionId'] ?? json['religion_id'])?.toString();
+    return religionId != null && religionId.isNotEmpty && interestIds.isNotEmpty;
+  }
+
   /// REST `/v1/users/me` and auth verify `user` object.
   factory UserProfile.fromBackendJson(Map<String, dynamic> json) {
     final rawPhone = json['phone']?.toString() ?? '';
@@ -116,7 +123,7 @@ class UserProfile {
       religionId: (json['religionId'] ?? json['religion_id'])?.toString(),
       interestIds: ids,
       isAdmin: (json['isAdmin'] as bool?) ?? (json['is_admin'] as bool?) ?? false,
-      onboardingComplete: json['onboardingComplete'] as bool? ?? false,
+      onboardingComplete: inferOnboardingComplete(json, ids),
       likedCount: (json['likedCount'] as num?)?.toInt() ?? 0,
       savedCount: (json['savedCount'] as num?)?.toInt() ?? 0,
       sharedCount: (json['sharedCount'] as num?)?.toInt() ?? 0,

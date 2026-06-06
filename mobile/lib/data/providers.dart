@@ -32,7 +32,9 @@ final sessionHolderProvider = NotifierProvider<SessionHolder, UserSession?>(Sess
 
 /// Restores a persisted session once per app start.
 final bootstrapProvider = FutureProvider<UserSession?>((ref) async {
-  final repo = ref.watch(authRepositoryProvider);
+  // Read once — watching [authRepositoryProvider] would re-run bootstrap on every session change
+  // (api client is recreated when the token changes) and trap the user on splash.
+  final repo = ref.read(authRepositoryProvider);
   final restored = await repo.restoreSession();
   if (restored != null) {
     ref.read(sessionHolderProvider.notifier).setSession(restored);

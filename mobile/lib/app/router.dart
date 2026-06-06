@@ -64,6 +64,9 @@ String? _redirectLogic(Ref ref, GoRouterState state) {
       '/onboarding/language',
       '/onboarding/religion',
       '/onboarding/interests',
+      '/home',
+      '/explore',
+      '/profile',
     };
     if (!loadingAllowed.contains(path)) {
       return '/splash';

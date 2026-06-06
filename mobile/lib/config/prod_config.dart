@@ -2,7 +2,7 @@
 library;
 
 /// API root including `/v1` when not overriding `API_BASE` via dart-define.
-const String kProdApiBaseUrl = 'https://dailykatha-backend.onrender.com/v1';
+const String kProdApiBaseUrl = 'https://dailykatha.onrender.com/v1';
 
 const String kProdEnvironmentName = 'production';
 

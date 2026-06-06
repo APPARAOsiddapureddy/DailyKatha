@@ -1,7 +1,7 @@
 enum AppFlavor { development, staging, production }
 
 /// Default Render API (includes `/v1`). Single source of truth — also referenced from scripts/docs.
-const String kDailyKathaProductionApiBase = 'https://dailykatha-backend.onrender.com/v1';
+const String kDailyKathaProductionApiBase = 'https://dailykatha.onrender.com/v1';
 
 /// Build-time flavor (`--dart-define=FLAVOR=staging`).
 abstract final class FlavorConfig {

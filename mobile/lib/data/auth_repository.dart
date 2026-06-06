@@ -210,10 +210,14 @@ class AuthRepository {
     await _authService.updateMe(partial);
     await _authService.updateInterests(interestIds);
     final fresh = await _authService.getMe();
+    final completed = fresh.copyWith(
+      onboardingComplete: true,
+      interestIds: fresh.interestIds.isNotEmpty ? fresh.interestIds : interestIds,
+    );
     final synced = await _persistTokens(
       access: existing.accessToken,
       refresh: existing.refreshToken,
-      profile: fresh,
+      profile: completed,
     );
     return UserSession(
       accessToken: existing.accessToken,
