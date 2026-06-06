@@ -83,6 +83,18 @@ export async function fetchTruecallerUserInfo(accessToken) {
   return payload && typeof payload === 'object' ? payload : {};
 }
 
+export async function fetchTruecallerPhoneNumberDetail({ accessToken }) {
+  const info = await fetchTruecallerUserInfo(accessToken);
+  const phone = info.phone_number ?? info.phone ?? info.mobile ?? null;
+  return {
+    phoneNumber: phone,
+    phone_number: phone,
+    phone,
+    mobile: phone,
+    state: info.phone_number_country_code ?? info.state ?? null,
+  };
+}
+
 export function normalizeTruecallerPhone(rawPhone) {
   return normalizePhone(rawPhone);
 }
