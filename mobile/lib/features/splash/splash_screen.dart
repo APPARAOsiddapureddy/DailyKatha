@@ -23,6 +23,21 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) => _run());
   }
 
+  /// Only navigate to routes GoRouter knows about (strip query params from reminders).
+  String? _normalizePendingRoute(String? raw) {
+    if (raw == null || raw.trim().isEmpty) return null;
+    final path = Uri.tryParse(raw.trim())?.path ?? raw.trim();
+    const allowed = {
+      '/home',
+      '/explore',
+      '/profile',
+      '/feed',
+      '/login',
+      '/onboarding/language',
+    };
+    return allowed.contains(path) ? path : null;
+  }
+
   Future<void> _run() async {
     final sw = Stopwatch()..start();
     await ref.read(bootstrapProvider.future);
@@ -35,7 +50,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     _navigated = true;
 
     // Notification deep-link: if user opened the app from a reminder, route there first.
-    final pending = await ref.read(notificationServiceProvider).consumePendingRoute();
+    final pending = _normalizePendingRoute(
+      await ref.read(notificationServiceProvider).consumePendingRoute(),
+    );
     if (!mounted) return;
     if (pending != null) {
       await ref.read(analyticsProvider).log(

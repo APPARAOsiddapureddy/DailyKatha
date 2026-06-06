@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -115,11 +116,22 @@ final catalogProvider = FutureProvider<List<KathaCard>>((ref) async {
   final useLocalCards = session == null ||
       session.accessToken == 'mock_access' ||
       session.profile.id == 'demo-user';
-  if (useLocalCards) {
+  Future<List<KathaCard>> bundledFallback() async {
     final bundled = await BundledCatalogLoader.loadForContentLanguage(lang);
     final base = bundled.isNotEmpty ? bundled : MockCatalog.cards;
     return [...created, ...base];
   }
-  final remote = await ref.watch(feedRepositoryProvider).loadCards(contentLanguage: lang);
-  return [...created, ...remote];
+
+  if (useLocalCards) {
+    return bundledFallback();
+  }
+
+  try {
+    final remote = await ref.watch(feedRepositoryProvider).loadCards(contentLanguage: lang);
+    if (remote.isNotEmpty) return [...created, ...remote];
+    debugPrint('catalogProvider: remote feed empty — using bundled catalog');
+  } catch (e, st) {
+    debugPrint('catalogProvider: feed failed — using bundled catalog: $e\n$st');
+  }
+  return bundledFallback();
 });
