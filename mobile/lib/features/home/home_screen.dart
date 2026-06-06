@@ -483,6 +483,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               ),
                               label: Text(
                                 l10n.homeShareToStatus,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                softWrap: false,
                                 style: ProtoActionPill.typographyOnly(
                                   context,
                                 ).copyWith(color: AppColors.protoInk),

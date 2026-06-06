@@ -355,43 +355,49 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                         ),
                                       ),
                                       Positioned(
-                                        left: 0,
-                                        right: 0,
+                                        left: 24,
+                                        right: 24,
                                         bottom: 10,
-                                        child: Center(
-                                          child: Material(
-                                            color: Colors.white.withValues(
-                                              alpha: 0.14,
-                                            ),
+                                        child: Material(
+                                          color: Colors.white.withValues(
+                                            alpha: 0.14,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(999),
+                                          child: InkWell(
                                             borderRadius:
                                                 BorderRadius.circular(999),
-                                            child: InkWell(
-                                              borderRadius:
-                                                  BorderRadius.circular(999),
-                                              onTap: _sharing
-                                                  ? null
-                                                  : () => _shareCurrentDirect(
-                                                        lang,
-                                                        c,
-                                                      ),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                  horizontal: 14,
-                                                  vertical: 10,
-                                                ),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    const Icon(
-                                                      Icons.share,
-                                                      size: 18,
-                                                      color: Colors.white,
+                                            onTap: _sharing
+                                                ? null
+                                                : () => _shareCurrentDirect(
+                                                      lang,
+                                                      c,
                                                     ),
-                                                    const SizedBox(width: 8),
-                                                    Text(
-                                                      l10n.shareToWhatsAppStatus,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                horizontal: 14,
+                                                vertical: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  const Icon(
+                                                    Icons.share,
+                                                    size: 18,
+                                                    color: Colors.white,
+                                                  ),
+                                                  const SizedBox(width: 8),
+                                                  Flexible(
+                                                    child: Text(
+                                                      l10n.homeShareToStatus,
+                                                      maxLines: 1,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      softWrap: false,
+                                                      textAlign:
+                                                          TextAlign.center,
                                                       style:
                                                           ProtoActionPill.typographyOnly(
                                                         context,
@@ -399,8 +405,8 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                                         color: Colors.white,
                                                       ),
                                                     ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ),
@@ -591,6 +597,9 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                       ),
                                       label: Text(
                                         'Edit',
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        softWrap: false,
                                         style: tt.titleMedium?.copyWith(
                                           fontWeight: FontWeight.w700,
                                           letterSpacing: -0.1,
@@ -615,6 +624,9 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                       ),
                                       label: Text(
                                         'Save',
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        softWrap: false,
                                         style: tt.titleMedium?.copyWith(
                                           fontWeight: FontWeight.w700,
                                           letterSpacing: -0.1,

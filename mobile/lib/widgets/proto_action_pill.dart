@@ -42,11 +42,16 @@ class ProtoActionPill extends StatelessWidget {
             children: [
               Icon(icon, size: 18, color: AppColors.protoInk),
               const SizedBox(width: 8),
-              Text(
-                label,
-                style: typographyOnly(
-                  context,
-                ).copyWith(color: AppColors.protoInk),
+              Flexible(
+                child: Text(
+                  label,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
+                  style: typographyOnly(
+                    context,
+                  ).copyWith(color: AppColors.protoInk),
+                ),
               ),
             ],
           ),
