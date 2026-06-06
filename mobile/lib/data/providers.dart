@@ -22,6 +22,7 @@ import 'local/mock_catalog.dart';
 import 'local/user_created_cards_store.dart';
 import 'local/user_engagement_store.dart';
 import 'session_holder.dart';
+import 'session_logout.dart';
 
 final secureStorageProvider = Provider<FlutterSecureStorage>((ref) {
   return const FlutterSecureStorage(
@@ -48,13 +49,18 @@ final apiClientProvider = Provider<ApiClient>((ref) {
   return ApiClient(
     baseUri: AppConfig.apiBaseUri,
     tokenResolver: () => ref.read(sessionHolderProvider)?.accessToken,
-    langResolver: () => effectiveContentLanguage(ref.watch(sessionHolderProvider)),
-    onUnauthorized: () async {
-      // IndexedStack builds all tabs; catalog can briefly see null session → 401 → do not wipe testing sessions.
-      final s = ref.read(sessionHolderProvider);
-      if (s?.accessToken == 'mock_access' || s?.profile.id == 'demo-user') return;
-      await ref.read(secureStorageProvider).deleteAll();
-      ref.read(sessionHolderProvider.notifier).clear();
+    // Read (not watch) — watching here recreates Dio on every session change and races IndexedStack tabs.
+    langResolver: () => effectiveContentLanguage(ref.read(sessionHolderProvider)),
+    onUnauthorized: (path) async {
+      if (isRecoverableUnauthorizedPath(path)) return;
+      ref.read(sessionLogoutCoordinatorProvider).scheduleLogout(() async {
+        final s = ref.read(sessionHolderProvider);
+        if (s == null || s.accessToken == 'mock_access' || s.profile.id == 'demo-user') {
+          return;
+        }
+        await ref.read(secureStorageProvider).deleteAll();
+        ref.read(sessionHolderProvider.notifier).clear();
+      });
     },
   );
 });

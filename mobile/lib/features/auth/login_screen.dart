@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import '../../data/providers.dart';
 import '../../models/otp_route_args.dart';
 import '../../theme/app_colors.dart';
+import '../../utils/safe_nav.dart';
 import '../../widgets/brand_mark.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -69,9 +70,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       ref.read(sessionHolderProvider.notifier).setSession(session);
       if (!mounted) return;
       if (session.profile.onboardingComplete) {
-        context.go('/home');
+        safeGo(context, '/home');
       } else {
-        context.go('/onboarding/language');
+        safeGo(context, '/onboarding/language');
       }
     } catch (e) {
       if (!mounted) return;

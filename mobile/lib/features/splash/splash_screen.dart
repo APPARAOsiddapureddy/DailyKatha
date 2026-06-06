@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
 import '../../observability/analytics/analytics.dart';
 import '../../observability/analytics/analytics_provider.dart';
 import '../../theme/app_colors.dart';
+import '../../utils/safe_nav.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -59,21 +59,19 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
         AEvents.notificationOpened,
         props: {'route': pending},
       );
-      // ignore: use_build_context_synchronously
-      context.go(pending);
+      if (!mounted) return;
+      safeGo(context, pending);
       return;
     }
 
     final session = ref.read(sessionHolderProvider);
+    if (!mounted) return;
     if (session?.profile.onboardingComplete == true) {
-      // ignore: use_build_context_synchronously
-      context.go('/home');
+      safeGo(context, '/home');
     } else if (session != null) {
-      // ignore: use_build_context_synchronously
-      context.go('/onboarding/language');
+      safeGo(context, '/onboarding/language');
     } else {
-      // ignore: use_build_context_synchronously
-      context.go('/login');
+      safeGo(context, '/login');
     }
   }
 

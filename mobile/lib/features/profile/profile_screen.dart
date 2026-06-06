@@ -11,6 +11,7 @@ import '../../models/feed_route_args.dart';
 import '../../models/user_profile.dart';
 import '../../services/user_display_name.dart';
 import '../../theme/app_colors.dart';
+import '../../utils/safe_nav.dart';
 import '../../widgets/app_background.dart';
 import '../../widgets/display_name_prompt_dialog.dart';
 
@@ -28,7 +29,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     await ref.read(authRepositoryProvider).signOut();
     ref.read(sessionHolderProvider.notifier).clear();
     if (!mounted) return;
-    context.go('/login');
+    safeGo(context, '/login');
   }
 
   Future<void> _editDisplayName() async {

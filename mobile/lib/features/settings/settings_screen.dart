@@ -5,6 +5,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/compliance_links.dart';
+import '../../utils/safe_nav.dart';
 import '../../data/providers.dart';
 import '../../theme/app_colors.dart';
 
@@ -69,7 +70,7 @@ class SettingsScreen extends ConsumerWidget {
       await ref.read(authRepositoryProvider).deleteAccount();
       ref.read(sessionHolderProvider.notifier).clear();
       if (!context.mounted) return;
-      context.go('/login');
+      safeGo(context, '/login');
     } catch (e) {
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(

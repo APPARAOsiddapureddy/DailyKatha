@@ -8,6 +8,7 @@ import '../../l10n/app_localizations.dart';
 import '../../l10n/genre_localizer.dart';
 import '../../models/onboarding_args.dart';
 import '../../theme/app_colors.dart';
+import '../../utils/safe_nav.dart';
 
 /// Category fills aligned with `tokens.js` `DK.cat` for the prototype grid.
 Color _interestAccentBg(String id) {
@@ -58,7 +59,7 @@ class _InterestsScreenState extends ConsumerState<InterestsScreen> {
         );
     ref.read(sessionHolderProvider.notifier).setSession(session);
     if (!mounted) return;
-    context.go('/home');
+    safeGo(context, '/home');
   }
 
   @override

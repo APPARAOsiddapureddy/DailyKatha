@@ -7,6 +7,7 @@ import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/otp_route_args.dart';
 import '../../theme/app_colors.dart';
+import '../../utils/safe_nav.dart';
 
 class OtpScreen extends ConsumerStatefulWidget {
   const OtpScreen({super.key, required this.args});
@@ -62,10 +63,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
 
   void _goNext(bool onboardingComplete) {
     final target = onboardingComplete ? '/home' : '/onboarding/language';
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return;
-      context.go(target);
-    });
+    safeGo(context, target);
   }
 
   Future<void> _verify() async {

@@ -209,6 +209,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen<AsyncValue<List<KathaCard>>>(catalogProvider, (previous, next) {
+      next.whenData(_maybePromptName);
+    });
+
     final session = ref.watch(sessionHolderProvider);
     final lang = effectiveContentLanguage(session);
     final userInterestIds = session?.profile.interestIds ?? const <String>[];
@@ -240,7 +244,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               if (cards.isEmpty) {
                 return Center(child: Text(l10n.noCards));
               }
-              _maybePromptName(cards);
               final affinity =
                   ref.watch(userEngagementProvider).valueOrNull?.categoryAffinity ??
                   {};

@@ -56,9 +56,12 @@ class AuthRepository {
         final synced = UserDisplayName.withNativeSynced(fresh);
         await _storage.write(key: _kProfile, value: jsonEncode(_profileToJson(synced)));
         return UserSession(accessToken: access, refreshToken: effectiveRefresh, profile: synced);
-      } on DioException {
-        await _storage.deleteAll();
-        return null;
+      } on DioException catch (e) {
+        // Keep local session on transient auth/network errors — wiping here races splash navigation.
+        if (e.response?.statusCode == 401) {
+          return UserSession(accessToken: access, refreshToken: effectiveRefresh, profile: profile);
+        }
+        return UserSession(accessToken: access, refreshToken: effectiveRefresh, profile: profile);
       } on TimeoutException {
         // Backend is slow/unreachable: keep local session so the app can still boot
         // (and let the user proceed via demo/offline flows).

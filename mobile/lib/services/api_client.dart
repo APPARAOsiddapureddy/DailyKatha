@@ -7,7 +7,7 @@ import '../core/app_config.dart';
 
 typedef TokenResolver = String? Function();
 typedef LangResolver = String? Function();
-typedef UnauthorizedHandler = Future<void> Function();
+typedef UnauthorizedHandler = Future<void> Function(String path);
 
 /// HTTP client for Daily Katha REST API. [baseUri] must include `/v1` when using production backend.
 @immutable
@@ -51,7 +51,7 @@ class ApiClient {
             final path = e.requestOptions.path;
             if (!path.startsWith('/auth/') && _onUnauthorized != null) {
               try {
-                await _onUnauthorized();
+                await _onUnauthorized(path);
               } catch (err, st) {
                 debugPrint('onUnauthorized failed: $err\n$st');
               }

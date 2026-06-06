@@ -87,10 +87,12 @@ Future<void> showDisplayNamePromptIfNeeded(
               await DisplayNamePromptStore.markCompleted();
               if (trimmed.isEmpty) return;
               final updated = session.profile.copyWith(displayName: trimmed);
-              final next = await ref
-                  .read(authRepositoryProvider)
-                  .applyProfile(updated);
-              ref.read(sessionHolderProvider.notifier).setSession(next);
+              try {
+                final next = await ref.read(authRepositoryProvider).applyProfile(updated);
+                ref.read(sessionHolderProvider.notifier).setSession(next);
+              } catch (_) {
+                // Profile save is best-effort; avoid crashing if network fails after dialog closes.
+              }
             },
             child: Text(l10n.namePromptSave),
           ),
@@ -166,7 +168,9 @@ Future<void> showDisplayNameEditor(BuildContext context, WidgetRef ref) async {
   controller.dispose();
   if (saved != true || trimmed.isEmpty) return;
 
-  final updated = session.profile.copyWith(displayName: trimmed);
-  final next = await ref.read(authRepositoryProvider).applyProfile(updated);
-  ref.read(sessionHolderProvider.notifier).setSession(next);
+  try {
+    final updated = session.profile.copyWith(displayName: trimmed);
+    final next = await ref.read(authRepositoryProvider).applyProfile(updated);
+    ref.read(sessionHolderProvider.notifier).setSession(next);
+  } catch (_) {}
 }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -48,7 +50,20 @@ final _routerRefreshProvider = Provider<RouterRefreshNotifier>((ref) {
 
 /// Bridges Riverpod state to [GoRouter.refreshListenable].
 class RouterRefreshNotifier extends ChangeNotifier {
-  void refresh() => notifyListeners();
+  Timer? _debounce;
+
+  void refresh() {
+    _debounce?.cancel();
+    _debounce = Timer(const Duration(milliseconds: 16), () {
+      if (hasListeners) notifyListeners();
+    });
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    super.dispose();
+  }
 }
 
 String? _redirectLogic(Ref ref, GoRouterState state) {
