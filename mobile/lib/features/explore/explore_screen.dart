@@ -4,64 +4,35 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/content_language.dart';
-import '../../data/local/mock_catalog.dart';
+import '../../data/local/story_pack_catalog.dart';
 import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
-import '../../l10n/genre_localizer.dart';
 import '../../models/feed_route_args.dart';
 import '../../models/katha_card.dart';
 import '../../theme/app_colors.dart';
-import '../../theme/proto_category_palette.dart';
 import '../../utils/daily_card_picker.dart';
 import '../../utils/error_handler.dart';
 import '../../utils/explore_search_resolver.dart';
 import '../../widgets/app_background.dart';
+import '../../widgets/story_pack_tile.dart';
 
 /// Mirrors `screens-main.jsx` ExploreScreen — single scroll, no tabs.
 /// Catalog text/images come from the API; layout/tokens match the web prototype.
 class ExploreScreen extends ConsumerWidget {
   const ExploreScreen({super.key});
 
-  static void _openInterest(
-    BuildContext context,
-    List<KathaCard> all,
-    String interestId,
-  ) {
-    final pick = DailyCardPicker.pickForCategory(all, interestId);
-    final ix = all.indexWhere((c) => c.id == pick.id);
-    context.push(
-      '/feed',
-      extra: FeedRouteArgs(
-        initialIndex: ix >= 0 ? ix : 0,
-        categoryFilter: {interestId},
-      ),
-    );
-  }
-
-  static void _openFestivalFeatured(BuildContext context, List<KathaCard> all) {
-    final pick = DailyCardPicker.pickForFestival(all);
-    final ix = all.indexWhere((c) => c.id == pick.id);
-    context.push(
-      '/feed',
-      extra: FeedRouteArgs(
-        initialIndex: ix >= 0 ? ix : 0,
-        categoryFilter: {'festival'},
-      ),
-    );
-  }
-
   static void _openPack(
     BuildContext context,
-    List<KathaCard> cards,
-    String category,
+    List<KathaCard> all,
+    String packId,
   ) {
-    final pick = DailyCardPicker.pickForCategory(cards, category);
-    final ix = cards.indexWhere((c) => c.id == pick.id);
+    final pick = DailyCardPicker.pickForCategory(all, packId);
+    final ix = all.indexWhere((c) => c.id == pick.id);
     context.push(
       '/feed',
       extra: FeedRouteArgs(
         initialIndex: ix >= 0 ? ix : 0,
-        categoryFilter: {category},
+        categoryFilter: {packId},
       ),
     );
   }
@@ -94,9 +65,9 @@ class ExploreScreen extends ConsumerWidget {
               ),
             ),
             data: (cards) {
-              final l10n = AppLocalizations.of(context);
               final tt = Theme.of(context).textTheme;
-              final interests = MockCatalog.interests.take(9).toList();
+              const featuredPacks = StoryPackCatalog.featuredPacks;
+              const allPacks = StoryPackCatalog.packs;
               return CustomScrollView(
                 slivers: [
                   SliverPadding(
@@ -106,12 +77,12 @@ class ExploreScreen extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            l10n.exploreHeadline,
+                            'Browse the story library',
                             style: tt.headlineMedium?.copyWith(fontSize: 30),
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            l10n.exploreSubtitle,
+                            'Choose a devotional or ancient-history pack and open any card to continue the journey.',
                             style: tt.bodyLarge?.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -135,7 +106,8 @@ class ExploreScreen extends ConsumerWidget {
                         color: Colors.transparent,
                         child: InkWell(
                           borderRadius: BorderRadius.circular(22),
-                          onTap: () => _openFestivalFeatured(context, cards),
+                          onTap: () =>
+                              _openPack(context, cards, featuredPacks.first.id),
                           child: Ink(
                             height: 168,
                             decoration: BoxDecoration(
@@ -144,8 +116,8 @@ class ExploreScreen extends ConsumerWidget {
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
                                 colors: [
+                                  Color(0xFF463520),
                                   Color(0xFF7E1F0E),
-                                  Color(0xFFB33A20),
                                   Color(0xFFE89B2C),
                                 ],
                                 stops: [0.0, 0.6, 1.0],
@@ -199,7 +171,7 @@ class ExploreScreen extends ConsumerWidget {
                                         ),
                                       ),
                                       child: Text(
-                                        l10n.exploreFestivalLive,
+                                        'Start Mahabharata',
                                         style: tt.labelLarge?.copyWith(
                                           fontSize: 10,
                                           letterSpacing: 2,
@@ -212,7 +184,7 @@ class ExploreScreen extends ConsumerWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          l10n.exploreFestivalTitle,
+                                          '100-day journey',
                                           style: tt.headlineSmall?.copyWith(
                                             fontSize: 28,
                                             height: 1.1,
@@ -221,7 +193,7 @@ class ExploreScreen extends ConsumerWidget {
                                         ),
                                         const SizedBox(height: 6),
                                         Text(
-                                          l10n.exploreFestivalBody,
+                                          'Open the first card and scroll through the full path at your own pace.',
                                           style: tt.bodyMedium?.copyWith(
                                             fontSize: 13,
                                             fontWeight: FontWeight.w500,
@@ -243,8 +215,8 @@ class ExploreScreen extends ConsumerWidget {
                   ),
                   SliverToBoxAdapter(
                     child: _SectionHead(
-                      title: l10n.exploreByInterest,
-                      sub: l10n.exploreByInterestSub,
+                      title: 'Featured story packs',
+                      sub: 'Five packs first, then the full library below',
                     ),
                   ),
                   SliverPadding(
@@ -252,87 +224,47 @@ class ExploreScreen extends ConsumerWidget {
                     sliver: SliverGrid(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                            childAspectRatio: 1,
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 12,
+                            crossAxisSpacing: 12,
+                            childAspectRatio: 0.96,
                           ),
                       delegate: SliverChildBuilderDelegate((context, index) {
-                        final item = interests[index];
-                        final bg = ProtoCategoryPalette.bg(item.id);
-                        return Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(16),
-                            onTap: () => _openInterest(context, cards, item.id),
-                            child: Ink(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                color: bg,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: bg.withValues(alpha: 0.25),
-                                    blurRadius: 10,
-                                    offset: const Offset(0, 4),
-                                  ),
-                                ],
-                              ),
-                              padding: const EdgeInsets.all(12),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    item.emoji,
-                                    style: const TextStyle(fontSize: 22),
-                                  ),
-                                  Text(
-                                    GenreLocalizer.getName(item.id, lang),
-                                    style: tt.titleMedium?.copyWith(
-                                      fontSize: 13,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                        final pack = featuredPacks[index];
+                        return StoryPackTile(
+                          pack: pack,
+                          contentLanguage: lang,
+                          compact: false,
+                          onTap: () => _openPack(context, cards, pack.id),
                         );
-                      }, childCount: interests.length),
+                      }, childCount: featuredPacks.length),
                     ),
                   ),
                   SliverToBoxAdapter(
                     child: _SectionHead(
-                      title: l10n.exploreCuratedPacks,
-                      sub: l10n.exploreCuratedPacksSub,
+                      title: 'All story packs',
+                      sub: 'Tap any pack to open its full card stream',
                     ),
                   ),
                   SliverPadding(
                     padding: const EdgeInsets.fromLTRB(20, 4, 20, 110),
-                    sliver: SliverList(
-                      delegate: SliverChildListDelegate([
-                        _CuratedPackRow(
-                          paletteBg: ProtoCategoryPalette.bg('motivation'),
-                          title: l10n.explorePack1Title,
-                          sub: l10n.explorePack1Sub,
-                          onTap: () => _openPack(context, cards, 'motivation'),
-                        ),
-                        const SizedBox(height: 10),
-                        _CuratedPackRow(
-                          paletteBg: ProtoCategoryPalette.bg('family'),
-                          title: l10n.explorePack2Title,
-                          sub: l10n.explorePack2Sub,
-                          onTap: () => _openPack(context, cards, 'family'),
-                        ),
-                        const SizedBox(height: 10),
-                        _CuratedPackRow(
-                          paletteBg: ProtoCategoryPalette.bg('goodnight'),
-                          title: l10n.explorePack3Title,
-                          sub: l10n.explorePack3Sub,
-                          onTap: () => _openPack(context, cards, 'goodnight'),
-                        ),
-                      ]),
+                    sliver: SliverGrid(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 12,
+                            crossAxisSpacing: 12,
+                            childAspectRatio: 0.92,
+                          ),
+                      delegate: SliverChildBuilderDelegate((context, index) {
+                        final pack = allPacks[index];
+                        return StoryPackTile(
+                          pack: pack,
+                          contentLanguage: lang,
+                          compact: true,
+                          onTap: () => _openPack(context, cards, pack.id),
+                        );
+                      }, childCount: allPacks.length),
                     ),
                   ),
                 ],
@@ -370,12 +302,12 @@ class _ExploreSearchFieldState extends ConsumerState<_ExploreSearchField> {
     if (!mounted) return;
     final l10n = AppLocalizations.of(context);
     if (id == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(l10n.exploreSearchNoMatch)),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(l10n.exploreSearchNoMatch)));
       return;
     }
-    ExploreScreen._openInterest(context, widget.cards, id);
+    ExploreScreen._openPack(context, widget.cards, id);
   }
 
   @override
@@ -466,100 +398,6 @@ class _SectionHead extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _CuratedPackRow extends StatelessWidget {
-  const _CuratedPackRow({
-    required this.paletteBg,
-    required this.title,
-    required this.sub,
-    required this.onTap,
-  });
-
-  final Color paletteBg;
-  final String title;
-  final String sub;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final tt = Theme.of(context).textTheme;
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(16),
-        onTap: onTap,
-        child: Ink(
-          decoration: BoxDecoration(
-            color: AppColors.protoSurface,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppColors.protoBorder),
-          ),
-          padding: const EdgeInsets.all(12),
-          child: Row(
-            children: [
-              Container(
-                width: 56,
-                height: 76,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: paletteBg,
-                ),
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    DecoratedBox(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.transparent,
-                            Colors.black.withValues(alpha: 0.4),
-                          ],
-                          stops: const [0.5, 1],
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 5,
-                      left: 7,
-                      right: 7,
-                      child: Text(
-                        'Aa',
-                        style: tt.bodySmall?.copyWith(
-                          fontSize: 9,
-                          color: Colors.white,
-                          height: 1.1,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title, style: tt.titleMedium?.copyWith(fontSize: 15)),
-                    const SizedBox(height: 3),
-                    Text(
-                      sub,
-                      style: tt.bodySmall?.copyWith(color: AppColors.protoInk3),
-                    ),
-                  ],
-                ),
-              ),
-              Icon(Icons.chevron_right, size: 18, color: AppColors.protoInk4),
-            ],
-          ),
-        ),
       ),
     );
   }

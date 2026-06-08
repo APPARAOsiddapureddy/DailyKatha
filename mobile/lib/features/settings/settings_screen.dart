@@ -5,9 +5,9 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/compliance_links.dart';
-import '../../utils/safe_nav.dart';
 import '../../data/providers.dart';
 import '../../theme/app_colors.dart';
+import '../../utils/safe_nav.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -15,9 +15,9 @@ class SettingsScreen extends ConsumerWidget {
   Future<void> _openExternal(BuildContext context, Uri uri) async {
     final ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
     if (!ok && context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Could not open link')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Could not open link')));
     }
   }
 
@@ -33,9 +33,7 @@ class SettingsScreen extends ConsumerWidget {
     final uri = Uri(
       scheme: 'mailto',
       path: ComplianceLinks.supportEmail,
-      queryParameters: {
-        'subject': 'Daily Katha support',
-      },
+      queryParameters: {'subject': 'Daily Katha support'},
     );
     await _openExternal(context, uri);
   }
@@ -57,7 +55,9 @@ class SettingsScreen extends ConsumerWidget {
             ),
             FilledButton(
               onPressed: () => Navigator.pop(ctx, true),
-              style: FilledButton.styleFrom(backgroundColor: Colors.red.shade700),
+              style: FilledButton.styleFrom(
+                backgroundColor: Colors.red.shade700,
+              ),
               child: const Text('Delete'),
             ),
           ],
@@ -73,9 +73,9 @@ class SettingsScreen extends ConsumerWidget {
       safeGo(context, '/login');
     } catch (e) {
       if (!context.mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Could not delete account: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Could not delete account: $e')));
     }
   }
 
@@ -96,9 +96,14 @@ class SettingsScreen extends ConsumerWidget {
             child: Column(
               children: [
                 ListTile(
-                  leading: const Icon(Icons.notifications_none, color: AppColors.protoInk),
+                  leading: const Icon(
+                    Icons.notifications_none,
+                    color: AppColors.protoInk,
+                  ),
                   title: const Text('Daily reminder'),
-                  subtitle: const Text('Set a time to get a daily notification'),
+                  subtitle: const Text(
+                    'Set a time to get a daily notification',
+                  ),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => context.push('/settings/reminder'),
                 ),
@@ -118,15 +123,23 @@ class SettingsScreen extends ConsumerWidget {
             child: Column(
               children: [
                 ListTile(
-                  leading: const Icon(Icons.privacy_tip_outlined, color: AppColors.protoInk),
+                  leading: const Icon(
+                    Icons.privacy_tip_outlined,
+                    color: AppColors.protoInk,
+                  ),
                   title: const Text('Privacy policy'),
-                  subtitle: const Text('How Daily Katha handles phone and profile data'),
+                  subtitle: const Text(
+                    'How Daily Katha handles phone and profile data',
+                  ),
                   trailing: const Icon(Icons.open_in_new, size: 18),
                   onTap: () => _openPrivacyPolicy(context),
                 ),
                 const Divider(height: 1, color: AppColors.protoDivider),
                 ListTile(
-                  leading: const Icon(Icons.description_outlined, color: AppColors.protoInk),
+                  leading: const Icon(
+                    Icons.description_outlined,
+                    color: AppColors.protoInk,
+                  ),
                   title: const Text('Terms of service'),
                   subtitle: const Text('Usage rules and content terms'),
                   trailing: const Icon(Icons.open_in_new, size: 18),
@@ -134,7 +147,10 @@ class SettingsScreen extends ConsumerWidget {
                 ),
                 const Divider(height: 1, color: AppColors.protoDivider),
                 ListTile(
-                  leading: const Icon(Icons.help_outline, color: AppColors.protoInk),
+                  leading: const Icon(
+                    Icons.help_outline,
+                    color: AppColors.protoInk,
+                  ),
                   title: const Text('Support'),
                   subtitle: Text(ComplianceLinks.supportEmail),
                   trailing: const Icon(Icons.email_outlined, size: 18),
@@ -153,7 +169,9 @@ class SettingsScreen extends ConsumerWidget {
                     'Delete account',
                     style: TextStyle(color: Colors.red),
                   ),
-                  subtitle: const Text('Permanently remove your Daily Katha account'),
+                  subtitle: const Text(
+                    'Permanently remove your Daily Katha account',
+                  ),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => _deleteAccount(context, ref),
                 ),
@@ -203,9 +221,9 @@ class _DisclosureCard extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: DefaultTextStyle(
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                color: AppColors.protoInk3,
-                height: 1.4,
-              ),
+            color: AppColors.protoInk3,
+            height: 1.4,
+          ),
           child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -218,13 +236,21 @@ class _DisclosureCard extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              Text('• Notifications: daily reminder alerts and system notifications you enable.'),
+              Text(
+                '• Notifications: daily reminder alerts and system notifications you enable.',
+              ),
               SizedBox(height: 6),
-              Text('• Photos / media: save cards to the gallery and pick images for edits.'),
+              Text(
+                '• Photos / media: save cards to the gallery and pick images for edits.',
+              ),
               SizedBox(height: 6),
-              Text('• Camera: optional when creating cards with your own photos.'),
+              Text(
+                '• Camera: optional when creating cards with your own photos.',
+              ),
               SizedBox(height: 6),
-              Text('• Network: fetch login, content, reminders, and updates from the server.'),
+              Text(
+                '• Network: fetch login, content, reminders, and updates from the server.',
+              ),
             ],
           ),
         ),

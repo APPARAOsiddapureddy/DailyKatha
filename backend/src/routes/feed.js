@@ -6,6 +6,7 @@ import { buildRecommendationContext } from '../recommendations/context.js';
 import { normalizeTimezone } from '../recommendations/timeAndFestivals.js';
 import { getCachedFeed, setCachedFeed } from '../recommendations/cache.js';
 import { getUserTodaysPicks } from '../services/todaysPicks.js';
+import { STORY_PACK_IDS } from '../constants/storyPacks.js';
 
 const router = Router();
 
@@ -40,14 +41,7 @@ router.get('/', async (req, res, next) => {
     const section = req.query.section || null;
 
     const interests = await getUserInterests(userId);
-    if (interests.length === 0) {
-      return res.json({
-        cards: [],
-        nextPage: null,
-        total: 0,
-        message: 'No interests selected. Please update your profile.',
-      });
-    }
+    const packs = interests.length > 0 ? interests : STORY_PACK_IDS;
 
     const timezone = await resolveTimezone(userId, req);
     const cacheKey = `feed:${userId}:${page}:${limit}:${section || 'all'}:${timezone}`;
@@ -57,7 +51,7 @@ router.get('/', async (req, res, next) => {
     const offset = (page - 1) * limit;
     const { cards, total, recommendationContext } = await runRecommendationEngine({
       userId,
-      interests,
+      interests: packs,
       lang,
       section,
       limit,
@@ -86,8 +80,7 @@ router.get('/morning', async (req, res, next) => {
     const userId = req.user.id;
     const lang = req.lang;
     const interests = await getUserInterests(userId);
-
-    const morningInterests = interests.includes('goodmorning') ? interests : ['goodmorning', ...interests];
+    const morningInterests = interests.length > 0 ? interests : STORY_PACK_IDS;
 
     const result = await pool.query(
       `SELECT * FROM cards
@@ -140,9 +133,7 @@ router.get('/explore', async (req, res, next) => {
     const lang = req.lang;
     const category = req.query.category || null;
     const interests = await getUserInterests(userId);
-    if (interests.length === 0 && !category) return res.json({ cards: [], section: 'trending', filteredBy: [] });
-
-    const filterCategories = category ? [category] : interests;
+    const filterCategories = category ? [category] : (interests.length > 0 ? interests : STORY_PACK_IDS);
 
     const cacheKey = `explore:${userId}:${category || 'all'}`;
     const cached = await getCachedFeed(cacheKey);

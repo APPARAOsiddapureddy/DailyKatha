@@ -88,11 +88,9 @@ class UserProfile {
     );
   }
 
-  /// Backend has no explicit flag; treat onboarding as done once religion + interests exist.
+  /// Backend uses an explicit `onboarding_complete` flag.
   static bool inferOnboardingComplete(Map<String, dynamic> json, List<String> interestIds) {
-    if (json['onboardingComplete'] == true) return true;
-    final religionId = (json['religionId'] ?? json['religion_id'])?.toString();
-    return religionId != null && religionId.isNotEmpty && interestIds.isNotEmpty;
+    return json['onboardingComplete'] == true || json['onboarding_complete'] == true;
   }
 
   /// REST `/v1/users/me` and auth verify `user` object.
@@ -138,6 +136,7 @@ class UserProfile {
       'name': displayName,
       'contentLanguage': contentLanguage,
       'religionId': religionId,
+      'onboardingComplete': onboardingComplete,
     };
   }
 }

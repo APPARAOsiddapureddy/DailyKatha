@@ -15,9 +15,7 @@ import '../features/explore/explore_screen.dart';
 import '../features/feed/feed_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/home/section_preview_screen.dart';
-import '../features/onboarding/interests_screen.dart';
 import '../features/onboarding/language_screen.dart';
-import '../features/onboarding/religion_screen.dart';
 import '../features/profile/edit_interests_screen.dart';
 import '../features/profile/profile_screen.dart';
 import '../features/settings/daily_reminder_screen.dart';
@@ -26,7 +24,6 @@ import '../features/splash/splash_screen.dart';
 import '../features/today_picks/today_picks_screen.dart';
 import '../models/card_editor_args.dart';
 import '../models/feed_route_args.dart';
-import '../models/onboarding_args.dart';
 import '../models/otp_route_args.dart';
 import '../models/section_preview_args.dart';
 import '../models/user_profile.dart';
@@ -42,7 +39,8 @@ final _routerRefreshProvider = Provider<RouterRefreshNotifier>((ref) {
   );
   ref.listen<AsyncValue<UserSession?>>(
     bootstrapProvider,
-    (AsyncValue<UserSession?>? previous, AsyncValue<UserSession?> next) => notifier.refresh(),
+    (AsyncValue<UserSession?>? previous, AsyncValue<UserSession?> next) =>
+        notifier.refresh(),
   );
   ref.onDispose(notifier.dispose);
   return notifier;
@@ -77,8 +75,6 @@ String? _redirectLogic(Ref ref, GoRouterState state) {
       '/login',
       '/otp',
       '/onboarding/language',
-      '/onboarding/religion',
-      '/onboarding/interests',
       '/home',
       '/explore',
       '/profile',
@@ -93,11 +89,7 @@ String? _redirectLogic(Ref ref, GoRouterState state) {
   final done = session?.profile.onboardingComplete ?? false;
   final isAdmin = session?.profile.isAdmin ?? false;
 
-  const onboardingPaths = <String>{
-    '/onboarding/language',
-    '/onboarding/religion',
-    '/onboarding/interests',
-  };
+  const onboardingPaths = <String>{'/onboarding/language'};
 
   if (path == '/login' || path == '/otp') {
     return isAuth ? (done ? '/home' : '/onboarding/language') : null;
@@ -119,7 +111,14 @@ String? _redirectLogic(Ref ref, GoRouterState state) {
     if (!isAdmin) return '/home';
   }
 
-  if (!isAuth && {'/home', '/explore', '/profile', '/feed', '/onboarding/language', '/onboarding/religion', '/onboarding/interests'}.contains(path)) {
+  if (!isAuth &&
+      {
+        '/home',
+        '/explore',
+        '/profile',
+        '/feed',
+        '/onboarding/language',
+      }.contains(path)) {
     return '/login';
   }
 
@@ -165,10 +164,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: '/splash',
         builder: (context, state) => const SplashScreen(),
       ),
-      GoRoute(
-        path: '/login',
-        builder: (context, state) => const LoginScreen(),
-      ),
+      GoRoute(path: '/login', builder: (context, state) => const LoginScreen()),
       GoRoute(
         path: '/otp',
         builder: (context, state) {
@@ -196,20 +192,6 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const LanguageScreen(),
       ),
       GoRoute(
-        path: '/onboarding/religion',
-        builder: (context, state) {
-          final lang = state.extra as String? ?? 'en';
-          return ReligionScreen(uiLanguage: lang);
-        },
-      ),
-      GoRoute(
-        path: '/onboarding/interests',
-        builder: (context, state) {
-          final args = state.extra as OnboardingArgs? ?? const OnboardingArgs(contentLanguage: 'en');
-          return InterestsScreen(args: args);
-        },
-      ),
-      GoRoute(
         parentNavigatorKey: _rootNavigatorKey,
         path: '/create',
         builder: (context, state) => const CreateCardScreen(),
@@ -223,7 +205,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
             routes: [
               GoRoute(
                 path: '/home',
-                pageBuilder: (context, state) => const NoTransitionPage(child: HomeScreen()),
+                pageBuilder: (context, state) =>
+                    const NoTransitionPage(child: HomeScreen()),
               ),
             ],
           ),
@@ -231,7 +214,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
             routes: [
               GoRoute(
                 path: '/explore',
-                pageBuilder: (context, state) => const NoTransitionPage(child: ExploreScreen()),
+                pageBuilder: (context, state) =>
+                    const NoTransitionPage(child: ExploreScreen()),
               ),
             ],
           ),
@@ -239,7 +223,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
             routes: [
               GoRoute(
                 path: '/profile',
-                pageBuilder: (context, state) => const NoTransitionPage(child: ProfileScreen()),
+                pageBuilder: (context, state) =>
+                    const NoTransitionPage(child: ProfileScreen()),
               ),
             ],
           ),
@@ -250,7 +235,9 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: '/feed',
         builder: (context, state) {
           final ex = state.extra;
-          final args = ex is FeedRouteArgs ? ex : FeedRouteArgs(initialIndex: ex is int ? ex : 0);
+          final args = ex is FeedRouteArgs
+              ? ex
+              : FeedRouteArgs(initialIndex: ex is int ? ex : 0);
           return FeedScreen(args: args);
         },
       ),
@@ -267,8 +254,16 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: '/edit',
         builder: (context, state) {
           final args = state.extra as CardEditorArgs;
-          return CardEditorScreen(args: args, shareService: ref.read(shareServiceProvider));
+          return CardEditorScreen(
+            args: args,
+            shareService: ref.read(shareServiceProvider),
+          );
         },
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: '/profile/story-packs',
+        builder: (context, state) => const EditInterestsScreen(),
       ),
       GoRoute(
         parentNavigatorKey: _rootNavigatorKey,

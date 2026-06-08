@@ -8,6 +8,7 @@ import {
   applyContextualLead,
   applyLikedCategoryLead,
 } from './context.js';
+import { STORY_PACK_IDS } from '../constants/storyPacks.js';
 
 export async function runRecommendationEngine({
   userId,
@@ -46,7 +47,11 @@ export async function runRecommendationEngine({
     likedCategoryNorm[cat] = Math.min(1, n / maxCatLikes);
   }
 
-  const candidateCategories = expandCandidateCategories(interests, context, dominantLikedCategories);
+  const candidateCategories = expandCandidateCategories(
+    interests.length > 0 ? interests : STORY_PACK_IDS,
+    context,
+    dominantLikedCategories,
+  );
 
   const interactionCount = await pool.query('SELECT COUNT(*) FROM interactions WHERE user_id = $1', [userId]);
   const isColdStart = parseInt(interactionCount.rows[0].count, 10) < 5;

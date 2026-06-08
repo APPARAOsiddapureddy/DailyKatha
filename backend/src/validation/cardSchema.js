@@ -1,9 +1,11 @@
 import { z } from 'zod';
+import { STORY_PACK_IDS } from '../constants/storyPacks.js';
 
 export const LANGS = ['te', 'hi', 'ta', 'kn', 'ml', 'en'];
 export const MOODS = ['warm', 'devotional', 'bold', 'festive', 'calm', 'romantic', 'cool'];
 export const SECTIONS = ['morning', 'trending', 'festival', 'interests', 'evening'];
 export const CATEGORIES = [
+  ...STORY_PACK_IDS,
   'goodmorning',
   'goodnight',
   'love',
@@ -78,4 +80,3 @@ export function validateAllCards(cards) {
   }
   return { valid, invalid };
 }
-

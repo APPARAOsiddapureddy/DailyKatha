@@ -178,7 +178,7 @@ class AuthRepository {
   Future<UserSession> completeOnboardingOnServer({
     required String contentLanguage,
     String? religionId,
-    required List<String> interestIds,
+    List<String> interestIds = const [],
   }) async {
     final existing = await restoreSession();
     if (existing == null) {
@@ -211,7 +211,9 @@ class AuthRepository {
       onboardingComplete: true,
     );
     await _authService.updateMe(partial);
-    await _authService.updateInterests(interestIds);
+    if (interestIds.isNotEmpty) {
+      await _authService.updateInterests(interestIds);
+    }
     final fresh = await _authService.getMe();
     final completed = fresh.copyWith(
       onboardingComplete: true,

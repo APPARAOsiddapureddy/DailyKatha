@@ -6,12 +6,11 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/content_language.dart';
-import '../../data/local/mock_catalog.dart';
+import '../../data/local/story_pack_catalog.dart';
 import '../../data/local/user_engagement_store.dart';
 import '../../data/providers.dart';
 import '../../data/user_stats_controller.dart';
 import '../../l10n/app_localizations.dart';
-import '../../l10n/genre_localizer.dart';
 import '../../models/card_editor_args.dart';
 import '../../models/feed_route_args.dart';
 import '../../models/katha_card.dart';
@@ -25,7 +24,7 @@ import '../../widgets/app_background.dart';
 import '../../widgets/display_name_prompt_dialog.dart';
 import '../../widgets/proto_action_pill.dart';
 import '../../widgets/status_card.dart';
-import '../../widgets/status_rail_thumbnail.dart';
+import '../../widgets/story_pack_tile.dart';
 
 String _greetingFirstName(UserSession? session) {
   if (session == null) return 'Friend';
@@ -50,6 +49,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   bool _scheduledNamePrompt = false;
+
   /// Which of [picks] (0…2) is the front card in the overlapping “today” deck.
   int _todayFeaturedIndex = 0;
 
@@ -64,14 +64,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   List<KathaCard> _todayPicksFor(
     List<KathaCard> catalog,
-    List<String> interests,
+    List<String> storyPackIds,
     Map<String, int> affinity,
   ) {
     if (catalog.isEmpty) return const [];
-    final sorted = List<String>.from(interests.take(3));
+    final sorted = List<String>.from(storyPackIds.take(3));
     sorted.sort((a, b) => (affinity[b] ?? 0).compareTo(affinity[a] ?? 0));
     if (sorted.isEmpty) {
-      return MockCatalog.interests
+      return StoryPackCatalog.featuredPacks
           .take(3)
           .map((e) => DailyCardPicker.pickForCategory(catalog, e.id))
           .toList();
@@ -82,13 +82,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         .toList();
   }
 
-  int _indexInCatalog(KathaCard card, List<KathaCard> catalog) {
-    final i = catalog.indexWhere((c) => c.id == card.id);
-    return i >= 0 ? i : 0;
-  }
-
-  List<String> _interestOrder(List<String> ids) {
-    final preferred = MockCatalog.interests
+  List<String> _storyPackOrder(List<String> ids) {
+    final preferred = StoryPackCatalog.packs
         .map((e) => e.id)
         .where(ids.contains)
         .toList();
@@ -111,6 +106,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         initialIndex: clamped,
         categoryFilter: categoryFilter,
       ),
+    );
+  }
+
+  void _openStoryPack(
+    BuildContext context,
+    List<KathaCard> cards,
+    String packId,
+  ) {
+    final pick = DailyCardPicker.pickForCategory(cards, packId);
+    _openFeed(
+      context,
+      cards,
+      cards.indexWhere((c) => c.id == pick.id),
+      categoryFilter: {packId},
     );
   }
 
@@ -159,52 +168,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  void _showNotifications(
-    BuildContext context,
-    String lang,
-    AppLocalizations l10n,
-  ) {
-    showModalBottomSheet<void>(
-      context: context,
-      showDragHandle: true,
-      backgroundColor: AppColors.protoSurface,
-      builder: (context) {
-        return ListView(
-          children: [
-            ListTile(
-              title: Text(
-                l10n.notificationsTitle,
-                style: const TextStyle(
-                  color: AppColors.protoInk,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            for (final n in MockCatalog.notifications)
-              ListTile(
-                leading: Text(n.icon, style: const TextStyle(fontSize: 22)),
-                title: Text(
-                  n.titleFor(lang),
-                  style: const TextStyle(color: AppColors.protoInk),
-                ),
-                subtitle: Text(
-                  n.bodyFor(lang),
-                  style: const TextStyle(color: AppColors.protoInk3),
-                ),
-                trailing: Text(
-                  n.timeAgo,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: AppColors.protoInk4,
-                  ),
-                ),
-              ),
-          ],
-        );
-      },
-    );
-  }
-
   String _dateLine() => DateFormat('EEEE · d MMM').format(DateTime.now());
 
   @override
@@ -215,10 +178,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
     final session = ref.watch(sessionHolderProvider);
     final lang = effectiveContentLanguage(session);
-    final userInterestIds = session?.profile.interestIds ?? const <String>[];
-    final interests = userInterestIds.isEmpty
-        ? MockCatalog.interests.take(3).map((e) => e.id).toList()
-        : _interestOrder(userInterestIds.toList());
+    final userStoryPackIds = session?.profile.interestIds ?? const <String>[];
+    final storyPackIds = userStoryPackIds.isEmpty
+        ? StoryPackCatalog.featuredPacks.take(3).map((e) => e.id).toList()
+        : _storyPackOrder(userStoryPackIds.toList());
     final catalog = ref.watch(catalogProvider);
     final l10n = AppLocalizations.of(context);
     final tt = Theme.of(context).textTheme;
@@ -245,23 +208,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 return Center(child: Text(l10n.noCards));
               }
               final affinity =
-                  ref.watch(userEngagementProvider).valueOrNull?.categoryAffinity ??
+                  ref
+                      .watch(userEngagementProvider)
+                      .valueOrNull
+                      ?.categoryAffinity ??
                   {};
-              final picks = _todayPicksFor(cards, interests, affinity);
+              final picks = _todayPicksFor(cards, storyPackIds, affinity);
               final featuredIdx = picks.isEmpty
                   ? 0
                   : (_todayFeaturedIndex < picks.length
                         ? _todayFeaturedIndex
                         : 0);
-              final hero =
-                  picks.isNotEmpty ? picks[featuredIdx] : cards.first;
-
-              List<KathaCard> byInterest(String id) =>
-                  cards.where((c) => c.category == id).toList();
-
-              final trending = cards
-                  .where((c) => c.section == 'trending')
-                  .toList();
+              final hero = picks.isNotEmpty ? picks[featuredIdx] : cards.first;
+              const featuredPacks = [
+                ...StoryPackCatalog.featuredPacks,
+                StoryPackCatalog.moreTile,
+              ];
+              const allPacks = StoryPackCatalog.packs;
 
               return CustomScrollView(
                 slivers: [
@@ -300,36 +263,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             shape: const CircleBorder(),
                             clipBehavior: Clip.antiAlias,
                             child: InkWell(
-                              onTap: () =>
-                                  _showNotifications(context, lang, l10n),
+                              onTap: () => context.go('/explore'),
                               child: SizedBox(
                                 width: 44,
                                 height: 44,
-                                child: Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    const Icon(
-                                      Icons.notifications_none,
-                                      color: AppColors.protoInk,
-                                      size: 22,
-                                    ),
-                                    Positioned(
-                                      top: 10,
-                                      right: 12,
-                                      child: Container(
-                                        width: 8,
-                                        height: 8,
-                                        decoration: BoxDecoration(
-                                          color: AppColors.protoBrand,
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: AppColors.protoSurface,
-                                            width: 1.5,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                child: const Icon(
+                                  Icons.menu_book_outlined,
+                                  color: AppColors.protoInk,
+                                  size: 22,
                                 ),
                               ),
                             ),
@@ -340,47 +281,38 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                   SliverToBoxAdapter(
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
-                      child: Row(
-                        children: [
-                          ProtoActionPill(
-                            icon: Icons.add,
-                            label: 'Create Card',
-                            onTap: () => context.push('/create'),
-                          ),
-                        ],
+                      padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+                      child: Text(
+                        'Featured story packs',
+                        style: tt.titleLarge?.copyWith(fontSize: 22),
                       ),
                     ),
                   ),
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 8, 20, 10),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              l10n.homeHeroKicker.toUpperCase(),
-                              style: tt.labelLarge?.copyWith(
-                                letterSpacing: 2,
-                                fontSize: 12,
-                              ),
-                            ),
+                  SliverPadding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 6),
+                    sliver: SliverGrid(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 12,
+                            crossAxisSpacing: 12,
+                            childAspectRatio: 0.96,
                           ),
-                          Icon(
-                            Icons.local_fire_department_outlined,
-                            size: 14,
-                            color: AppColors.protoSaffron,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            '5-day streak',
-                            style: tt.bodySmall?.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.protoInk3,
-                            ),
-                          ),
-                        ],
-                      ),
+                      delegate: SliverChildBuilderDelegate((context, index) {
+                        final pack = featuredPacks[index];
+                        return StoryPackTile(
+                          pack: pack,
+                          contentLanguage: lang,
+                          compact: false,
+                          onTap: () {
+                            if (pack.id == StoryPackCatalog.moreTile.id) {
+                              context.go('/explore');
+                              return;
+                            }
+                            _openStoryPack(context, cards, pack.id);
+                          },
+                        );
+                      }, childCount: featuredPacks.length),
                     ),
                   ),
                   SliverToBoxAdapter(
@@ -401,11 +333,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                     borderRadius: BorderRadius.circular(20),
                                     clipBehavior: Clip.antiAlias,
                                     child: InkWell(
-                                      onTap: () => _openFeed(
+                                      onTap: () => _openStoryPack(
                                         context,
                                         cards,
-                                        _indexInCatalog(hero, cards),
-                                        categoryFilter: {hero.category},
+                                        hero.category,
                                       ),
                                       child: FittedBox(
                                         fit: BoxFit.contain,
@@ -441,21 +372,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   featuredIdx: featuredIdx,
                                   lang: lang,
                                   heroW: heroW,
-                                  onPromote: (i) => setState(
-                                    () => _todayFeaturedIndex = i,
-                                  ),
-                                  onOpenFeatured: () => _openFeed(
+                                  onPromote: (i) =>
+                                      setState(() => _todayFeaturedIndex = i),
+                                  onOpenFeatured: () => _openStoryPack(
                                     context,
                                     cards,
-                                    _indexInCatalog(hero, cards),
-                                    categoryFilter: {hero.category},
+                                    hero.category,
                                   ),
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 10),
                                 child: Text(
-                                  l10n.homeTodayPickHint,
+                                  'Tap a side card to rotate it into focus.',
                                   textAlign: TextAlign.center,
                                   style: tt.bodySmall?.copyWith(
                                     color: AppColors.protoInk3,
@@ -533,55 +462,40 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       ),
                     ),
                   ),
-                  for (final interest in interests)
-                    if (byInterest(interest).isNotEmpty)
-                      SliverToBoxAdapter(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 8, bottom: 10),
-                          child: _InterestRail(
-                            title: GenreLocalizer.getName(interest, lang),
-                            count: byInterest(interest).length,
-                            lang: lang,
-                            cards: byInterest(interest),
-                            onViewAll: () {
-                              final pick =
-                                  DailyCardPicker.pickForCategory(cards, interest);
-                              _openFeed(
-                                context,
-                                cards,
-                                cards.indexWhere((c) => c.id == pick.id),
-                                categoryFilter: {interest},
-                              );
-                            },
-                            onCard: (c) => _openFeed(
-                              context,
-                              cards,
-                              cards.indexOf(c),
-                              categoryFilter: {interest},
-                            ),
-                          ),
-                        ),
-                      ),
-                  if (trending.isNotEmpty)
-                    SliverToBoxAdapter(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 8, bottom: 10),
-                        child: _InterestRail(
-                          title: l10n.homeSectionTrendingTitle,
-                          count: trending.length,
-                          lang: lang,
-                          cards: trending,
-                          subtitle: l10n.exploreWeekHit,
-                          onViewAll: () => _openFeed(
-                            context,
-                            cards,
-                            cards.indexOf(trending.first),
-                          ),
-                          onCard: (c) =>
-                              _openFeed(context, cards, cards.indexOf(c)),
-                        ),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 18, 20, 8),
+                      child: Text(
+                        'All story packs',
+                        style: tt.titleLarge?.copyWith(fontSize: 22),
                       ),
                     ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: 132,
+                      child: ListView.separated(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          final pack = allPacks[index];
+                          return SizedBox(
+                            width: 156,
+                            child: StoryPackTile(
+                              pack: pack,
+                              contentLanguage: lang,
+                              compact: true,
+                              onTap: () =>
+                                  _openStoryPack(context, cards, pack.id),
+                            ),
+                          );
+                        },
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(width: 12),
+                        itemCount: allPacks.length,
+                      ),
+                    ),
+                  ),
                   const SliverToBoxAdapter(child: SizedBox(height: 100)),
                 ],
               );
@@ -613,6 +527,7 @@ class _TodayOverlappingDeck extends StatelessWidget {
   final VoidCallback onOpenFeatured;
 
   static const double _aspectHOverW = 16 / 9;
+
   /// Side cards scaled down vs [heroW] so shoulders read as “playing card” wings.
   static const double _sideScale = 0.74;
 
@@ -631,23 +546,21 @@ class _TodayOverlappingDeck extends StatelessWidget {
         if (i != featuredIdx) i,
     ]..sort();
 
-    final leftIdx =
-        othersSorted.isEmpty ? null : othersSorted.first;
-    final rightIdx =
-        othersSorted.length >= 2 ? othersSorted[1] : null;
+    final leftIdx = othersSorted.isEmpty ? null : othersSorted.first;
+    final rightIdx = othersSorted.length >= 2 ? othersSorted[1] : null;
 
-    final laneW = heroW *
-        (n >= 3
-            ? 1.74
-            : 1.28); // widen when fan has two wings so nothing clips
+    final laneW =
+        heroW *
+        (n >= 3 ? 1.74 : 1.28); // widen when fan has two wings so nothing clips
 
     /// Horizontal inset of each wing card’s center from deck middle (readable fan).
     final wingDx = heroW * 0.38;
+
     /// Slight tuck under the center card so overlaps feel intentional.
     final wingDy = baseH * 0.035;
+
     /// Card corner radius scales with wing size so clips stay proportional.
-    final sideRadius =
-        (16.0 * _sideScale).clamp(11.0, 18.0);
+    final sideRadius = (16.0 * _sideScale).clamp(11.0, 18.0);
 
     return SizedBox(
       width: laneW,
@@ -823,93 +736,6 @@ class _TodayOverlappingDeck extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _InterestRail extends StatelessWidget {
-  const _InterestRail({
-    required this.title,
-    required this.count,
-    required this.lang,
-    required this.cards,
-    required this.onViewAll,
-    required this.onCard,
-    this.subtitle,
-  });
-
-  final String title;
-  final int count;
-  final String lang;
-  final List<KathaCard> cards;
-  final VoidCallback onViewAll;
-  final void Function(KathaCard c) onCard;
-  final String? subtitle;
-
-  @override
-  Widget build(BuildContext context) {
-    final tt = Theme.of(context).textTheme;
-    final l10n = AppLocalizations.of(context);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title, style: tt.titleLarge?.copyWith(fontSize: 21)),
-                    if (subtitle != null)
-                      Text(
-                        subtitle!,
-                        style: tt.bodySmall?.copyWith(
-                          color: AppColors.protoInk3,
-                        ),
-                      )
-                    else
-                      Text(
-                        l10n.homeRailNewToday(count),
-                        style: tt.bodySmall?.copyWith(
-                          color: AppColors.protoInk3,
-                        ),
-                      ),
-                  ],
-                ),
-              ),
-              TextButton(
-                onPressed: onViewAll,
-                style: TextButton.styleFrom(
-                  foregroundColor: AppColors.protoBrand,
-                ),
-                child: Text(l10n.homeViewAll),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 10),
-        SizedBox(
-          height: 220,
-          child: ListView.separated(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, i) {
-              final c = cards[i];
-              return StatusRailThumbnail(
-                card: c,
-                contentLanguage: lang,
-                blurred: i != 0,
-                onTap: () => onCard(c),
-              );
-            },
-            separatorBuilder: (context, index) => const SizedBox(width: 12),
-            itemCount: cards.length,
-          ),
-        ),
-      ],
     );
   }
 }

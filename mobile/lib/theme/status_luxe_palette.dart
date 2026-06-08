@@ -48,6 +48,102 @@ class StatusLuxePalette {
 
   static StatusLuxePalette forCategory(String category) {
     switch (_normalizedCategory(category)) {
+      case 'mahabharata':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFF4A547),
+          frame: Color(0xFF8E3E18),
+          centerGlyph: LuxeCenterGlyphKind.sword,
+          cornerEmoji: '🏹',
+        );
+      case 'ramayana':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFFFC066),
+          frame: Color(0xFFB33A20),
+          centerGlyph: LuxeCenterGlyphKind.sun,
+          cornerEmoji: '🛕',
+        );
+      case 'shiv_puran':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFB89BFF),
+          frame: Color(0xFF5E4A9B),
+          centerGlyph: LuxeCenterGlyphKind.om,
+          cornerEmoji: '🔱',
+        );
+      case 'bhagavad_gita':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFFDF8E7),
+          accent: Color(0xFFF5D06B),
+          frame: Color(0xFF7E1F0E),
+          centerGlyph: LuxeCenterGlyphKind.quill,
+          cornerEmoji: '📖',
+        );
+      case 'hanuman':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFF4A547),
+          frame: Color(0xFFB94E11),
+          centerGlyph: LuxeCenterGlyphKind.peak,
+          cornerEmoji: '🪵',
+        );
+      case 'krishna_leela':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFF9C7CE0),
+          frame: Color(0xFF7A2540),
+          centerGlyph: LuxeCenterGlyphKind.leaf,
+          cornerEmoji: '🎶',
+        );
+      case 'devi_mahatmya':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFFFB8C9),
+          frame: Color(0xFFB33A20),
+          centerGlyph: LuxeCenterGlyphKind.diya,
+          cornerEmoji: '🌺',
+        );
+      case 'vedic_wisdom':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFF5F7F3),
+          accent: Color(0xFF7A8E66),
+          frame: Color(0xFF5C7062),
+          centerGlyph: LuxeCenterGlyphKind.sun,
+          cornerEmoji: '🔥',
+        );
+      case 'upanishads':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFF5F7F3),
+          accent: Color(0xFF7FB8A8),
+          frame: Color(0xFF3A2548),
+          centerGlyph: LuxeCenterGlyphKind.quill,
+          cornerEmoji: '📜',
+        );
+      case 'puranas':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFF2C76E),
+          frame: Color(0xFFC66829),
+          centerGlyph: LuxeCenterGlyphKind.diya,
+          cornerEmoji: '🪔',
+        );
+      case 'ancient_history':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFFFFBF5),
+          accent: Color(0xFFF4A547),
+          frame: Color(0xFF5B3220),
+          centerGlyph: LuxeCenterGlyphKind.home,
+          cornerEmoji: '👑',
+        );
+      case 'saints_sages':
+        return const StatusLuxePalette(
+          chipLabel: Color(0xFFFFFCF3),
+          accent: Color(0xFFF5D06B),
+          frame: Color(0xFF7A8E66),
+          centerGlyph: LuxeCenterGlyphKind.lotus,
+          cornerEmoji: '🙏',
+        );
       case 'goodmorning':
         return const StatusLuxePalette(
           chipLabel: Color(0xFFFFFCF3),

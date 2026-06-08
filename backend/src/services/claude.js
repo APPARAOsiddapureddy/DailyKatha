@@ -1,13 +1,14 @@
 import Anthropic from '@anthropic-ai/sdk';
+import { STORY_PACK_LABELS } from '../constants/storyPacks.js';
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-const SYSTEM_PROMPT = `You are a content generator for Daily Katha, a multilingual Indian greetings app.
+const SYSTEM_PROMPT = `You are a content generator for Daily Katha, a multilingual Indian devotional story app.
 OUTPUT: Return ONLY valid JSON. No markdown. No explanation. No code fences.
 LANGUAGES: Every card must have quote and author in all 6 scripts: te (Telugu), hi (Hindi), ta (Tamil), kn (Kannada), ml (Malayalam), en (English).
 QUALITY: Each translation must be natural and idiomatic in that language — not word-for-word translation.
 SAFETY: No film dialogues, no politician names, no medical claims, no explicit content, no hate speech.
-STYLE: Short lines (2-4 lines), suitable for WhatsApp status. Warm, respectful tone.`;
+STYLE: Short lines (2-4 lines), suitable for WhatsApp status. Warm, respectful, devotional tone.`;
 
 export async function generateCards(jobPayload) {
   const {
@@ -62,7 +63,10 @@ OUTPUT SCHEMA — return exactly this JSON structure:
 RULES:
 - cards array length MUST equal ${constraints.cardsRequested}
 - ALL 6 language keys required in quote and author — missing any = invalid
-- Distribute cards across categories in interestIds (balanced as possible)
+- Distribute cards across the requested story packs (balanced as possible)
+- Make every card positive, uplifting, and suitable for devotional / ancient story browsing
+- Pack labels:
+${interestIds.map((id) => `  - ${id}: ${STORY_PACK_LABELS[id]?.en || id}`).join('\n')}
 - Religion context: ${religionId || 'neutral/ecumenical'}
 - No hashtags, no emoji in quote (except birthday/festival may have one)
 - author max 80 characters per language

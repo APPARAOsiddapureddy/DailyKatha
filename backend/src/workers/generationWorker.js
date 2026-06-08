@@ -95,9 +95,9 @@ if (redis) {
       for (const card of accepted) {
         const result = await pool.query(
           `INSERT INTO cards
-             (id, section, category, mood, is_festival, festival, quote, author, is_active)
+             (id, section, category, mood, is_festival, festival, quote, author, image_url, is_active)
            VALUES
-             (gen_random_uuid(), $1, $2, $3, $4, $5, $6::jsonb, $7::jsonb, true)
+             (gen_random_uuid(), $1, $2, $3, $4, $5, $6::jsonb, $7::jsonb, $8, true)
            RETURNING id`,
           [
             card.section,
@@ -107,6 +107,7 @@ if (redis) {
             card.festival,
             JSON.stringify(card.quote),
             JSON.stringify(card.author),
+            card.imageUrl ?? card.image_url ?? null,
           ],
         );
         insertedIds.push(result.rows[0].id);
@@ -160,4 +161,3 @@ if (ranWorkerCli && !redis) {
     '[bullmq] REDIS_URL not set — admin AI generation queue disabled (/admin/generate returns 503 until Redis is configured).',
   );
 }
-

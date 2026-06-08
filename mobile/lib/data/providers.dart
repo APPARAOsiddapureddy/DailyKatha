@@ -18,7 +18,7 @@ import '../services/user_actions_service.dart';
 import 'auth_repository.dart';
 import 'feed_repository.dart';
 import 'local/bundled_catalog_loader.dart';
-import 'local/mock_catalog.dart';
+import 'local/story_pack_catalog.dart';
 import 'local/user_created_cards_store.dart';
 import 'local/user_engagement_store.dart';
 import 'session_holder.dart';
@@ -30,17 +30,23 @@ final secureStorageProvider = Provider<FlutterSecureStorage>((ref) {
   );
 });
 
-final sessionHolderProvider = NotifierProvider<SessionHolder, UserSession?>(SessionHolder.new);
+final sessionHolderProvider = NotifierProvider<SessionHolder, UserSession?>(
+  SessionHolder.new,
+);
 
 /// Restores a persisted session once per app start.
 final bootstrapProvider = FutureProvider<UserSession?>((ref) async {
   // Read once — watching [authRepositoryProvider] would re-run bootstrap on every session change
   // (api client is recreated when the token changes) and trap the user on splash.
-  final repo = ref.read(authRepositoryProvider);
-  final restored = await repo.restoreSession();
-  if (restored != null) {
-    ref.read(sessionHolderProvider.notifier).setSession(restored);
-    return restored;
+  try {
+    final repo = ref.read(authRepositoryProvider);
+    final restored = await repo.restoreSession().timeout(const Duration(seconds: 8));
+    if (restored != null) {
+      ref.read(sessionHolderProvider.notifier).setSession(restored);
+      return restored;
+    }
+  } catch (e, st) {
+    debugPrint('bootstrapProvider: restoreSession failed, falling back to login: $e\n$st');
   }
   return null;
 });
@@ -50,12 +56,15 @@ final apiClientProvider = Provider<ApiClient>((ref) {
     baseUri: AppConfig.apiBaseUri,
     tokenResolver: () => ref.read(sessionHolderProvider)?.accessToken,
     // Read (not watch) — watching here recreates Dio on every session change and races IndexedStack tabs.
-    langResolver: () => effectiveContentLanguage(ref.read(sessionHolderProvider)),
+    langResolver: () =>
+        effectiveContentLanguage(ref.read(sessionHolderProvider)),
     onUnauthorized: (path) async {
       if (isRecoverableUnauthorizedPath(path)) return;
       ref.read(sessionLogoutCoordinatorProvider).scheduleLogout(() async {
         final s = ref.read(sessionHolderProvider);
-        if (s == null || s.accessToken == 'mock_access' || s.profile.id == 'demo-user') {
+        if (s == null ||
+            s.accessToken == 'mock_access' ||
+            s.profile.id == 'demo-user') {
           return;
         }
         await ref.read(secureStorageProvider).deleteAll();
@@ -102,7 +111,9 @@ final userCreatedCardsProvider = FutureProvider<List<KathaCard>>((ref) async {
   return UserCreatedCardsStore.load();
 });
 
-final shareServiceProvider = Provider<ShareService>((ref) => const ShareService());
+final shareServiceProvider = Provider<ShareService>(
+  (ref) => const ShareService(),
+);
 
 final notificationServiceProvider = Provider<NotificationService>((ref) {
   return const NotificationService();
@@ -117,14 +128,21 @@ final catalogProvider = FutureProvider<List<KathaCard>>((ref) async {
   final session = ref.watch(sessionHolderProvider);
   final lang = effectiveContentLanguage(session);
   final created = await ref.watch(userCreatedCardsProvider.future);
+
   /// Never hit the HTTP feed unless we clearly have a real token. Otherwise the Explore tab on
   /// [StatefulNavigationShell]'s IndexedStack fires during auth transitions → 401 → global logout → "stuck" on auth/Home.
-  final useLocalCards = session == null ||
+  final useLocalCards =
+      session == null ||
       session.accessToken == 'mock_access' ||
       session.profile.id == 'demo-user';
   Future<List<KathaCard>> bundledFallback() async {
     final bundled = await BundledCatalogLoader.loadForContentLanguage(lang);
-    final base = bundled.isNotEmpty ? bundled : MockCatalog.cards;
+    final storyPackCards = bundled
+        .where((c) => StoryPackCatalog.isSupportedCategory(c.category))
+        .toList();
+    final base = storyPackCards.isNotEmpty
+        ? storyPackCards
+        : StoryPackCatalog.cards;
     return [...created, ...base];
   }
 
@@ -133,8 +151,13 @@ final catalogProvider = FutureProvider<List<KathaCard>>((ref) async {
   }
 
   try {
-    final remote = await ref.watch(feedRepositoryProvider).loadCards(contentLanguage: lang);
-    if (remote.isNotEmpty) return [...created, ...remote];
+    final remote = await ref
+        .watch(feedRepositoryProvider)
+        .loadCards(contentLanguage: lang);
+    final storyPackCards = remote
+        .where((c) => StoryPackCatalog.isSupportedCategory(c.category))
+        .toList();
+    if (storyPackCards.isNotEmpty) return [...created, ...storyPackCards];
     debugPrint('catalogProvider: remote feed empty — using bundled catalog');
   } catch (e, st) {
     debugPrint('catalogProvider: feed failed — using bundled catalog: $e\n$st');

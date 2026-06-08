@@ -40,7 +40,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
   Future<void> _run() async {
     final sw = Stopwatch()..start();
-    await ref.read(bootstrapProvider.future);
+    try {
+      await ref.read(bootstrapProvider.future).timeout(const Duration(seconds: 10));
+    } catch (e, st) {
+      debugPrint('Splash bootstrap failed, continuing to login/home: $e\n$st');
+    }
     const minSplash = Duration(milliseconds: 1650);
     final remaining = minSplash - sw.elapsed;
     if (remaining > Duration.zero) {

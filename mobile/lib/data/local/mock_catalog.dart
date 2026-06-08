@@ -52,18 +52,18 @@ abstract final class MockCatalog {
   ];
 
   static const List<InterestOption> interests = [
-    InterestOption(id: 'goodmorning', emoji: '☀️', englishLabel: 'Good Morning', nativeLabel: 'శుభోదయం', tone: 'gold'),
-    InterestOption(id: 'goodnight', emoji: '🌙', englishLabel: 'Good Night', nativeLabel: 'శుభరాత్రి', tone: 'indigo'),
-    InterestOption(id: 'love', emoji: '❤️', englishLabel: 'Love', nativeLabel: 'ప్రేమ', tone: 'kumkum'),
-    InterestOption(id: 'bhakti', emoji: '🪔', englishLabel: 'Devotional', nativeLabel: 'భక్తి', tone: 'marigold'),
-    InterestOption(id: 'motivation', emoji: '🔥', englishLabel: 'Motivation', nativeLabel: 'ప్రేరణ', tone: 'marigold'),
-    InterestOption(id: 'festival', emoji: '🎉', englishLabel: 'Festivals', nativeLabel: 'పండుగలు', tone: 'kumkum'),
-    InterestOption(id: 'family', emoji: '👨‍👩‍👧', englishLabel: 'Family', nativeLabel: 'కుటుంబం', tone: 'peacock'),
-    InterestOption(id: 'cinema', emoji: '🎬', englishLabel: 'Cinema', nativeLabel: 'సినిమా', tone: 'indigo'),
-    InterestOption(id: 'heroes', emoji: '⭐', englishLabel: 'Heroes', nativeLabel: 'హీరోలు', tone: 'gold'),
-    InterestOption(id: 'poetry', emoji: '📜', englishLabel: 'Poetry', nativeLabel: 'కవిత్వం', tone: 'peacock'),
-    InterestOption(id: 'friendship', emoji: '🤝', englishLabel: 'Friendship', nativeLabel: 'స్నేహం', tone: 'gold'),
-    InterestOption(id: 'birthday', emoji: '🎂', englishLabel: 'Birthday', nativeLabel: 'జన్మదినం', tone: 'kumkum'),
+    InterestOption(id: 'mahabharata', emoji: '🏹', englishLabel: 'Mahabharata', nativeLabel: 'మహాభారతం', tone: 'gold'),
+    InterestOption(id: 'ramayana', emoji: '🛕', englishLabel: 'Ramayanam', nativeLabel: 'రామాయణం', tone: 'kumkum'),
+    InterestOption(id: 'shiv_puran', emoji: '🔱', englishLabel: 'Shiv Puranam', nativeLabel: 'శివ పురాణం', tone: 'indigo'),
+    InterestOption(id: 'bhagavad_gita', emoji: '📖', englishLabel: 'Bhagavad Gita', nativeLabel: 'భగవద్గీత', tone: 'marigold'),
+    InterestOption(id: 'hanuman', emoji: '🪵', englishLabel: 'Hanuman', nativeLabel: 'హనుమాన్', tone: 'gold'),
+    InterestOption(id: 'krishna_leela', emoji: '🎶', englishLabel: 'Krishna Leela', nativeLabel: 'కృష్ణలీల', tone: 'peacock'),
+    InterestOption(id: 'devi_mahatmya', emoji: '🌺', englishLabel: 'Devi Mahatmya', nativeLabel: 'దేవీ మహాత్మ్యం', tone: 'kumkum'),
+    InterestOption(id: 'vedic_wisdom', emoji: '🔥', englishLabel: 'Vedic Wisdom', nativeLabel: 'వేదజ్ఞానం', tone: 'gold'),
+    InterestOption(id: 'upanishads', emoji: '📜', englishLabel: 'Upanishads', nativeLabel: 'ఉపనిషత్తులు', tone: 'peacock'),
+    InterestOption(id: 'puranas', emoji: '🪔', englishLabel: 'Puranas', nativeLabel: 'పురాణాలు', tone: 'marigold'),
+    InterestOption(id: 'ancient_history', emoji: '👑', englishLabel: 'Ancient History', nativeLabel: 'ప్రాచీన చరిత్ర', tone: 'indigo'),
+    InterestOption(id: 'saints_sages', emoji: '🙏', englishLabel: 'Saints & Sages', nativeLabel: 'సంతులు & ఋషులు', tone: 'gold'),
   ];
 
   static const List<KathaCard> cards = [

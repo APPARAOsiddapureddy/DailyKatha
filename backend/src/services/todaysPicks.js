@@ -9,21 +9,9 @@ import {
   buildRecommendationContext,
 } from '../recommendations/context.js';
 import { normalizeTimezone } from '../recommendations/timeAndFestivals.js';
+import { STORY_PACK_IDS } from '../constants/storyPacks.js';
 
-export const ALL_INTERESTS = [
-  'goodmorning',
-  'goodnight',
-  'love',
-  'bhakti',
-  'motivation',
-  'festival',
-  'family',
-  'cinema',
-  'heroes',
-  'poetry',
-  'friendship',
-  'birthday',
-];
+export const ALL_INTERESTS = STORY_PACK_IDS;
 
 function todayISO() {
   return new Date().toISOString().slice(0, 10);
@@ -51,6 +39,7 @@ function formatCard(card, lang) {
     section: card.section,
     isFestival: card.is_festival,
     festival: card.festival,
+    imageUrl: card.image_url || card.imageUrl || null,
     displayQuote: card.quote?.[resolvedLang] || card.quote?.en || '',
     displayAuthor: card.author?.[resolvedLang] || card.author?.en || '',
     subQuote: card.quote?.[fallbackLang] || '',
@@ -103,9 +92,9 @@ export async function generateTodaysPicks({ interests = ALL_INTERESTS } = {}) {
         const c = valid[i];
         const r = await pool.query(
           `INSERT INTO cards
-             (id, section, category, mood, is_festival, festival, quote, author, is_active)
+             (id, section, category, mood, is_festival, festival, quote, author, image_url, is_active)
            VALUES
-             (gen_random_uuid(), $1, $2, $3, $4, $5, $6::jsonb, $7::jsonb, true)
+             (gen_random_uuid(), $1, $2, $3, $4, $5, $6::jsonb, $7::jsonb, $8, true)
            RETURNING id`,
           [
             c.section,
@@ -115,6 +104,7 @@ export async function generateTodaysPicks({ interests = ALL_INTERESTS } = {}) {
             c.festival || null,
             JSON.stringify(c.quote),
             JSON.stringify(c.author),
+            c.imageUrl ?? c.image_url ?? null,
           ],
         );
         const cardId = r.rows[0].id;
@@ -284,4 +274,3 @@ export async function getUserTodaysPicks({ userId, lang, timezone: timezoneIn })
   }
   return out;
 }
-

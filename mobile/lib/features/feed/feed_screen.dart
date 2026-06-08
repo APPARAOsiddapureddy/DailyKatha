@@ -10,6 +10,7 @@ import '../../data/local/user_engagement_store.dart';
 import '../../data/providers.dart';
 import '../../data/user_stats_controller.dart';
 import '../../l10n/app_localizations.dart';
+import '../../l10n/genre_localizer.dart';
 import '../../models/card_editor_args.dart';
 import '../../models/feed_route_args.dart';
 import '../../models/katha_card.dart';
@@ -145,13 +146,11 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
   Future<void> _toggleLike(KathaCard c) async {
     final id = c.id;
     final liked = await UserEngagementStore.toggleLiked(id, c.category);
-    await ref.read(analyticsProvider).log(
+    await ref
+        .read(analyticsProvider)
+        .log(
           AEvents.cardLikeToggled,
-          props: {
-            'card_id': id,
-            'category': c.category,
-            'liked': liked,
-          },
+          props: {'card_id': id, 'category': c.category, 'liked': liked},
         );
     if (liked) await _syncLikeToBackend(id);
     ref.invalidate(userEngagementProvider);
@@ -177,7 +176,9 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     if (_sharing || !mounted) return;
     setState(() => _sharing = true);
     try {
-      await ref.read(analyticsProvider).log(
+      await ref
+          .read(analyticsProvider)
+          .log(
             AEvents.shareClicked,
             props: {
               'channel': 'whatsapp_status',
@@ -196,7 +197,9 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
       await UserEngagementStore.bumpCategoryAffinity(card.category);
       await ref.read(userStatsProvider.notifier).incrementShared();
       ref.invalidate(userEngagementProvider);
-      await ref.read(analyticsProvider).log(
+      await ref
+          .read(analyticsProvider)
+          .log(
             AEvents.shareSheetOpened,
             props: {'channel': 'whatsapp_status', 'source': 'feed_quick'},
           );
@@ -212,9 +215,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
         backgroundColor: Colors.transparent,
         padding: EdgeInsets.zero,
         minimumSize: const Size(double.infinity, 50),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero,
-        ),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       );
 
   void _editCurrent(String lang, KathaCard card) {
@@ -243,6 +244,9 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
   Widget build(BuildContext context) {
     final session = ref.watch(sessionHolderProvider);
     final lang = effectiveContentLanguage(session);
+    final activeCategory = widget.args.categoryFilter?.isNotEmpty == true
+        ? widget.args.categoryFilter!.first
+        : null;
     final catalog = ref.watch(catalogProvider);
     final likedSnap = ref.watch(userEngagementProvider);
     final likedSet = likedSnap.valueOrNull?.likedCardIds.toSet() ?? {};
@@ -362,23 +366,25 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                           color: Colors.white.withValues(
                                             alpha: 0.14,
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(999),
+                                          borderRadius: BorderRadius.circular(
+                                            999,
+                                          ),
                                           child: InkWell(
-                                            borderRadius:
-                                                BorderRadius.circular(999),
+                                            borderRadius: BorderRadius.circular(
+                                              999,
+                                            ),
                                             onTap: _sharing
                                                 ? null
                                                 : () => _shareCurrentDirect(
-                                                      lang,
-                                                      c,
-                                                    ),
+                                                    lang,
+                                                    c,
+                                                  ),
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.symmetric(
-                                                horizontal: 14,
-                                                vertical: 10,
-                                              ),
+                                                    horizontal: 14,
+                                                    vertical: 10,
+                                                  ),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
@@ -400,10 +406,10 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                                           TextAlign.center,
                                                       style:
                                                           ProtoActionPill.typographyOnly(
-                                                        context,
-                                                      ).copyWith(
-                                                        color: Colors.white,
-                                                      ),
+                                                            context,
+                                                          ).copyWith(
+                                                            color: Colors.white,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
@@ -473,6 +479,20 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                         ),
                                       ),
                                     ),
+                                    if (activeCategory != null) ...[
+                                      const SizedBox(height: 2),
+                                      Text(
+                                        GenreLocalizer.getName(
+                                          activeCategory,
+                                          lang,
+                                        ),
+                                        style: tt.titleMedium?.copyWith(
+                                          fontSize: 13,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w800,
+                                        ),
+                                      ),
+                                    ],
                                     const SizedBox(height: 2),
                                     Text(
                                       l10n.feedIndexOf(
@@ -551,8 +571,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                               decoration: BoxDecoration(
                                 color: Colors.black.withValues(alpha: 0.35),
                                 border: Border.all(
-                                  color:
-                                      Colors.white.withValues(alpha: 0.22),
+                                  color: Colors.white.withValues(alpha: 0.22),
                                   width: 1.5,
                                 ),
                               ),
@@ -571,8 +590,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                                   ? Icons.favorite
                                                   : Icons.favorite_border,
                                               size: 24,
-                                              color: likedSet
-                                                      .contains(card.id)
+                                              color: likedSet.contains(card.id)
                                                   ? Colors.redAccent
                                                   : Colors.white,
                                             ),
@@ -588,8 +606,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                   ),
                                   Expanded(
                                     child: OutlinedButton.icon(
-                                      onPressed: () =>
-                                          _editCurrent(lang, card),
+                                      onPressed: () => _editCurrent(lang, card),
                                       style: _feedOutlineStyle(tt),
                                       icon: const Icon(
                                         Icons.edit_outlined,
@@ -615,8 +632,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                                   ),
                                   Expanded(
                                     child: OutlinedButton.icon(
-                                      onPressed: () =>
-                                          _saveCurrent(lang, card),
+                                      onPressed: () => _saveCurrent(lang, card),
                                       style: _feedOutlineStyle(tt),
                                       icon: const Icon(
                                         Icons.download_outlined,

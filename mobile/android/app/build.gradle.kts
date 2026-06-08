@@ -62,15 +62,6 @@ android {
         }
     }
 
-    // Some environments (local or CI) can fail while stripping symbols from third-party native libs.
-    // Keeping symbols avoids the strip step from breaking the release bundle.
-    packaging {
-        jniLibs {
-            useLegacyPackaging = true
-            keepDebugSymbols += setOf("**/*.so")
-        }
-    }
-
     signingConfigs {
         create("release") {
             if (hasReleaseKeystore) {

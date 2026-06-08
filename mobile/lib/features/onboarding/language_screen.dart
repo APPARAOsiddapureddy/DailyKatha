@@ -1,19 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/local/mock_catalog.dart';
+import '../../data/providers.dart';
 import '../../l10n/app_localizations.dart';
 import '../../theme/app_colors.dart';
+import '../../utils/safe_nav.dart';
 
-class LanguageScreen extends StatefulWidget {
+class LanguageScreen extends ConsumerStatefulWidget {
   const LanguageScreen({super.key});
 
   @override
-  State<LanguageScreen> createState() => _LanguageScreenState();
+  ConsumerState<LanguageScreen> createState() => _LanguageScreenState();
 }
 
-class _LanguageScreenState extends State<LanguageScreen> {
+class _LanguageScreenState extends ConsumerState<LanguageScreen> {
   String _selected = 'en';
+  bool _saving = false;
+
+  Future<void> _continue() async {
+    if (_saving) return;
+    setState(() => _saving = true);
+    try {
+      final session = await ref.read(authRepositoryProvider).completeOnboardingOnServer(
+            contentLanguage: _selected,
+          );
+      ref.read(sessionHolderProvider.notifier).setSession(session);
+      if (!mounted) return;
+      safeGo(context, '/home');
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Could not save language: $e')),
+      );
+    } finally {
+      if (mounted) setState(() => _saving = false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +169,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 8, 20, 24),
               child: FilledButton(
-                onPressed: () => context.push('/onboarding/religion', extra: _selected),
+                onPressed: _saving ? null : _continue,
                 style: FilledButton.styleFrom(
                   minimumSize: const Size(double.infinity, 56),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -154,7 +177,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(l10n.onboardingContinue.replaceAll(' →', '')),
+                    Text(_saving ? 'Saving…' : l10n.onboardingContinue.replaceAll(' →', '')),
                     const SizedBox(width: 8),
                     const Icon(Icons.arrow_forward, size: 20),
                   ],

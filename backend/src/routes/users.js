@@ -5,10 +5,12 @@ import { mapCardRow } from '../utils/cardMapper.js';
 import { invalidateUserFeedCache } from '../services/redis.js';
 import { getUserInterests, setUserInterests } from '../db/queries/userInterests.js';
 import { feedRefreshLimiter } from '../middleware/rateLimit.js';
+import { STORY_PACK_IDS } from '../constants/storyPacks.js';
 
 const router = Router();
 
 const VALID_INTEREST_IDS = new Set([
+  ...STORY_PACK_IDS,
   'goodmorning',
   'goodnight',
   'love',
@@ -39,6 +41,7 @@ async function buildMeResponse(userId) {
     religion_id: u.religion_id,
     region: u.region || 'IN',
     timezone: u.timezone,
+    onboarding_complete: u.onboarding_complete || false,
     interests: interests.map((r) => ({ interest_id: r.interest_id, rank: r.rank })),
     created_at: u.created_at,
   };
@@ -56,7 +59,7 @@ router.get('/me', async (req, res, next) => {
 
 router.put('/me', async (req, res, next) => {
   try {
-    const { name, contentLanguage, religionId, region, timezone } = req.body || {};
+    const { name, contentLanguage, religionId, region, timezone, onboardingComplete } = req.body || {};
     await query(
       `UPDATE users SET
          name = COALESCE($1, name),
@@ -64,9 +67,18 @@ router.put('/me', async (req, res, next) => {
          religion_id = COALESCE($3, religion_id),
          region = COALESCE($4, region),
          timezone = COALESCE($5, timezone),
+         onboarding_complete = COALESCE($6, onboarding_complete),
          updated_at = NOW()
-       WHERE id = $6`,
-      [name ?? null, contentLanguage ?? null, religionId ?? null, region ?? null, timezone ?? null, req.user.id],
+       WHERE id = $7`,
+      [
+        name ?? null,
+        contentLanguage ?? null,
+        religionId ?? null,
+        region ?? null,
+        timezone ?? null,
+        typeof onboardingComplete === 'boolean' ? onboardingComplete : null,
+        req.user.id,
+      ],
     );
     await invalidateUserFeedCache(req.user.id);
     const body = await buildMeResponse(req.user.id);

@@ -3,10 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/content_language.dart';
-import '../../data/local/mock_catalog.dart';
+import '../../data/local/story_pack_catalog.dart';
 import '../../data/local/user_created_cards_store.dart';
 import '../../data/providers.dart';
-import '../../l10n/app_localizations.dart';
 import '../../models/card_editor_args.dart';
 import '../../models/katha_card.dart';
 import '../../models/user_profile.dart';
@@ -25,7 +24,7 @@ class CreateCardScreen extends ConsumerStatefulWidget {
 
 class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
   final _text = TextEditingController();
-  String _genre = 'motivation';
+  String _genre = 'mahabharata';
   bool _saving = false;
 
   @override
@@ -104,20 +103,19 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
     final session = ref.watch(sessionHolderProvider);
     final lang = effectiveContentLanguage(session);
     final card = _draft(lang, session?.profile);
 
     return Scaffold(
       backgroundColor: AppColors.protoCream,
-      appBar: AppBar(title: const Text('Create Card')),
+      appBar: AppBar(title: const Text('Create story card')),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
             Text(
-              l10n.onboardingInterestsTitle,
+              'Create a devotional story card',
               style: Theme.of(
                 context,
               ).textTheme.titleLarge?.copyWith(color: AppColors.protoInk),
@@ -125,18 +123,18 @@ class _CreateCardScreenState extends ConsumerState<CreateCardScreen> {
             const SizedBox(height: 10),
             DropdownButtonFormField<String>(
               initialValue: _genre,
-              items: MockCatalog.interests
+              items: StoryPackCatalog.packs
                   .map(
                     (g) => DropdownMenuItem(
                       value: g.id,
-                      child: Text('${g.emoji} ${g.englishLabel}'),
+                      child: Text('${g.emoji} ${g.englishTitle}'),
                     ),
                   )
                   .toList(growable: false),
               onChanged: _saving
                   ? null
                   : (v) => setState(() => _genre = v ?? _genre),
-              decoration: const InputDecoration(labelText: 'Genre'),
+              decoration: const InputDecoration(labelText: 'Story pack'),
             ),
             const SizedBox(height: 12),
             TextField(

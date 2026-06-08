@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/content_language.dart';
 import '../../data/providers.dart';
+import '../../l10n/genre_localizer.dart';
 import '../../theme/app_colors.dart';
 import '../../utils/error_handler.dart';
 
@@ -63,11 +65,15 @@ class _TodayPicksScreenState extends ConsumerState<TodayPicksScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final lang = effectiveContentLanguage(ref.watch(sessionHolderProvider));
     return Scaffold(
       backgroundColor: AppColors.protoCream,
       appBar: AppBar(
         backgroundColor: AppColors.protoSurface,
-        title: const Text("Today's 5", style: TextStyle(color: AppColors.protoBrand)),
+        title: const Text(
+          "Today's 5",
+          style: TextStyle(color: AppColors.protoBrand),
+        ),
         actions: [
           IconButton(
             onPressed: _load,
@@ -76,42 +82,55 @@ class _TodayPicksScreenState extends ConsumerState<TodayPicksScreen> {
         ],
       ),
       body: _loading
-          ? const Center(child: CircularProgressIndicator(color: AppColors.protoBrand))
+          ? const Center(
+              child: CircularProgressIndicator(color: AppColors.protoBrand),
+            )
           : _error != null
-              ? _ErrorState(message: _error!, onRetry: _load)
-              : _picks.isEmpty
-                  ? const _EmptyState()
-                  : Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
-                          child: Row(
-                            children: [
-                              Text('${_idx + 1} / ${_picks.length}', style: const TextStyle(color: AppColors.protoInk3)),
-                              const Spacer(),
-                              const Text('Refreshes at midnight IST', style: TextStyle(color: AppColors.protoInk4, fontSize: 12)),
-                            ],
-                          ),
+          ? _ErrorState(message: _error!, onRetry: _load)
+          : _picks.isEmpty
+          ? const _EmptyState()
+          : Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
+                  child: Row(
+                    children: [
+                      Text(
+                        '${_idx + 1} / ${_picks.length}',
+                        style: const TextStyle(color: AppColors.protoInk3),
+                      ),
+                      const Spacer(),
+                      const Text(
+                        'Refreshes at midnight IST',
+                        style: TextStyle(
+                          color: AppColors.protoInk4,
+                          fontSize: 12,
                         ),
-                        Expanded(
-                          child: PageView.builder(
-                            controller: _controller,
-                            scrollDirection: Axis.vertical,
-                            onPageChanged: (i) => setState(() => _idx = i),
-                            itemCount: _picks.length,
-                            itemBuilder: (context, index) => _PickCard(pick: _picks[index]),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: PageView.builder(
+                    controller: _controller,
+                    scrollDirection: Axis.vertical,
+                    onPageChanged: (i) => setState(() => _idx = i),
+                    itemCount: _picks.length,
+                    itemBuilder: (context, index) =>
+                        _PickCard(pick: _picks[index], lang: lang),
+                  ),
+                ),
+              ],
+            ),
     );
   }
 }
 
 class _PickCard extends StatelessWidget {
-  const _PickCard({required this.pick});
+  const _PickCard({required this.pick, required this.lang});
 
   final Map<String, dynamic> pick;
+  final String lang;
 
   @override
   Widget build(BuildContext context) {
@@ -137,8 +156,15 @@ class _PickCard extends StatelessWidget {
                 spacing: 8,
                 runSpacing: 8,
                 children: [
-                  _Pill(text: category.isEmpty ? 'category' : category),
-                  if (interest.isNotEmpty) _Pill(text: 'for: $interest'),
+                  _Pill(
+                    text: category.isEmpty
+                        ? 'Story pack'
+                        : GenreLocalizer.getName(category, lang),
+                  ),
+                  if (interest.isNotEmpty)
+                    _Pill(
+                      text: 'for: ${GenreLocalizer.getName(interest, lang)}',
+                    ),
                 ],
               ),
               const SizedBox(height: 16),
@@ -161,7 +187,10 @@ class _PickCard extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: Text(
                     author,
-                    style: const TextStyle(color: AppColors.protoInk3, fontWeight: FontWeight.w700),
+                    style: const TextStyle(
+                      color: AppColors.protoInk3,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               const SizedBox(height: 12),
@@ -193,9 +222,18 @@ class _Pill extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.protoBrand.withAlpha((0.12 * 255).round()),
         borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: AppColors.protoBrand.withAlpha((0.28 * 255).round())),
+        border: Border.all(
+          color: AppColors.protoBrand.withAlpha((0.28 * 255).round()),
+        ),
       ),
-      child: Text(text, style: const TextStyle(color: AppColors.protoBrand, fontSize: 11, fontWeight: FontWeight.w700)),
+      child: Text(
+        text,
+        style: const TextStyle(
+          color: AppColors.protoBrand,
+          fontSize: 11,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
     );
   }
 }
@@ -220,7 +258,13 @@ class _IconAction extends StatelessWidget {
           children: [
             Icon(icon, size: 18, color: AppColors.protoInk3),
             const SizedBox(width: 8),
-            Text(label, style: const TextStyle(color: AppColors.protoInk3, fontWeight: FontWeight.w700)),
+            Text(
+              label,
+              style: const TextStyle(
+                color: AppColors.protoInk3,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
           ],
         ),
       ),
@@ -259,9 +303,17 @@ class _ErrorState extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.error_outline, color: AppColors.protoBrand, size: 44),
+            const Icon(
+              Icons.error_outline,
+              color: AppColors.protoBrand,
+              size: 44,
+            ),
             const SizedBox(height: 12),
-            Text(message, style: const TextStyle(color: AppColors.protoInk3), textAlign: TextAlign.center),
+            Text(
+              message,
+              style: const TextStyle(color: AppColors.protoInk3),
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: 16),
             FilledButton(onPressed: onRetry, child: const Text('Try again')),
           ],
@@ -270,4 +322,3 @@ class _ErrorState extends StatelessWidget {
     );
   }
 }
-

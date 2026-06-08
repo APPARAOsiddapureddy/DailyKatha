@@ -7,6 +7,7 @@ import '../../data/local/user_engagement_store.dart';
 import '../../data/providers.dart';
 import '../../data/user_stats_controller.dart';
 import '../../l10n/app_localizations.dart';
+import '../../l10n/genre_localizer.dart';
 import '../../models/feed_route_args.dart';
 import '../../models/user_profile.dart';
 import '../../services/user_display_name.dart';
@@ -49,9 +50,20 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
           children: [
             for (final opt in MockCatalog.languages)
               ListTile(
-                title: Text(opt.nativeName, style: const TextStyle(color: AppColors.protoInk, fontWeight: FontWeight.w700)),
-                subtitle: Text('${opt.englishName} · ${opt.speakersLabel}', style: const TextStyle(color: AppColors.protoInk3)),
-                trailing: session.profile.contentLanguage == opt.id ? const Icon(Icons.check, color: AppColors.protoBrand) : null,
+                title: Text(
+                  opt.nativeName,
+                  style: const TextStyle(
+                    color: AppColors.protoInk,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                subtitle: Text(
+                  '${opt.englishName} · ${opt.speakersLabel}',
+                  style: const TextStyle(color: AppColors.protoInk3),
+                ),
+                trailing: session.profile.contentLanguage == opt.id
+                    ? const Icon(Icons.check, color: AppColors.protoBrand)
+                    : null,
                 onTap: () => Navigator.pop(ctx, opt.id),
               ),
           ],
@@ -61,7 +73,9 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     if (picked == null || !mounted) return;
     if (picked == session.profile.contentLanguage) return;
     final updated = session.profile.copyWith(contentLanguage: picked);
-    final newSession = await ref.read(authRepositoryProvider).applyProfile(updated);
+    final newSession = await ref
+        .read(authRepositoryProvider)
+        .applyProfile(updated);
     ref.read(sessionHolderProvider.notifier).setSession(newSession);
     ref.invalidate(catalogProvider);
     if (!mounted) return;
@@ -92,10 +106,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     }
     context.push(
       '/feed',
-      extra: FeedRouteArgs(
-        initialIndex: 0,
-        cardIds: snap.savedCardIds,
-      ),
+      extra: FeedRouteArgs(initialIndex: 0, cardIds: snap.savedCardIds),
     );
   }
 
@@ -150,39 +161,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     }
     context.push(
       '/feed',
-      extra: FeedRouteArgs(
-        initialIndex: 0,
-        cardIds: snap.sharedCardIds,
-      ),
+      extra: FeedRouteArgs(initialIndex: 0, cardIds: snap.sharedCardIds),
     );
-  }
-
-  Future<void> _pickReligion() async {
-    final session = ref.read(sessionHolderProvider);
-    if (session == null) return;
-    final picked = await showModalBottomSheet<String>(
-      context: context,
-      showDragHandle: true,
-      backgroundColor: AppColors.protoSurface,
-      builder: (ctx) {
-        return ListView(
-          shrinkWrap: true,
-          children: [
-            for (final r in MockCatalog.religions)
-              ListTile(
-                title: Text(r.englishLabel, style: const TextStyle(color: AppColors.protoInk, fontWeight: FontWeight.w700)),
-                subtitle: Text(r.note, style: const TextStyle(color: AppColors.protoInk3, fontSize: 12)),
-                trailing: session.profile.religionId == r.id ? const Icon(Icons.check, color: AppColors.protoBrand) : null,
-                onTap: () => Navigator.pop(ctx, r.id),
-              ),
-          ],
-        );
-      },
-    );
-    if (picked == null || !mounted) return;
-    final updated = session.profile.copyWith(religionId: picked);
-    final newSession = await ref.read(authRepositoryProvider).applyProfile(updated);
-    ref.read(sessionHolderProvider.notifier).setSession(newSession);
   }
 
   String _nativeLanguage(UserSession? session) {
@@ -194,14 +174,21 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     }
   }
 
-  String _religionLabel(UserSession? session) {
-    final id = session?.profile.religionId;
-    if (id == null) return '—';
-    try {
-      return MockCatalog.religions.firstWhere((e) => e.id == id).englishLabel;
-    } catch (_) {
-      return id;
+  String _storyPackLabel(UserSession? session) {
+    final ids = session?.profile.interestIds ?? const <String>[];
+    if (ids.isEmpty) {
+      return 'Mahabharata · Ramayanam · Shiv Puranam';
     }
+    final lang = session?.profile.contentLanguage ?? 'en';
+    final labels = ids
+        .take(3)
+        .map((id) => GenreLocalizer.getName(id, lang))
+        .toList();
+    if (labels.isEmpty) return 'Story packs';
+    if (ids.length > 3) {
+      return '${labels.join(' · ')} · +${ids.length - 3} more';
+    }
+    return labels.join(' · ');
   }
 
   @override
@@ -216,7 +203,9 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
         ? l10n.profileYourName
         : () {
             final t = profile.displayName.trim();
-            if (t.isEmpty || isPlaceholderDisplayName(t)) return l10n.profileYourName;
+            if (t.isEmpty || isPlaceholderDisplayName(t)) {
+              return l10n.profileYourName;
+            }
             return t;
           }();
 
@@ -234,7 +223,10 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               SliverPadding(
                 padding: const EdgeInsets.fromLTRB(20, 14, 20, 8),
                 sliver: SliverToBoxAdapter(
-                  child: Text(l10n.navProfile, style: tt.headlineMedium?.copyWith(fontSize: 30)),
+                  child: Text(
+                    l10n.navProfile,
+                    style: tt.headlineMedium?.copyWith(fontSize: 30),
+                  ),
                 ),
               ),
               SliverPadding(
@@ -247,7 +239,10 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                       borderRadius: BorderRadius.circular(18),
                       onTap: _editDisplayName,
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 14,
+                        ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(18),
                           border: Border.all(color: AppColors.protoBorder),
@@ -256,12 +251,21 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                           children: [
                             CircleAvatar(
                               radius: 22,
-                              backgroundColor: AppColors.protoBrand.withValues(alpha: 0.15),
+                              backgroundColor: AppColors.protoBrand.withValues(
+                                alpha: 0.15,
+                              ),
                               child: profile == null
-                                  ? Icon(Icons.person, color: AppColors.protoBrand.withValues(alpha: 0.8))
+                                  ? Icon(
+                                      Icons.person,
+                                      color: AppColors.protoBrand.withValues(
+                                        alpha: 0.8,
+                                      ),
+                                    )
                                   : Text(
                                       UserDisplayName.avatarInitial(profile),
-                                      style: tt.titleMedium?.copyWith(color: AppColors.protoBrand),
+                                      style: tt.titleMedium?.copyWith(
+                                        color: AppColors.protoBrand,
+                                      ),
                                     ),
                             ),
                             const SizedBox(width: 14),
@@ -271,19 +275,27 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                 children: [
                                   Text(
                                     resolvedName,
-                                    style: tt.titleLarge?.copyWith(fontSize: 20),
+                                    style: tt.titleLarge?.copyWith(
+                                      fontSize: 20,
+                                    ),
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                   const SizedBox(height: 2),
                                   Text(
                                     l10n.profileYourNameSub,
-                                    style: tt.bodySmall?.copyWith(color: AppColors.protoInk3),
+                                    style: tt.bodySmall?.copyWith(
+                                      color: AppColors.protoInk3,
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
-                            Icon(Icons.edit_outlined, size: 20, color: AppColors.protoInk3),
+                            Icon(
+                              Icons.edit_outlined,
+                              size: 20,
+                              color: AppColors.protoInk3,
+                            ),
                           ],
                         ),
                       ),
@@ -316,13 +328,19 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFFE89B2C).withValues(alpha: 0.45),
+                                color: const Color(
+                                  0xFFE89B2C,
+                                ).withValues(alpha: 0.45),
                                 blurRadius: 18,
                                 offset: const Offset(0, 6),
                               ),
                             ],
                           ),
-                          child: const Icon(Icons.local_fire_department, color: Colors.white, size: 30),
+                          child: const Icon(
+                            Icons.local_fire_department,
+                            color: Colors.white,
+                            size: 30,
+                          ),
                         ),
                         const SizedBox(width: 16),
                         Expanded(
@@ -359,18 +377,29 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                 sliver: SliverToBoxAdapter(
                   child: Row(
                     children: [
-                      Expanded(child: _StatTile(n: saved, label: l10n.profileSaved)),
+                      Expanded(
+                        child: _StatTile(n: saved, label: l10n.profileSaved),
+                      ),
                       const SizedBox(width: 8),
-                      Expanded(child: _StatTile(n: edits, label: l10n.profileStatEdits)),
+                      Expanded(
+                        child: _StatTile(
+                          n: edits,
+                          label: l10n.profileStatEdits,
+                        ),
+                      ),
                       const SizedBox(width: 8),
-                      Expanded(child: _StatTile(n: shared, label: l10n.profileShared)),
+                      Expanded(
+                        child: _StatTile(n: shared, label: l10n.profileShared),
+                      ),
                     ],
                   ),
                 ),
               ),
               SliverPadding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
-                sliver: SliverToBoxAdapter(child: _SectionLabel(text: l10n.profileSectionLibrary)),
+                sliver: SliverToBoxAdapter(
+                  child: _SectionLabel(text: l10n.profileSectionLibrary),
+                ),
               ),
               SliverToBoxAdapter(
                 child: _ProfileRow(
@@ -404,7 +433,9 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               ),
               SliverPadding(
                 padding: const EdgeInsets.only(top: 18),
-                sliver: SliverToBoxAdapter(child: _SectionLabel(text: l10n.profileSectionPreferences)),
+                sliver: SliverToBoxAdapter(
+                  child: _SectionLabel(text: l10n.profileSectionPreferences),
+                ),
               ),
               SliverToBoxAdapter(
                 child: _ProfileRow(
@@ -421,24 +452,16 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   icon: Icons.auto_awesome,
                   iconBg: const Color(0xFFEAE3D2),
                   iconColor: AppColors.protoInk2,
-                  title: l10n.profilePathTradition,
-                  sub: _religionLabel(session),
-                  onTap: _pickReligion,
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: _ProfileRow(
-                  icon: Icons.tune,
-                  iconBg: const Color(0xFFEAE3D2),
-                  iconColor: AppColors.protoInk2,
-                  title: l10n.profileInterests,
-                  sub: l10n.profileInterestCountTrailing(session?.profile.interestIds.length ?? 0),
-                  onTap: () => context.push('/profile/interests'),
+                  title: 'Story packs',
+                  sub: _storyPackLabel(session),
+                  onTap: () => context.push('/profile/story-packs'),
                 ),
               ),
               SliverPadding(
                 padding: const EdgeInsets.only(top: 18),
-                sliver: SliverToBoxAdapter(child: _SectionLabel(text: l10n.profileSectionAbout)),
+                sliver: SliverToBoxAdapter(
+                  child: _SectionLabel(text: l10n.profileSectionAbout),
+                ),
               ),
               SliverToBoxAdapter(
                 child: _ProfileRow(
@@ -475,7 +498,11 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   child: Text(
                     l10n.profileFooter,
                     textAlign: TextAlign.center,
-                    style: tt.bodySmall?.copyWith(fontSize: 11, color: AppColors.protoInk4, letterSpacing: 1),
+                    style: tt.bodySmall?.copyWith(
+                      fontSize: 11,
+                      color: AppColors.protoInk4,
+                      letterSpacing: 1,
+                    ),
                   ),
                 ),
               ),
@@ -527,10 +554,7 @@ class _StatTile extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Text(
-            '$n',
-            style: tt.titleLarge?.copyWith(fontSize: 24, height: 1),
-          ),
+          Text('$n', style: tt.titleLarge?.copyWith(fontSize: 24, height: 1)),
           const SizedBox(height: 4),
           Text(
             label.toUpperCase(),
@@ -602,7 +626,12 @@ class _ProfileRow extends StatelessWidget {
                         style: tt.titleMedium?.copyWith(fontSize: 16),
                       ),
                       if (sub != null && sub!.isNotEmpty)
-                        Text(sub!, style: tt.bodySmall?.copyWith(color: AppColors.protoInk3)),
+                        Text(
+                          sub!,
+                          style: tt.bodySmall?.copyWith(
+                            color: AppColors.protoInk3,
+                          ),
+                        ),
                     ],
                   ),
                 ),
